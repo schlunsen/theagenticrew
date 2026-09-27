@@ -1,0 +1,52 @@
+{
+  "chapter": "04",
+  "title": "What Is an Agent, Really?",
+  "next": "How to Give Good Instructions",
+  "engine": "atlas",
+  "voice": "English_ConfidentWoman",
+  "timing_js": "crew/crew04/timing.js",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "hook",
+      "gap": 0.8,
+      "text": "You've been using agents for years. You just didn't know it. The filter that moves a newsletter out of your inbox. The phone that says traffic is heavy, leave now. The playlist that somehow knows your taste. Each one watches something, decides something, and acts."
+    },
+    {
+      "id": "bigger",
+      "gap": 0.8,
+      "text": "The agents in this guide are the same idea, only much bigger. They don't do one clever thing. They do many things in a row, adapting as they go."
+    },
+    {
+      "id": "loop",
+      "gap": 0.8,
+      "text": "Every agent runs the same loop. Observe: take in what's there. Plan: decide what to do. Act: do it. Check: did it work? If not, round it goes again, with what it just learned. A simple agent goes round once. A powerful one goes round dozens of times."
+    },
+    {
+      "id": "tools",
+      "gap": 0.8,
+      "text": "What an agent can do depends on its tools. Picture a smart new employee at an empty desk. Clever, but stuck. Give them a login, and they can track the work. A key to the project, and they can change it. A key to launch, and they can ship it. The tools are the access, and you decide which keys to hand over."
+    },
+    {
+      "id": "not",
+      "gap": 0.8,
+      "text": "An agent is not a person. It has no goals and no feelings. It predicts the most useful next step from what it can see. So you don't need to motivate it. You need to be clear. And it will be confidently wrong. It will solve the wrong problem with beautiful precision, and keep going, tirelessly, in the wrong direction."
+    },
+    {
+      "id": "spectrum",
+      "gap": 0.8,
+      "text": "Agents come in a spectrum. Autocomplete guesses your next word. Chat assistants answer your questions. Tool-equipped agents have hands: they read files and run commands. And autonomous agents work on their own for long stretches. You can close your laptop, and come back to finished work, waiting for your review."
+    },
+    {
+      "id": "engine",
+      "gap": 0.8,
+      "text": "One more idea. The model is the engine. The program around it, the harness, is the car. Every approval prompt you've ever clicked came from the harness. So when an agent does something reckless, ask two questions. Why did it suggest that? And why was it allowed? The second one is a setting. And settings are yours."
+    },
+    {
+      "id": "steer",
+      "gap": 0.8,
+      "text": "So your job isn't typing. It's steering. Agents work in a loop. Tools set what they can do. Check their work, and be clear. If you've ever managed people, you already have the core skill. Next up: How to Give Good Instructions."
+    }
+  ]
+}
