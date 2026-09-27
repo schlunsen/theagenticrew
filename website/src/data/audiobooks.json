@@ -1,0 +1,600 @@
+[
+ {
+  "id": "eng",
+  "book": "engineering",
+  "bookTitle": "The Agentic Crew",
+  "label": "English",
+  "lang": "en",
+  "note": "Narrates the first edition; the second-edition chapters are on the way.",
+  "tracks": [
+   {
+    "id": "01-introduction",
+    "number": "01",
+    "title": "Introduction",
+    "src": "/audiobook/adult/kitt/01-introduction.mp3",
+    "duration": 497.2
+   },
+   {
+    "id": "02-what-is-an-agent",
+    "number": "02",
+    "title": "What Is an Agent?",
+    "src": "/audiobook/adult/kitt/02-what-is-an-agent.mp3",
+    "duration": 369.6
+   },
+   {
+    "id": "03-context",
+    "number": "03",
+    "title": "Context",
+    "src": "/audiobook/adult/kitt/03-context.mp3",
+    "duration": 1265.8
+   },
+   {
+    "id": "04-guardrails-trust-and-sandboxes",
+    "number": "04",
+    "title": "Guardrails, Trust, and Sandboxes",
+    "src": "/audiobook/adult/kitt/04-guardrails-trust-and-sandboxes.mp3",
+    "duration": 1067.4
+   },
+   {
+    "id": "05-git",
+    "number": "05",
+    "title": "Git as Agent Infrastructure",
+    "src": "/audiobook/adult/kitt/05-git.mp3",
+    "duration": 449.1
+   },
+   {
+    "id": "06-testing-as-the-feedback-loop",
+    "number": "06",
+    "title": "Testing as the Feedback Loop",
+    "src": "/audiobook/adult/kitt/06-testing-as-the-feedback-loop.mp3",
+    "duration": 1097.2
+   },
+   {
+    "id": "07-convention-over-configuration",
+    "number": "07",
+    "title": "Convention Over Configuration",
+    "src": "/audiobook/adult/kitt/07-convention-over-configuration.mp3",
+    "duration": 757.1
+   },
+   {
+    "id": "08-the-ships-log",
+    "number": "08",
+    "title": "The Ship's Log",
+    "src": "/audiobook/adult/kitt/08-the-ships-log.mp3",
+    "duration": 1308.3
+   },
+   {
+    "id": "09-extending-the-agents-reach",
+    "number": "09",
+    "title": "Extending the Agent's Reach",
+    "src": "/audiobook/adult/kitt/09-extending-the-agents-reach.mp3",
+    "duration": 1546.0
+   },
+   {
+    "id": "10-articulating-intent",
+    "number": "10",
+    "title": "Articulating Intent",
+    "src": "/audiobook/adult/kitt/10-articulating-intent.mp3",
+    "duration": 1551.0
+   },
+   {
+    "id": "11-local-commercial-and-hybrid-models",
+    "number": "11",
+    "title": "Local, Commercial, and Hybrid Models",
+    "src": "/audiobook/adult/kitt/11-local-commercial-and-hybrid-models.mp3",
+    "duration": 1610.2
+   },
+   {
+    "id": "12-multi-agent-orchestration",
+    "number": "12",
+    "title": "Multi-Agent Orchestration",
+    "src": "/audiobook/adult/kitt/12-multi-agent-orchestration.mp3",
+    "duration": 826.2
+   },
+   {
+    "id": "13-agents-in-the-pipeline",
+    "number": "13",
+    "title": "Agents in the Pipeline",
+    "src": "/audiobook/adult/kitt/13-agents-in-the-pipeline.mp3",
+    "duration": 1115.6
+   },
+   {
+    "id": "14-when-agents-get-it-wrong",
+    "number": "14",
+    "title": "When Agents Get It Wrong",
+    "src": "/audiobook/adult/kitt/14-when-agents-get-it-wrong.mp3",
+    "duration": 1144.8
+   },
+   {
+    "id": "15-when-not-to-use-agents",
+    "number": "15",
+    "title": "When Not to Use Agents",
+    "src": "/audiobook/adult/kitt/15-when-not-to-use-agents.mp3",
+    "duration": 634.3
+   },
+   {
+    "id": "16-agentic-teams",
+    "number": "16",
+    "title": "Agentic Teams",
+    "src": "/audiobook/adult/kitt/16-agentic-teams.mp3",
+    "duration": 820.0
+   },
+   {
+    "id": "17-final-words",
+    "number": "17",
+    "title": "Final Words",
+    "src": "/audiobook/adult/kitt/17-final-words.mp3",
+    "duration": 559.6
+   }
+  ],
+  "full": "/audiobook/adult/kitt/full-book.mp3",
+  "fullMB": 147,
+  "totalMinutes": 277
+ },
+ {
+  "id": "crew-sky",
+  "book": "crew",
+  "bookTitle": "Crew Member's Guide",
+  "label": "English · Sky",
+  "lang": "en",
+  "note": "",
+  "tracks": [
+   {
+    "id": "00-front-matter",
+    "number": "",
+    "title": "Front Matter",
+    "src": "/audiobook/crew/sky/00-front-matter.mp3",
+    "duration": 74.6
+   },
+   {
+    "id": "01-welcome-to-the-crew",
+    "number": "01",
+    "title": "Welcome to the Crew",
+    "src": "/audiobook/crew/sky/01-welcome-to-the-crew.mp3",
+    "duration": 337.5
+   },
+   {
+    "id": "02-the-ground-is-shifting",
+    "number": "02",
+    "title": "The Ground Is Shifting",
+    "src": "/audiobook/crew/sky/02-the-ground-is-shifting.mp3",
+    "duration": 321.9
+   },
+   {
+    "id": "03-whats-under-the-hood",
+    "number": "03",
+    "title": "What's Under the Hood",
+    "src": "/audiobook/crew/sky/03-whats-under-the-hood.mp3",
+    "duration": 1474.6
+   },
+   {
+    "id": "04-what-is-an-agent",
+    "number": "04",
+    "title": "What Is an Agent, Really?",
+    "src": "/audiobook/crew/sky/04-what-is-an-agent.mp3",
+    "duration": 433.8
+   },
+   {
+    "id": "05-how-to-give-good-instructions",
+    "number": "05",
+    "title": "How to Give Good Instructions",
+    "src": "/audiobook/crew/sky/05-how-to-give-good-instructions.mp3",
+    "duration": 603.5
+   },
+   {
+    "id": "06-what-the-agent-can-see",
+    "number": "06",
+    "title": "What the Agent Can See",
+    "src": "/audiobook/crew/sky/06-what-the-agent-can-see.mp3",
+    "duration": 683.7
+   },
+   {
+    "id": "07-the-trust-gradient",
+    "number": "07",
+    "title": "The Trust Gradient",
+    "src": "/audiobook/crew/sky/07-the-trust-gradient.mp3",
+    "duration": 346.8
+   },
+   {
+    "id": "08-extending-the-crews-reach",
+    "number": "08",
+    "title": "Extending the Crew's Reach",
+    "src": "/audiobook/crew/sky/08-extending-the-crews-reach.mp3",
+    "duration": 334.6
+   },
+   {
+    "id": "09-the-padlock",
+    "number": "09",
+    "title": "The Padlock",
+    "src": "/audiobook/crew/sky/09-the-padlock.mp3",
+    "duration": 867.6
+   },
+   {
+    "id": "10-reading-the-output-like-a-pro",
+    "number": "10",
+    "title": "Reading the Output Like a Pro",
+    "src": "/audiobook/crew/sky/10-reading-the-output-like-a-pro.mp3",
+    "duration": 353.5
+   },
+   {
+    "id": "11-building-something-real",
+    "number": "11",
+    "title": "Building Something Real",
+    "src": "/audiobook/crew/sky/11-building-something-real.mp3",
+    "duration": 814.0
+   },
+   {
+    "id": "12-building-something-else",
+    "number": "12a",
+    "title": "Building Something Else",
+    "src": "/audiobook/crew/sky/12-building-something-else.mp3",
+    "duration": 474.9
+   },
+   {
+    "id": "12-when-things-go-wrong",
+    "number": "12b",
+    "title": "When Things Go Wrong",
+    "src": "/audiobook/crew/sky/12-when-things-go-wrong.mp3",
+    "duration": 438.1
+   },
+   {
+    "id": "13-when-to-do-it-yourself",
+    "number": "13",
+    "title": "When to Do It Yourself",
+    "src": "/audiobook/crew/sky/13-when-to-do-it-yourself.mp3",
+    "duration": 332.6
+   },
+   {
+    "id": "14-being-the-human-in-the-loop",
+    "number": "14",
+    "title": "Being the Human in the Loop",
+    "src": "/audiobook/crew/sky/14-being-the-human-in-the-loop.mp3",
+    "duration": 400.8
+   },
+   {
+    "id": "15-talking-to-your-tech-team",
+    "number": "15",
+    "title": "Talking to Your Tech Team",
+    "src": "/audiobook/crew/sky/15-talking-to-your-tech-team.mp3",
+    "duration": 363.1
+   },
+   {
+    "id": "16-keeping-your-finger-on-the-pulse",
+    "number": "16",
+    "title": "Keeping Your Finger on the Pulse",
+    "src": "/audiobook/crew/sky/16-keeping-your-finger-on-the-pulse.mp3",
+    "duration": 376.3
+   },
+   {
+    "id": "17-final-words",
+    "number": "17",
+    "title": "Final Words",
+    "src": "/audiobook/crew/sky/17-final-words.mp3",
+    "duration": 208.0
+   },
+   {
+    "id": "18-getting-started",
+    "number": "18",
+    "title": "Getting Started",
+    "src": "/audiobook/crew/sky/18-getting-started.mp3",
+    "duration": 391.1
+   },
+   {
+    "id": "99-dedication",
+    "number": "",
+    "title": "Dedication",
+    "src": "/audiobook/crew/sky/99-dedication.mp3",
+    "duration": 6.6
+   }
+  ],
+  "full": "/audiobook/crew/sky/full-book.mp3",
+  "fullMB": 76,
+  "totalMinutes": 161
+ },
+ {
+  "id": "crew-amy",
+  "book": "crew",
+  "bookTitle": "Crew Member's Guide",
+  "label": "English · Amy",
+  "lang": "en",
+  "note": "",
+  "tracks": [
+   {
+    "id": "00-front-matter",
+    "number": "",
+    "title": "Front Matter",
+    "src": "/audiobook/crew/female/00-front-matter.mp3",
+    "duration": 75.8
+   },
+   {
+    "id": "01-welcome-to-the-crew",
+    "number": "01",
+    "title": "Welcome to the Crew",
+    "src": "/audiobook/crew/female/01-welcome-to-the-crew.mp3",
+    "duration": 321.0
+   },
+   {
+    "id": "02-the-ground-is-shifting",
+    "number": "02",
+    "title": "The Ground Is Shifting",
+    "src": "/audiobook/crew/female/02-the-ground-is-shifting.mp3",
+    "duration": 300.4
+   },
+   {
+    "id": "03-whats-under-the-hood",
+    "number": "03",
+    "title": "What's Under the Hood",
+    "src": "/audiobook/crew/female/03-whats-under-the-hood.mp3",
+    "duration": 1532.5
+   },
+   {
+    "id": "04-what-is-an-agent",
+    "number": "04",
+    "title": "What Is an Agent, Really?",
+    "src": "/audiobook/crew/female/04-what-is-an-agent.mp3",
+    "duration": 430.9
+   },
+   {
+    "id": "05-how-to-give-good-instructions",
+    "number": "05",
+    "title": "How to Give Good Instructions",
+    "src": "/audiobook/crew/female/05-how-to-give-good-instructions.mp3",
+    "duration": 569.9
+   },
+   {
+    "id": "06-what-the-agent-can-see",
+    "number": "06",
+    "title": "What the Agent Can See",
+    "src": "/audiobook/crew/female/06-what-the-agent-can-see.mp3",
+    "duration": 659.0
+   },
+   {
+    "id": "07-the-trust-gradient",
+    "number": "07",
+    "title": "The Trust Gradient",
+    "src": "/audiobook/crew/female/07-the-trust-gradient.mp3",
+    "duration": 337.3
+   },
+   {
+    "id": "08-extending-the-crews-reach",
+    "number": "08",
+    "title": "Extending the Crew's Reach",
+    "src": "/audiobook/crew/female/08-extending-the-crews-reach.mp3",
+    "duration": 318.3
+   },
+   {
+    "id": "09-the-padlock",
+    "number": "09",
+    "title": "The Padlock",
+    "src": "/audiobook/crew/female/09-the-padlock.mp3",
+    "duration": 841.9
+   },
+   {
+    "id": "10-reading-the-output-like-a-pro",
+    "number": "10",
+    "title": "Reading the Output Like a Pro",
+    "src": "/audiobook/crew/female/10-reading-the-output-like-a-pro.mp3",
+    "duration": 339.9
+   },
+   {
+    "id": "11-building-something-real",
+    "number": "11",
+    "title": "Building Something Real",
+    "src": "/audiobook/crew/female/11-building-something-real.mp3",
+    "duration": 789.6
+   },
+   {
+    "id": "12-building-something-else",
+    "number": "12a",
+    "title": "Building Something Else",
+    "src": "/audiobook/crew/female/12-building-something-else.mp3",
+    "duration": 441.0
+   },
+   {
+    "id": "12-when-things-go-wrong",
+    "number": "12b",
+    "title": "When Things Go Wrong",
+    "src": "/audiobook/crew/female/12-when-things-go-wrong.mp3",
+    "duration": 429.7
+   },
+   {
+    "id": "13-when-to-do-it-yourself",
+    "number": "13",
+    "title": "When to Do It Yourself",
+    "src": "/audiobook/crew/female/13-when-to-do-it-yourself.mp3",
+    "duration": 320.7
+   },
+   {
+    "id": "14-being-the-human-in-the-loop",
+    "number": "14",
+    "title": "Being the Human in the Loop",
+    "src": "/audiobook/crew/female/14-being-the-human-in-the-loop.mp3",
+    "duration": 389.7
+   },
+   {
+    "id": "15-talking-to-your-tech-team",
+    "number": "15",
+    "title": "Talking to Your Tech Team",
+    "src": "/audiobook/crew/female/15-talking-to-your-tech-team.mp3",
+    "duration": 331.7
+   },
+   {
+    "id": "16-keeping-your-finger-on-the-pulse",
+    "number": "16",
+    "title": "Keeping Your Finger on the Pulse",
+    "src": "/audiobook/crew/female/16-keeping-your-finger-on-the-pulse.mp3",
+    "duration": 367.7
+   },
+   {
+    "id": "17-final-words",
+    "number": "17",
+    "title": "Final Words",
+    "src": "/audiobook/crew/female/17-final-words.mp3",
+    "duration": 200.8
+   },
+   {
+    "id": "18-getting-started",
+    "number": "18",
+    "title": "Getting Started",
+    "src": "/audiobook/crew/female/18-getting-started.mp3",
+    "duration": 384.4
+   },
+   {
+    "id": "99-dedication",
+    "number": "",
+    "title": "Dedication",
+    "src": "/audiobook/crew/female/99-dedication.mp3",
+    "duration": 7.3
+   }
+  ],
+  "full": "/audiobook/crew/female/full-book.mp3",
+  "fullMB": 82,
+  "totalMinutes": 156
+ },
+ {
+  "id": "crew-ca",
+  "book": "crew",
+  "bookTitle": "Guia del tripulant",
+  "label": "Català · Amy",
+  "lang": "ca",
+  "note": "",
+  "tracks": [
+   {
+    "id": "00-front-matter",
+    "number": "",
+    "title": "Preliminars",
+    "src": "/audiobook/crew-ca/female/00-front-matter.mp3",
+    "duration": 89.5
+   },
+   {
+    "id": "01-welcome-to-the-crew",
+    "number": "01",
+    "title": "Benvingut a la tripulació",
+    "src": "/audiobook/crew-ca/female/01-welcome-to-the-crew.mp3",
+    "duration": 389.1
+   },
+   {
+    "id": "02-the-ground-is-shifting",
+    "number": "02",
+    "title": "El terra s'està movent",
+    "src": "/audiobook/crew-ca/female/02-the-ground-is-shifting.mp3",
+    "duration": 360.9
+   },
+   {
+    "id": "03-whats-under-the-hood",
+    "number": "03",
+    "title": "Què hi ha sota el capó",
+    "src": "/audiobook/crew-ca/female/03-whats-under-the-hood.mp3",
+    "duration": 1756.7
+   },
+   {
+    "id": "04-what-is-an-agent",
+    "number": "04",
+    "title": "Què és un agent, realment?",
+    "src": "/audiobook/crew-ca/female/04-what-is-an-agent.mp3",
+    "duration": 503.1
+   },
+   {
+    "id": "05-how-to-give-good-instructions",
+    "number": "05",
+    "title": "Com donar bones instruccions",
+    "src": "/audiobook/crew-ca/female/05-how-to-give-good-instructions.mp3",
+    "duration": 683.9
+   },
+   {
+    "id": "06-what-the-agent-can-see",
+    "number": "06",
+    "title": "Què pot veure l'agent",
+    "src": "/audiobook/crew-ca/female/06-what-the-agent-can-see.mp3",
+    "duration": 413.2
+   },
+   {
+    "id": "07-the-trust-gradient",
+    "number": "07",
+    "title": "El gradient de confiança",
+    "src": "/audiobook/crew-ca/female/07-the-trust-gradient.mp3",
+    "duration": 393.2
+   },
+   {
+    "id": "08-extending-the-crews-reach",
+    "number": "08",
+    "title": "Ampliant l'abast de la tripulació",
+    "src": "/audiobook/crew-ca/female/08-extending-the-crews-reach.mp3",
+    "duration": 377.6
+   },
+   {
+    "id": "09-the-padlock",
+    "number": "09",
+    "title": "El cadenat",
+    "src": "/audiobook/crew-ca/female/09-the-padlock.mp3",
+    "duration": 969.2
+   },
+   {
+    "id": "10-reading-the-output-like-a-pro",
+    "number": "10",
+    "title": "Llegir la sortida com un professional",
+    "src": "/audiobook/crew-ca/female/10-reading-the-output-like-a-pro.mp3",
+    "duration": 396.0
+   },
+   {
+    "id": "11-building-something-real",
+    "number": "11",
+    "title": "Construir alguna cosa real",
+    "src": "/audiobook/crew-ca/female/11-building-something-real.mp3",
+    "duration": 892.8
+   },
+   {
+    "id": "12-when-things-go-wrong",
+    "number": "12b",
+    "title": "Quan les coses surten malament",
+    "src": "/audiobook/crew-ca/female/12-when-things-go-wrong.mp3",
+    "duration": 522.2
+   },
+   {
+    "id": "13-when-to-do-it-yourself",
+    "number": "13",
+    "title": "Quan fer-ho tu mateix",
+    "src": "/audiobook/crew-ca/female/13-when-to-do-it-yourself.mp3",
+    "duration": 352.9
+   },
+   {
+    "id": "14-being-the-human-in-the-loop",
+    "number": "14",
+    "title": "Ser l'humà en el procés",
+    "src": "/audiobook/crew-ca/female/14-being-the-human-in-the-loop.mp3",
+    "duration": 458.8
+   },
+   {
+    "id": "15-talking-to-your-tech-team",
+    "number": "15",
+    "title": "Parlant amb el teu equip tècnic",
+    "src": "/audiobook/crew-ca/female/15-talking-to-your-tech-team.mp3",
+    "duration": 397.3
+   },
+   {
+    "id": "16-keeping-your-finger-on-the-pulse",
+    "number": "16",
+    "title": "Mantenir el pols",
+    "src": "/audiobook/crew-ca/female/16-keeping-your-finger-on-the-pulse.mp3",
+    "duration": 429.2
+   },
+   {
+    "id": "17-final-words",
+    "number": "17",
+    "title": "Paraules finals",
+    "src": "/audiobook/crew-ca/female/17-final-words.mp3",
+    "duration": 253.3
+   },
+   {
+    "id": "99-dedication",
+    "number": "",
+    "title": "Dedicatòria",
+    "src": "/audiobook/crew-ca/female/99-dedication.mp3",
+    "duration": 8.4
+   }
+  ],
+  "full": "/audiobook/crew-ca/female/full-book.mp3",
+  "fullMB": 88,
+  "totalMinutes": 161
+ }
+]
