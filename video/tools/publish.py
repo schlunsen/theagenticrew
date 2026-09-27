@@ -3,6 +3,9 @@
 
   python3 video/tools/publish.py            # every chapter with a rendered film
   python3 video/tools/publish.py ch03 ch04  # just these
+  python3 video/tools/publish.py --book crew [crew09 …]      # the Crew Member's Guide's watercolour films
+  python3 video/tools/publish.py --book handson              # the Hands-On Guide's film
+Each book has its own film folder and data file, so the series never overwrite each other (see BOOKS).
 
 For each video/build/<ch>/<ch>-<slug>.mp4 (with narration/<ch>.json and build/<ch>/timing.json) it writes:
   website/public/films/<slug>.mp4   web encode (1080p, x264 CRF 29, tune grain: the halftone survives at ~2 Mbit/s)
@@ -16,10 +19,22 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 BUILD, NARR = ROOT / "video" / "build", ROOT / "video" / "narration"
-PUB, DATA = ROOT / "website" / "public" / "films", ROOT / "website" / "src" / "data" / "films.json"
-ORDER = [f"ch{n:02d}" for n in range(1, 20)] + ["chA", "chB"]
-PARTS = [("I", "Setting Sail", 1, 2), ("II", "Rigging the Ship", 3, 8), ("III", "Beyond the Harbour", 9, 12),
-         ("IV", "Running a Fleet", 13, 15), ("V", "Hard-Won Lessons", 16, 19), ("", "Appendices", 20, 21)]
+FILMS, SRC = ROOT / "website" / "public" / "films", ROOT / "website" / "src" / "data"
+# book → (web folder, url prefix, data file, film ids in order, parts as (numeral, title, first, last) by position in ORDER)
+BOOKS = {
+    "main": (FILMS, "/films", SRC / "films.json", [f"ch{n:02d}" for n in range(1, 20)] + ["chA", "chB"],
+             [("I", "Setting Sail", 1, 2), ("II", "Rigging the Ship", 3, 8), ("III", "Beyond the Harbour", 9, 12),
+              ("IV", "Running a Fleet", 13, 15), ("V", "Hard-Won Lessons", 16, 19), ("", "Appendices", 20, 21)]),
+    # crew films are keyed by their book chapter number; ORDER lists every chapter that may get a film
+    "crew": (FILMS / "crew", "/films/crew", SRC / "films-crew.json", [f"crew{n:02d}" for n in range(1, 20)],
+             [("I", "Setting Sail", 1, 2), ("II", "Below Deck", 3, 4), ("III", "Taking the Helm", 5, 9),
+              ("IV", "Underway", 10, 12), ("V", "Hard-Won Lessons", 13, 19)]),
+    "handson": (FILMS / "hands-on", "/films/hands-on", SRC / "films-handson.json", ["handson00"], [("", "Overview", 1, 1)]),
+}
+book = "main"
+if len(sys.argv) > 2 and sys.argv[1] == "--book":
+    book = sys.argv[2]; sys.argv[1:3] = []
+PUB, URL, DATA, ORDER, PARTS = BOOKS[book]
 
 
 def ts(t):
@@ -82,7 +97,7 @@ def main():
             "id": num, "order": n, "slug": slug, "title": spec["title"], "next": spec.get("next", ""),
             "part": part[0], "partTitle": part[1],
             "duration": round(timing["duration"], 1),
-            "video": f"/films/{slug}.mp4", "poster": f"/films/{slug}.jpg", "captions": f"/films/{slug}.vtt",
+            "video": f"{URL}/{slug}.mp4", "poster": f"{URL}/{slug}.jpg", "captions": f"{URL}/{slug}.vtt",
             "sizeMB": round(web.stat().st_size / 1e6, 1),
             "transcript": [b["text"] for b in spec["beats"]],
         }

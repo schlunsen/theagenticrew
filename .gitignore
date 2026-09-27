@@ -23,7 +23,7 @@ revisions/
 
 
 # chapter films (published by video/tools/publish.py; too big for git)
-website/public/films/*.mp4
+website/public/films/**/*.mp4
 video/build/
 video/riso/node_modules/
 video/riso/out/
