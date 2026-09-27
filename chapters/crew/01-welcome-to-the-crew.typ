@@ -5,7 +5,7 @@
   caption: [_The horizon is wider than you think._],
 )
 
-Six months ago, my friend Morten told me he wanted to build an app for his business. Morten installs windows — the glass kind, not the Microsoft kind. He's been doing it for fifteen years. He knows every window model, every frame type, every trick for getting a perfect seal in an old Danish farmhouse. He runs a crew of four guys, manages quotes on paper, and tracks jobs in a spreadsheet that would make an accountant weep.
+Last year, my friend Morten told me he wanted to build an app for his business. Morten installs windows — the glass kind, not the Microsoft kind. He's been doing it for fifteen years. He knows every window model, every frame type, every trick for getting a perfect seal in an old Danish farmhouse. He runs a crew of four guys, manages quotes on paper, and tracks jobs in a spreadsheet that would make an accountant weep.
 
 Morten is brilliant with computers. He built his own NAS, runs a Plex server, automated half his smart home with scripts he found on Reddit. But he's never written a line of code.
 

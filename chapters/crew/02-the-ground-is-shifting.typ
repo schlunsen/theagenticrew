@@ -47,6 +47,8 @@ Before you get too excited — and before the engineers reading over your should
 
 Building good software is still hard. An agent can produce code, but producing code isn't the same as building a reliable system. There's a reason the engineering edition of this book has chapters on testing, sandboxing, version control, and deployment pipelines. The agent gives you speed. It doesn't give you judgment.
 
+There's evidence for this now, not just opinion. Google's DORA research programme, which studies how software teams perform, found in 2025 that AI use had become almost universal — and that its clearest effect was as an _amplifier_. Teams with good habits got better. Teams with messy ones got messier, faster. Agents don't fix how you work. They make it more of what it already is.
+
 What this means for you: the things you bring to the table — domain expertise, user empathy, business logic, taste — are now more valuable than ever, not less. The bottleneck is no longer "can we build it." The bottleneck is "do we know what to build, and will we know if it's right." That's your department.
 
 == Why You Need This Book

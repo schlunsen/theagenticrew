@@ -15,9 +15,9 @@ A year ago, the idea of building a working application in a weekend — with a 3
 
 You know what's under the hood. A frontend (React) that the user sees. A backend (Django) that enforces the rules. A database (Postgres) that remembers everything. A cache (Redis) that keeps things fast. An API that connects them. Git that keeps everything safe. DNS that makes it findable. CI that makes sure nothing breaks.
 
-You know what agents are. Not magic. Not sentient. A loop: observe, plan, act, check, repeat. Powerful when directed well. Dangerous when left unsupervised.
+You know what agents are. Not magic. Not sentient. A loop: observe, plan, act, check, repeat. Powerful when directed well. Dangerous when left unsupervised — and gullible when they read strangers' words.
 
-You know how to direct them. Clear instructions with constraints. Raw materials instead of vague descriptions. Verification instead of blind trust. The trust gradient — tight at first, loosened with evidence.
+You know how to direct them. Clear instructions with constraints. A plan before the build. Raw materials instead of vague descriptions, and a tidy workbench. Verification instead of blind trust. The trust gradient — tight at first, loosened with evidence. And one leg of the trifecta always missing.
 
 And you know when to step in. When judgment matters more than speed. When the human element is the point. When the stakes are too high for confident guessing.
 
@@ -28,6 +28,16 @@ This book is called the Crew Member's Guide, but let's be honest about what you'
 The engineer builds the ship. The agent provides the labour. But you — you know the waters. You know the customers. You know the business. You know what success looks like, not from the engine room, but from the chart table where the real decisions get made.
 
 Every ship that ever reached the right port had someone who knew where to go. That's you. Not secondary to the engineer. Not a passenger. The person whose judgment determines whether all that engineering effort lands somewhere that matters.
+
+== What Changed My Mind
+
+The first edition of this guide was six months old when I started this one. That's long enough to be wrong about a few things.
+
+*I underestimated the risk of connecting everything.* The first edition told you to connect your agent to your email, your files, and your tools, with a paragraph about privacy. That was the wrong emphasis. Every connection is a way for someone else's words to reach your agent, and agents can't reliably tell words from orders. The chapter on hidden instructions exists because I got this wrong.
+
+*I thought the hard part was getting agents to do the work. It's reviewing it.* Agents that work in the background made the doing cheap. Your attention didn't get any cheaper. Plan around the reviewer — which is often you.
+
+*Everything else held.* Clear instructions, the right context, healthy scepticism, and your judgement. The tools changed a lot in six months. The principles didn't budge.
 
 == What Comes Next
 

@@ -53,13 +53,21 @@ Not all agents are equal. There's a spectrum from simple to sophisticated:
 
 *Autocomplete* — The simplest form. You start typing and the tool predicts what comes next. GitHub Copilot does this for code. Your phone keyboard does it for text. Low autonomy, low risk, constantly supervised.
 
-*Chat assistants* — You ask a question, you get an answer. ChatGPT, Claude, Gemini. More capable, but still reactive — they do what you ask, one exchange at a time. No tools, no memory between sessions (usually), no ability to act on the world.
+*Chat assistants* — You ask a question, you get an answer. ChatGPT, Claude, Gemini. When the first edition of this book came out, these were mostly just conversation. They've grown since: most can now search the web, remember things between conversations, and — if you let them — connect to your email, calendar, and documents. The more of that you switch on, the further along this spectrum they move.
 
-*Tool-equipped agents* — The same intelligence, but with hands. They can read files, run commands, search the web, interact with APIs. This is where things get powerful — and where the rest of this book lives. Claude Code, Cursor, Windsurf — these are agents with access to your project, your terminal, your tools.
+*Tool-equipped agents* — The same intelligence, but with hands. They can read files, run commands, search the web, interact with APIs. This is where things get powerful — and where the rest of this book lives. Claude Code, Cursor, OpenAI's Codex — these are agents with access to your project, your terminal, your tools.
 
 *Autonomous agents* — Agents that run unsupervised for extended periods. You give them a goal, they figure out the steps, execute them, handle errors, and come back with results. The most powerful and the most dangerous. Most of the guardrails in this book exist because of this category.
 
+That last category used to be something only engineers built for themselves. Not any more. Today you can hand a task to an agent that runs in the cloud, close your laptop, and come back later to finished work waiting for your review. We'll come back to what that means for you in the chapter on being the human in the loop.
+
 Where you are on this spectrum depends on your comfort level, your use case, and how much you trust the output. Most people reading this book will work primarily with tool-equipped agents — powerful enough to build real things, supervised enough to catch mistakes.
+
+== The Engine and the Car
+
+One more distinction worth knowing, because you'll hear engineers use it. The _model_ — Claude, GPT, Gemini — is the engine. It reads text and writes text. That's all it does. The program wrapped around it — the one that gives it tools, runs the loop, decides what it's allowed to touch, and asks you "Allow this action?" — is often called the _harness_.
+
+Every approval prompt you've ever clicked came from the harness, not the model. And the same model can feel brilliant in one app and clumsy in another, because the harness around it is different. So when an agent does something reckless, there are two questions, not one: why did the model suggest it, and why was it allowed to happen? You can't do much about the first. The second is a setting — and settings are yours.
 
 == Why This Matters for You
 

@@ -33,6 +33,18 @@ When they say *"the context window"* — the agent's workbench. How much informa
 
 When they say *"it hallucinated"* — the agent made something up. Confidently. It looks real but isn't.
 
+When they say *"it's in the `AGENTS.md`"* (or `CLAUDE.md`) — it's written in the project's instruction file, the onboarding guide every agent session reads first.
+
+When they say *"let's make that a skill"* — they want to package a procedure the agent can pull off the shelf whenever a task needs it, so everyone's agent does it the same way.
+
+When they say *"the context got too long"* or *"it compacted"* — the workbench got cluttered, and the agent either lost track or summarised the conversation and carried on. Usually the fix is a fresh session.
+
+When they say *"I'll give it to a background agent"* — they're handing the task to an agent that works in the cloud and comes back with a pull request to review.
+
+When they say *"that's an MCP server"* or *"a connector"* — it's the plug that lets an agent talk to another tool: your calendar, your ticket system, your database.
+
+When they say *"prompt injection"* — someone has hidden instructions in text the agent reads, hoping it will obey them. The chapter on hidden instructions is all about this.
+
 == Questions Worth Asking
 
 The most valuable thing you can do in a technical conversation isn't understanding every detail. It's asking the right questions. Here are some that will earn you respect:
@@ -49,6 +61,10 @@ The most valuable thing you can do in a technical conversation isn't understandi
 
 *"What does the data model look like?"* — You know what a database is now. You know about tables and rows. Asking about the data model shows you're thinking about structure, not just features.
 
+*"What can this agent read — and who else can write to it?"* — The single best security question a non-engineer can ask about any agent setup. If the answer involves both private data and text from outsiders, follow up with: "And how could it send anything out?"
+
+*"Who's going to review all of this?"* — When the plan involves agents producing a lot of work, this is the question that saves the project. The bottleneck is rarely the agents.
+
 == Being Useful in Planning
 
 The biggest contribution you can make to a technical team isn't writing code or reviewing pull requests. It's _defining the problem correctly_.
@@ -59,7 +75,7 @@ Engineers are optimised for building solutions. They're often less good at quest
 
 *"We're adding a dark mode"* — you can ask: "Who asked for this? Our users are window installers on bright job sites. Maybe we should do a high-contrast light mode instead."
 
-*"The agent will handle customer onboarding"* — you can ask: "What happens when the agent gets it wrong? Is there a handoff to a human? How will the customer know they're talking to an agent?"
+*"The agent will handle customer onboarding"* — you can ask: "What happens when the agent gets it wrong? Is there a handoff to a human? How will the customer know they're talking to an agent? And what happens when a customer types instructions _at_ the agent instead of questions?"
 
 These aren't technical questions. They're _product_ questions. And they're often more valuable than any technical decision being made in the same meeting.
 
