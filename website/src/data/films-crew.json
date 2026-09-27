@@ -1,0 +1,26 @@
+[
+ {
+  "id": "05",
+  "order": 5,
+  "slug": "how-to-give-good-instructions",
+  "title": "How to Give Good Instructions",
+  "next": "Context In, Verification Out",
+  "part": "III",
+  "partTitle": "Taking the Helm",
+  "duration": 161.5,
+  "video": "/films/crew/how-to-give-good-instructions.mp4",
+  "poster": "/films/crew/how-to-give-good-instructions.jpg",
+  "captions": "/films/crew/how-to-give-good-instructions.vtt",
+  "sizeMB": 65.0,
+  "transcript": [
+   "Two people want the same thing: a simple dashboard of their team's weekly sales. Alex types five words. Make me a sales dashboard. The agent builds something with charts. But the numbers are fake. It shows months, not weeks. It uses a chart library Alex has never heard of. Two hours of fixes later, Alex gives up.",
+   "Maya opens the same agent and writes a few clear lines. Connect to our real sales data. Show the last eight weeks as a stacked bar chart, one colour per person. Use the chart library we already have. Match our blue header and white cards. The agent builds exactly that. First try. Same agent, same goal. The only difference was the instructions.",
+   "A good instruction has three parts. What you want, said specifically, because when an agent guesses, it guesses confidently. Why it matters, so it understands the problem, not just the feature. And how you'll know it worked. That's the part most people skip, and it's the one that lets the agent check its own work.",
+   "Then say what not to do. Agents are eager. Ask one to fix a button colour, and it might redesign the whole screen. Constraints are lane markers on a road. Don't change the existing pages. Don't add new tools. Use the colours we already have. Inside the lanes, the agent drives freely. It just can't cross the lines.",
+   "Instructions come in levels. Level zero is a wish: make the app better. Level one is a goal: add a way to export data. Level two is a specification: an export button on the settings page, with these columns and this file name. Level three is a full blueprint, usually more than you need. For most tasks, level two is the sweet spot.",
+   "And before anything gets built, ask for a plan. Don't change anything yet. Tell me what you'll build, and how you'll check it. Then read that plan the way you'd read a builder's quote for a kitchen. It's the cheapest review you'll ever do. A wrong assumption in a ten line plan costs one sentence to fix. Found after the build, it costs an afternoon.",
+   "When something is still off, don't just say: that's not right, fix it. That's Captain Alex again. Be targeted. The chart shows monthly totals; change it to weekly. What's wrong, what you want instead, and how to check it.",
+   "An agent is only as good as the job you describe. How you explain the job matters more than the tool doing it. Next up: context in, verification out."
+  ]
+ }
+]
