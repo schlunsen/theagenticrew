@@ -1,0 +1,274 @@
+WEBVTT
+
+00:00:05.300 --> 00:00:07.280
+You've been using agents for years.
+
+00:00:07.280 --> 00:00:08.580
+You just didn't know it.
+
+00:00:08.580 --> 00:00:10.320
+The filter that moves a newsletter out
+
+00:00:10.320 --> 00:00:11.240
+of your inbox.
+
+00:00:11.240 --> 00:00:13.340
+The phone that says traffic is heavy,
+
+00:00:13.340 --> 00:00:14.220
+leave now.
+
+00:00:14.220 --> 00:00:16.620
+The playlist that somehow knows your taste.
+
+00:00:16.620 --> 00:00:18.410
+Each one watches something,
+
+00:00:18.460 --> 00:00:19.570
+decides something,
+
+00:00:19.580 --> 00:00:20.490
+and acts.
+
+00:00:21.221 --> 00:00:22.381
+The agents in this guide are the
+
+00:00:22.381 --> 00:00:23.201
+same idea,
+
+00:00:23.201 --> 00:00:24.221
+only much bigger.
+
+00:00:24.221 --> 00:00:25.941
+They don't do one clever thing.
+
+00:00:25.941 --> 00:00:27.531
+They do many things in a row,
+
+00:00:27.561 --> 00:00:28.791
+adapting as they go.
+
+00:00:29.491 --> 00:00:31.381
+Every agent runs the same loop.
+
+00:00:31.451 --> 00:00:32.191
+Observe:
+
+00:00:32.191 --> 00:00:33.561
+take in what's there.
+
+00:00:33.671 --> 00:00:34.271
+Plan:
+
+00:00:34.271 --> 00:00:35.601
+decide what to do.
+
+00:00:35.771 --> 00:00:36.311
+Act:
+
+00:00:36.311 --> 00:00:37.151
+do it.
+
+00:00:37.151 --> 00:00:37.671
+Check:
+
+00:00:37.671 --> 00:00:38.591
+did it work?
+
+00:00:38.591 --> 00:00:39.621
+If not,
+
+00:00:39.711 --> 00:00:40.971
+round it goes again,
+
+00:00:40.971 --> 00:00:42.521
+with what it just learned.
+
+00:00:42.551 --> 00:00:44.911
+A simple agent goes round once.
+
+00:00:44.911 --> 00:00:47.091
+A powerful one goes round dozens of
+
+00:00:47.091 --> 00:00:47.941
+times.
+
+00:00:48.507 --> 00:00:50.147
+What an agent can do depends on
+
+00:00:50.147 --> 00:00:50.987
+its tools.
+
+00:00:50.987 --> 00:00:52.887
+Picture a smart new employee at an
+
+00:00:52.887 --> 00:00:53.737
+empty desk.
+
+00:00:53.867 --> 00:00:54.407
+Clever,
+
+00:00:54.407 --> 00:00:55.357
+but stuck.
+
+00:00:55.467 --> 00:00:56.707
+Give them a login,
+
+00:00:56.707 --> 00:00:58.187
+and they can track the work.
+
+00:00:58.187 --> 00:00:59.547
+A key to the project,
+
+00:00:59.547 --> 00:01:00.607
+and they can change it.
+
+00:01:00.607 --> 00:01:01.607
+A key to launch,
+
+00:01:01.607 --> 00:01:02.767
+and they can ship it.
+
+00:01:02.767 --> 00:01:04.397
+The tools are the access,
+
+00:01:04.407 --> 00:01:06.387
+and you decide which keys to hand
+
+00:01:06.387 --> 00:01:07.237
+over.
+
+00:01:07.615 --> 00:01:09.295
+An agent is not a person.
+
+00:01:09.295 --> 00:01:11.665
+It has no goals and no feelings.
+
+00:01:11.735 --> 00:01:13.915
+It predicts the most useful next step
+
+00:01:13.915 --> 00:01:15.015
+from what it can see.
+
+00:01:15.015 --> 00:01:16.935
+So you don't need to motivate it.
+
+00:01:16.935 --> 00:01:18.155
+You need to be clear.
+
+00:01:18.155 --> 00:01:20.225
+And it will be confidently wrong.
+
+00:01:20.235 --> 00:01:22.255
+It will solve the wrong problem with
+
+00:01:22.255 --> 00:01:23.235
+beautiful precision,
+
+00:01:23.235 --> 00:01:24.515
+and keep going,
+
+00:01:24.515 --> 00:01:25.375
+tirelessly,
+
+00:01:25.375 --> 00:01:26.665
+in the wrong direction.
+
+00:01:27.655 --> 00:01:29.085
+Agents come in a spectrum,
+
+00:01:29.095 --> 00:01:31.225
+autocomplete guesses your next word,
+
+00:01:31.255 --> 00:01:33.225
+chat assistants answer your questions.
+
+00:01:33.635 --> 00:01:35.295
+Tool -equipped agents have hands,
+
+00:01:35.295 --> 00:01:37.255
+they read files and run commands.
+
+00:01:37.255 --> 00:01:39.295
+And autonomous agents work on their own
+
+00:01:39.295 --> 00:01:40.405
+for long stretches.
+
+00:01:40.535 --> 00:01:42.835
+You can close your laptop and come
+
+00:01:42.835 --> 00:01:44.055
+back to finished work,
+
+00:01:44.055 --> 00:01:45.345
+waiting for your review.
+
+00:01:46.116 --> 00:01:47.246
+One more idea.
+
+00:01:47.296 --> 00:01:49.116
+The model is the engine.
+
+00:01:49.116 --> 00:01:50.576
+The program around it,
+
+00:01:50.576 --> 00:01:51.446
+the harness,
+
+00:01:51.456 --> 00:01:52.386
+is the car.
+
+00:01:52.396 --> 00:01:55.136
+Every approval prompt you've ever clicked came
+
+00:01:55.136 --> 00:01:56.146
+from the harness.
+
+00:01:56.236 --> 00:01:58.296
+So when an agent does something reckless,
+
+00:01:58.296 --> 00:01:59.936
+ask two questions.
+
+00:01:59.936 --> 00:02:01.316
+Why did it suggest that?
+
+00:02:01.316 --> 00:02:02.826
+And why was it allowed?
+
+00:02:02.836 --> 00:02:04.136
+The second one is a setting.
+
+00:02:04.136 --> 00:02:05.766
+And settings are yours.
+
+00:02:06.605 --> 00:02:08.195
+So your job isn't typing.
+
+00:02:08.265 --> 00:02:09.115
+It's steering.
+
+00:02:09.265 --> 00:02:10.865
+Agents work in a loop.
+
+00:02:10.865 --> 00:02:12.555
+Tools set what they can do.
+
+00:02:12.585 --> 00:02:13.525
+Check their work,
+
+00:02:13.525 --> 00:02:14.535
+and be clear.
+
+00:02:14.545 --> 00:02:16.365
+If you've ever managed people,
+
+00:02:16.365 --> 00:02:18.335
+you already have the core skill.
+
+00:02:18.405 --> 00:02:19.325
+Next up:
+
+00:02:19.325 --> 00:02:20.955
+How to Give Good Instructions.
