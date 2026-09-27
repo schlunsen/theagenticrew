@@ -35,7 +35,21 @@ In practice, being the human in the loop means building a rhythm:
 
 *For long tasks (days):* The agent works on branches, and you review pull requests. This is the Git workflow from Chapter 3. The agent proposes changes, you review the changes, and you decide what gets merged. If something's wrong, you reject it and provide better instructions.
 
+*For work you've handed off entirely:* More and more, you can give a task to an agent that runs in the cloud — assign it, walk away, and come back to finished work waiting for review. For code, that finished work arrives as a pull request. For other work, it might be a draft document or a completed spreadsheet. The agent did the work while you were in meetings. The review is still yours.
+
 The rhythm adapts to the stakes. Low-stakes work gets a quick glance. High-stakes work gets careful review. But the rhythm never stops — because the moment you stop checking is the moment the agent drifts.
+
+== The New Bottleneck Is You
+
+Here's something that changed my mind since the first edition. I used to think the hard part of working with agents was getting them to do the work. It isn't any more. With background agents, you can hand out a dozen tasks before lunch. The hard part is that a dozen pieces of finished work come back — and someone has to actually understand every one of them.
+
+Agent time is now cheap. _Your attention_ is not. That flips how you should plan:
+
+- *Hand out only as much work as you can properly review.* Ten half-read reviews are worse than three careful ones. Unreviewed work isn't finished work; it's a liability with a nice summary.
+- *Make the work easy to review.* Small tasks, one change each, with a clear note from the agent about what it did and how it checked it. Ask for that note in your instructions.
+- *Watch for review fatigue.* The fifteenth approval of the day gets a lot less attention than the first. If you notice yourself clicking "approve" without reading, that's the signal to stop handing out work, not to speed up.
+
+Some teams now use AI review tools as a first pass — a second agent that reads the first agent's work and flags obvious problems. That's genuinely useful. But it's a filter, not a reviewer. It can tell you something looks broken. It can't tell you whether it should have been built at all.
 
 == What You're Actually Checking
 

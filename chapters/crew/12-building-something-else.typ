@@ -68,6 +68,8 @@ Here's where the real leverage happens. Once you have one good report, tell the 
 
 "Save this as a reusable template. Every Monday, I'll provide: (1) this week's sales CSV, (2) updated support ticket numbers, (3) updated milestone table, and (4) two or three bullet points about what to highlight in the summary. You generate the full report using the same format, charts, and tone."
 
+Better still, don't leave the template in a conversation that will eventually scroll away. Put the format, the tone, and an example report into your chat app's _project_ or custom instructions — or, if your team uses skills, turn it into a "weekly report" skill everyone can use. Then any fresh conversation already knows how your report is built.
+
 Now your Monday process is:
 + Export three spreadsheets (5 minutes)
 + Write three bullet points about what matters this week (5 minutes)
