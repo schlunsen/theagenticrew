@@ -3,7 +3,7 @@
 
 Antes de poder contribuir a un proyecto, corregir un error o simplemente leer código fuente correctamente, necesitas un entorno de trabajo funcional. Este capítulo prepara tu máquina desde cero, cualquiera que sea el sistema operativo que uses.
 
-Al final de este capítulo, tendrás una terminal, un gestor de paquetes, Git, el CLI de GitHub y, opcionalmente, un asistente de inteligencia artificial, todo listo para funcionar.
+Al final de este capítulo, tendrás una terminal, un gestor de paquetes, Git, el CLI de GitHub, Node.js y, opcionalmente, un agente de programación con IA, todo listo para funcionar.
 
 #if sys.inputs.at("illustrations", default: "true") == "true" [#include "_illus-workshop.typ"]
 
@@ -96,7 +96,7 @@ Esto descarga y ejecuta el instalador oficial de Homebrew. Sigue las instruccion
 brew --version
 ```
 
-En Macs con Apple Silicon (M1/M2/M3), Homebrew se instala en `/opt/homebrew`. Si `brew` no se encuentra después de la instalación, busca una sección "Next steps" al final de la salida del instalador: mostrará dos comandos que debes ejecutar. Cópialos, ejecútalos y abre una nueva ventana de terminal.
+En Macs con Apple Silicon (cualquier chip de la serie M), Homebrew se instala en `/opt/homebrew`. Si `brew` no se encuentra después de la instalación, busca una sección "Next steps" al final de la salida del instalador: mostrará dos comandos que debes ejecutar. Cópialos, ejecútalos y abre una nueva ventana de terminal.
 ]
 
 #if is-linux [
@@ -179,7 +179,7 @@ Verifica:
 git --version
 ```
 
-Deberías ver un número de versión como `git version 2.47.1`.
+Deberías ver un número de versión como `git version 2.55.0`. Cualquier versión reciente sirve.
 
 Ahora configura tu identidad para que Git sepa quién realiza los cambios:
 
@@ -189,6 +189,12 @@ git config --global user.email "tu@correo.com"
 ```
 
 Usa el mismo correo que en tu cuenta de GitHub.
+
+Un ajuste más: los repositorios nuevos deberían empezar en una rama llamada `main`, que es la que usa GitHub. Las versiones antiguas de Git siguen usando `master` por defecto, así que configúralo explícitamente:
+
+```
+git config --global init.defaultBranch main
+```
 
 == Git en Acción
 
@@ -227,7 +233,7 @@ Comprueba el estado:
 git status
 ```
 
-Deberías ver algo como: `On branch main — nothing to commit`. Git te está diciendo que está vigilando esta carpeta y que aún no hay nada nuevo que registrar.
+Deberías ver `On branch main`, `No commits yet` y `nothing to commit`. Git te está diciendo que está vigilando esta carpeta y que aún no hay nada nuevo que registrar.
 
 En el Capítulo 2 usarás `git status` constantemente: es como verificas qué ha cambiado. Ahora ya sabes cómo se ve cuando todo está limpio.
 
@@ -260,26 +266,35 @@ brew install gh
 ]
 
 #if is-linux [
-*Ubuntu / Debian* — `gh` no está en los repositorios predeterminados, así que primero debes añadir el repositorio oficial de GitHub. Estos comandos lo hacen y luego instalan `gh`:
+*Ubuntu / Debian* — `gh` no está en los repositorios predeterminados, así que primero debes añadir el repositorio oficial de GitHub. Estos comandos (los mismos pasos que la documentación de instalación del propio CLI de GitHub) lo hacen y luego instalan `gh`:
 
 ```
+sudo apt update && sudo apt install -y wget
+U=https://cli.github.com/packages
+K=/etc/apt/keyrings/githubcli-archive-keyring.gpg
+A=$(dpkg --print-architecture)
 sudo mkdir -p -m 755 /etc/apt/keyrings
-wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg \
-  | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null
-sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" \
-  | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-sudo apt update && sudo apt install gh
+wget -nv -O /tmp/gh.gpg "$U/githubcli-archive-keyring.gpg"
+sudo cp /tmp/gh.gpg "$K"
+sudo chmod go+r "$K"
+echo "deb [arch=$A signed-by=$K] $U stable main" \
+  | sudo tee /etc/apt/sources.list.d/github-cli.list
+sudo apt update && sudo apt install -y gh
 ```
 
-Puedes pegar todo el bloque a la vez: la terminal ejecutará cada línea en secuencia. Se te pedirá la contraseña en el primer `sudo`.
+Puedes pegar todo el bloque a la vez: la terminal ejecutará cada línea en secuencia. Se te pedirá la contraseña en el primer `sudo`. Si alguna línea se rompe al copiarla desde esta página, copia el bloque de las instrucciones oficiales en #link("https://github.com/cli/cli/blob/trunk/docs/install_linux.md")[github.com/cli/cli → docs/install_linux.md]. No uses el paquete `gh` de los repositorios propios de Ubuntu: algunas de sus versiones son demasiado antiguas para funcionar con GitHub.
 
 *Fedora:*
 ```
 sudo dnf install gh
 ```
 
-*Todas las distribuciones de Linux* — o instala directamente desde #link("https://github.com/cli/cli/releases")[github.com/cli/cli/releases] descargando el binario para tu arquitectura.
+*Arch:*
+```
+sudo pacman -S github-cli
+```
+
+*Cualquier otra distribución* — descarga el binario para tu arquitectura desde #link("https://github.com/cli/cli/releases")[github.com/cli/cli/releases].
 ]
 
 ---
@@ -305,6 +320,7 @@ gh auth login
 Cuando se te pida, elige:
 - *GitHub.com*
 - *HTTPS*
+- *Yes* cuando te pregunte si quieres autenticar Git con tus credenciales de GitHub (así `git push` funcionará después sin pedir contraseña)
 - *Login with a web browser*
 
 Te dará un código de un solo uso y abrirá tu navegador. Pega el código, autoriza y ya estarás conectado.
@@ -317,13 +333,9 @@ gh auth status
 
 Deberías ver `Logged in to github.com`.
 
-== (Opcional) Instala un Asistente de Programación IA
+== Instala Node.js
 
-Este libro trata sobre trabajar con agentes de IA. Aunque no es estrictamente necesario para los ejercicios, tener un asistente IA en tu terminal hace que la experiencia sea real.
-
-Tanto Claude Code como Gemini CLI requieren Node.js. Instálalo primero.
-
-=== Instala Node.js
+Node.js ejecuta JavaScript fuera del navegador, y `npm` (que viene con él) instala paquetes de JavaScript. No lo necesitarás en el próximo capítulo, pero sí en los ejercicios posteriores, cuando construyas una aplicación web y la pruebes. Instala ahora la versión LTS (soporte a largo plazo) ya que estás en ello.
 
 #if is-windows [
 ```
@@ -338,14 +350,23 @@ brew install node
 ]
 
 #if is-linux [
-*Ubuntu / Debian:*
+*Ubuntu / Debian* — el paquete `nodejs` de los repositorios predeterminados suele ir varias versiones por detrás. Instala la LTS actual desde NodeSource:
+
 ```
-sudo apt install nodejs npm
+curl -fsSL -o nodesource_setup.sh \
+  https://deb.nodesource.com/setup_lts.x
+sudo -E bash nodesource_setup.sh
+sudo apt install -y nodejs
 ```
 
 *Fedora:*
 ```
 sudo dnf install nodejs npm
+```
+
+*Arch:*
+```
+sudo pacman -S nodejs npm
 ```
 ]
 
@@ -356,34 +377,57 @@ node --version
 npm --version
 ```
 
+Cualquier versión a partir de `v22` sirve.
+
+== (Opcional) Instala un Agente de Programación con IA
+
+Este libro trata sobre trabajar con agentes de IA. Aunque no es estrictamente necesario para los ejercicios, tener un agente en tu terminal hace que la experiencia sea real. Ninguno de los dos siguientes necesita Node.js: ambos se instalan como un único programa.
+
+#quote(block: true)[
+  *Instala desde la fuente oficial.* Copia los comandos de instalación de la documentación del propio fabricante (o de esta página), nunca de un blog cualquiera ni de un anuncio en el buscador. Los agentes de programación se ejecutan con tus permisos en tu máquina, lo que convierte los instaladores falsos en una trampa atractiva.
+]
+
 === Opción A: Claude Code
 
 Claude Code es el agente de programación IA de Anthropic. Se ejecuta en tu terminal y puede leer, escribir y razonar sobre código.
 
-Instálalo usando el instalador oficial (el método recomendado):
+Instálalo con el instalador nativo oficial (el método recomendado: se actualiza solo en segundo plano):
 
 #if is-mac [
 ```
 curl -fsSL https://claude.ai/install.sh | bash
 ```
+
+¿Prefieres Homebrew? `brew install --cask claude-code` también funciona, pero tendrás que actualizarlo tú con `brew upgrade claude-code`.
 ]
 
 #if is-linux [
 ```
 curl -fsSL https://claude.ai/install.sh | bash
 ```
+
+Anthropic también publica repositorios `apt` y `dnf` firmados, si prefieres gestionarlo con tu gestor de paquetes: consulta la página de instalación de la documentación de Claude Code en #link("https://code.claude.com/docs")[code.claude.com/docs].
 ]
 
 #if is-windows [
+En PowerShell:
+
 ```
-winget install Anthropic.Claude
+irm https://claude.ai/install.ps1 | iex
 ```
+
+¿Prefieres WinGet? `winget install Anthropic.ClaudeCode` también funciona (fíjate en el nombre: `Anthropic.Claude` es la aplicación de chat de escritorio, no el agente de terminal), pero tendrás que actualizarlo tú con `winget upgrade Anthropic.ClaudeCode`.
+
+Claude Code funciona de forma nativa en PowerShell. Como ya instalaste Git más arriba, también puede usar Git Bash para ejecutar comandos.
 ]
 
-O mediante npm:
+Cierra y vuelve a abrir tu terminal, y comprueba que está instalado:
+
 ```
-npm install -g @anthropic-ai/claude-code
+claude --version
 ```
+
+Si prefieres npm, `npm install -g @anthropic-ai/claude-code` también funciona (necesita Node.js 22 o posterior). No mezcles métodos de instalación: elige uno.
 
 Ejecútalo:
 
@@ -391,64 +435,49 @@ Ejecútalo:
 claude
 ```
 
-Se te pedirá que te autentiques con tu cuenta Anthropic la primera vez.
+La primera vez abrirá tu navegador para iniciar sesión. Claude Code necesita un plan de pago de Claude (Pro o superior) o una cuenta de Anthropic Console con saldo de API: el plan gratuito de Claude no lo incluye.
 
-=== Opción B: Gemini CLI
+=== Opción B: Antigravity CLI
 
-Gemini CLI es el agente de programación IA de Google. Mismo concepto, modelo diferente.
+// v2-verify: Antigravity CLI install URLs, the `agy` command and the free weekly quota (antigravity.google/docs/cli/install and /docs/plans) — launched June 2026 and changing fast.
 
+Antigravity CLI es el agente de programación IA de Google. Mismo concepto, modelos diferentes. En junio de 2026 sustituyó al anterior Gemini CLI de Google para los usuarios individuales: si un tutorial antiguo te dice que instales `@google/gemini-cli`, usa este en su lugar.
+
+#if is-mac [
 ```
-npm install -g @google/gemini-cli
-gemini
+curl -fsSL https://antigravity.google/cli/install.sh | bash
 ```
+]
 
-Necesitarás una clave API de Google. Configúrala en tu sesión actual:
+#if is-linux [
+```
+curl -fsSL https://antigravity.google/cli/install.sh | bash
+```
+]
 
 #if is-windows [
+En PowerShell:
+
 ```
-$env:GEMINI_API_KEY = "tu-clave-aquí"
+irm https://antigravity.google/cli/install.ps1 | iex
 ```
 ]
 
-#if is-mac [
+Cierra y vuelve a abrir tu terminal y ejecútalo; el comando es `agy`:
+
 ```
-export GEMINI_API_KEY="tu-clave-aquí"
+agy
 ```
+
+La primera vez abrirá tu navegador para que inicies sesión con tu cuenta de Google. Una cuenta personal de Google tiene una cuota gratuita que se renueva cada semana; los planes de pago de Google AI tienen más.
+
+#quote(block: true)[
+  *Las claves de API son secretos.* Ambas herramientas pueden funcionar también con una clave de API en lugar de iniciar sesión con una cuenta. Si alguna vez vas por ese camino, guarda la clave en una variable de entorno o en el llavero de tu sistema operativo; nunca la pegues en un prompt, en un chat ni en un archivo que subas a Git. El capítulo _The Agent Attack Surface_ del libro principal (segunda edición, en inglés) explica por qué.
 ]
-
-#if is-linux [
-```
-export GEMINI_API_KEY="tu-clave-aquí"
-```
-]
-
-#if is-mac [
-Para hacerla permanente, añade la línea `export` a tu archivo de configuración del shell. Este archivo se ejecuta automáticamente cuando se inicia tu terminal:
-
-Abre `~/.zshrc` con:
-```
-open -e ~/.zshrc
-```
-
-Añade `export GEMINI_API_KEY="tu-clave-aquí"` en una nueva línea al final, guarda y cierra. Luego ejecuta `source ~/.zshrc` para aplicar el cambio en la sesión actual.
-]
-
-#if is-linux [
-Para hacerla permanente, añade la línea `export` a tu archivo de configuración del shell. Este archivo se ejecuta automáticamente cuando se inicia tu terminal:
-
-Abre `~/.bashrc` con:
-```
-nano ~/.bashrc
-```
-
-Añade `export GEMINI_API_KEY="tu-clave-aquí"` en una nueva línea al final, guarda y cierra. Luego ejecuta `source ~/.bashrc` para aplicar el cambio en la sesión actual.
-]
-
-Si no sabes dónde obtener una clave API de Google, ve a #link("https://aistudio.google.com")[aistudio.google.com], inicia sesión y crea una clave en *Get API key*. Es gratuita para empezar.
 
 === ¿Cuál elegir?
 
-Cualquiera funciona para este libro. Claude Code destaca en razonamiento de código y ediciones de múltiples archivos. Gemini CLI tiene una fuerte integración con el ecosistema de Google. Prueba ambos si quieres: son gratuitos para empezar. Los ejercicios mostrarán prompts que funcionan con cualquiera de los dos.
+Cualquiera funciona para este libro. Claude Code es el que más usa el libro principal y destaca en razonamiento de código y ediciones de múltiples archivos, pero necesita un plan de pago. Antigravity CLI tiene un nivel gratuito, así que es la forma más fácil de empezar sin coste. Los ejercicios muestran prompts que funcionan con cualquiera de los dos.
 
 == Verifica Todo
 
@@ -458,25 +487,38 @@ Ejecuta esta lista de verificación rápida:
 git --version
 gh --version
 gh auth status
+node --version
 ```
 
-Si los tres comandos funcionan, estás listo. Tu entorno de trabajo está configurado, tu identidad está ajustada y tienes conexión directa a GitHub.
+Si los cuatro comandos funcionan, estás listo. Tu entorno de trabajo está configurado, tu identidad está ajustada y tienes conexión directa a GitHub.
 
 == El Enfoque Basado en Prompts
 
-Una vez instalado Claude Code o Gemini CLI, no tienes que recordar cada comando: puedes describir lo que quieres en español natural. Así es como pedirías a un agente IA que verifique toda tu configuración.
+Una vez instalado Claude Code o Antigravity CLI, no tienes que recordar cada comando: puedes describir lo que quieres en español natural. Así es como pedirías a un agente IA que verifique toda tu configuración.
 
-Abre tu asistente IA en la terminal:
+Abre tu agente de IA en la terminal:
 
 ```
 claude
 ```
+
+(O `agy` si instalaste Antigravity CLI.)
 
 Luego prueba prompts como estos:
 
 - _"Comprueba si Git está instalado y correctamente configurado con nombre y correo electrónico."_
 - _"¿Está instalado y autenticado el CLI de GitHub? Muéstrame el estado."_
 - _"Ejecuta una lista de verificación rápida: git, gh y gh auth status — dime qué funciona y qué no."_
+
+#quote(block: true)[
+  *Empieza en modo Manual mientras aprendes.* Las versiones recientes de Claude Code arrancan en _modo auto_, en el que una comprobación de seguridad en segundo plano aprueba las acciones rutinarias en lugar de preguntarte. Mientras aprendes, es mejor que veas y apruebes tú cada comando. Arranca Claude Code así:
+
+  ```
+  claude --permission-mode manual
+  ```
+
+  La barra de estado muestra `⏸ manual mode on`, y el agente te pedirá permiso antes de ejecutar cualquier cosa que cambie tu máquina. Lee cada comando antes de aprobarlo, y apruébalo solo si lo entiendes; con comprobaciones como `git --version`, es fácil. `Shift+Tab` recorre los modos durante una sesión. El capítulo _Guardrails, Trust, and Sandboxes_ del libro principal muestra cómo configurar los permisos de forma deliberada cuando sepas qué quieres permitir.
+]
 
 El agente ejecutará los comandos, interpretará la salida y te dirá en lenguaje natural qué está listo y qué aún necesita atención. Si algo falta o está roto, pregúntale:
 

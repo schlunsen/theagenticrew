@@ -78,10 +78,10 @@
         #text(size: 6.5pt, fill: rgb("#c9a84c"), weight: "bold")[gh]
       ]
     ]
-    // Bottom-left: gemini
+    // Bottom-left: agy (Antigravity CLI)
     #place(center + horizon, dx: -112pt, dy: 52pt)[
       #box(fill: rgb("#4285f4"), radius: 3pt, inset: (x: 6pt, y: 3pt))[
-        #text(size: 6.5pt, fill: white, weight: "bold")[gemini]
+        #text(size: 6.5pt, fill: white, weight: "bold")[agy]
       ]
     ]
     // Bottom-right: claude

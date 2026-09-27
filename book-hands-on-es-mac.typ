@@ -61,7 +61,7 @@
   title: ("Guía", "Práctica"),
   tagline: "Aprende haciendo: herramientas, repositorios y resultados reales",
   edition: "Edición macOS",
-  date: "Marzo 2026",
+  date: "2.ª ed. · Sept. 2026",
   revision: revision,
   labels: (
     project: "PROYECTO", drawing: "PLANO", edition: "EDICIÓN", drawn: "DIBUJADO POR",
@@ -84,9 +84,11 @@ No necesitas ser programador. Sí necesitas estar dispuesto a escribir comandos 
 
 Al final de este libro, tendrás un entorno de desarrollo funcional, experiencia práctica con Git y GitHub, y la confianza para colaborar en proyectos reales usando agentes de IA como copiloto.
 
+*Sobre esta edición (septiembre de 2026).* Hemos revisado cada ejercicio con las herramientas tal y como funcionan hoy y lo hemos alineado con la segunda edición del libro principal. Hemos corregido los comandos que habían cambiado, Gemini CLI ha dado paso a su sucesor, Antigravity CLI, y los ejercicios practican ahora los hábitos que enseña el libro principal: un archivo de instrucciones para tu agente, un plan antes de construir, permisos en lugar de «permitir todo», y mantener los secretos y el texto no fiable lejos de las llaves de tu agente.
+
 #align(right)[
   _Rasmus Bornhøft Schlünsen_ \
-  _Marzo 2026_
+  _Marzo de 2026, revisado en septiembre de 2026_
 ]
 
 #pagebreak()
