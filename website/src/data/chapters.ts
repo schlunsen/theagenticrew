@@ -124,12 +124,12 @@ export const crewChapters: Chapter[] = [
   {
     number: "05",
     title: "How to Give Good Instructions",
-    description: "The difference between a good instruction and a bad one. The two-captains story that changes how you think about prompts."
+    description: "The two-captains story that changes how you think about prompts — and why you should ask for a plan first."
   },
   {
     number: "06",
     title: "Context In, Verification Out",
-    description: "An agent can only work with what's on the bench. How to set up the right inputs and check the outputs."
+    description: "An agent can only work with what's on the bench. Setting up the right inputs, keeping the bench tidy, and checking the output."
   },
   {
     number: "07",
@@ -139,61 +139,67 @@ export const crewChapters: Chapter[] = [
   {
     number: "08",
     title: "Extending the Crew's Reach",
-    description: "Connecting the agent to the world beyond its window — tools, databases, and integrations."
+    description: "Connecting the agent to the world beyond its window — connectors, tools, and integrations."
   },
   {
     number: "09",
+    title: "Hidden Instructions",
+    description: "When the email gives your agent orders. Prompt injection, the lethal trifecta, and the three-question check before you connect anything."
+  },
+  {
+    number: "10",
     title: "Building Something Real",
     description: "From idea to working prototype in a weekend. Your first hands-on walkthrough."
   },
   {
-    number: "10",
+    number: "11",
     title: "The Padlock",
     description: "The sealed envelope — how the internet keeps secrets. Security explained without jargon."
   },
   {
-    number: "11",
+    number: "12",
     title: "Building Something Without Code",
     description: "The principles transfer to everything. A second walkthrough that proves you don't need to be a programmer."
   },
   {
-    number: "12",
+    number: "13",
     title: "When Things Go Wrong",
     description: "The mistakes are inevitable. The recovery is a skill. Real war stories and how to handle them."
   },
   {
-    number: "13",
-    title: "When to Do It Yourself",
-    description: "Sometimes the right tool is your own hands. Knowing when agents aren't the answer."
-  },
-  {
     number: "14",
-    title: "Being the Human in the Loop",
-    description: "You are the quality control. What it means to review, verify, and direct — not just delegate."
+    title: "When to Do It Yourself",
+    description: "Sometimes the right tool is your own hands. Knowing when agents aren't the answer — and when it only feels faster."
   },
   {
     number: "15",
+    title: "Being the Human in the Loop",
+    description: "You are the quality control. Reviewing work that agents did while you were away — and why your attention is the new bottleneck."
+  },
+  {
+    number: "16",
     title: "Talking to Your Tech Team",
     description: "You speak two languages now. How to bridge the gap between technical and non-technical colleagues."
   },
   {
-    number: "16",
+    number: "17",
     title: "Keeping Your Finger on the Pulse",
     description: "Ten minutes, three times a week. How to stay current without drowning in the firehose."
   },
   {
-    number: "17",
+    number: "18",
     title: "Getting Started: Your First Agent",
-    description: "Which tool do you actually open on Monday morning? A practical guide to your first steps."
+    description: "Which tool do you actually open on Monday morning? The state of the tools, September 2026."
   },
   {
-    number: "18",
+    number: "19",
     title: "Final Words",
     description: "Now go build something. You were always technical enough."
   },
 ];
 
 export const newInSecondEdition = new Set(["The Agent Attack Surface", "Building Your Own Agents"]);
+export const newInCrewSecondEdition = new Set(["Hidden Instructions"]);
 
 // Parts of the voyage — ranges are 1-based chapter numbers (inclusive).
 export const parts = [
