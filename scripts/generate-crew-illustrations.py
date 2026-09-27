@@ -2,14 +2,19 @@
 """
 Illustration generation for "The Agentic Crew — Crew Member's Guide".
 
-Uses Stable Diffusion XL via the HuggingFace Inference API to generate
-chapter illustrations with a modern, hip ink-and-watercolour style —
+Generates chapter illustrations with a modern, hip ink-and-watercolour style —
 distinct from the main book's hand-drawn ink sketches.
 
+Providers:
+  atlas — Atlas Cloud (Flux 2 Pro by default). Used when ATLAS_API_KEY is set.
+  hf    — Stable Diffusion XL via the HuggingFace Inference API (the original).
+Atlas output is fitted to 1024x768 and given the book's oval vignette.
+
 Usage:
-    python scripts/generate-crew-illustrations.py              # Generate all
-    python scripts/generate-crew-illustrations.py --chapter 3   # Single chapter
-    python scripts/generate-crew-illustrations.py --list        # Show prompts
+    ATLAS_API_KEY=... python scripts/generate-crew-illustrations.py        # Generate missing
+    python scripts/generate-crew-illustrations.py --chapter 3              # Single chapter
+    python scripts/generate-crew-illustrations.py --only ch08b-hidden-instructions --force
+    python scripts/generate-crew-illustrations.py --list                   # Show prompts
 """
 
 import argparse
@@ -34,6 +39,11 @@ HEADERS = {
     "Authorization": f"Bearer {HF_API_KEY}",
     "Content-Type": "application/json",
 }
+
+ATLAS_API_KEY = os.environ.get("ATLAS_API_KEY")
+ATLAS_BASE = "https://api.atlascloud.ai/api/v1"
+ATLAS_MODEL = os.environ.get("ATLAS_MODEL", "black-forest-labs/flux-2-pro/text-to-image")
+WIDTH, HEIGHT = 1024, 768
 
 # Style prefix applied to every prompt — modern, hip, slightly editorial
 STYLE = (
@@ -142,6 +152,16 @@ ILLUSTRATIONS = {
             "puzzle pieces to a calendar, an envelope, a spreadsheet, and a database cylinder, "
             "luminous connection lines between each tool, "
             "clean minimalist composition"
+        ),
+    },
+    "ch08b-hidden-instructions": {
+        "file": "ch08b-hidden-instructions.jpg",
+        "prompt": (
+            "An open envelope on a desk beside a small helpful robot assistant reading the letter, "
+            "the letter's visible lines are ordinary, but faint ghostly ink between the lines "
+            "glows and curls up like smoke toward the robot, "
+            "a ring of keys and a folder of private papers lying just within the robot's reach, "
+            "an open porthole in the background, quiet sense of unease"
         ),
     },
     "ch09-the-padlock": {
@@ -279,12 +299,66 @@ def generate_image(prompt: str, output_path: Path, retries: int = 3) -> bool:
     return False
 
 
+def generate_image_atlas(prompt: str, output_path: Path, retries: int = 3) -> bool:
+    """Generate a single illustration via Atlas Cloud (submit, then poll)."""
+    full_prompt = f"{STYLE}, {prompt}. Avoid: {NEGATIVE_PROMPT}."
+    auth = {"Authorization": f"Bearer {ATLAS_API_KEY}"}
+    payload = {"model": ATLAS_MODEL, "prompt": full_prompt, "width": WIDTH, "height": HEIGHT}
+
+    for attempt in range(retries):
+        try:
+            print(f"  Generating with {ATLAS_MODEL} (attempt {attempt + 1}/{retries})...")
+            r = requests.post(f"{ATLAS_BASE}/model/generateImage", headers={**auth, "Content-Type": "application/json"},
+                              json=payload, timeout=60)
+            r.raise_for_status()
+            data = r.json()["data"]
+            poll_url = data["urls"]["get"]
+            deadline = time.time() + 300
+            while data.get("status") not in ("completed", "succeeded", "failed") and time.time() < deadline:
+                time.sleep(4)
+                data = requests.get(poll_url, headers=auth, timeout=30).json()["data"]
+            if data.get("status") == "failed" or not data.get("outputs"):
+                print(f"  Failed: {data.get('error') or data.get('status')}")
+            else:
+                img = requests.get(data["outputs"][0], timeout=120)
+                img.raise_for_status()
+                raw = output_path.with_suffix(".raw" + output_path.suffix)
+                output_path.parent.mkdir(parents=True, exist_ok=True)
+                raw.write_bytes(img.content)
+                finish_image(raw, output_path)
+                raw.unlink()
+                print(f"  Saved: {output_path} (cost {data.get('price', '?')} USD)")
+                return True
+        except Exception as e:
+            print(f"  Error: {e}")
+        if attempt < retries - 1:
+            time.sleep(5)
+    return False
+
+
+def finish_image(src: Path, dst: Path) -> None:
+    """Fit to WIDTHxHEIGHT and apply the oval vignette used across the crew illustrations."""
+    from PIL import Image, ImageOps
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from importlib import import_module
+    vignette = import_module("apply-oval-vignette")
+    img = ImageOps.fit(Image.open(src).convert("RGB"), (WIDTH, HEIGHT), Image.LANCZOS)
+    img.save(dst, quality=92)
+    vignette.apply_oval_vignette(str(dst))
+
+
 def main():
     parser = argparse.ArgumentParser(description="Generate Crew Member's Guide illustrations")
     parser.add_argument("--chapter", type=int, help="Generate for a specific chapter number only")
     parser.add_argument("--list", action="store_true", help="List all prompts without generating")
     parser.add_argument("--dry-run", action="store_true", help="Show what would be generated")
+    parser.add_argument("--only", help="Generate a single illustration by key (e.g. ch08b-hidden-instructions)")
+    parser.add_argument("--force", action="store_true", help="Regenerate even if the file exists")
+    parser.add_argument("--provider", choices=["atlas", "hf"], default="atlas" if ATLAS_API_KEY else "hf")
     args = parser.parse_args()
+    if args.provider == "atlas" and not ATLAS_API_KEY:
+        sys.exit("Set ATLAS_API_KEY to use the Atlas Cloud provider.")
+    generate = generate_image_atlas if args.provider == "atlas" else generate_image
 
     if args.list:
         for key, spec in ILLUSTRATIONS.items():
@@ -295,6 +369,10 @@ def main():
 
     # Filter to specific chapter if requested
     items = ILLUSTRATIONS.items()
+    if args.only:
+        items = [(k, v) for k, v in items if k == args.only]
+        if not items:
+            sys.exit(f"No illustration with key {args.only}")
     if args.chapter is not None:
         ch_prefix = f"ch{args.chapter:02d}"
         items = [(k, v) for k, v in items if k.startswith(ch_prefix)]
@@ -311,7 +389,7 @@ def main():
     for key, spec in items:
         output_path = OUTPUT_DIR / spec["file"]
 
-        if output_path.exists() and not args.dry_run:
+        if output_path.exists() and not args.dry_run and not args.force:
             print(f"[SKIP] {key} — already exists at {output_path}")
             success += 1
             continue
@@ -322,7 +400,7 @@ def main():
             success += 1
             continue
 
-        if generate_image(spec["prompt"], output_path):
+        if generate(spec["prompt"], output_path):
             success += 1
         else:
             failed += 1
