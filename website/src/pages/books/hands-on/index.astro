@@ -22,50 +22,50 @@ const mmss = (s: number) => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).
 // The ten exercises: short card copy, and the fuller description for the contents list.
 const exercises = [
   { num: '01', slug: 'setting-up-your-workstation', title: 'Setting Up Your Workstation', img: '/illustrations/ho-setup.jpg',
-    card: 'Terminal, package manager, Git, GitHub CLI, and an AI coding assistant — from scratch, on any OS.',
-    desc: 'Terminal, package manager, Git, GitHub CLI, and an AI coding assistant — from scratch. Each edition is tailored to your OS. Ends with a working environment and a verified connection to GitHub.' },
+    card: 'Terminal, package manager, Git, GitHub CLI, Node.js, and an AI coding agent — Claude Code or Antigravity CLI — from scratch, on any OS.',
+    desc: 'Terminal, package manager, Git, GitHub CLI, Node.js, and optionally an AI coding agent (Claude Code or Antigravity CLI), installed from official sources. Each edition is tailored to your OS. Ends with a verified connection to GitHub and an agent that asks before it acts.' },
   { num: '02', slug: 'your-first-pull-request', title: 'Your First Pull Request', img: '/illustrations/ho-pr.jpg',
-    card: 'Fork a real repository, write a review, commit and push, and submit a pull request that goes live on GitHub.',
-    desc: 'Fork a real repository, read a chapter, write a review, commit and push, and submit a pull request that goes live on GitHub. The full open-source workflow in one exercise.' },
+    card: 'Fork a real repository, write a review, read your diff, commit and push, and submit a pull request that goes live on GitHub.',
+    desc: 'Fork a real repository, read a chapter, write a review, check the diff before you commit, push, and submit a pull request that goes live on GitHub. Optionally let an agent drive the Git steps — from a plan you approve first.' },
   { num: '03', slug: 'your-first-ai-project', title: 'Your First AI-Generated Project', img: '/illustrations/ho-aiproject.jpg',
-    card: 'Fork the web-presenter project and use an AI agent with a Hugging Face API key to generate custom illustrations, spoken narration, and animated backgrounds — all from prompts.',
-    desc: 'Fork the web-presenter project and use an AI agent with a Hugging Face API key to generate custom illustrations, spoken narration, and animated backgrounds — all by describing what you want in plain English.' },
+    card: 'Fork the web-presenter project and have an AI agent generate illustrations via Hugging Face, MP3 narration with edge-tts, and a recoloured animated background — all from prompts.',
+    desc: 'Fork the web-presenter project and have an AI agent adapt its asset script: FLUX illustrations via Hugging Face (free monthly credit), MP3 narration via edge-tts, and a recoloured Three.js background. Your token stays in an environment variable, and you review each diff before anything runs.' },
   { num: '04', slug: 'pair-programming-with-an-agent', title: 'Pair Programming with an Agent', img: '/illustrations/ho-pairprog.jpg',
-    card: 'Build a complete Travel Bucket List web app from scratch — without writing a single line of code yourself. You describe, the agent builds, you iterate.',
-    desc: 'Build a complete Travel Bucket List web app from scratch by describing what you want to an AI coding agent. CRUD operations, localStorage persistence, iterative refinement — without writing a single line of code yourself.' },
+    card: 'Build a Travel Bucket List web app from an AGENTS.md of house rules and an approved plan — reviewing every change as a diff, without writing a line of code yourself.',
+    desc: 'Write the house rules in an AGENTS.md, agree a plan in plan mode, and let the agent build a Travel Bucket List with full CRUD and localStorage. Review each change as a git diff, commit step by step, and push it to a new GitHub repository.' },
   { num: '05', slug: 'going-live', title: 'Going Live', img: '/illustrations/ho-golive.jpg',
-    card: 'Deploy your app to a Hetzner VPS — the agent SSHes in, configures the server, and calls the Cloudflare API for DNS. Real self-hosting, agent-operated.',
-    desc: 'Deploy your Travel Bucket List to a real Hetzner VPS. Your agent provisions the server, SSHes in to configure it, sets up Caddy with automatic HTTPS, creates DNS records via the Cloudflare API, and configures systemd — all from your terminal.' },
+    card: 'Deploy your app to a Hetzner VPS — the agent SSHes in and calls the Cloudflare API for DNS, while you approve every destructive command.',
+    desc: 'Deploy your Travel Bucket List to a Hetzner CX23 server (about EUR 5–7 a month). Your agent operates it over SSH — hardening it with a non-root deploy user, setting up Caddy with automatic HTTPS and a systemd service — and creates DNS records via the Cloudflare API with a narrowly scoped token. You approve every destructive command.' },
   { num: '06', slug: 'pentesting-with-an-agent', title: 'Pentesting with an Agent', img: '/illustrations/ho-pentest.jpg',
-    card: 'Attack your own app before anyone else does. Donna orchestrates AI agents through recon, vulnerability analysis, exploitation, and reporting — autonomous security scanning.',
-    desc: 'Attack your own application before anyone else does. Set up Donna — an autonomous AI pentesting platform — scan a practice target for SQL injection, XSS, and auth bypasses, read a professional security report, and enable continuous monitoring.' },
+    card: 'Attack your own app before anyone else does. Shannon, an open-source AI pentester, runs recon, source analysis, exploitation, and reporting against an app you own.',
+    desc: 'Attack your own application before anyone else does. Run Shannon — an open-source (AGPL) AI pentesting agent — against a practice target and then your own app: a full scan takes about an hour to an hour and a half. Verify the findings by hand, and treat the scanned app and the report as untrusted input.' },
   { num: '07', slug: 'testing-as-a-safety-net', title: 'Testing as a Safety Net', img: '/illustrations/ho-testing.jpg',
-    card: 'Give the agent eyes. Write end-to-end tests with Playwright, experience TDD with an AI agent, and set up GitHub Actions CI — so no change ships unchecked.',
-    desc: 'Give the agent eyes. Install Playwright, write end-to-end tests by describing behaviours in English, experience test-driven development with an AI agent, and set up a GitHub Actions CI pipeline that runs tests on every push.' },
+    card: 'Give the agent eyes. Write end-to-end tests with Playwright, tell the agent how to check its work, practise TDD, and set up least-privilege CI — so no change ships unchecked.',
+    desc: 'Give the agent eyes. Install Playwright, write end-to-end tests by describing behaviours in English, add an instruction file that tells the agent how to check its own work, practise TDD with an agent, and set up GitHub Actions CI with read-only permissions and an uploaded test report.' },
   { num: '08', slug: 'the-agentic-pipeline', title: 'The Agentic Pipeline', img: '/illustrations/ho-pipeline.jpg',
-    card: 'Build an automated pipeline that reads unstructured input, triages it with AI agents, creates GitHub issues, and generates reports — all running on a cron schedule while you sleep.',
-    desc: 'Build an automated multi-step pipeline: unstructured feedback goes in, AI agents parse, categorise, and prioritise it, GitHub issues come out, and a summary report is generated — all orchestrated by shell scripts and scheduled with cron.' },
+    card: 'Tool-less, schema-constrained agents turn raw feedback into triaged issue drafts and a weekly report. A plain script files the issues — after you approve them.',
+    desc: 'Build a pipeline of headless agents with no tools and JSON-schema output: raw feedback goes in, triaged issue drafts and a weekly report come out. A plain script files the issues after human review (or in GitHub Actions after an approval step). A hostile feedback entry teaches prompt injection, and every call has a cost cap.' },
   { num: '09', slug: 'your-own-saas', title: 'Your Own SaaS', contentsTitle: 'Your Own SaaS — From Idea to Launch in a Day', img: '/illustrations/ho-saas.jpg',
-    card: 'The capstone. Build a complete micro-SaaS from scratch — auth, payments, AI features, CI/CD, landing page — and ship it to a live URL you can share with anyone.',
-    desc: 'The capstone. Build a complete micro-SaaS product from scratch — frontend, backend, database, user auth, Stripe payments, an AI-powered feature, CI/CD, and a landing page — deployed to a live URL you can share with anyone.' },
+    card: 'The capstone. Brief the agent with an AGENTS.md and build a micro-SaaS plan-first — Next.js, Better Auth, Stripe subscriptions, the Claude API, CI — then ship it to a live URL.',
+    desc: 'The capstone. Build a micro-SaaS with Next.js, Better Auth, Stripe subscriptions in the sandbox, and an AI feature on the Claude API. Brief the agent with an AGENTS.md, build plan-first, test in CI, and deploy to your own VPS behind Caddy or to Railway.' },
   { num: '10', slug: 'captains-log', title: "Captain's Log", img: '/illustrations/ho-captainslog.jpg',
-    card: 'Write your own CLAUDE.md, reflect on the journey, and take the helm. You walked in as a passenger — you leave as the captain of your own ship.',
-    desc: 'The finale. Reflect on the journey, write your own CLAUDE.md to direct agents on your own projects, and set sail on your maiden voyage. You walked in as a passenger — you leave as the captain.' },
+    card: 'Write an AGENTS.md that any agent follows, promote one must-never-happen rule into a permission rule or hook, and take the helm.',
+    desc: 'The finale. Reflect on the journey, write an AGENTS.md (with a one-line CLAUDE.md pointer) that any agent follows on your own project, promote one must-never-happen rule into a permission rule or hook, and set sail on your maiden voyage.' },
 ];
 
 // What you'll actually do — each with a short terminal-style token in place of an icon.
 const highlights = [
   { tok: '$_', title: 'Run real commands', body: 'Every step uses actual terminal commands — <code>git</code>, <code>gh</code>, <code>python3</code>. No web interfaces, no drag-and-drop.' },
   { tok: 'gh', title: 'Work with live GitHub repos', body: 'You’ll fork <code>schlunsen/theagenticcrew</code> and <code>schlunsen/web-presenter</code> — real projects with real histories.' },
-  { tok: 'img', title: 'Generate AI illustrations', body: 'Use FLUX.1-schnell via the Hugging Face API to generate ten custom images for your presentation — from plain English descriptions.' },
-  { tok: 'tts', title: 'Generate AI narration', body: 'Turn your slide text into spoken audio using text-to-speech models on Hugging Face — no recording required.' },
+  { tok: 'img', title: 'Generate AI illustrations', body: 'Use FLUX via Hugging Face Inference Providers to generate ten custom images for your presentation — covered by the free monthly credit, with your token kept in an environment variable.' },
+  { tok: 'tts', title: 'Generate AI narration', body: 'Turn your slide text into MP3 narration with <code>edge-tts</code> — free, no account or key needed, no recording required.' },
   { tok: 'fx', title: 'Customise animated backgrounds', body: 'Ask an AI agent to change the Three.js network animation to match your presentation’s colour palette — in seconds.' },
-  { tok: 'pair', title: 'Pair-program with an AI agent', body: 'Build a Travel Bucket List app from scratch — describe what you want, review what the agent builds, iterate until it’s right. Full CRUD with localStorage.' },
-  { tok: 'ssh', title: 'Deploy to a real server', body: 'Your agent SSHes into a Hetzner VPS, configures Caddy with auto-HTTPS, and calls the Cloudflare API for DNS — real self-hosting, agent-operated.' },
-  { tok: 'sec', title: 'Pentest with AI agents', body: 'Donna orchestrates five parallel agents to scan for SQL injection, XSS, auth bypasses, and more — then produces a professional security report with CVSS scores.' },
+  { tok: 'pair', title: 'Pair-program with an AI agent', body: 'Write the house rules in <code>AGENTS.md</code>, approve a plan, and let the agent build a Travel Bucket List — reviewing every change as a <code>git diff</code> and committing step by step.' },
+  { tok: 'ssh', title: 'Deploy to a real server', body: 'Your agent SSHes into a Hetzner VPS, configures Caddy with auto-HTTPS, and calls the Cloudflare API for DNS — while you approve every destructive command.' },
+  { tok: 'sec', title: 'Pentest with AI agents', body: 'Shannon probes an app you own for SQL injection, XSS, auth bypasses, and more — then writes a professional security report with CVSS scores that you verify by hand.' },
   { tok: 'tdd', title: 'Write tests with TDD', body: 'Describe behaviours in plain English, let the agent write Playwright tests, then experience the red-green-refactor loop — breaking things on purpose and watching the agent fix them.' },
-  { tok: 'cron', title: 'Automate with pipelines', body: 'Chain multiple AI agents into a shell script pipeline. Unstructured input goes in, categorised GitHub issues and summary reports come out — running on a schedule while you sleep.' },
-  { tok: '$$$', title: 'Ship a SaaS product', body: 'Build a complete micro-SaaS from scratch — auth, Stripe payments, AI features, CI/CD, and a landing page. Deployed to a live URL you can text to a friend.' },
+  { tok: 'cron', title: 'Automate with pipelines', body: 'Chain tool-less, schema-constrained agents into a shell pipeline. Raw feedback goes in; triaged issue drafts and a weekly report come out — and nothing is filed until you approve it.' },
+  { tok: '$$$', title: 'Ship a SaaS product', body: 'Build a micro-SaaS plan-first — Better Auth, Stripe subscriptions, the Claude API, CI, and a landing page. Deployed to a live URL you can text to a friend.' },
   { tok: 'push', title: 'Ship it to GitHub', body: 'Every exercise ends with a commit and push. Your work lives on GitHub — shareable, versioned, real.' },
 ];
 
@@ -155,6 +155,7 @@ const play = '<svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor
                 <li><span>Editions</span><b>Windows · macOS · Linux</b></li>
                 <li><span>Languages</span><b>English · Español</b></li>
                 <li><span>Prerequisites</span><b>None. Curiosity.</b></li>
+                <li><span>Edition</span><b>2nd · September 2026</b></li>
               </ul>
             </div>
             <div class="ho-cards reveal">
