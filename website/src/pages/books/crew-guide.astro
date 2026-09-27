@@ -35,7 +35,7 @@ import Nav from '../../components/Nav.astro';
       <div class="hero-text">
         <p class="eyebrow">Crew Member's Guide</p>
         <h1>Not a programmer?<br/>This is for you.</h1>
-        <p class="tagline">Understanding and working with AI agents — no code required</p>
+        <p class="tagline">Understanding and working with AI agents — no code required. Second edition, September 2026.</p>
         <p class="hero-desc">
           Designers, product managers, writers, analysts — everyone on the team
           is affected by the shift to agentic engineering. This guide explains what
@@ -86,7 +86,7 @@ import Nav from '../../components/Nav.astro';
           <div class="feature-card">
             <div class="feature-icon"><img src="/illustrations/crew-direct.jpg" alt="" /></div>
             <h3>Directing agents yourself</h3>
-            <p>How to use Claude Code or Gemini CLI to get your own work done — no programming required.</p>
+            <p>How to brief an agent, ask for a plan, and check its work — no programming required.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon"><img src="/illustrations/crew-teams.jpg" alt="" /></div>
@@ -96,7 +96,7 @@ import Nav from '../../components/Nav.astro';
           <div class="feature-card">
             <div class="feature-icon"><img src="/illustrations/crew-pushback.jpg" alt="" /></div>
             <h3>When to push back</h3>
-            <p>What agents get wrong, what to watch for, and how to keep humans in the loop.</p>
+            <p>What agents get wrong, hidden instructions to watch for, and how to keep humans in the loop.</p>
           </div>
         </div>
       </div>
@@ -110,25 +110,25 @@ import Nav from '../../components/Nav.astro';
       <h2>19 chapters</h2>
       <div class="chapter-grid">
         {[
-          ["01", "Welcome to the Crew", "What it means to work alongside AI agents — for people who don't write code."],
-          ["02", "The Ground Is Shifting", "Why agentic tools are changing every role on the team, not just engineering."],
-          ["03", "What's Under the Hood", "A plain-English explanation of how large language models and agents actually work."],
-          ["04", "What Is an Agent, Really?", "The difference between a chatbot and an agent — and why it matters."],
-          ["05", "How to Give Good Instructions", "Prompting as a skill: how to get consistent, useful results from an AI agent."],
-          ["06", "What the Agent Can See", "Context windows, files, tools — understanding what your agent knows and doesn't."],
-          ["07", "The Trust Gradient", "How much autonomy to give an agent, and how to calibrate it for your team."],
-          ["08", "Extending the Crew's Reach", "Connecting agents to databases, calendars, and other tools beyond the codebase."],
-          ["09", "The Padlock", "Security, privacy, and what you should never hand to an AI agent."],
-          ["10", "Reading the Output Like a Pro", "How to review agent work, spot mistakes, and know when to push back."],
-          ["11", "Building Something Real", "A step-by-step walkthrough of a non-engineer directing an agent to build a thing."],
-          ["12a", "Building Something Else", "A second build exercise — different domain, same approach."],
-          ["12b", "When Things Go Wrong", "How to diagnose agent failures and get back on track without calling a developer."],
-          ["13", "When to Do It Yourself", "The cases where an agent adds overhead rather than value."],
-          ["14", "Being the Human in the Loop", "Your most important role: reviewing, approving, and catching what the agent misses."],
-          ["15", "Talking to Your Tech Team", "How to collaborate with engineers who are using agents — shared language and expectations."],
-          ["16", "Keeping Your Finger on the Pulse", "How to stay current as the tools change without following every release."],
-          ["17", "Final Words", "What agentic work means for careers, creativity, and the way teams get things done."],
-          ["18", "Getting Started", "The practical first steps for a non-coder who wants to start working with AI agents today."],
+          ["01", "Welcome to the Crew", "The horizon is wider than you think. Why this book exists — and why it's for you."],
+          ["02", "The Ground Is Shifting", "The line between technical and non-technical is dissolving. What's changing, and why it matters for your role."],
+          ["03", "What's Under the Hood", "Every app is a restaurant — front of house, kitchen, and pantry. A plain-language tour of how software actually works."],
+          ["04", "What Is an Agent, Really?", "Observe, plan, act, check — repeat. The mental model that makes everything else click."],
+          ["05", "How to Give Good Instructions", "The two-captains story that changes how you think about prompts — and why you should ask for a plan first."],
+          ["06", "Context In, Verification Out", "An agent can only work with what's on the bench. Setting up the right inputs, keeping the bench tidy, and checking the output."],
+          ["07", "The Trust Gradient", "Start tight. Loosen with evidence. How much autonomy to give, and when to pull the reins."],
+          ["08", "Extending the Crew's Reach", "Connecting the agent to the world beyond its window — connectors, tools, and integrations."],
+          ["09", "Hidden Instructions", "When the email gives your agent orders. Prompt injection, the lethal trifecta, and the three-question check before you connect anything."],
+          ["10", "Building Something Real", "From idea to working prototype in a weekend. Your first hands-on walkthrough."],
+          ["11", "The Padlock", "The sealed envelope — how the internet keeps secrets. Security explained without jargon."],
+          ["12", "Building Something Without Code", "The principles transfer to everything. A second walkthrough that proves you don't need to be a programmer."],
+          ["13", "When Things Go Wrong", "The mistakes are inevitable. The recovery is a skill. Real war stories and how to handle them."],
+          ["14", "When to Do It Yourself", "Sometimes the right tool is your own hands. Knowing when agents aren't the answer — and when it only feels faster."],
+          ["15", "Being the Human in the Loop", "You are the quality control. Reviewing work that agents did while you were away — and why your attention is the new bottleneck."],
+          ["16", "Talking to Your Tech Team", "You speak two languages now. How to bridge the gap between technical and non-technical colleagues."],
+          ["17", "Keeping Your Finger on the Pulse", "Ten minutes, three times a week. How to stay current without drowning in the firehose."],
+          ["18", "Getting Started: Your First Agent", "Which tool do you actually open on Monday morning? The state of the tools, September 2026."],
+          ["19", "Final Words", "Now go build something. You were always technical enough."],
         ].map(([num, title, desc]) => (
           <div class="chapter-row">
             <span class="ch-num">{num}</span>

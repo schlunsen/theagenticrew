@@ -22,15 +22,15 @@ const BOOKS = [
     id: 'engineering',
     title: 'The Agentic Crew — Engineering Guide',
     dir: CHAPTERS_DIR,
-    pattern: /^(\d{2}-|appendix-).*\.typ$/,   // 01-introduction.typ, appendix-a-*.typ etc
+    pattern: /^(\d{2}[a-z]?-|appendix-).*\.typ$/,   // 01-introduction.typ, appendix-a-*.typ etc
     exclude: /-(?:ca|es|da)\.typ$/,
   },
   {
     id: 'crew',
     title: 'The Agentic Crew — Crew Member\'s Guide',
     dir: join(CHAPTERS_DIR, 'crew'),
-    pattern: /^\d{2}-.*\.typ$/,
-    exclude: /-(?:ca|es|da)\.typ$/,
+    pattern: /^\d{2}[a-z]?-.*\.typ$/,
+    exclude: /-(?:ca|es|da)\.typ$|^10-reading-the-output/,
   },
   {
     id: 'hands-on',
