@@ -53,3 +53,18 @@
 .chap__film { display: inline-flex; align-items: center; gap: 0.35rem; margin-top: 0.45rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brass); text-decoration: none; }
 .chap__film:hover { color: var(--brass-light); }
 .chap__film svg { width: 0.8rem; height: 0.8rem; }
+
+/* all three series on /watch */
+.series-nav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.4rem; }
+.series-nav a { display: grid; gap: 2px; padding: 0.7rem 1rem; border: 1px solid var(--line-dark-strong); border-radius: 12px; text-decoration: none; min-width: 200px; transition: border-color .2s, background .2s; }
+.series-nav a:hover { border-color: var(--brass); background: rgba(201, 168, 76, 0.06); }
+.series-nav b { font-family: var(--display); font-weight: 500; font-size: 1.02rem; color: var(--cream); }
+.series-nav span { font-size: 0.78rem; color: var(--cream-faint); }
+.series-nav--crew b { color: #9fd9cd; }
+.series-nav--handson b { color: #ffc56e; }
+.series-band { padding: clamp(64px, 8vw, 104px) 0; }
+.series-band .watch-lede a { color: var(--brass-light); }
+.film-grid--dark { margin-top: 2rem; }
+.film-grid--dark .film-card__img { background: var(--night-2); box-shadow: 0 16px 40px -22px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--line-dark); }
+.film-grid--dark .film-card__label { color: var(--sea, var(--cyan, var(--brass))); }
+.film-grid--dark .film-card__title { color: var(--cream); }

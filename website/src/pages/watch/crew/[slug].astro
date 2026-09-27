@@ -1,0 +1,10 @@
+---
+import FilmPage from '../../../components/watch/FilmPage.astro';
+import { crewFilms, seriesOf, type Film } from '../../../data/films';
+
+export function getStaticPaths() {
+  return crewFilms.map((film, i) => ({ params: { slug: film.slug }, props: { film, prev: crewFilms[i - 1], next: crewFilms[i + 1] } }));
+}
+const { film, prev, next } = Astro.props as { film: Film; prev?: Film; next?: Film };
+---
+<FilmPage film={film} prev={prev} next={next} series={seriesOf('crew')} />
