@@ -39,7 +39,7 @@ CREW_EN_DIR = BASE_DIR / "chapters" / "crew"
 CREW_CA_DIR = BASE_DIR / "chapters" / "crew-ca"
 OUTPUT_DIR = BASE_DIR / "website" / "public" / "audiobook"
 
-HF_API_KEY = os.environ.get("HF_API_KEY", "***REMOVED-HF-KEY***")
+HF_API_KEY = os.environ.get("HF_API_KEY")  # never hard-code keys
 
 # Primary: faster mirror (FastAPI, more reliable)
 FASTAPI_BASE = "https://huggingfacem4-faster-qwen3-tts-demo.hf.space"

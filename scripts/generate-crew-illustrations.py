@@ -32,7 +32,7 @@ import requests
 BASE_DIR = Path(__file__).resolve().parent.parent
 OUTPUT_DIR = BASE_DIR / "assets" / "illustrations" / "crew"
 
-HF_API_KEY = os.environ.get("HF_API_KEY", "***REMOVED-HF-KEY***")
+HF_API_KEY = os.environ.get("HF_API_KEY")  # never hard-code keys
 API_URL = "https://router.huggingface.co/hf-inference/models/stabilityai/stable-diffusion-xl-base-1.0"
 
 HEADERS = {
@@ -356,8 +356,6 @@ def main():
     parser.add_argument("--force", action="store_true", help="Regenerate even if the file exists")
     parser.add_argument("--provider", choices=["atlas", "hf"], default="atlas" if ATLAS_API_KEY else "hf")
     args = parser.parse_args()
-    if args.provider == "atlas" and not ATLAS_API_KEY:
-        sys.exit("Set ATLAS_API_KEY to use the Atlas Cloud provider.")
     generate = generate_image_atlas if args.provider == "atlas" else generate_image
 
     if args.list:
@@ -366,6 +364,11 @@ def main():
             print(f"  File:   {spec['file']}")
             print(f"  Prompt: {spec['prompt']}")
         return
+
+    if args.provider == "atlas" and not ATLAS_API_KEY:
+        sys.exit("Set ATLAS_API_KEY to use the Atlas Cloud provider.")
+    if args.provider == "hf" and not HF_API_KEY:
+        sys.exit("Set HF_API_KEY (or ATLAS_API_KEY to use Atlas Cloud).")
 
     # Filter to specific chapter if requested
     items = ILLUSTRATIONS.items()

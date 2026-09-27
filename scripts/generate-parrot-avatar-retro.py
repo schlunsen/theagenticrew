@@ -25,8 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 HF_API_KEY = (
     os.environ.get("HF_API_KEY")
     or os.environ.get("HF_TOKEN")
-    or "***REMOVED-HF-KEY***"
-)
+)  # never hard-code keys
 API_URL = "https://router.huggingface.co/hf-inference/models/stabilityai/stable-diffusion-xl-base-1.0"
 
 HEADERS = {
