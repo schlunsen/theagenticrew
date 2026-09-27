@@ -209,3 +209,12 @@ export const parts = [
   { numeral: "IV", title: "Running a Fleet", subtitle: "Many agents, pipelines, and building your own", from: 13, to: 15 },
   { numeral: "V", title: "Hard-Won Lessons", subtitle: "Failure, restraint, teams, and what lasts", from: 16, to: 19 },
 ];
+
+// Parts of the Crew Member's Guide — ranges are 1-based chapter numbers (inclusive). Mirrors book-crew.typ.
+export const crewParts = [
+  { numeral: "I", title: "Setting Sail", subtitle: "What's changing, and why it matters to you", from: 1, to: 2 },
+  { numeral: "II", title: "Below Deck", subtitle: "How modern software works, and what an agent really is", from: 3, to: 4 },
+  { numeral: "III", title: "Taking the Helm", subtitle: "Instructions, context, trust, reach — and the risks that come with it", from: 5, to: 9 },
+  { numeral: "IV", title: "Underway", subtitle: "Building something real, keeping it safe, and agents beyond code", from: 10, to: 12 },
+  { numeral: "V", title: "Hard-Won Lessons", subtitle: "Mistakes, restraint, your role, and where to go from here", from: 13, to: 19 },
+];
