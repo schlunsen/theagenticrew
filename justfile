@@ -213,10 +213,15 @@ deploy:
         --metadata lang=es \
         --toc --toc-depth=2 --split-level=1 &
 
-    pandoc epub-crew.typ -f typst -t epub3 -o build/the-agentic-crew-crew.epub \
-        --metadata title="The Agentic Crew: Crew Member's Guide" \
-        --metadata "author=Rasmus Bornhøft Schlünsen" \
-        --metadata lang=en \
+    python3 scripts/build-epub-source.py crew && pandoc epub-crew.typ -f typst -t epub3 -o build/the-agentic-crew-crew.epub \
+        --metadata-file=assets/epub/metadata-crew.yaml \
+        --resource-path=.:chapters/crew \
+        --css=assets/epub/style.css \
+        --epub-cover-image=assets/epub/cover-crew.jpg \
+        --lua-filter=assets/epub/filter.lua \
+        --epub-embed-font='assets/fonts/SourceSerif4-*.ttf' \
+        --epub-embed-font='assets/fonts/Fraunces-*.ttf' \
+        --epub-embed-font='assets/fonts/JetBrainsMono-400.ttf' \
         --toc --toc-depth=2 --split-level=1 &
 
     pandoc epub-crew-ca.typ -f typst -t epub3 -o build/the-agentic-crew-crew-ca.epub \
@@ -281,8 +286,22 @@ epub:
         --toc --toc-depth=2 --split-level=1
     @echo "Built build/the-agentic-crew.epub"
 
+# Build the English crew member's guide to EPUB
+epub-crew:
+    python3 scripts/build-epub-source.py crew && pandoc epub-crew.typ -f typst -t epub3 -o build/the-agentic-crew-crew.epub \
+        --metadata-file=assets/epub/metadata-crew.yaml \
+        --resource-path=.:chapters/crew \
+        --css=assets/epub/style.css \
+        --epub-cover-image=assets/epub/cover-crew.jpg \
+        --lua-filter=assets/epub/filter.lua \
+        --epub-embed-font='assets/fonts/SourceSerif4-*.ttf' \
+        --epub-embed-font='assets/fonts/Fraunces-*.ttf' \
+        --epub-embed-font='assets/fonts/JetBrainsMono-400.ttf' \
+        --toc --toc-depth=2 --split-level=1
+    @echo "Built build/the-agentic-crew-crew.epub"
+
 # Build all formats (PDF + EPUB, all languages)
-all: build-all epub
+all: build-all epub epub-crew
 
 # Word count (approximate)
 wc:
