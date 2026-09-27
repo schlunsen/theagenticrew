@@ -1,0 +1,51 @@
+{
+  "chapter": "19",
+  "title": "Final Words",
+  "next": "Agents as Pentesters",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "question",
+      "gap": 0.0,
+      "text": "Picture a five year old on an engineer's lap, watching an agent refactor a module. Files open and close, tests run, green checks appear. And the child asks: is the computer fixing itself? It's a better question than it sounds, because the definition of engineering is being rewritten, right now."
+    },
+    {
+      "id": "molting",
+      "gap": 0.8,
+      "text": "The craft is not dying. It's molting. The outer shell is falling away: the keystrokes, the syntax, the boilerplate. But the animal underneath, the part that knows what to build and knows when it's right, is more alive than ever."
+    },
+    {
+      "id": "amplify",
+      "gap": 0.8,
+      "text": "Agents are amplifiers, not replacements. Give one to a mediocre engineer, and you get mediocre software at terrifying speed. Give one to a great engineer, and the old way starts to look like building highways with shovels. The ones who thrive will master the boring things: context, guardrails, tests, conventions. Tools change every quarter. Judgment compounds over a career."
+    },
+    {
+      "id": "promoted",
+      "gap": 0.8,
+      "text": "So this isn't a replacement. It's a promotion, from typist to captain. And the part being automated was never the part anyone loved. Nobody became an engineer to write boilerplate parsers. They wanted to build things that matter."
+    },
+    {
+      "id": "wrong",
+      "gap": 0.8,
+      "text": "The book is honest about what it got wrong. Security was underestimated: every integration is a channel for someone else's text to reach the agent. The bottleneck turned out to be review, not orchestration. Agent capacity is cheap. Human attention is not. And the harness matters as much as the model."
+    },
+    {
+      "id": "crew",
+      "gap": 0.8,
+      "text": "Then there's the crew itself. A crew suggests loyalty, shipmates who know your habits. Agents aren't like that. They don't remember the last session. Each one arrives fresh, does its work, and disappears. It's more like hiring dockworkers at every port."
+    },
+    {
+      "id": "ship",
+      "gap": 0.8,
+      "text": "And that's fine. For most of maritime history, the ship was the continuity: the charts, the logbook, the rigging. Your codebase, your conventions, your tests and your agents dot M D are the ship. Build it well, and any fresh crew is useful in minutes. The crew is disposable. The ship is not."
+    },
+    {
+      "id": "build",
+      "gap": 0.8,
+      "text": "So tonight, open a terminal. Pick the bug you've been avoiding. Point an agent at it, give it context, set a guardrail, and watch what happens. This discipline is being invented right now, by the people who build. You're the captain. Next up, in the first appendix: agents as pentesters."
+    }
+  ]
+}

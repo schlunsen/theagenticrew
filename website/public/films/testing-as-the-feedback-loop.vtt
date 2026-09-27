@@ -1,0 +1,301 @@
+WEBVTT
+
+00:00:04.500 --> 00:00:05.570
+Two code bases,
+
+00:00:05.620 --> 00:00:06.560
+same agent,
+
+00:00:06.560 --> 00:00:07.590
+same task.
+
+00:00:07.660 --> 00:00:09.440
+Add a rate limiter that blocks a
+
+00:00:09.440 --> 00:00:11.350
+user after 100 requests a minute.
+
+00:00:11.400 --> 00:00:13.670
+The first code base has no tests.
+
+00:00:13.680 --> 00:00:15.990
+The agent writes the code and stops.
+
+00:00:16.020 --> 00:00:17.220
+It has no way to know if
+
+00:00:17.220 --> 00:00:18.040
+it worked.
+
+00:00:18.040 --> 00:00:19.000
+Three days later,
+
+00:00:19.000 --> 00:00:20.840
+production shows the middleware was mounted in
+
+00:00:20.840 --> 00:00:22.930
+the wrong order and never ran.
+
+00:00:23.000 --> 00:00:24.970
+The rate limiter was decoration.
+
+00:00:26.037 --> 00:00:28.117
+The second codebase has a test suite.
+
+00:00:28.117 --> 00:00:30.037
+The agent writes the same code and
+
+00:00:30.037 --> 00:00:31.087
+runs the tests.
+
+00:00:31.177 --> 00:00:32.487
+Two old tests fail.
+
+00:00:32.557 --> 00:00:33.917
+It reads the failures,
+
+00:00:33.917 --> 00:00:34.537
+adjusts,
+
+00:00:34.537 --> 00:00:35.647
+and runs again.
+
+00:00:35.917 --> 00:00:36.557
+Green.
+
+00:00:36.557 --> 00:00:38.197
+Then it adds three new tests of
+
+00:00:38.197 --> 00:00:38.897
+its own.
+
+00:00:38.897 --> 00:00:39.957
+Same agent,
+
+00:00:39.957 --> 00:00:41.087
+same task,
+
+00:00:41.177 --> 00:00:42.407
+night and day.
+
+00:00:42.417 --> 00:00:44.387
+The difference was the tests.
+
+00:00:45.139 --> 00:00:46.599
+An agent can't look at a screen
+
+00:00:46.599 --> 00:00:48.109
+and feel whether it's right.
+
+00:00:48.139 --> 00:00:49.839
+What it can do is run your
+
+00:00:49.839 --> 00:00:51.449
+tests and read the results.
+
+00:00:51.459 --> 00:00:53.269
+Green means keep going.
+
+00:00:53.299 --> 00:00:54.829
+Red means try again.
+
+00:00:55.239 --> 00:00:57.079
+No test means flying blind.
+
+00:00:57.079 --> 00:00:58.969
+And the quality of the signal matters.
+
+00:00:59.159 --> 00:01:00.669
+Expected 429,
+
+00:01:00.819 --> 00:01:03.019
+got 200 is something it can act
+
+00:01:03.019 --> 00:01:03.639
+on.
+
+00:01:03.639 --> 00:01:06.019
+A bare assertion error is barely better
+
+00:01:06.019 --> 00:01:06.949
+than silence.
+
+00:01:07.815 --> 00:01:09.295
+So write the test first,
+
+00:01:09.295 --> 00:01:10.035
+then say:
+
+00:01:10.035 --> 00:01:11.275
+make this pass.
+
+00:01:11.275 --> 00:01:14.195
+Picture a duration parser with seven assertions.
+
+00:01:14.195 --> 00:01:16.385
+The first attempt forgets seconds.
+
+00:01:16.455 --> 00:01:17.135
+Fail.
+
+00:01:17.135 --> 00:01:18.185
+It adds them.
+
+00:01:18.255 --> 00:01:19.185
+Fail again:
+
+00:01:19.215 --> 00:01:21.255
+bad input doesn't raise an error.
+
+00:01:21.255 --> 00:01:22.605
+It adds validation.
+
+00:01:22.835 --> 00:01:23.375
+Green.
+
+00:01:23.375 --> 00:01:24.955
+Each cycle took seconds,
+
+00:01:24.955 --> 00:01:26.915
+and nobody had to explain what correct
+
+00:01:26.915 --> 00:01:27.765
+means.
+
+00:01:28.095 --> 00:01:30.525
+Writing tests becomes programming the agent.
+
+00:01:31.260 --> 00:01:33.470
+Good agentic tests are fast.
+
+00:01:33.480 --> 00:01:35.100
+If each run takes minutes,
+
+00:01:35.100 --> 00:01:36.660
+an agent gets a handful of tries
+
+00:01:36.660 --> 00:01:37.300
+an hour.
+
+00:01:37.300 --> 00:01:38.540
+If it takes seconds,
+
+00:01:38.540 --> 00:01:39.510
+it gets hundreds.
+
+00:01:39.620 --> 00:01:40.840
+They're deterministic,
+
+00:01:40.840 --> 00:01:42.980
+because a flaky failure sends the agent
+
+00:01:42.980 --> 00:01:44.100
+chasing a ghost.
+
+00:01:44.100 --> 00:01:45.080
+They're isolated,
+
+00:01:45.080 --> 00:01:46.700
+with clear error messages,
+
+00:01:46.700 --> 00:01:48.360
+and they test behavior,
+
+00:01:48.360 --> 00:01:49.450
+not implementation.
+
+00:01:50.483 --> 00:01:51.913
+You don't need full coverage.
+
+00:01:52.023 --> 00:01:53.703
+You need tests where the agent works:
+
+00:01:53.703 --> 00:01:54.843
+the hot paths,
+
+00:01:54.843 --> 00:01:56.233
+the API contracts,
+
+00:01:56.363 --> 00:01:57.963
+the seams between components.
+
+00:01:57.963 --> 00:01:59.263
+And negative tests,
+
+00:01:59.263 --> 00:02:01.683
+so an agent can't simplify your validation
+
+00:02:01.683 --> 00:02:03.233
+into accepting garbage.
+
+00:02:04.114 --> 00:02:04.614
+Be careful,
+
+00:02:04.614 --> 00:02:05.254
+though.
+
+00:02:05.254 --> 00:02:06.894
+A bad test suite is worse than
+
+00:02:06.894 --> 00:02:07.614
+none.
+
+00:02:07.614 --> 00:02:09.434
+Tests that only check the mock.
+
+00:02:09.434 --> 00:02:11.164
+Assertions that are too loose.
+
+00:02:11.354 --> 00:02:13.244
+Tests that copy the implementation.
+
+00:02:13.414 --> 00:02:15.094
+Each one gives a green light that
+
+00:02:15.094 --> 00:02:15.954
+means nothing.
+
+00:02:15.954 --> 00:02:17.594
+If a subtle bug would slip past
+
+00:02:17.594 --> 00:02:18.374
+a test,
+
+00:02:18.374 --> 00:02:19.724
+that test is furniture.
+
+00:02:20.516 --> 00:02:21.196
+Get it right,
+
+00:02:21.196 --> 00:02:22.956
+and the cycle compounds.
+
+00:02:22.956 --> 00:02:25.366
+Better tests make agents more autonomous,
+
+00:02:25.436 --> 00:02:27.186
+which means faster iteration,
+
+00:02:27.256 --> 00:02:29.276
+which leaves more time for better tests.
+
+00:02:29.276 --> 00:02:31.516
+Your review shifts from does this work,
+
+00:02:31.516 --> 00:02:33.876
+to is this the right approach.
+
+00:02:33.876 --> 00:02:35.816
+Before you tune prompts or chase new
+
+00:02:35.816 --> 00:02:36.656
+models,
+
+00:02:36.656 --> 00:02:37.666
+go write tests.
+
+00:02:37.836 --> 00:02:38.736
+Next up:
+
+00:02:38.736 --> 00:02:40.166
+convention over configuration.

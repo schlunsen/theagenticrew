@@ -1,0 +1,51 @@
+{
+  "chapter": "09",
+  "title": "Extending the Agent's Reach",
+  "next": "The Agent Attack Surface",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "tabs",
+      "gap": 0.0,
+      "text": "Picture an engineer chasing an error on a checkout page. The logs are in one system. The ticket is in another. The database schema is in a third. Six browser tabs, copy, paste, repeat. And the agent in the terminal can only see local files. A brilliant colleague, chained to a desk."
+    },
+    {
+      "id": "mcp",
+      "gap": 0.8,
+      "text": "The Model Context Protocol, or MCP, is the fix. Think of it as USB for agents. An MCP server is a small program that exposes tools over one standard plug. The agent calls them like any other tool, and the server translates. Someone builds a Stripe server, and every compatible agent can use Stripe."
+    },
+    {
+      "id": "clipboard",
+      "gap": 0.8,
+      "text": "Why it matters: an agent that only sees the repo is missing most of its context. The bug report, the logs, the schema and the docs all live somewhere else. Without integrations, you become the human middleware, shuttling text between tabs. With them, you go from clipboard to captain."
+    },
+    {
+      "id": "design",
+      "gap": 0.8,
+      "text": "Building your own server is small work. But remember, the model never sees your code. It only sees what you wrote about it. So name tools as verbs. Describe every parameter. Return errors that say what went wrong, so the model can correct itself. Keep each tool focused, and limit how much it returns."
+    },
+    {
+      "id": "skills",
+      "gap": 0.8,
+      "text": "Tools let the agent act. Resources, like a database schema, give it the map. And skills add the know-how: a folder with a skill dot M D file that describes how your team actually investigates a problem. The server is the hands. The skill is the training."
+    },
+    {
+      "id": "readonly",
+      "gap": 0.8,
+      "text": "Every integration raises the stakes. An agent with database access can delete data. So make read-only a fact, not a promise. One reference Postgres server claimed to be read-only, and a crafted query simply stepped around it. Put the guarantee in the database itself: a role that cannot write."
+    },
+    {
+      "id": "creep",
+      "gap": 0.8,
+      "text": "Then there's integration creep. Every connected tool loads its definitions into context before you type a word, and a model facing a hundred tools makes worse choices. Curate per project. If you wouldn't keep a tab open to that system, the agent doesn't need it. And often, a familiar C L I does the job for free."
+    },
+    {
+      "id": "start",
+      "gap": 0.8,
+      "text": "Start with your database, through a read-only role. Then your ticket tracker. Then monitoring. The agents are already capable. The question is whether they can see enough of your world. But every connection also lets the world talk back. Next up: the agent attack surface."
+    }
+  ]
+}

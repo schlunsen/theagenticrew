@@ -1,0 +1,14 @@
+{
+  "name": "riso-motion",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "description": "Risograph-print motion graphics: spot-ink layers, halftone screens, misregistration and multiply overprints, rendered headless to MP4",
+  "scripts": {
+    "sheet": "node render.mjs --sheet=0.5,2,3.5,5,6.5,8,9.5,11 --cols=4 --w=480 --out=out/sheet.jpg",
+    "video": "node render.mjs --clip --out=out/demo.mp4"
+  },
+  "dependencies": {
+    "puppeteer-core": "^25.11.0"
+  }
+}

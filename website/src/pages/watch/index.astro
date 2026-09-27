@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/home/Header.astro';
+import SiteFooter from '../../components/home/SiteFooter.astro';
+import HeaderScript from '../../components/watch/HeaderScript.astro';
+import { engineeringChapters, parts } from '../../data/chapters';
+import { films, filmById, mmss, label, TOTAL_FILMS, YOUTUBE_URL } from '../../data/films';
+import '../../styles/home.css';
+import '../../styles/watch.css';
+
+const featured = filmById('01') ?? films[0];
+// every chapter slot, in book order: a film if it's published, otherwise "coming soon"
+const slots = [
+  ...engineeringChapters.map((c) => ({ id: c.number, title: c.title })),
+  { id: 'A', title: 'Agents as Pentesters' },
+  { id: 'B', title: 'The State of the Tools' },
+];
+const groups = [
+  ...parts.map((p) => ({ numeral: p.numeral, title: p.title, ids: slots.slice(p.from - 1, p.to) })),
+  { numeral: '', title: 'Appendices', ids: slots.slice(19) },
+];
+---
+
+<BaseLayout
+  title="Watch — The Agentic Crew in short films"
+  description="One short film per chapter of The Agentic Crew, a free book on engineering with AI agents. Context, guardrails, git, tests, memory, security, multi-agent work and more — about two minutes each."
+>
+  <div class="home">
+    <Header sub />
+    <main>
+      <section class="band band--night watch-hero" aria-labelledby="watch-title">
+        <div class="wrap">
+          <span class="eyebrow">Watch free</span>
+          <h1 id="watch-title" class="h2">The book, <em>in short films.</em></h1>
+          <p class="watch-lede">
+            One film per chapter, about two minutes each: what the chapter argues, its best example, and what to take away.
+            Every film was made by AI agents — script, voice, animation, music — and steered by the author.
+          </p>
+          {featured && (
+            <>
+              <div class="player">
+                <video controls preload="metadata" playsinline poster={featured.poster}>
+                  <source src={featured.video} type="video/mp4" />
+                  <track kind="captions" src={featured.captions} srclang="en" label="English" />
+                </video>
+              </div>
+              <div class="player-actions">
+                <a class="btn btn--brass" href={`/watch/${featured.slug}`}>{label(featured)} · {featured.title}</a>
+                <a class="btn btn--ghost" href={YOUTUBE_URL} target="_blank" rel="noopener">Subscribe on YouTube</a>
+                <span class="spacer"></span>
+                <span class="watch-meta">{films.length} of {TOTAL_FILMS} films</span>
+              </div>
+            </>
+          )}
+        </div>
+      </section>
+
+      <section class="band band--paper" aria-label="All films">
+        <div class="wrap">
+          {groups.map((g) => (
+            <div class="film-part">
+              <div class="film-part__head">
+                {g.numeral && <span class="film-part__num">{g.numeral}</span>}
+                <h2 class="film-part__title">{g.title}</h2>
+              </div>
+              <ul class="film-grid">
+                {g.ids.map((slot) => {
+                  const f = filmById(slot.id);
+                  const lab = /^\d+$/.test(slot.id) ? `Chapter ${Number(slot.id)}` : `Appendix ${slot.id}`;
+                  return f ? (
+                    <li class="film-card">
+                      <a href={`/watch/${f.slug}`}>
+                        <div class="film-card__img"><img src={f.poster} alt="" loading="lazy" width="1280" height="720" /><span class="film-card__dur">{mmss(f.duration)}</span></div>
+                        <div class="film-card__label">{lab}</div>
+                        <div class="film-card__title">{f.title}</div>
+                      </a>
+                    </li>
+                  ) : (
+                    <li class="film-card film-card--soon">
+                      <div class="film-card__img"><span>Coming soon</span></div>
+                      <div class="film-card__label">{lab}</div>
+                      <div class="film-card__title">{slot.title}</div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
+    <SiteFooter />
+  </div>
+  <HeaderScript />
+</BaseLayout>

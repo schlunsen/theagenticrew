@@ -1,0 +1,51 @@
+{
+  "chapter": "18",
+  "title": "Agentic Teams",
+  "next": "Final Words",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "gut",
+      "gap": 0.0,
+      "text": "In one controlled trial, experienced developers used AI tools on their own mature projects, and came out almost a fifth slower. The striking part: they believed they had been a fifth faster. Your gut is not a measuring instrument. And on a team, that matters more than anywhere."
+    },
+    {
+      "id": "spike",
+      "gap": 0.8,
+      "text": "The ten x claim isn't wrong, just misleading. It's a spike graph, not a flat multiplier. Boilerplate and big refactors go from hours to minutes. System design and a subtle race condition barely move. And agents amplify. Teams with good tests and small batches get better. Weak foundations get worse. So measure outcomes, like lead time and how often you ship. Not lines generated."
+    },
+    {
+      "id": "review",
+      "gap": 0.8,
+      "text": "Then the pull requests pile up. An engineer who opened two a day now opens five, all clean, all passing tests, and reviewing them is exhausting. So the question shifts from, is this correct, to, is this the right approach? Reviewers become architects. A review bot can take the first pass, but it's a filter, not a reviewer. It can find a bug. It can't tell you the feature shouldn't exist."
+    },
+    {
+      "id": "junior",
+      "gap": 0.8,
+      "text": "The hardest question is juniors. They learned by doing exactly the work agents now do. The struggle was the education. So use the agent as a tutor, not a replacement. First it explains. Then it pairs, and every line must be understood before it's kept. Then it drafts. Only then does it multiply."
+    },
+    {
+      "id": "bus",
+      "gap": 0.8,
+      "text": "Uneven adoption creates a new risk. One engineer gets fluent, ships at three times the rate, and soon has touched every part of the codebase. The bus factor drops to one. The fix is structural: a shared agents dot M D, shared skills in the repo, and rotation, so the team's knowledge keeps up with its output."
+    },
+    {
+      "id": "standup",
+      "gap": 0.8,
+      "text": "Even the standup changes. A task can now start and finish between two standups, so the daily sync is less about progress and more about intent, making sure three engineers aren't sending agents after the same problem. And conventions matter more, because they shape every agent session on the team."
+    },
+    {
+      "id": "audit",
+      "gap": 0.8,
+      "text": "When agent written code causes an incident, who is responsible? The answer is simpler than it sounds. Git is the audit trail: mark every agent assisted commit, consistently. The reviewer who approves the pull request owns it, like any other code. And keep the session logs, so months later you can see what the agent saw."
+    },
+    {
+      "id": "hire",
+      "gap": 0.8,
+      "text": "So what do you hire for? Not whiteboard speed. System design, judgment, clear communication, and breaking big work into agent sized pieces. Hire for judgment. You can always give them an agent for the rest. Next up: final words, and why the craft is changing, not dying."
+    }
+  ]
+}

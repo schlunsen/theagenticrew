@@ -1,0 +1,56 @@
+{
+  "chapter": "13",
+  "title": "Multi-Agent Orchestration",
+  "next": "Agents in the Pipeline",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "house",
+      "gap": 0.0,
+      "text": "One carpenter can build a shed. A house needs an electrician, a plumber, and a roofer, working in parallel, each doing what they do best. Agents work the same way. But parallel agents need coordination, and coordination has a cost."
+    },
+    {
+      "id": "seams",
+      "gap": 0.8,
+      "text": "The hard part isn't running several agents. It's splitting the work. If one agent depends on another's output, they can't run in parallel. So find the seams. Split by layer, with a clear contract between them. Split by feature. Or split by concern: one refactors, one writes tests, one updates the docs."
+    },
+    {
+      "id": "worktree",
+      "gap": 0.8,
+      "text": "Every agent gets its own branch and its own worktree. Two agents in one working directory will trample each other's files. Three directories, three branches, three agents."
+    },
+    {
+      "id": "shapes",
+      "gap": 0.8,
+      "text": "Multi-agent work comes in two shapes. Sub-agents inside one session buy you clean context. One reads forty files, and hands back a ten-line summary. Background agents take a whole, well-scoped ticket, and come back later with a pull request. For a vague task, use neither."
+    },
+    {
+      "id": "handover",
+      "gap": 0.8,
+      "text": "Sometimes agents work in sequence. One plans, one implements, one reviews. The danger is the handover. The next agent starts cold. So make it explicit: a plan file, stub functions, a progress checklist. Write it like a ticket for a colleague on another continent."
+    },
+    {
+      "id": "merge",
+      "gap": 0.8,
+      "text": "Then comes the merge. One agent changed the schema, another wrote a migration for the old one. Prevent conflicts by giving each agent its own files. Let a merge agent handle the rest. And review everything yourself, because code can merge cleanly and still contradict itself."
+    },
+    {
+      "id": "overhead",
+      "gap": 0.8,
+      "text": "More agents isn't always better. With four terminals open, one agent can crash silently while you look elsewhere. You become the bottleneck. And every extra agent adds setup, merging, and review. For short tasks, the overhead eats the gains."
+    },
+    {
+      "id": "example",
+      "gap": 0.8,
+      "text": "Here's where it pays. Picture a notifications feature: a backend endpoint, a bell icon, and the tests. Write the contract first. Then three agents run at once, and you merge the backend first. About forty-five minutes in total, against roughly ninety for one agent alone."
+    },
+    {
+      "id": "crew",
+      "gap": 0.8,
+      "text": "A crew of five isn't always faster than one sailor who knows the boat. The skill isn't running as many agents as possible. It's knowing which pieces are safe to run in parallel. That judgement is the highest-leverage prompt you can write. Next up: agents in the pipeline."
+    }
+  ]
+}

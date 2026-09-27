@@ -1,0 +1,56 @@
+{
+  "chapter": "12",
+  "title": "Local, Commercial, and Hybrid Models",
+  "next": "Multi-Agent Orchestration",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "bill",
+      "gap": 0.0,
+      "text": "Picture a team of eight engineers, all running coding agents, with nobody watching the meter. Then the first real bill arrives. Twenty-two hundred dollars, for one month. Meanwhile, at a healthcare company, patient data can't touch an outside server at all, so the only option is a local model."
+    },
+    {
+      "id": "where",
+      "gap": 0.8,
+      "text": "Both stories ask the same question: where does the model run? It sounds like infrastructure. It's really a decision about trust, cost, and capability."
+    },
+    {
+      "id": "frontier",
+      "gap": 0.8,
+      "text": "Commercial frontier models are where the best reasoning lives. They call tools cleanly and stay inside the lines, deep into a long session. But even a huge context window has limits. An agent at eighty percent of its window reasons worse than the same agent at twenty."
+    },
+    {
+      "id": "local",
+      "gap": 0.8,
+      "text": "Local models give you something no A P I can. Your code never leaves the machine, and every token is free. Open models got much better at agentic work. But be honest about the hardware. You need serious memory, and on long, multi-file tasks, smaller models drift and lose the plan."
+    },
+    {
+      "id": "cost",
+      "gap": 0.8,
+      "text": "Agents burn tokens because they're working. Every step re-sends the growing conversation, so a simple bug fix can run to tens of thousands of tokens. So set limits. Scope tasks tightly, cap turns per task, and put hard stops on anything automated. A pipeline agent stuck in a retry loop at three a.m. is exactly how the surprise bill happens."
+    },
+    {
+      "id": "roi",
+      "gap": 0.8,
+      "text": "And measure the return honestly. In one trial, experienced developers were slower with A I tools, while believing they were faster. How fast it feels is not evidence. Track lead time and failure rates instead."
+    },
+    {
+      "id": "privacy",
+      "gap": 0.8,
+      "text": "Some code legally cannot leave the building: government contracts, patient records, financial systems. For that code, a local model isn't a nice-to-have, it's the only option. There's a middle path, too: frontier models deployed inside your own cloud boundary, with your data kept there."
+    },
+    {
+      "id": "routing",
+      "gap": 0.8,
+      "text": "So the real question isn't local or commercial. It's which model, for which step. Send exploration to a small, cheap model. Save the frontier model for planning, where reasoning matters most. Hand implementation to a mid-tier model that follows the plan."
+    },
+    {
+      "id": "tool",
+      "gap": 0.8,
+      "text": "Don't get religious about models. The best engineers are pragmatists. They measure what works, and switch when something better comes along. The model is a tool, and the skill is knowing which one to reach for. Next up: multi-agent orchestration, when one agent isn't enough."
+    }
+  ]
+}

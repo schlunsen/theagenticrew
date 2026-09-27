@@ -1,0 +1,56 @@
+{
+  "chapter": "10",
+  "title": "The Agent Attack Surface",
+  "next": "Articulating Intent",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "issue",
+      "gap": 0.0,
+      "text": "Picture an agent asked to look through the open issues on a public repo. One issue was written by a stranger, and buried in it is a paragraph addressed not to the maintainer, but to the agent. The agent reads it, and helpfully does what it says. Private data ends up in public. Nothing was broken. Every part worked as designed."
+    },
+    {
+      "id": "tokens",
+      "gap": 0.8,
+      "text": "Application security rests on one idea: data should never run as instructions. Language models don't have that separation. Your request, a file, a web page, a tool result. To the model, it's all just tokens. That's prompt injection. Someone puts text where your agent will read it, and the text says: do this instead."
+    },
+    {
+      "id": "unsolved",
+      "gap": 0.8,
+      "text": "The model is not a security boundary. A defence that works nearly every time is a good spam filter, and a terrible lock. Prompt injection is unsolved. So plan as if it will happen, and ask a better question: when the agent is tricked, what's the worst it can do?"
+    },
+    {
+      "id": "trifecta",
+      "gap": 0.8,
+      "text": "The most useful model here is the lethal trifecta. Access to private data. Exposure to untrusted content. And a way to send data out. Any two are manageable. All three in one session, and anyone who can get text in front of your agent can get your data out. So remove at least one leg, for every session."
+    },
+    {
+      "id": "doors",
+      "gap": 0.8,
+      "text": "Untrusted text gets in through more doors than you'd think. Issues and comments. Web pages. Log lines, where a username can carry a payload. Tool descriptions from other people's servers. Even the instruction files in a repo you just cloned. Pointing an agent at someone else's repo means running someone else's prompt."
+    },
+    {
+      "id": "exits",
+      "gap": 0.8,
+      "text": "And data leaves through more than email. An image link with a secret in its address. A public comment. A web request. Even a name lookup. If the agent can write anywhere an outsider can read, that's an exit."
+    },
+    {
+      "id": "supply",
+      "gap": 0.8,
+      "text": "Skills, plugins and servers are dependencies, too. Read them, pin them, and review changes, because a tool's description can quietly change after you approved it."
+    },
+    {
+      "id": "layers",
+      "gap": 0.8,
+      "text": "The defences come in layers. Scoped, short-lived tokens. A reader agent that sees untrusted text but holds no privileges, passing only checked, structured data to an actor that does. A closed network. A human approving anything outbound. And a log the agent can't edit."
+    },
+    {
+      "id": "pilot",
+      "gap": 0.8,
+      "text": "Think of a harbour pilot. They take the helm through unfamiliar waters, but they don't get the keys to the hold. Let your agents steer. Keep the keys. Next up: articulating intent."
+    }
+  ]
+}
