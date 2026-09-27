@@ -88,6 +88,20 @@ There's a spectrum from vague to precise, and knowing where to land is a skill y
 
 For most people reading this book, Level 2 is the sweet spot. Specific about the _what_ and the _outcome_, flexible about the _how_.
 
+== Ask for a Plan First
+
+Here's the single most useful habit I've picked up since the first edition of this book, and it costs you one sentence.
+
+Before the agent builds anything, ask it what it's _going_ to do:
+
+"Don't change anything yet. Read what's there and tell me your plan: what you'll build, which parts of the app you'll touch, and how you'll check it works."
+
+Many agent tools now have a dedicated _plan mode_ for exactly this — the agent can look around but isn't allowed to change anything until you say so. Where there isn't one, the sentence above does the same job.
+
+Then read the plan. Properly. This is the cheapest review you'll ever do. A wrong assumption in a ten-line plan costs you one sentence to fix: "No — weekly totals, not monthly," or "Don't add a new charting library, we already have one." The same wrong assumption discovered after the agent has built everything costs you an afternoon.
+
+You don't need to understand every technical detail in the plan. You're reading it the way you'd read a builder's quote for a kitchen: does this describe the thing I asked for? Is anything here I didn't ask for? Is anything I care about missing? When the answer is yes, yes, and no — say "go."
+
 == Iteration Is Normal
 
 Nobody writes a perfect instruction on the first try. Not beginners. Not experts. The key difference is that experienced people iterate _faster_ because they've learned what kinds of vagueness cause what kinds of problems.

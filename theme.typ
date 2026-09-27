@@ -1,5 +1,5 @@
 // The Agentic Crew — interior book theme ("Midnight & Brass")
-// Shared by book.typ. Fonts live in assets/fonts (compile with --font-path assets/fonts).
+// Shared by book.typ and book-crew.typ. Fonts live in assets/fonts (compile with --font-path assets/fonts).
 
 #let navy = rgb("#0a0e1a")
 #let navy-2 = rgb("#161d3a")
@@ -44,13 +44,13 @@
 #let is-appendix(h) = h.has("label") and h.label == <appendix>
 
 // A full navy divider page introducing a part of the book.
-#let part(numeral, title, subtitle) = page(
+#let part(numeral, title, subtitle, brand: "The Agentic Crew") = page(
   fill: navy, header: none, footer: none,
   margin: (x: 0.8in, top: 1.6in, bottom: 0.9in),
 )[
   #set text(fill: cream)
   #place(bottom + right, dx: 0.9in, dy: 0.75in, helm(0.95in, col: brass-light.transparentize(72%), stroke-w: 0.5pt))
-  #if numeral != "" { label-text([Part #numeral], size: 7.5pt, fill: brass-light, tracking: 3pt) } else { label-text([The Agentic Crew], size: 7.5pt, fill: brass-light, tracking: 3pt) }
+  #if numeral != "" { label-text([Part #numeral], size: 7.5pt, fill: brass-light, tracking: 3pt) } else { label-text(brand, size: 7.5pt, fill: brass-light, tracking: 3pt) }
   #v(0.9em)
   #heading(level: 1, numbering: none, supplement: if numeral != "" [Part #numeral] else [])[#title] <part>
   #v(0.8em)
@@ -62,8 +62,9 @@
 #let appendix(letter, title) = [#heading(level: 1, numbering: none, supplement: [Appendix #letter])[#title] <appendix>]
 
 // ── The template ──
-#let book(revision: "dev", body) = {
-  set document(title: "The Agentic Crew", author: "Rasmus Bornhøft Schlünsen")
+// `title` sets the PDF metadata; `running` is the left-hand running head.
+#let book(revision: "dev", title: "The Agentic Crew", running: "The Agentic Crew", body) = {
+  set document(title: title, author: "Rasmus Bornhøft Schlünsen")
 
   set page(
     paper: "a5",
@@ -79,7 +80,7 @@
         set text(font: sans, size: 6.4pt, tracking: 1.1pt, fill: muted)
         grid(
           columns: (1fr, auto),
-          upper[The Agentic Crew],
+          upper(running),
           if chapter != none {
             let label = if chapter.numbering != none {
               str(counter(heading).at(chapter.location()).first()) + "  ·  "

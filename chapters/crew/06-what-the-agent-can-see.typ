@@ -66,6 +66,32 @@ For each task, ask yourself:
 
 A focused workbench beats a cluttered one. Three relevant files are better than thirty irrelevant ones. The specific error message is better than the entire log file.
 
+== The Workbench Fills Up on Its Own
+
+Here's something that surprises almost everyone: the workbench gets cluttered even if you're careful. Every message you send, every reply, every document the agent opens, every attempt that didn't work — it all stays on the bench for the rest of the conversation.
+
+The size of that bench is called the _context window_, and modern agents have enormous ones — enough for several novels. You'd think that solves the problem. It doesn't. Agents don't pay equal attention to everything on the bench. The more that piles up, the more likely they are to overlook the one detail that matters. Researchers have a name for it — _context rot_ — and it kicks in long before the bench is full.
+
+You'll recognise the symptoms. An hour into a long conversation, the agent starts forgetting a rule you set at the beginning. It reintroduces a mistake you already corrected. It confuses the old version of a document with the new one. It's not getting lazy. It's working at a very cluttered bench.
+
+Many agents now tidy up automatically when things get long, by summarising the conversation so far and carrying on from the summary. That helps, but a summary is only as good as the agent's guess about what mattered — and it can quietly drop the one thing you cared about.
+
+The fix is simple, and it's the one professionals use:
+
+- *Start fresh between jobs.* Finished one task? Open a new conversation for the next one. It feels wasteful. It isn't.
+- *Carry forward a short brief, not the whole history.* Before you start over, ask the agent: "Summarise what we decided and what's left to do, in ten bullet points." Check the summary, then paste it into the fresh conversation.
+- *Write the plan down.* For anything that takes more than one sitting, keep the plan and the decisions in a document the agent can re-read, instead of trusting it to remember.
+
+== Write It Down Once
+
+If you find yourself typing the same things at the start of every conversation — "we're a Danish window company, prices are in DKK, the tone is friendly but professional, never promise delivery dates" — stop. Write them down once, and let the agent read them every time.
+
+Every major tool now has a place for this. Chat apps let you set custom instructions, or create a _project_ with standing instructions and reference documents attached. Coding agents read an instruction file that lives in the project itself — often called `AGENTS.md` (Claude Code's is called `CLAUDE.md`). It's a plain text document: what the project is, how things are done here, what never to do. The agent reads it at the start of every session, so every session starts from the same understanding.
+
+Treat that document the way you'd treat an onboarding guide for a new hire. Keep it short — it sits on the workbench every time, so bloat costs you. Put in the things the agent keeps getting wrong. Take out the things that are no longer true. When the agent makes the same mistake twice, the fix usually isn't a sterner message. It's a line in the instruction file.
+
+A step up from that are _skills_: packaged, reusable procedures — "how we write the weekly report," "how we prepare a customer quote" — that the agent pulls off the shelf only when a task calls for them. You probably won't write many yourself at first. But if your team uses agents seriously, ask whether your best procedures live in someone's head or somewhere every agent can use them.
+
 == Now Read What Comes Back
 
 Good context gets you better output. But better output is not the same as _correct_ output. An agent will never tell you it's wrong. It doesn't know it's wrong. It produces output with the same confidence whether it's perfectly accurate or completely fabricated.

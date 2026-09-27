@@ -37,6 +37,14 @@ An agent can do all of these things faster. But faster isn't always better. Some
 
 If you find yourself using an agent for everything and feeling oddly disconnected from your own work — that's the signal. Step back. Do something by hand. The efficiency loss is worth the understanding you gain.
 
+== When It Only Feels Faster
+
+Here's an uncomfortable finding worth knowing about. In 2025, a research group called METR ran a careful experiment with experienced software developers working on projects they knew inside out. Half the time they used AI tools; half the time they didn't. With the tools, they were about 19% _slower_. The striking part: afterwards, they believed they'd been about 20% _faster_.
+
+That's one study, with specific conditions, and the tools have improved since. I don't read it as "agents don't work." I read it as "your gut is not a stopwatch." Waiting for an agent feels productive. Reading its output feels productive. Explaining the task for the third time feels productive. None of that is the same as being done.
+
+The lesson for you: the better you already know a task, and the smaller it is, the more likely the overhead of explaining and checking eats the gain. If you can do it in five minutes yourself, the agent has to be very good to win. When in doubt, time it — honestly — both ways.
+
 == When the Stakes Are Too High
 
 There are domains where the cost of an error is catastrophic and the ability to verify is limited:
@@ -45,6 +53,7 @@ There are domains where the cost of an error is catastrophic and the ability to 
 - *Medical information* where a wrong fact creates danger
 - *Financial calculations* where a wrong number creates loss
 - *Security configurations* where a wrong setting creates exposure
+- *Anything where the agent reads strangers' words and holds the keys to your data* — the combination from the chapter on hidden instructions
 
 An agent can assist in all of these areas. It can draft, calculate, suggest, and check. But the final review, the final sign-off, the final "yes, this is correct and I'm responsible for it" — that must be human. Specifically, a human with the relevant expertise.
 

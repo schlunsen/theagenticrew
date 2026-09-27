@@ -46,6 +46,8 @@ For non-code tasks, guardrails look different:
 
 The principle is always the same: keep the human in the loop for anything that can't be easily undone.
 
+Most agent tools make this concrete with _permission settings_. The agent asks before it runs a command, edits a file, or sends something — and you can choose which actions it may take without asking. Those settings are your mixing board, built into the software. Two habits keep them honest. First, _read the approval prompts_ instead of clicking "allow" on autopilot; they're the moment the tool is asking for your judgement. Second, never grant "allow everything" just because the prompts got tedious. Loosen one slider at a time, for the kinds of action that have earned it.
+
 == The Two Mistakes
 
 There are exactly two ways to get the trust gradient wrong:
@@ -55,6 +57,8 @@ There are exactly two ways to get the trust gradient wrong:
 *Too loose:* You let the agent run unsupervised because the first few results were good. The agent sends an email with a factual error. It publishes a report with a hallucinated statistic. It deletes a file that wasn't backed up. You conclude that "agents can't be trusted." They can — you just skipped the part where you verify before promoting to autonomy.
 
 The sweet spot is neither. It's a gradual, evidence-based shift — checking everything early, loosening as confidence builds, but keeping hard boundaries on the things that truly matter.
+
+One caveat the first edition missed: the ratchet measures how often the agent gets things _wrong by accident_. It says nothing about whether someone can _trick_ it on purpose. An agent that has summarised your inbox perfectly for a month is exactly as vulnerable to a malicious email on day thirty-one as it was on day one. Trust earned through good results should loosen how much you _check_. It shouldn't loosen what the agent is _able to reach_. The chapter on hidden instructions explains why.
 
 == Your Role
 
