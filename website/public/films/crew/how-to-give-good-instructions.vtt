@@ -1,0 +1,274 @@
+WEBVTT
+
+00:00:05.300 --> 00:00:07.000
+Two people want the same thing:
+
+00:00:07.000 --> 00:00:09.240
+a simple dashboard of their team's weekly
+
+00:00:09.240 --> 00:00:10.020
+sales.
+
+00:00:10.020 --> 00:00:11.920
+Alex types five words.
+
+00:00:11.920 --> 00:00:13.730
+Make me a sales dashboard.
+
+00:00:13.840 --> 00:00:16.030
+The agent builds something with charts.
+
+00:00:16.060 --> 00:00:17.550
+But the numbers are fake.
+
+00:00:17.600 --> 00:00:18.990
+It shows months,
+
+00:00:19.000 --> 00:00:20.010
+not weeks.
+
+00:00:20.040 --> 00:00:22.000
+It uses a chart library Alex has
+
+00:00:22.000 --> 00:00:22.930
+never heard of.
+
+00:00:22.940 --> 00:00:24.530
+Two hours of fixes later,
+
+00:00:24.540 --> 00:00:25.610
+Alex gives up.
+
+00:00:26.251 --> 00:00:28.451
+Maya opens the same agent and writes
+
+00:00:28.451 --> 00:00:29.721
+a few clear lines.
+
+00:00:30.071 --> 00:00:32.201
+Connect to our real sales data.
+
+00:00:32.471 --> 00:00:34.331
+Show the last eight weeks as a
+
+00:00:34.331 --> 00:00:35.471
+stacked bar chart,
+
+00:00:35.471 --> 00:00:36.981
+one colour per person.
+
+00:00:37.631 --> 00:00:39.931
+Use the chart library we already have.
+
+00:00:39.931 --> 00:00:42.201
+Match our blue header and white cards.
+
+00:00:42.211 --> 00:00:44.731
+The agent builds exactly that.
+
+00:00:44.731 --> 00:00:45.901
+First try.
+
+00:00:45.971 --> 00:00:46.971
+Same agent,
+
+00:00:46.971 --> 00:00:47.901
+same goal.
+
+00:00:47.911 --> 00:00:50.061
+The only difference was the instructions.
+
+00:00:51.033 --> 00:00:53.263
+A good instruction has three parts.
+
+00:00:53.453 --> 00:00:54.613
+What you want,
+
+00:00:54.613 --> 00:00:55.863
+said specifically,
+
+00:00:55.913 --> 00:00:57.853
+because when an agent guesses,
+
+00:00:57.853 --> 00:00:59.093
+it guesses confidently.
+
+00:00:59.093 --> 00:01:00.593
+Why it matters,
+
+00:01:00.593 --> 00:01:02.393
+so it understands the problem,
+
+00:01:02.393 --> 00:01:03.653
+not just the feature.
+
+00:01:03.653 --> 00:01:05.263
+And how you'll know it worked.
+
+00:01:05.313 --> 00:01:07.133
+That's the part most people skip,
+
+00:01:07.133 --> 00:01:08.353
+and it's the one that lets the
+
+00:01:08.353 --> 00:01:09.823
+agent check its own work.
+
+00:01:10.510 --> 00:01:12.360
+Then say what not to do.
+
+00:01:12.390 --> 00:01:13.720
+Agents are eager.
+
+00:01:13.730 --> 00:01:15.650
+Ask one to fix a button colour,
+
+00:01:15.650 --> 00:01:17.980
+and it might redesign the whole screen.
+
+00:01:18.210 --> 00:01:20.450
+Constraints are lane markers on a road.
+
+00:01:20.450 --> 00:01:22.600
+Don't change the existing pages.
+
+00:01:22.610 --> 00:01:24.140
+Don't add new tools.
+
+00:01:24.150 --> 00:01:26.360
+Use the colours we already have.
+
+00:01:26.410 --> 00:01:27.650
+Inside the lanes,
+
+00:01:27.650 --> 00:01:29.010
+the agent drives freely.
+
+00:01:29.010 --> 00:01:30.820
+It just can't cross the lines.
+
+00:01:31.576 --> 00:01:33.356
+Instructions come in levels.
+
+00:01:33.356 --> 00:01:35.206
+Level zero is a wish:
+
+00:01:35.256 --> 00:01:36.526
+make the app better.
+
+00:01:36.556 --> 00:01:38.276
+Level one is a goal:
+
+00:01:38.276 --> 00:01:40.166
+add a way to export data.
+
+00:01:40.436 --> 00:01:42.126
+Level two is a specification:
+
+00:01:42.256 --> 00:01:44.416
+an export button on the settings page,
+
+00:01:44.416 --> 00:01:46.836
+with these columns and this file name.
+
+00:01:46.836 --> 00:01:48.616
+Level three is a full blueprint,
+
+00:01:48.616 --> 00:01:49.856
+usually more than you need.
+
+00:01:49.856 --> 00:01:50.996
+For most tasks,
+
+00:01:50.996 --> 00:01:52.386
+level two is the sweet spot.
+
+00:01:53.026 --> 00:01:54.386
+And before anything gets built,
+
+00:01:54.386 --> 00:01:55.526
+ask for a plan.
+
+00:01:55.526 --> 00:01:57.006
+Don't change anything yet.
+
+00:01:57.006 --> 00:01:58.066
+Tell me what you'll build,
+
+00:01:58.066 --> 00:01:59.246
+and how you'll check it.
+
+00:01:59.246 --> 00:02:00.786
+Then read that plan the way you'd
+
+00:02:00.786 --> 00:02:02.616
+read a builder's quote for a kitchen.
+
+00:02:02.626 --> 00:02:05.076
+It's the cheapest review you'll ever do.
+
+00:02:05.106 --> 00:02:06.886
+A wrong assumption in a ten line
+
+00:02:06.886 --> 00:02:09.006
+plan costs one sentence to fix.
+
+00:02:09.006 --> 00:02:10.206
+Found after the build,
+
+00:02:10.206 --> 00:02:11.516
+it costs an afternoon.
+
+00:02:12.456 --> 00:02:13.936
+When something is still off,
+
+00:02:13.936 --> 00:02:14.836
+don't just say:
+
+00:02:14.836 --> 00:02:15.956
+that's not right,
+
+00:02:15.956 --> 00:02:16.756
+fix it.
+
+00:02:16.756 --> 00:02:18.316
+That's Captain Alex again.
+
+00:02:18.316 --> 00:02:19.166
+Be targeted.
+
+00:02:19.196 --> 00:02:21.016
+The chart shows monthly totals;
+
+00:02:21.016 --> 00:02:22.086
+change it to weekly.
+
+00:02:22.116 --> 00:02:23.076
+What's wrong,
+
+00:02:23.076 --> 00:02:24.466
+what you want instead,
+
+00:02:24.496 --> 00:02:25.686
+and how to check it.
+
+00:02:26.261 --> 00:02:27.921
+An agent is only as good as
+
+00:02:27.921 --> 00:02:29.191
+the job you describe.
+
+00:02:29.321 --> 00:02:31.501
+How you explain the job matters more
+
+00:02:31.501 --> 00:02:32.861
+than the tool doing it.
+
+00:02:32.861 --> 00:02:33.911
+Next up:
+
+00:02:34.081 --> 00:02:35.131
+context in,
+
+00:02:35.301 --> 00:02:36.591
+verification out.
