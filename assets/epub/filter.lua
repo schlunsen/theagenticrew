@@ -3,7 +3,10 @@
 -- and tags part dividers, appendices, and front matter for styling.
 local chap, sec = 0, 0
 local in_appendix = false
-local frontmatter = { ["Foreword"] = true, ["Preface to the Second Edition"] = true }
+local frontmatter = {
+  ["Foreword"] = true, ["Preface to the Second Edition"] = true,
+  ["A Note Before We Start"] = true, ["A Note on the Second Edition"] = true,
+}
 
 local function prefix(h, text, cls)
   h.content:insert(1, pandoc.Space())
