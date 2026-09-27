@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # new-film.sh <id> "<Title>": set up a watercolour crew film in video/crew/<id>/.
-#   studio.html  the engine's studio, loading ../engine, timing.js, config.js, ../common.js and scene.js (scrub bar, ?t=, ?loop=)
+#   studio.html  the engine's studio, loading ../engine, timing.js, config.js, ../common.js, ../agent.js and scene.js (scrub bar, ?t=, ?loop=)
 #   config.js    PROJECT (duration from TIMING, bpm 100)
 #   timing.js    a placeholder TIMING (2 beats, 20 s) until video/tools/voice.py writes the real one
 #   scene.js     a working skeleton: ident → one placeholder shot → end card
 #   .gitignore   out/
+#   the agent is Folio, from ../agent.js (agent(x, y, u, o), which also replaces the engine's clawd())
 # Then, from the film folder:  node ../engine/render.mjs --sheet=1,3,6,12,17 --cols=5 --w=384 --out=out/check/a.jpg
 set -euo pipefail
 if [ $# -lt 2 ]; then echo "usage: $0 <id> \"<Title>\"   e.g. $0 crew04 \"Giving Clear Instructions\"" >&2; exit 1; fi
@@ -51,6 +52,8 @@ cat > "$DIR/studio.html" <<'EOF'
 <script src="../engine/src/sheets.js"></script>
 <!-- the series: palette, timing helpers, seams, compass, ident, end card, the Navigator -->
 <script src="../common.js"></script>
+<!-- the series' agent (Folio): replaces the engine's clawd() -->
+<script src="../agent.js"></script>
 <!-- this film -->
 <script src="scene.js"></script>
 <script>
@@ -83,7 +86,7 @@ cat > "$DIR/scene.js" <<EOF
 
   function identShot(t, lt, dur) { crewIdent(t, lt, dur, NUM, TITLE); }
 
-  // A placeholder set: the Navigator and Clawd on a painted deck at sea. Replace it.
+  // A placeholder set: the Navigator and Folio (the agent) on a painted deck at sea. Replace it.
   function deck(t, lt, dur) {
     camBegin(960 + 40 * Math.sin(lt * .35), 540, 1.02 + .015 * lt);   // the camera always moves
     boilSeed('sky'); paint(rectPts(-300, -300, W + 600, 900), { wash: CREW.pale, fill: CREW.sea, fillOp: 60, bleed: .2, tex: .5, ink: null });
@@ -91,7 +94,7 @@ cat > "$DIR/scene.js" <<EOF
     boilSeed('deck'); paint(rectPts(-300, 820, W + 600, 500, 3), { wash: mixCol(CREW.ochre, CREW.cream, .35), fill: CREW.ochreDk, fillOp: 60, bleed: .05, tex: .7, ink: PAL.ink, sw: 1 });
     const cue = wt(FIRST, 'chart', 0, .6);   // an event keyed to a spoken word
     nav(720, 880, 20, { ...navMood(t, [[0, 'neutral'], [cue, 'idea']]), view: 'q' });
-    clawd(1220, 880, 26, { ...emotions(t, [[0, 'neutral', { lookX: -.6 }], [cue + .4, 'excited']]), flip: true });
+    agent(1220, 880, 26, { ...emotions(t, [[0, 'neutral', { lookX: -.6 }], [cue + .4, 'excited']]), flip: true });
     camEnd();
     seamIn('wipe', lt);          // from the ident
     seamOut('wipe', lt, dur);    // into the end card
