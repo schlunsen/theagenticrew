@@ -53,68 +53,22 @@
 }
 
 // ─── Portada ───
+// "Workshop Blueprint": un plano en azul con un timón acotado y un cajetín. Ver hands-on-cover.typ.
 
-#page(margin: 0pt, header: none)[
-  #let white  = rgb("#f5f0e8")
-  #let cream  = rgb("#e8dfc8")
-  #let red    = rgb("#d42b2b")
-
-  #block(width: 100%, height: 100%, fill: black)[
-
-    // ── Fondo Bauhaus a sangre completa ──
-    #place(dx: 0%, dy: 0%)[
-      #image(
-        "assets/illustrations/hands-on-cover-fullbleed.jpg",
-        width: 100%,
-        height: 100%,
-        fit: "cover",
-      )
-    ]
-
-    // ── Eyebrow ──
-    #place(dx: 8%, dy: 4%)[
-      #text(size: 7pt, fill: cream, weight: "bold", tracking: 4pt)[APRENDE HACIENDO]
-    ]
-
-    // ── Título ──
-    #place(dx: 8%, dy: 9%)[
-      #block(width: 84%)[
-        #text(
-          size: 34pt,
-          weight: "bold",
-          fill: white,
-          font: "New Computer Modern",
-          tracking: -0.6pt,
-        )[La Tripulación Agéntica]
-      ]
-    ]
-
-    // ── Subtítulo ──
-    #place(dx: 8%, dy: 76%)[
-      #text(size: 11pt, fill: cream, style: "italic")[Guía Práctica — Edición Linux]
-    ]
-
-    // ── Línea de acento roja ──
-    #place(dx: 8%, dy: 83%)[
-      #line(length: 84%, stroke: 1.5pt + red)
-    ]
-
-    // ── Autor ──
-    #place(dx: 8%, dy: 87%)[
-      #text(size: 10.5pt, fill: white)[Rasmus Bornhøft Schlünsen]
-    ]
-
-    // ── Fecha y revisión ──
-    #place(dx: 8%, dy: 94%)[
-      #text(size: 7pt, fill: cream.transparentize(30%))[Marzo 2026]
-    ]
-    #place(dx: 0%, dy: 94%)[
-      #h(1fr)
-      #text(size: 6pt, fill: cream.transparentize(50%))[rev #revision]
-      #h(8%)
-    ]
-  ]
-]
+#import "hands-on-cover.typ": hands-on-cover
+#hands-on-cover(
+  series: "La Tripulación Agéntica",
+  title: ("Guía", "Práctica"),
+  tagline: "Aprende haciendo: herramientas, repositorios y resultados reales",
+  edition: "Edición Linux",
+  date: "Marzo 2026",
+  revision: revision,
+  labels: (
+    project: "PROYECTO", drawing: "PLANO", edition: "EDICIÓN", drawn: "DIBUJADO POR",
+    date: "FECHA", rev: "REV", sheet: "HOJA", scale: "ESCALA",
+    view: "ALZADO FRONTAL · TIMÓN", spokes: "8 RADIOS EQUIDISTANTES", hub: "CUBO", pcd: "D.P.",
+  ),
+)
 
 #pagebreak()
 

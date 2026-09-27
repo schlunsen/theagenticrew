@@ -56,68 +56,16 @@
 }
 
 // ─── Cover Page ───
+// "Workshop Blueprint": the Hands-On Guide's own cover — a drawing sheet in blueprint blue
+// with a ship's wheel drawn to dimension and a title block, distinct from the main book's
+// midnight-and-brass helm and the crew guide's sea chart. See hands-on-cover.typ.
 
-#page(margin: 0pt, header: none)[
-  #let white  = rgb("#f5f0e8")
-  #let cream  = rgb("#e8dfc8")
-  #let red    = rgb("#d42b2b")
-
-  #block(width: 100%, height: 100%, fill: black)[
-
-    // ── Full-bleed Bauhaus background — no overlays, no gradients ──
-    #place(dx: 0%, dy: 0%)[
-      #image(
-        "assets/illustrations/hands-on-cover-fullbleed.jpg",
-        width: 100%,
-        height: 100%,
-        fit: "cover",
-      )
-    ]
-
-    // ── Eyebrow — sits in the natural black band at top ──
-    #place(dx: 8%, dy: 4%)[
-      #text(size: 7pt, fill: cream, weight: "bold", tracking: 4pt)[LEARN BY DOING]
-    ]
-
-    // ── Title ──
-    #place(dx: 8%, dy: 9%)[
-      #block(width: 84%)[
-        #text(
-          size: 34pt,
-          weight: "bold",
-          fill: white,
-          font: "New Computer Modern",
-          tracking: -0.6pt,
-        )[The Agentic Crew]
-      ]
-    ]
-
-    // ── Subtitle — sits in the natural black band at bottom ──
-    #place(dx: 8%, dy: 76%)[
-      #text(size: 11pt, fill: cream, style: "italic")[Hands-On Guide]
-    ]
-
-    // ── Thin red accent line — Bauhaus loves a rule ──
-    #place(dx: 8%, dy: 83%)[
-      #line(length: 84%, stroke: 1.5pt + red)
-    ]
-
-    // ── Author ──
-    #place(dx: 8%, dy: 87%)[
-      #text(size: 10.5pt, fill: white)[Rasmus Bornhøft Schlünsen]
-    ]
-
-    // ── Date & revision ──
-    #place(dx: 8%, dy: 94%)[
-      #text(size: 7pt, fill: cream.transparentize(30%))[March 2026]
-    ]
-    #place(dx: 0%, dy: 94%)[
-      #h(1fr)
-      #text(size: 6pt, fill: cream.transparentize(50%))[rev #revision]
-      #h(8%)
-    ]
-  ]
-]
+#import "hands-on-cover.typ": hands-on-cover
+#hands-on-cover(
+  edition: "All platforms",
+  date: "March 2026",
+  revision: revision,
+)
 
 #pagebreak()
 
