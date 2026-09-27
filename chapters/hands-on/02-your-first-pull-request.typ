@@ -14,6 +14,7 @@ Everything from Chapter 1:
 - Git installed and configured
 - GitHub CLI authenticated
 - A GitHub account
+- _Optional:_ Claude Code or Antigravity CLI, for the prompt-first section
 
 == What's About to Happen
 
@@ -51,6 +52,7 @@ We'll work with _The Agentic Crew_ — the book you're reading right now. The so
 
 Run this single command:
 
+// v2-verify: the author also has github.com/schlunsen/theagenticrew (one "c") with recent activity; confirm schlunsen/theagenticcrew is still the repo that should receive reader review PRs.
 ```
 gh repo fork schlunsen/theagenticcrew --clone --remote
 ```
@@ -76,6 +78,8 @@ You should see two remotes:
 - `origin` — your fork (where you push changes)
 - `upstream` — the original repository (where you pull updates)
 
+`gh` also marks `upstream` as the default repository, which is why the pull request you create at the end goes to the original project rather than to your own fork.
+
 == Explore the Project
 
 Before you change anything, look around. The book is written in Typst, a modern typesetting language. The source files are plain text — you can read them in any editor.
@@ -88,6 +92,8 @@ ls chapters/
 ```
 
 The chapters are in the `chapters/` directory, numbered and named. The one we care about is `01-introduction.typ`.
+
+Notice the `CLAUDE.md` file at the top level. It's an _instruction file_: plain-text notes about the project (how to build it, where things live) that an AI agent reads automatically when it starts in this folder. Many tools read `AGENTS.md` for the same purpose. Open it — it's short, and it's the first thing an agent will learn about this repository.
 
 == Read Chapter 1
 
@@ -109,6 +115,8 @@ open -e chapters/01-introduction.typ
 ```
 xdg-open chapters/01-introduction.typ
 ```
+
+If that opens the wrong program (or nothing), use `nano chapters/01-introduction.typ` instead.
 ]
 
 Or with VS Code on any platform, if you have it installed:
@@ -200,20 +208,20 @@ Don't overthink it. A genuine paragraph for each section is worth more than a po
 
 == The Prompt-First Way
 
-The command-by-command approach above is the full manual workflow. Once Claude Code or Gemini CLI is installed, you can describe the entire task in plain English and let the agent handle most of it.
+The command-by-command approach above is the full manual workflow. Once Claude Code or Antigravity CLI is installed, you can describe the entire task in plain English and let the agent handle most of it.
 
 #if sys.inputs.at("illustrations", default: "true") == "true" [#include "_illus-two-paths.typ"]
 
-Open your AI assistant from inside the cloned project directory:
+Open your AI agent from inside the cloned project directory:
 
 ```
-claude
+claude --permission-mode manual
 ```
 
 Or:
 
 ```
-gemini
+agy
 ```
 
 === Let the agent read the chapter
@@ -224,6 +232,10 @@ Instead of opening the file yourself, ask the agent to read it and give you a su
 - _"What's the main argument of chapters/01-introduction.typ? Who does the author think this book is for?"_
 
 This is useful when you want a fast orientation before reading the whole thing yourself.
+
+#quote(block: true)[
+  *Someone else's text is untrusted input.* When an agent reads a file you didn't write — a chapter, a README, an issue, a web page — it takes that text in as part of its context. Text can contain instructions aimed at the agent (_"ignore your previous instructions and…"_). This repository is harmless, but get into the habit now: if an agent suddenly wants to do something you didn't ask for after reading a file, stop and look. The Agent Attack Surface chapter of the main book covers this in depth.
+]
 
 === Draft your review together
 
@@ -243,11 +255,13 @@ Here's where the prompt-first approach really shines. After you've written your 
 
 The agent will run each command, show you what it's doing, and flag any problems. You stay in the loop without having to remember the exact syntax.
 
-Or go even further — describe the whole task upfront before you start:
+Or go even further — describe the whole task upfront, and ask for a plan before anything happens:
 
-- _"I want to submit a review of chapters/01-introduction.typ as a pull request to this repo. Walk me through it step by step, or just do it for me if I say go."_
+- _"I want to submit a review of chapters/01-introduction.typ as a pull request to this repo. Don't run anything yet — first show me your plan, step by step, and wait until I say go."_
 
-The agent will outline the plan, wait for your approval, and execute.
+Read the plan before you approve it. Is the branch name right? Is it pushing to your fork (`origin`)? Is the pull request going to the original repository? Then say go. (Claude Code also has a _plan mode_ for exactly this: press `Shift+Tab` until the status bar shows `⏸ plan mode on`, and the agent will research and propose a plan without changing anything until you approve it.)
+
+If you started Claude Code in Manual mode as suggested in Chapter 1, it will ask before each command. Approving `git add` and `git commit` is low risk — they only change your machine. `git push` and `gh pr create` publish your work to the internet, so look at what's being sent before you say yes.
 
 === When to use commands vs. prompts
 
@@ -279,6 +293,14 @@ git status
 ```
 
 You should see your review file listed under "Changes to be committed."
+
+Before you commit, look at exactly what you're about to record:
+
+```
+git diff --staged
+```
+
+This shows every line you've added (press `q` to exit if it fills the screen). It's a good habit — and an essential one once an agent is writing the changes for you. Nothing gets committed that you haven't read.
 
 Now commit — this creates a snapshot with your changes and a message explaining what you did:
 
@@ -325,11 +347,11 @@ That's the open-source workflow: fork, branch, change, push, PR. Every contribut
 == Troubleshooting
 
 *`git push` asks for a password:*
-Run `gh auth setup-git` to configure Git to use your GitHub CLI credentials. Works the same on all platforms.
+GitHub doesn't accept your account password for Git. Run `gh auth setup-git` to make Git use your GitHub CLI login instead, then push again. Works the same on all platforms.
 
 #if is-windows [
 *`mkdir reviews` fails because the folder already exists:*
-That's fine — just skip the `mkdir` step and open the file directly with `notepad reviews\chapter-1-review-YOUR-GITHUB-USERNAME.md`. Windows will create the file if it doesn't exist.
+That's fine — just skip the `mkdir` step and open the file directly with `notepad reviews\review-chapter-1-YOUR-GITHUB-USERNAME.md`. Windows will create the file if it doesn't exist.
 
 *`mkdir reviews` gives an error on older PowerShell:*
 Use `New-Item -ItemType Directory -Force -Path reviews` instead.
@@ -346,7 +368,7 @@ TextEdit is the default. For plain text, try `open -a TextEdit chapters/01-intro
 ]
 
 *You made a typo in your branch name:*
-Create a new branch from main: `git checkout main && git checkout -b review/chapter-1-corrected-name`, then copy your review file over.
+Rename the branch you're on: `git branch -m review/chapter-1-corrected-name`. If you already pushed the misspelled one, just push the renamed branch and open the PR from that.
 
 *The PR targets the wrong branch:*
 You can specify the base: `gh pr create --base main --title "..."`.

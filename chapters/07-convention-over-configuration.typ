@@ -32,9 +32,7 @@ This is why opinionated frameworks have always been productive, and why they're 
 
 The strongest convention in agentic engineering is the agent instruction file — a document at the root of your project that tells the agent what it needs to know. Not a README for humans. A briefing for agents.
 
-When I wrote the first edition, every tool had its own filename for this. That's largely settled now. `AGENTS.md` has become the cross-tool standard — Codex, Cursor, GitHub Copilot, Gemini CLI and many others read it — and since late 2025 it sits under the Linux Foundation's Agentic AI Foundation alongside MCP. Claude Code reads `CLAUDE.md`; the common pattern is to keep the content in `AGENTS.md` and have `CLAUDE.md` point at it (or simply symlink one to the other), so there's one source of truth. Cursor has moved from a single `.cursorrules` file to a `.cursor/rules/` directory for tool-specific rules. The names still vary at the edges; the principle is identical.
-
-// v2-verify: check whether Claude Code reads AGENTS.md natively by publication; if so, simplify the CLAUDE.md pointer advice.
+When I wrote the first edition, every tool had its own filename for this. That's largely settled now. `AGENTS.md` has become the cross-tool standard — Codex, Cursor, GitHub Copilot, Google's Antigravity CLI and many others read it — and since late 2025 it sits under the Linux Foundation's Agentic AI Foundation alongside MCP. Claude Code's own file is `CLAUDE.md`, but it now reads `AGENTS.md` natively when a project has no `CLAUDE.md`. If you want a `CLAUDE.md` as well — for Claude-specific notes — keep the content in `AGENTS.md` and have `CLAUDE.md` import it with a single `@AGENTS.md` line, so there's one source of truth. Cursor has moved from a single `.cursorrules` file to a `.cursor/rules/` directory for tool-specific rules. The names still vary at the edges; the principle is identical.
 
 This is one of the highest-leverage things you can do for your agentic workflow, and most teams either skip it or write a few vague lines and call it done. Let's talk about what a good one actually looks like.
 

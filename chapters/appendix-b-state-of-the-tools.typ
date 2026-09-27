@@ -8,7 +8,7 @@ Everything in the main chapters is written to survive the next model release. Th
 
 The market has settled into three shapes, and most vendors now offer all three.
 
-*Terminal and IDE agents.* An agent that runs on your machine, in your repository, with your permission settings. Claude Code, OpenAI's Codex CLI, Gemini CLI, Cursor, GitHub Copilot's agent mode, and open-source agents such as Aider, Cline, opencode, and Goose. This is where most of the interactive work in this book happens.
+*Terminal and IDE agents.* An agent that runs on your machine, in your repository, with your permission settings. Claude Code, OpenAI's Codex CLI, Google's Antigravity CLI (which replaced Gemini CLI for individual users in June 2026), Cursor, GitHub Copilot's agent mode, and open-source agents such as Aider, Cline, opencode, and Goose. This is where most of the interactive work in this book happens.
 
 *Cloud and background agents.* You hand over a task — often by assigning an issue — and the agent works in a hosted sandbox and comes back with a pull request. GitHub's Copilot coding agent, OpenAI Codex cloud tasks, Claude Code on the web, Cursor's background agents, and Google's Jules all work this way. This is the "overnight agent" from the Agents in the Pipeline chapter, turned into a product.
 
@@ -16,7 +16,7 @@ The market has settled into three shapes, and most vendors now offer all three.
 
 == Standards and Conventions
 
-- *`AGENTS.md`* is the de facto cross-tool format for agent instruction files. Claude Code reads `CLAUDE.md`; a common pattern is to keep one file as the source of truth and have the other point at it.
+- *`AGENTS.md`* is the de facto cross-tool format for agent instruction files. Claude Code's own file is `CLAUDE.md`, but it reads `AGENTS.md` natively when a project has no `CLAUDE.md`. To keep one source of truth while still using `CLAUDE.md`, the documented pattern is a `CLAUDE.md` that imports it with `@AGENTS.md`.
 - *Model Context Protocol (MCP)* is the standard way to connect agents to tools and data. Local servers talk over stdio; remote servers use Streamable HTTP with OAuth-based authorisation. Many vendors host official remote servers for their products. An official MCP Registry exists for discovery.
 - In December 2025, MCP and `AGENTS.md` were placed under the Linux Foundation's Agentic AI Foundation, which moved both from vendor projects toward shared infrastructure.
 - *Agent Skills* — folders containing a `SKILL.md` file plus optional scripts and reference material — were published as an open format and are supported by a growing number of tools. Only a skill's name and description sit in context until the skill is needed.

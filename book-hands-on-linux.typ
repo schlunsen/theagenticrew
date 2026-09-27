@@ -8,7 +8,7 @@
 
 #set document(
   title: "The Agentic Crew: Hands-On Guide — Linux Edition",
-  author: "Rasmus Bornhoft Schlunsen",
+  author: "Rasmus Bornhøft Schlünsen",
 )
 
 #set page(
@@ -60,7 +60,7 @@
 #import "hands-on-cover.typ": hands-on-cover
 #hands-on-cover(
   edition: "Linux Edition",
-  date: "March 2026",
+  date: "2nd ed. · Sept 2026",
   revision: revision,
 )
 
@@ -78,9 +78,11 @@ You don't need to be a programmer. You do need to be willing to type commands in
 
 By the end of this book, you'll have a working development environment, hands-on experience with Git and GitHub, and the confidence to collaborate on real projects using AI agents as your co-pilot.
 
+*About this edition (September 2026).* Every exercise has been checked against the tools as they work today and brought in line with the second edition of the main book. Commands that had changed are fixed, Gemini CLI has given way to its successor, Antigravity CLI, and the exercises now practise the habits the main book teaches: an instruction file for your agent, a plan before the build, permission settings instead of "allow everything", and keeping secrets and untrusted text away from your agent's keys.
+
 #align(right)[
-  _Rasmus Bornhoft Schlunsen_ \
-  _March 2026_
+  _Rasmus Bornhøft Schlünsen_ \
+  _March 2026, revised September 2026_
 ]
 
 #pagebreak()

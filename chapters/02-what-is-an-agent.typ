@@ -58,7 +58,7 @@ Understanding this loop explains several things that trip up new agent users:
 
 == The Harness
 
-The program running that loop has a name: the *harness*. Claude Code, Codex, Cursor, Copilot's agent mode, Gemini CLI, Aider, opencode — these are all harnesses. Many of them can drive more than one model, and the same model behaves noticeably differently in different harnesses.
+The program running that loop has a name: the *harness*. Claude Code, Codex, Cursor, Copilot's agent mode, Google's Antigravity CLI, Aider, opencode — these are all harnesses. Many of them can drive more than one model, and the same model behaves noticeably differently in different harnesses.
 
 That's because the harness makes most of the decisions that matter in practice:
 

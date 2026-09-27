@@ -44,7 +44,7 @@ Tool integrations eliminate that middleware layer. The agent queries Datadog dir
 
 == The Practical Setup
 
-Setting up MCP servers is simpler than it sounds. Virtually every agent harness now speaks MCP — Claude Code, Codex, Cursor, Copilot, Gemini CLI, Cline, and plenty more — and most let you declare servers in a config file, per project or per user.
+Setting up MCP servers is simpler than it sounds. Virtually every agent harness now speaks MCP — Claude Code, Codex, Cursor, Copilot, Antigravity CLI, Cline, and plenty more — and most let you declare servers in a config file, per project or per user.
 
 Servers come in two flavours. A *local* server runs as a process on your machine, and the agent talks to it over standard input and output (stdio). A *remote* server runs somewhere else — usually hosted by the vendor whose system it wraps — and the agent talks to it over HTTP. Here's what a configuration with one of each might look like:
 

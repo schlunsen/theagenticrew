@@ -49,7 +49,7 @@
           #text(fill: rgb("#8b949e"))[> about climate change] \
           #v(0.3em)
           #text(fill: rgb("#3fb950"))[Calling HF API...] \
-          #text(fill: rgb("#3fb950"))[✓ slide-01.jpg] \
+          #text(fill: rgb("#3fb950"))[✓ slide-01.png] \
           #text(fill: rgb("#3fb950"))[✓ slide-01.mp3]
         ]
       ]
@@ -89,7 +89,7 @@
           ]
         ]
         #v(0.2em)
-        #text(fill: rgb("#8b949e"), size: 5.5pt)[slide-01.jpg · 512×512]
+        #text(fill: rgb("#8b949e"), size: 5.5pt)[slide-01.png · 1024×576]
       ]
     ]
 
@@ -116,7 +116,7 @@
           })
         )
         #v(0.2em)
-        #text(fill: rgb("#8b949e"), size: 5.5pt)[slide-01.mp3 · mms-tts]
+        #text(fill: rgb("#8b949e"), size: 5.5pt)[slide-01.mp3 · edge-tts]
       ]
     ]
 

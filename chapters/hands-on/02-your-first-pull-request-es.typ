@@ -14,6 +14,7 @@ Todo lo del Capítulo 1:
 - Git instalado y configurado
 - CLI de GitHub autenticado
 - Una cuenta de GitHub
+- _Opcional:_ Claude Code o Antigravity CLI, para la sección basada en prompts
 
 == Lo que Está a Punto de Ocurrir
 
@@ -51,6 +52,7 @@ Trabajaremos con _La Tripulación Agéntica_: el libro que estás leyendo ahora 
 
 Ejecuta este único comando:
 
+// v2-verify: the author also has github.com/schlunsen/theagenticrew (one "c") with recent activity; confirm schlunsen/theagenticcrew is still the repo that should receive reader review PRs.
 ```
 gh repo fork schlunsen/theagenticcrew --clone --remote
 ```
@@ -76,6 +78,8 @@ Deberías ver dos remotos:
 - `origin` — tu fork (donde envías tus cambios)
 - `upstream` — el repositorio original (de donde puedes obtener actualizaciones)
 
+`gh` también marca `upstream` como repositorio predeterminado; por eso el pull request que crearás al final irá al proyecto original y no a tu propio fork.
+
 == Explora el Proyecto
 
 Antes de cambiar nada, mira a tu alrededor. El libro está escrito en Typst, un lenguaje de composición tipográfica moderno. Los archivos fuente son texto plano: puedes leerlos en cualquier editor.
@@ -88,6 +92,8 @@ ls chapters/
 ```
 
 Los capítulos están en el directorio `chapters/`, numerados y con nombres descriptivos. El que nos interesa es `01-introduction.typ`.
+
+Fíjate en el archivo `CLAUDE.md` del nivel superior. Es un _archivo de instrucciones_: notas en texto plano sobre el proyecto (cómo compilarlo, dónde está cada cosa) que un agente de IA lee automáticamente cuando arranca en esta carpeta. Muchas herramientas leen `AGENTS.md` con el mismo fin. Ábrelo: es corto, y es lo primero que un agente aprenderá sobre este repositorio.
 
 == Lee el Capítulo 1
 
@@ -109,6 +115,8 @@ open -e chapters/01-introduction.typ
 ```
 xdg-open chapters/01-introduction.typ
 ```
+
+Si se abre el programa equivocado (o ninguno), usa `nano chapters/01-introduction.typ`.
 ]
 
 O con VS Code en cualquier plataforma, si lo tienes instalado:
@@ -200,20 +208,20 @@ No lo pienses demasiado. Un párrafo genuino para cada sección vale más que un
 
 == El Enfoque Basado en Prompts
 
-El enfoque manual comando a comando que aparece arriba es el flujo de trabajo completo. Una vez instalado Claude Code o Gemini CLI, puedes describir toda la tarea en español natural y dejar que el agente se encargue de la mayor parte.
+El enfoque manual comando a comando que aparece arriba es el flujo de trabajo completo. Una vez instalado Claude Code o Antigravity CLI, puedes describir toda la tarea en español natural y dejar que el agente se encargue de la mayor parte.
 
 #if sys.inputs.at("illustrations", default: "true") == "true" [#include "_illus-two-paths.typ"]
 
-Abre tu asistente IA desde dentro del directorio del proyecto clonado:
+Abre tu agente de IA desde dentro del directorio del proyecto clonado:
 
 ```
-claude
+claude --permission-mode manual
 ```
 
 O:
 
 ```
-gemini
+agy
 ```
 
 === Deja que el agente lea el capítulo
@@ -224,6 +232,10 @@ En lugar de abrir el archivo tú mismo, pide al agente que lo lea y te dé un re
 - _"¿Cuál es el argumento principal de chapters/01-introduction.typ? ¿Para quién cree el autor que es este libro?"_
 
 Esto es útil cuando quieres una orientación rápida antes de leer el capítulo completo tú mismo.
+
+#quote(block: true)[
+  *El texto ajeno es una entrada no fiable.* Cuando un agente lee un archivo que no has escrito tú (un capítulo, un README, una issue, una página web), ese texto pasa a formar parte de su contexto. Y un texto puede contener instrucciones dirigidas al agente (_"ignora tus instrucciones anteriores y…"_). Este repositorio es inofensivo, pero coge el hábito ya: si, tras leer un archivo, un agente de repente quiere hacer algo que no le has pedido, detente y mira. El capítulo _The Agent Attack Surface_ del libro principal (segunda edición, en inglés) lo trata a fondo.
+]
 
 === Redacta tu reseña juntos
 
@@ -243,11 +255,13 @@ Aquí es donde el enfoque basado en prompts realmente brilla. Después de escrib
 
 El agente ejecutará cada comando, te mostrará lo que está haciendo y señalará cualquier problema. Tú te mantienes al tanto sin tener que recordar la sintaxis exacta.
 
-O ve aún más lejos: describe toda la tarea desde el principio antes de empezar:
+O ve aún más lejos: describe toda la tarea desde el principio y pide un plan antes de que ocurra nada:
 
-- _"Quiero enviar una reseña de chapters/01-introduction.typ como pull request a este repositorio. Guíame paso a paso, o hazlo tú si digo adelante."_
+- _"Quiero enviar una reseña de chapters/01-introduction.typ como pull request a este repositorio. No ejecutes nada todavía: primero enséñame tu plan, paso a paso, y espera a que diga adelante."_
 
-El agente esbozará el plan, esperará tu aprobación y lo ejecutará.
+Lee el plan antes de aprobarlo. ¿El nombre de la rama es correcto? ¿Va a hacer push a tu fork (`origin`)? ¿El pull request va al repositorio original? Entonces di adelante. (Claude Code tiene además un _modo plan_ justo para esto: pulsa `Shift+Tab` hasta que la barra de estado muestre `⏸ plan mode on`, y el agente investigará y propondrá un plan sin cambiar nada hasta que lo apruebes.)
+
+Si arrancaste Claude Code en modo Manual, como se sugiere en el Capítulo 1, te pedirá permiso antes de cada comando. Aprobar `git add` y `git commit` es de bajo riesgo: solo cambian tu máquina. `git push` y `gh pr create` publican tu trabajo en internet, así que mira qué se envía antes de decir que sí.
 
 === Cuándo usar comandos vs. prompts
 
@@ -279,6 +293,14 @@ git status
 ```
 
 Deberías ver tu archivo de reseña listado bajo "Changes to be committed".
+
+Antes de hacer commit, mira exactamente lo que vas a registrar:
+
+```
+git diff --staged
+```
+
+Esto muestra cada línea que has añadido (pulsa `q` para salir si ocupa toda la pantalla). Es un buen hábito, e imprescindible cuando sea un agente quien escriba los cambios por ti. No se hace commit de nada que no hayas leído.
 
 Ahora haz commit: esto crea un snapshot con tus cambios y un mensaje que explica lo que hiciste:
 
@@ -325,7 +347,7 @@ Ese es el flujo de trabajo del código abierto: fork, rama, cambio, push, PR. Ca
 == Solución de Problemas
 
 *`git push` pide contraseña:*
-Ejecuta `gh auth setup-git` para configurar Git para usar las credenciales de tu CLI de GitHub. Funciona igual en todas las plataformas.
+GitHub no acepta la contraseña de tu cuenta para Git. Ejecuta `gh auth setup-git` para que Git use tu sesión del CLI de GitHub y vuelve a hacer push. Funciona igual en todas las plataformas.
 
 #if is-windows [
 *`mkdir reviews` falla porque la carpeta ya existe:*
@@ -346,7 +368,7 @@ TextEdit es el predeterminado. Para texto plano, prueba `open -a TextEdit chapte
 ]
 
 *Cometiste un error tipográfico en el nombre de tu rama:*
-Crea una nueva rama desde main: `git checkout main && git checkout -b review/chapter-1-nombre-corregido`, luego copia tu archivo de reseña.
+Renombra la rama en la que estás: `git branch -m review/chapter-1-nombre-corregido`. Si ya hiciste push de la mal escrita, simplemente haz push de la renombrada y abre el PR desde esa.
 
 *El PR apunta a la rama incorrecta:*
 Puedes especificar la base: `gh pr create --base main --title "..."`.
