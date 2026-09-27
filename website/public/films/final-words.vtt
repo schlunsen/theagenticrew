@@ -1,0 +1,289 @@
+WEBVTT
+
+00:00:04.500 --> 00:00:05.880
+Picture a five year old on an
+
+00:00:05.880 --> 00:00:06.900
+engineer's lap,
+
+00:00:06.900 --> 00:00:08.990
+watching an agent refactor a module.
+
+00:00:09.120 --> 00:00:10.600
+Files open and close,
+
+00:00:10.600 --> 00:00:11.510
+tests run,
+
+00:00:11.600 --> 00:00:12.670
+green checks appear.
+
+00:00:12.680 --> 00:00:14.140
+And the child asks:
+
+00:00:14.140 --> 00:00:15.910
+is the computer fixing itself?
+
+00:00:15.920 --> 00:00:17.580
+It's a better question than it sounds,
+
+00:00:17.580 --> 00:00:19.740
+because the definition of engineering is being
+
+00:00:19.740 --> 00:00:20.220
+rewritten,
+
+00:00:20.220 --> 00:00:21.410
+right now.
+
+00:00:22.141 --> 00:00:23.531
+The craft is not dying.
+
+00:00:23.541 --> 00:00:24.531
+It's molting.
+
+00:00:24.541 --> 00:00:26.411
+The outer shell is falling away:
+
+00:00:26.601 --> 00:00:27.581
+the keystrokes,
+
+00:00:27.581 --> 00:00:28.431
+the syntax,
+
+00:00:28.441 --> 00:00:29.321
+the boilerplate.
+
+00:00:29.321 --> 00:00:30.791
+But the animal underneath,
+
+00:00:30.861 --> 00:00:32.461
+the part that knows what to build
+
+00:00:32.461 --> 00:00:33.941
+and knows when it's right,
+
+00:00:33.941 --> 00:00:35.691
+is more alive than ever.
+
+00:00:36.437 --> 00:00:37.957
+Agents are amplifiers,
+
+00:00:37.957 --> 00:00:39.127
+not replacements.
+
+00:00:39.137 --> 00:00:41.157
+Give one to a mediocre engineer,
+
+00:00:41.157 --> 00:00:43.837
+and you get mediocre software at terrifying
+
+00:00:43.837 --> 00:00:44.557
+speed.
+
+00:00:44.557 --> 00:00:46.197
+Give one to a great engineer,
+
+00:00:46.197 --> 00:00:47.757
+and the old way starts to look
+
+00:00:47.757 --> 00:00:49.717
+like building highways with shovels.
+
+00:00:49.717 --> 00:00:51.717
+The ones who thrive will master the
+
+00:00:51.717 --> 00:00:52.767
+boring things:
+
+00:00:52.997 --> 00:00:53.877
+context,
+
+00:00:53.877 --> 00:00:54.947
+guardrails,
+
+00:00:55.097 --> 00:00:55.757
+tests,
+
+00:00:55.757 --> 00:00:56.607
+conventions.
+
+00:00:56.617 --> 00:00:58.607
+Tools change every quarter.
+
+00:00:58.977 --> 00:01:00.887
+Judgment compounds over a career.
+
+00:01:01.668 --> 00:01:03.098
+So this isn't a replacement.
+
+00:01:03.228 --> 00:01:04.148
+It's a promotion,
+
+00:01:04.148 --> 00:01:05.668
+from typist to captain.
+
+00:01:05.668 --> 00:01:07.528
+And the part being automated was never
+
+00:01:07.528 --> 00:01:09.058
+the part anyone loved.
+
+00:01:09.308 --> 00:01:11.788
+Nobody became an engineer to write boilerplate
+
+00:01:11.788 --> 00:01:12.528
+parsers.
+
+00:01:12.528 --> 00:01:14.558
+They wanted to build things that matter.
+
+00:01:15.280 --> 00:01:16.600
+The book is honest about what it
+
+00:01:16.600 --> 00:01:17.360
+got wrong.
+
+00:01:17.360 --> 00:01:19.190
+Security was underestimated:
+
+00:01:19.340 --> 00:01:21.140
+every integration is a channel for someone
+
+00:01:21.140 --> 00:01:22.930
+else's text to reach the agent.
+
+00:01:23.040 --> 00:01:25.290
+The bottleneck turned out to be review,
+
+00:01:25.300 --> 00:01:26.510
+not orchestration.
+
+00:01:26.740 --> 00:01:28.670
+Agent capacity is cheap.
+
+00:01:28.720 --> 00:01:30.220
+Human attention is not.
+
+00:01:30.220 --> 00:01:31.780
+And the harness matters as much as
+
+00:01:31.780 --> 00:01:32.630
+the model.
+
+00:01:33.153 --> 00:01:34.723
+Then there's the crew itself.
+
+00:01:34.773 --> 00:01:36.503
+A crew suggests loyalty,
+
+00:01:36.513 --> 00:01:38.323
+shipmates who know your habits.
+
+00:01:38.533 --> 00:01:40.053
+Agents aren't like that,
+
+00:01:40.053 --> 00:01:41.943
+they don't remember the last session.
+
+00:01:41.953 --> 00:01:43.543
+Each one arrives fresh,
+
+00:01:43.573 --> 00:01:44.573
+does its work,
+
+00:01:44.573 --> 00:01:45.523
+and disappears.
+
+00:01:45.753 --> 00:01:47.673
+It's more like hiring dock workers at
+
+00:01:47.673 --> 00:01:48.523
+every port.
+
+00:01:49.163 --> 00:01:50.103
+And that's fine.
+
+00:01:50.103 --> 00:01:51.763
+For most of maritime history,
+
+00:01:51.763 --> 00:01:53.153
+the ship was the continuity.
+
+00:01:53.203 --> 00:01:54.283
+The charts,
+
+00:01:54.283 --> 00:01:55.143
+the logbook,
+
+00:01:55.143 --> 00:01:55.963
+the rigging,
+
+00:01:55.963 --> 00:01:57.153
+your code base,
+
+00:01:57.163 --> 00:01:58.013
+your conventions,
+
+00:01:58.243 --> 00:01:58.903
+your tests,
+
+00:01:58.903 --> 00:01:59.853
+and your agents.
+
+00:02:00.343 --> 00:02:01.863
+.MD are the ship.
+
+00:02:01.863 --> 00:02:02.783
+Build it well,
+
+00:02:02.783 --> 00:02:04.603
+and any fresh crew is useful in
+
+00:02:04.603 --> 00:02:05.243
+minutes.
+
+00:02:05.243 --> 00:02:06.833
+The crew is disposable,
+
+00:02:06.883 --> 00:02:08.053
+the ship is not.
+
+00:02:08.758 --> 00:02:09.578
+So tonight,
+
+00:02:09.578 --> 00:02:10.678
+open a terminal,
+
+00:02:10.678 --> 00:02:12.288
+pick the bug you've been avoiding,
+
+00:02:12.318 --> 00:02:13.478
+point an agent at it,
+
+00:02:13.478 --> 00:02:14.508
+give it context,
+
+00:02:14.678 --> 00:02:15.748
+set a guardrail,
+
+00:02:15.758 --> 00:02:16.948
+and watch what happens.
+
+00:02:17.018 --> 00:02:19.378
+This discipline is being invented right now
+
+00:02:19.378 --> 00:02:20.908
+by the people who build.
+
+00:02:20.938 --> 00:02:22.188
+You're the captain.
+
+00:02:22.258 --> 00:02:23.258
+Next up,
+
+00:02:23.258 --> 00:02:24.588
+in the first appendix,
+
+00:02:24.678 --> 00:02:26.508
+agents as pen testers.

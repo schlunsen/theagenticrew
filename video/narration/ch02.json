@@ -1,0 +1,51 @@
+{
+  "chapter": "02",
+  "title": "What Is an Agent?",
+  "next": "Context",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "word",
+      "gap": 0.0,
+      "text": "The word agent gets stuck on almost anything, from a chatbot that answers questions to a system that deploys code to production. It's worth being precise, because the difference changes how you work with them."
+    },
+    {
+      "id": "spectrum",
+      "gap": 0.8,
+      "text": "Think of a spectrum. At one end, autocomplete suggests the next few tokens. A copilot writes bigger blocks, but only when you ask. Then comes the shift. A tool-using agent acts. It reads files, runs commands, checks the result, and goes again. At the far end, autonomous agents take a goal, and come back with a pull request."
+    },
+    {
+      "id": "three",
+      "gap": 0.8,
+      "text": "Three things make something agentic. Planning, where a goal becomes steps. Tool use, where every result shapes the next decision. And iteration: try, observe, adjust, and try again. A chatbot gives you one answer. An agent gives you a cycle. The tools are the promotion."
+    },
+    {
+      "id": "anatomy",
+      "gap": 0.8,
+      "text": "Strip away the branding, and every coding agent has four parts. A model, which reads text and writes text, and nothing else. Tools it's allowed to ask for. A loop that keeps calling the model and feeding the results back. And an environment, where the tools actually run."
+    },
+    {
+      "id": "calling",
+      "gap": 0.8,
+      "text": "Here's the part people miss. The model never executes anything. A tool call is just structured text. The model asks to run the tests. The harness checks whether that's allowed, runs them, and hands the output back. The model reads it, and decides what to do next. That's the whole trick."
+    },
+    {
+      "id": "harness",
+      "gap": 0.8,
+      "text": "That surrounding program is the harness. Claude Code, Codex, and Cursor are all harnesses. The harness decides permissions, what stays in context, when to stop, and where the tools run. So when an agent does something reckless, ask two questions. Why did the model suggest it? And why did the harness allow it? The first, you can influence. The second, you control."
+    },
+    {
+      "id": "limits",
+      "gap": 0.8,
+      "text": "And stay clear-eyed. Agents aren't magic. They hallucinate APIs, drift beyond the task, declare victory too early, and lose track on long sessions. Every one of those failures has a mitigation, and those mitigations are the rest of this book."
+    },
+    {
+      "id": "rainman",
+      "gap": 0.8,
+      "text": "The book's mental model is Rain Man. The agent is Raymond. It counts cards faster than any human, for as long as you like. You're Charlie. You decide which casino, how much to bet, and when to cash out. That part is still your job. Next up: context, the most important skill in agentic engineering."
+    }
+  ]
+}

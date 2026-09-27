@@ -1,0 +1,271 @@
+WEBVTT
+
+00:00:04.500 --> 00:00:06.740
+The best agentic engineers aren't the ones
+
+00:00:06.740 --> 00:00:08.260
+who use agents the most.
+
+00:00:08.260 --> 00:00:10.040
+They're the ones who know exactly when
+
+00:00:10.040 --> 00:00:11.300
+to put the agent away.
+
+00:00:11.300 --> 00:00:12.780
+Reach for an agent when the job
+
+00:00:12.780 --> 00:00:13.680
+calls for a human,
+
+00:00:13.680 --> 00:00:15.910
+and you lose both time and credibility.
+
+00:00:16.876 --> 00:00:19.136
+Every agent interaction has a cost.
+
+00:00:19.136 --> 00:00:20.336
+You write the prompt,
+
+00:00:20.336 --> 00:00:20.976
+wait,
+
+00:00:20.976 --> 00:00:21.576
+review,
+
+00:00:21.576 --> 00:00:22.116
+fix,
+
+00:00:22.116 --> 00:00:23.156
+and run it again.
+
+00:00:23.156 --> 00:00:24.856
+For an hour -long task,
+
+00:00:24.856 --> 00:00:25.786
+that's a bargain.
+
+00:00:25.796 --> 00:00:27.226
+For renaming a variable,
+
+00:00:27.296 --> 00:00:28.836
+it's slower than just doing it.
+
+00:00:28.836 --> 00:00:30.506
+In one randomized trial,
+
+00:00:30.576 --> 00:00:32.936
+experienced developers in code they knew well
+
+00:00:32.936 --> 00:00:34.936
+were slower with AI tools,
+
+00:00:34.936 --> 00:00:37.066
+while believing they'd been faster.
+
+00:00:37.316 --> 00:00:39.296
+How fast you felt is not a
+
+00:00:39.296 --> 00:00:40.146
+measurement.
+
+00:00:40.606 --> 00:00:42.636
+When you're designing a system from scratch,
+
+00:00:42.686 --> 00:00:43.946
+the thinking is the work.
+
+00:00:43.946 --> 00:00:45.746
+An agent can list the trade -offs,
+
+00:00:45.746 --> 00:00:47.486
+but if it makes the calls,
+
+00:00:47.486 --> 00:00:49.246
+you won't understand your own system.
+
+00:00:49.246 --> 00:00:51.226
+That judgment only comes from doing the
+
+00:00:51.226 --> 00:00:51.786
+work.
+
+00:00:51.786 --> 00:00:53.676
+Use it as a sparring partner,
+
+00:00:53.686 --> 00:00:54.896
+not as the architect.
+
+00:00:55.814 --> 00:00:57.694
+Security critical code is different.
+
+00:00:57.694 --> 00:00:59.834
+A broken auth check shows no symptoms
+
+00:00:59.834 --> 00:01:01.554
+until an attacker finds it,
+
+00:01:01.554 --> 00:01:03.714
+and agents write code that looks right.
+
+00:01:03.714 --> 00:01:05.634
+So write it yourself and get human
+
+00:01:05.634 --> 00:01:06.524
+eyes on it.
+
+00:01:06.594 --> 00:01:08.354
+Then flip the roles and ask the
+
+00:01:08.354 --> 00:01:10.164
+agent to attack your token check.
+
+00:01:10.194 --> 00:01:11.554
+Let the agent hunt.
+
+00:01:11.554 --> 00:01:12.584
+Keep the pen.
+
+00:01:13.365 --> 00:01:14.285
+When you're learning,
+
+00:01:14.285 --> 00:01:15.205
+resist it.
+
+00:01:15.205 --> 00:01:17.265
+If the agent writes all the Rust,
+
+00:01:17.265 --> 00:01:18.675
+you haven't learned Rust.
+
+00:01:19.005 --> 00:01:21.345
+Asking why a borrow checker error happens
+
+00:01:21.345 --> 00:01:22.655
+builds understanding.
+
+00:01:22.825 --> 00:01:24.915
+Asking the agent to fix it doesn't.
+
+00:01:24.945 --> 00:01:26.515
+Use agents as tutors,
+
+00:01:26.565 --> 00:01:27.715
+not ghostwriters.
+
+00:01:27.885 --> 00:01:29.145
+And hard news,
+
+00:01:29.145 --> 00:01:30.755
+like sunsetting a product,
+
+00:01:30.805 --> 00:01:32.075
+should come from a person.
+
+00:01:32.803 --> 00:01:34.883
+Agents amplify what's already there.
+
+00:01:34.883 --> 00:01:36.383
+In a clean codebase,
+
+00:01:36.383 --> 00:01:37.643
+they write clean code.
+
+00:01:37.643 --> 00:01:38.633
+In a mess,
+
+00:01:38.723 --> 00:01:39.743
+they write more mess.
+
+00:01:39.743 --> 00:01:41.963
+In legacy code you can't clean up,
+
+00:01:41.963 --> 00:01:43.963
+start with characterisation tests,
+
+00:01:43.963 --> 00:01:45.193
+scope ruthlessly,
+
+00:01:45.283 --> 00:01:46.823
+and hand the agent the tedious,
+
+00:01:46.823 --> 00:01:48.093
+mechanical parts.
+
+00:01:48.893 --> 00:01:50.113
+Then there's craft.
+
+00:01:50.113 --> 00:01:52.513
+Writing code by hand builds pattern recognition
+
+00:01:52.513 --> 00:01:53.923
+that lives in your fingers.
+
+00:01:54.073 --> 00:01:55.613
+When you hit a problem the agent
+
+00:01:55.613 --> 00:01:56.433
+can't solve,
+
+00:01:56.433 --> 00:01:57.933
+you need those skills sharp.
+
+00:01:57.933 --> 00:01:59.883
+So write code by hand regularly.
+
+00:01:59.973 --> 00:02:01.293
+Not because it's faster,
+
+00:02:01.293 --> 00:02:02.823
+but because it keeps you dangerous.
+
+00:02:03.747 --> 00:02:05.447
+The central skill isn't prompting.
+
+00:02:05.447 --> 00:02:06.357
+It's judgment.
+
+00:02:06.527 --> 00:02:08.427
+Reach for agents when the leverage is
+
+00:02:08.427 --> 00:02:09.207
+real:
+
+00:02:09.207 --> 00:02:10.327
+big refactors,
+
+00:02:10.327 --> 00:02:11.397
+boilerplate,
+
+00:02:11.427 --> 00:02:12.557
+exploring code,
+
+00:02:12.667 --> 00:02:13.667
+writing tests.
+
+00:02:13.667 --> 00:02:15.287
+Put them away when the work needs
+
+00:02:15.287 --> 00:02:16.157
+human thinking,
+
+00:02:16.267 --> 00:02:17.217
+human accountability,
+
+00:02:17.447 --> 00:02:18.557
+or human craft.
+
+00:02:18.707 --> 00:02:20.547
+Anyone can type a prompt.
+
+00:02:20.547 --> 00:02:22.567
+Knowing when not to is the harder
+
+00:02:22.567 --> 00:02:23.387
+skill.
+
+00:02:23.387 --> 00:02:24.147
+Next up:
+
+00:02:24.147 --> 00:02:25.257
+agentic teams.

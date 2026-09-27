@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/home/Header.astro';
+import SiteFooter from '../../components/home/SiteFooter.astro';
+import HeaderScript from '../../components/watch/HeaderScript.astro';
+import { films, mmss, isoDuration, label, YOUTUBE_URL, type Film } from '../../data/films';
+import '../../styles/home.css';
+import '../../styles/watch.css';
+
+export function getStaticPaths() {
+  return films.map((film, i) => ({ params: { slug: film.slug }, props: { film, prev: films[i - 1], next: films[i + 1] } }));
+}
+const { film, prev, next } = Astro.props as { film: Film; prev?: Film; next?: Film };
+const site = 'https://theagenticcrew.com';
+const summary = film.transcript[0];
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: `${film.title} — The Agentic Crew, ${label(film)}`,
+  description: summary,
+  thumbnailUrl: [`${site}${film.poster}`],
+  uploadDate: '2026-09-27',
+  duration: isoDuration(film.duration),
+  contentUrl: `${site}${film.video}`,
+  embedUrl: `${site}/watch/${film.slug}`,
+  transcript: film.transcript.join(' '),
+  inLanguage: 'en',
+  isFamilyFriendly: true,
+};
+---
+
+<BaseLayout title={`${film.title} · ${label(film)} — The Agentic Crew, in short films`} description={summary}>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <div class="home">
+    <Header sub />
+    <main>
+      <section class="band band--night watch-hero film-head" aria-labelledby="film-title">
+        <div class="wrap">
+          <a class="eyebrow" href="/watch" style="text-decoration:none">Watch · {label(film)}</a>
+          <h1 id="film-title">{film.title}</h1>
+          <div class="watch-meta">{mmss(film.duration)} · Part {film.part || '—'}: {film.partTitle}</div>
+          <div class="player">
+            <video controls preload="metadata" playsinline poster={film.poster}>
+              <source src={film.video} type="video/mp4" />
+              <track kind="captions" src={film.captions} srclang="en" label="English" />
+            </video>
+          </div>
+          <div class="player-actions">
+            <a class="btn btn--brass" href="/#download">Read the chapter free</a>
+            {next && <a class="btn btn--ghost" href={`/watch/${next.slug}`}>Next: {next.title} →</a>}
+            <span class="spacer"></span>
+            <a class="btn btn--link" href={YOUTUBE_URL} target="_blank" rel="noopener">YouTube</a>
+          </div>
+          <p class="made-note">Made by AI agents — script drafted from the book, AI narration, animation written as code — and steered by the author, Rasmus Bornhøft Schlünsen.</p>
+        </div>
+      </section>
+
+      <section class="band band--paper" aria-labelledby="transcript-title">
+        <div class="wrap">
+          <span class="eyebrow">Transcript</span>
+          <h2 id="transcript-title" class="h2" style="margin:0.6rem 0 1.6rem">What the film says</h2>
+          <div class="transcript">
+            {film.transcript.map((p) => <p>{p}</p>)}
+          </div>
+          <nav class="film-nav" aria-label="More films">
+            {prev ? <a href={`/watch/${prev.slug}`}><small>← {label(prev)}</small>{prev.title}</a> : <span></span>}
+            {next ? <a class="next" href={`/watch/${next.slug}`}><small>{label(next)} →</small>{next.title}</a> : <a class="next" href="/watch"><small>All films →</small>Back to the series</a>}
+          </nav>
+        </div>
+      </section>
+    </main>
+    <SiteFooter />
+  </div>
+  <HeaderScript />
+</BaseLayout>

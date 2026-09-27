@@ -1,0 +1,286 @@
+WEBVTT
+
+00:00:04.500 --> 00:00:06.140
+Every time you open a coding agent,
+
+00:00:06.140 --> 00:00:08.180
+you're standing on hundreds of decisions someone
+
+00:00:08.180 --> 00:00:09.030
+else made.
+
+00:00:09.200 --> 00:00:10.980
+Someone wrote the system prompt,
+
+00:00:10.980 --> 00:00:12.080
+chose the tools,
+
+00:00:12.080 --> 00:00:14.360
+and decided what survives when the conversation
+
+00:00:14.360 --> 00:00:15.400
+gets compacted.
+
+00:00:15.400 --> 00:00:16.700
+When you use an agent,
+
+00:00:16.700 --> 00:00:18.430
+those decisions are invisible.
+
+00:00:18.500 --> 00:00:19.830
+When you build one,
+
+00:00:19.840 --> 00:00:21.110
+every one of them is yours.
+
+00:00:22.026 --> 00:00:23.536
+Here's the uncomfortable truth.
+
+00:00:23.566 --> 00:00:25.246
+The core of an agent fits on
+
+00:00:25.246 --> 00:00:26.356
+a single page.
+
+00:00:26.506 --> 00:00:27.746
+Call the model,
+
+00:00:27.746 --> 00:00:29.356
+run the tools it asks for,
+
+00:00:29.426 --> 00:00:30.666
+feed the results back,
+
+00:00:30.666 --> 00:00:31.556
+and repeat.
+
+00:00:31.566 --> 00:00:34.196
+That's why so many first attempts disappoint.
+
+00:00:34.346 --> 00:00:36.006
+The loop is the easy part.
+
+00:00:36.006 --> 00:00:37.896
+The work is everything around it.
+
+00:00:38.568 --> 00:00:40.388
+The first instinct is to make everything
+
+00:00:40.388 --> 00:00:41.228
+an agent.
+
+00:00:41.228 --> 00:00:42.148
+Resist it.
+
+00:00:42.148 --> 00:00:44.148
+Most of the value comes from ordinary
+
+00:00:44.148 --> 00:00:46.658
+code with model calls at fixed points:
+
+00:00:46.828 --> 00:00:48.088
+fetch the ticket,
+
+00:00:48.088 --> 00:00:49.188
+classify it,
+
+00:00:49.188 --> 00:00:50.218
+draft a reply,
+
+00:00:50.308 --> 00:00:51.418
+queue it for a human.
+
+00:00:51.448 --> 00:00:53.148
+Save the open loop for work like
+
+00:00:53.148 --> 00:00:53.588
+debugging,
+
+00:00:53.588 --> 00:00:55.938
+where each step depends on the last.
+
+00:00:56.248 --> 00:00:57.518
+Deterministic skeleton,
+
+00:00:57.648 --> 00:00:58.798
+agentic muscles.
+
+00:00:59.669 --> 00:01:00.929
+The model has no memory.
+
+00:01:00.929 --> 00:01:01.729
+Each turn,
+
+00:01:01.729 --> 00:01:03.329
+it sees exactly what you send it
+
+00:01:03.329 --> 00:01:04.509
+and nothing else.
+
+00:01:04.509 --> 00:01:05.229
+So,
+
+00:01:05.229 --> 00:01:07.119
+you build the prompt every turn.
+
+00:01:07.169 --> 00:01:08.459
+Stable instructions,
+
+00:01:08.629 --> 00:01:09.839
+the relevant state,
+
+00:01:10.069 --> 00:01:11.399
+history compacted,
+
+00:01:11.469 --> 00:01:12.699
+tool results trimmed.
+
+00:01:12.709 --> 00:01:14.889
+When a home -built agent gets confused,
+
+00:01:14.889 --> 00:01:16.389
+it's usually the context,
+
+00:01:16.389 --> 00:01:17.319
+not the model.
+
+00:01:18.056 --> 00:01:19.566
+Tools are the product.
+
+00:01:19.776 --> 00:01:21.796
+Sort every one by its side effects.
+
+00:01:21.796 --> 00:01:23.446
+Read tools run freely.
+
+00:01:23.616 --> 00:01:25.486
+Write tools stay inside the run.
+
+00:01:25.776 --> 00:01:26.696
+Irreversible ones,
+
+00:01:26.696 --> 00:01:28.516
+like sending an email or charging a
+
+00:01:28.516 --> 00:01:29.056
+card,
+
+00:01:29.056 --> 00:01:30.016
+go through an approval,
+
+00:01:30.016 --> 00:01:32.076
+or aren't handed over at all.
+
+00:01:32.076 --> 00:01:33.936
+And make writes idempotent,
+
+00:01:33.936 --> 00:01:35.276
+because agents retry,
+
+00:01:35.276 --> 00:01:37.926
+and one refund should stay one refund.
+
+00:01:38.738 --> 00:01:40.618
+Asking a human is just another tool
+
+00:01:40.618 --> 00:01:41.238
+call.
+
+00:01:41.238 --> 00:01:43.318
+Picture a refund that needs a manager's
+
+00:01:43.318 --> 00:01:44.818
+sign -off and the manager is in
+
+00:01:44.818 --> 00:01:45.358
+a meeting.
+
+00:01:45.358 --> 00:01:46.998
+The harness saves the run,
+
+00:01:46.998 --> 00:01:48.438
+sends the question to Slack,
+
+00:01:48.438 --> 00:01:49.368
+and stops.
+
+00:01:49.398 --> 00:01:50.828
+18 hours later,
+
+00:01:50.838 --> 00:01:51.998
+the answer arrives,
+
+00:01:51.998 --> 00:01:54.078
+and the loop picks up exactly where
+
+00:01:54.078 --> 00:01:54.948
+it left off.
+
+00:01:55.681 --> 00:01:57.351
+So how do you know it works?
+
+00:01:57.381 --> 00:01:59.031
+You write evals:
+
+00:01:59.161 --> 00:02:00.401
+realistic tasks,
+
+00:02:00.401 --> 00:02:01.591
+each with a check.
+
+00:02:01.601 --> 00:02:02.831
+Start with twenty,
+
+00:02:02.901 --> 00:02:04.501
+drawn from real traffic,
+
+00:02:04.501 --> 00:02:06.721
+and turn every production failure into a
+
+00:02:06.721 --> 00:02:07.571
+new case.
+
+00:02:07.661 --> 00:02:09.761
+Run them on every prompt tweak and
+
+00:02:09.761 --> 00:02:11.131
+every model upgrade.
+
+00:02:11.181 --> 00:02:13.681
+The builders who ship reliable agents aren't
+
+00:02:13.681 --> 00:02:15.361
+the ones with the cleverest prompts.
+
+00:02:15.361 --> 00:02:17.391
+They're the ones with the best evals.
+
+00:02:18.125 --> 00:02:20.085
+Treat every input as untrusted,
+
+00:02:20.085 --> 00:02:21.585
+and make less possible.
+
+00:02:21.585 --> 00:02:22.955
+Then comes the reward.
+
+00:02:23.065 --> 00:02:24.565
+Once you've built an agent,
+
+00:02:24.565 --> 00:02:26.125
+you get better at using one.
+
+00:02:26.125 --> 00:02:28.365
+The harness stops being a black box.
+
+00:02:28.365 --> 00:02:29.285
+Build one,
+
+00:02:29.285 --> 00:02:30.535
+even a small one.
+
+00:02:31.005 --> 00:02:31.985
+Next up:
+
+00:02:31.985 --> 00:02:33.415
+when agents get it wrong.

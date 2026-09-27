@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ch 19 · Final Words — riso intro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=block">
+<style>
+  html, body { margin: 0; background: #1b1820; color: #eee; font: 13px system-ui, sans-serif; }
+  main { padding: 12px; display: grid; gap: 8px; }
+  #out { width: min(100%, 1280px); aspect-ratio: 16 / 9; height: auto; background: #F4EFE6; }
+  .bar { display: flex; gap: 10px; align-items: center; max-width: 1280px; }
+  #scrub { flex: 1; }
+  #tt { font-variant-numeric: tabular-nums; min-width: 190px; }
+</style>
+</head>
+<body>
+<main>
+  <canvas id="out" width="1920" height="1080"></canvas>
+  <div class="bar"><input id="scrub" type="range" min="0" max="12" step="0.0417" value="0"><span id="tt">loading…</span></div>
+</main>
+<!-- narration timing (video/tools/voice.py), then the project settings derived from it -->
+<script src="src/scenes/ch19.timing.js"></script>
+<script>const PROJECT = { duration: TIMING.duration, bpm: 90, offset: 0, riso: { inks: ['federal', 'orange', 'yellow'] } };</script>
+<script src="src/core.js"></script>
+<script src="src/riso.js"></script>
+<script src="src/clawd.js"></script>
+<script src="src/timeline.js"></script>
+<script src="src/scenes/common.js"></script>
+<script src="src/skipper.js"></script>
+<script src="src/scenes/ch19.js"></script>
+</body>
+</html>

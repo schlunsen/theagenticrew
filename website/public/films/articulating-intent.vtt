@@ -1,0 +1,265 @@
+WEBVTT
+
+00:00:04.500 --> 00:00:06.000
+Tell an agent to fix the auth
+
+00:00:06.000 --> 00:00:06.460
+bug,
+
+00:00:06.460 --> 00:00:07.940
+and it won't ask which one.
+
+00:00:07.940 --> 00:00:08.880
+It will guess,
+
+00:00:08.880 --> 00:00:09.730
+confidently,
+
+00:00:09.800 --> 00:00:11.380
+and hand you a fix for something
+
+00:00:11.380 --> 00:00:12.680
+you never asked about.
+
+00:00:12.680 --> 00:00:15.210
+There's no secret syntax that prevents this.
+
+00:00:15.380 --> 00:00:16.930
+Prompting is communication.
+
+00:00:16.980 --> 00:00:18.440
+If you can write a good bug
+
+00:00:18.440 --> 00:00:19.000
+report,
+
+00:00:19.000 --> 00:00:20.290
+you already know how.
+
+00:00:20.981 --> 00:00:22.721
+A good task prompt says what you
+
+00:00:22.721 --> 00:00:23.221
+want,
+
+00:00:23.221 --> 00:00:24.201
+why it matters,
+
+00:00:24.201 --> 00:00:25.831
+and how success looks.
+
+00:00:25.881 --> 00:00:28.881
+The login endpoint rejects valid tokens when
+
+00:00:28.881 --> 00:00:30.391
+the session cache is cold.
+
+00:00:30.441 --> 00:00:32.361
+This test reproduces it.
+
+00:00:32.361 --> 00:00:32.821
+Fix it,
+
+00:00:32.821 --> 00:00:35.011
+and keep every auth test passing.
+
+00:00:35.021 --> 00:00:36.501
+Leave out the file path;
+
+00:00:36.501 --> 00:00:38.351
+the agent can find that itself.
+
+00:00:38.541 --> 00:00:40.161
+Give it what tools can't:
+
+00:00:40.161 --> 00:00:41.121
+the symptom,
+
+00:00:41.121 --> 00:00:41.971
+the domain,
+
+00:00:42.041 --> 00:00:42.891
+the intent.
+
+00:00:43.685 --> 00:00:44.965
+Then say what not to do.
+
+00:00:44.965 --> 00:00:46.845
+Agents are eager optimisers.
+
+00:00:46.845 --> 00:00:47.965
+Ask for a fix,
+
+00:00:47.965 --> 00:00:49.895
+and you might get a rewritten module,
+
+00:00:49.945 --> 00:00:52.025
+three new dependencies and a changed public
+
+00:00:52.025 --> 00:00:52.875
+interface.
+
+00:00:53.045 --> 00:00:55.025
+Constraints are the guardrails on the bridge.
+
+00:00:55.025 --> 00:00:56.275
+No new dependencies.
+
+00:00:56.685 --> 00:00:58.455
+Don't touch the public interface.
+
+00:00:58.505 --> 00:01:00.075
+Stay inside this folder.
+
+00:01:00.866 --> 00:01:02.966
+Build a dashboard with live metrics,
+
+00:01:02.966 --> 00:01:03.606
+roles,
+
+00:01:03.606 --> 00:01:05.286
+and exports isn't a prompt,
+
+00:01:05.286 --> 00:01:06.356
+it's a project.
+
+00:01:06.386 --> 00:01:07.806
+Split it into small,
+
+00:01:07.806 --> 00:01:08.986
+verifiable steps,
+
+00:01:08.986 --> 00:01:10.186
+the data model,
+
+00:01:10.186 --> 00:01:11.236
+then the endpoint,
+
+00:01:11.306 --> 00:01:12.336
+then the filtering,
+
+00:01:12.466 --> 00:01:13.356
+then the view.
+
+00:01:13.386 --> 00:01:15.976
+Each one checked before the next begins.
+
+00:01:16.066 --> 00:01:17.916
+And when tasks are independent,
+
+00:01:17.966 --> 00:01:20.086
+say so and let sub -agents run
+
+00:01:20.086 --> 00:01:20.976
+them in parallel.
+
+00:01:21.830 --> 00:01:23.800
+For anything bigger than a small fix,
+
+00:01:23.870 --> 00:01:25.310
+ask for a plan first.
+
+00:01:25.310 --> 00:01:27.100
+Don't change any code yet.
+
+00:01:27.230 --> 00:01:28.210
+Read the files,
+
+00:01:28.210 --> 00:01:29.910
+and tell me what you'll touch and
+
+00:01:29.910 --> 00:01:31.030
+how you'll verify it.
+
+00:01:31.030 --> 00:01:32.730
+A wrong assumption caught in a short
+
+00:01:32.730 --> 00:01:34.630
+plan costs one sentence.
+
+00:01:34.630 --> 00:01:36.150
+Caught in a giant diff,
+
+00:01:36.150 --> 00:01:37.700
+it costs the whole diff.
+
+00:01:38.478 --> 00:01:40.358
+Your first prompt won't be perfect.
+
+00:01:40.358 --> 00:01:41.718
+When the output is wrong,
+
+00:01:41.718 --> 00:01:43.268
+ask what you failed to say.
+
+00:01:43.318 --> 00:01:45.888
+The agent's output is the error message.
+
+00:01:45.898 --> 00:01:47.828
+Your prompt is the stack trace.
+
+00:01:47.838 --> 00:01:50.068
+You're debugging your own communication.
+
+00:01:51.065 --> 00:01:52.445
+Try speaking your prompts.
+
+00:01:52.445 --> 00:01:53.755
+Typing is tiring,
+
+00:01:54.005 --> 00:01:56.635
+so typed prompts shrink and lose context.
+
+00:01:56.905 --> 00:01:58.825
+Speaking costs almost nothing,
+
+00:01:58.825 --> 00:02:00.425
+so you tell the whole story of
+
+00:02:00.425 --> 00:02:01.105
+the bug.
+
+00:02:01.105 --> 00:02:02.745
+And when words fail,
+
+00:02:02.745 --> 00:02:03.505
+show it.
+
+00:02:03.505 --> 00:02:05.525
+A screenshot of a broken layout says
+
+00:02:05.525 --> 00:02:07.575
+more than three paragraphs about padding.
+
+00:02:08.373 --> 00:02:08.973
+Finally,
+
+00:02:08.973 --> 00:02:10.273
+treat prompts as code.
+
+00:02:10.273 --> 00:02:12.173
+Save the ones that work as skills
+
+00:02:12.173 --> 00:02:13.703
+and slash commands,
+
+00:02:13.813 --> 00:02:15.833
+versioned in git and reviewed like anything
+
+00:02:15.833 --> 00:02:16.683
+else.
+
+00:02:16.733 --> 00:02:18.593
+Prompting isn't a parlour trick.
+
+00:02:18.593 --> 00:02:19.663
+It's engineering.
+
+00:02:19.753 --> 00:02:20.713
+Next up:
+
+00:02:20.713 --> 00:02:21.293
+local,
+
+00:02:21.293 --> 00:02:22.943
+commercial and hybrid models.

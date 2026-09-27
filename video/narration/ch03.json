@@ -1,0 +1,51 @@
+{
+  "chapter": "03",
+  "title": "Context",
+  "next": "Guardrails, Trust, and Sandboxes",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "bug",
+      "gap": 0.0,
+      "text": "A payments bug comes in. Customers with accented letters in their address can't pay. One engineer tells an agent, there's a bug for international users, take a look. It returns a patch that strips every accent from every address. Worse than the bug. A second engineer pastes in the error log, the trace, the gateway docs, and the three files involved. The fix is four lines."
+    },
+    {
+      "id": "skill",
+      "gap": 0.8,
+      "text": "Same model. Same agent. What changed was what the agent could see. That's why the most important skill here isn't prompting. It's context engineering: curating everything that lands in the model's window."
+    },
+    {
+      "id": "bench",
+      "gap": 0.8,
+      "text": "Think of the window as a workbench. Space is limited, so you lay out only what this task needs. But the real skill is designing the workshop, with clear structure and labelled drawers, so the agent can pull the right tool off the wall itself."
+    },
+    {
+      "id": "ladder",
+      "gap": 0.8,
+      "text": "Context reaches an agent on a ladder. At level zero, you describe the problem in your own words, and the detail gets lost. At level one, you paste the raw stack trace. Better, but tomorrow you paste it again. At level two, the agent can run the test and read the trace itself, and you add only what no tool can find: your intent, and your constraints."
+    },
+    {
+      "id": "infra",
+      "gap": 0.8,
+      "text": "That's infrastructure versus injection. Infrastructure is set up once and pays off in every session: tool access, integrations with your error tracker, a navigable repo, an instruction file. Injection is what you paste by hand. When you paste the same thing a third time, promote it."
+    },
+    {
+      "id": "tax",
+      "gap": 0.8,
+      "text": "And more is not better. Every token costs twice, in money and in attention. Details buried in the middle get less weight, and quality degrades as the input grows. It's called context rot, and a bigger window doesn't cure it. Before adding anything, ask: will the agent decide differently because it saw this?"
+    },
+    {
+      "id": "clean",
+      "gap": 0.8,
+      "text": "Long sessions fill up with noise. Compact them into a short brief. Have the agent keep notes in a file. Send big explorations to a sub-agent that returns only the conclusion. Then work in phases: research, plan, implement, each in a fresh window."
+    },
+    {
+      "id": "durable",
+      "gap": 0.8,
+      "text": "When a session ends, its window is gone. So commit often, keep the notes, and put what's permanent in the instruction file. Your code, your repo and your docs are all context now. Next up: guardrails, trust, and sandboxes."
+    }
+  ]
+}

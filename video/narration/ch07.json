@@ -1,0 +1,51 @@
+{
+  "chapter": "07",
+  "title": "Convention Over Configuration",
+  "next": "The Ship's Log",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "hook",
+      "gap": 0.0,
+      "text": "Picture the same agent, on the same afternoon, with the same model. In one project, it writes code worthy of a senior hire. In another, it produces something nobody wants to maintain. The difference isn't the prompt. It's the code base."
+    },
+    {
+      "id": "two",
+      "gap": 0.8,
+      "text": "In the first project, every endpoint follows one pattern: a handler, a schema and a test, named the same way. The agent reads the existing endpoints, follows the pattern, and the review takes three minutes. In the second, routes live in three different folders, and errors are thrown, returned, or quietly turned into null. The agent copies whatever it saw last, and the review takes thirty minutes of: that's not how we do it here."
+    },
+    {
+      "id": "implicit",
+      "gap": 0.8,
+      "text": "Convention is implicit context. An agent explores a code base the way a new hire does: it looks for patterns. When tests always sit next to the file they test, nobody has to say where the new test goes. And consistent names make the agent's own tools work. When every test file ends the same way, a single search finds them all."
+    },
+    {
+      "id": "file",
+      "gap": 0.8,
+      "text": "The strongest convention is the instruction file at the root of the project. Agents dot M D has become the cross-tool standard. A good one has five parts: a project overview, the exact build and test commands, the architecture decisions, your conventions, and the common pitfalls. It takes about thirty minutes to write, and it gives every session more context than most people get in their first week."
+    },
+    {
+      "id": "short",
+      "gap": 0.8,
+      "text": "Keep it short. It's loaded on every session, so every line is a tax on every task. Point to deeper documents instead of pasting them in. And keep it up to date, because an outdated instruction file is worse than none. The agent will trust it."
+    },
+    {
+      "id": "skills",
+      "gap": 0.8,
+      "text": "Procedures become skills: a folder with a skill file inside. The agent sees only each skill's name and description, until a task needs the rest. The progression is simple. A convention the agent keeps getting wrong goes in the instruction file. A procedure becomes a skill. A rule that must never be broken becomes a hook."
+    },
+    {
+      "id": "memory",
+      "gap": 0.8,
+      "text": "Conventions are the closest thing agents have to long-term memory. Without them, you correct the same mistake in session one, session two, and session three. Encode it once, in a documented pattern and a linter rule, and it's gone for good."
+    },
+    {
+      "id": "boring",
+      "gap": 0.8,
+      "text": "Your code base is the environment your agents live in. Make it legible. Make it predictable. Make it boring. The agents will repay you with code that looks like it belongs. Next up: the ship's log."
+    }
+  ]
+}

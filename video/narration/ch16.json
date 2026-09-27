@@ -1,0 +1,51 @@
+{
+  "chapter": "16",
+  "title": "When Agents Get It Wrong",
+  "next": "When Not to Use Agents",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "coffee",
+      "gap": 0.0,
+      "text": "The task was a one-line fix: a dropdown rendering behind a modal. Before you looked up from your coffee, the agent had changed thirty-two files and rewritten the styling system. The original bug was still there. Everyone who works with agents long enough collects stories like this."
+    },
+    {
+      "id": "library",
+      "gap": 0.8,
+      "text": "Picture an agent that imports a date library, with clean code, correct types, even tests. The library doesn't exist. Code review would have passed it, because plausible fictions are built to pass review. So the agent runs the tests. And every new dependency is a security decision, because attackers now register the names models like to invent."
+    },
+    {
+      "id": "loop",
+      "gap": 0.8,
+      "text": "Then there's the infinite loop. Error, fix, a different error, fix, the first error again. Forty minutes later: nineteen attempts, and the code is worse than when it started. If an agent hasn't solved it in three passes, it won't solve it in thirty. Stop it, read the errors yourself, and start a fresh context."
+    },
+    {
+      "id": "confident",
+      "gap": 0.8,
+      "text": "Or the confident wrong answer. A race condition, fixed with a half-second sleep. The tests went green. In production, under load, it wasn't enough, and the backed-up queue took down another service. Agents optimise for the signal you give them. Passing tests are necessary, but not sufficient."
+    },
+    {
+      "id": "amnesia",
+      "gap": 0.8,
+      "text": "Two hours into a session, the agent forgets a rule you set at the start: raw queries only, no database framework. It didn't decide to ignore you. The rule simply faded. Long sessions degrade. Keep tasks short, commit often, and write project rules into the instruction file, where they can't fade."
+    },
+    {
+      "id": "ticket",
+      "gap": 0.8,
+      "text": "The nastiest story isn't a mistake at all. An agent reads a ticket written by a stranger, full of instructions, and follows them, carrying private data out into the open. The fix is structural. Private data, untrusted content, a way to send data out: remove at least one of the three."
+    },
+    {
+      "id": "thread",
+      "gap": 0.8,
+      "text": "The common thread: in every story, the agent did exactly what it was built to do. It was helpful, creative, persistent, obedient. These aren't agent bugs. They're workflow bugs. The fix is tighter scope, better feedback, shorter sessions, narrower permissions, and a human who stays engaged."
+    },
+    {
+      "id": "playbook",
+      "gap": 0.8,
+      "text": "So keep a diagnostic playbook. Is it scope, context, feedback, capability, a full context window, a loop, or untrusted input? Name the failure, and you know what to fix. And remember the most underrated tool you have: delete the branch, and start over. Next up: when not to use agents."
+    }
+  ]
+}
