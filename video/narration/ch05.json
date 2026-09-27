@@ -1,0 +1,51 @@
+{
+  "chapter": "05",
+  "title": "Git as Agent Infrastructure",
+  "next": "Testing as the Feedback Loop",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "twenty",
+      "gap": 0.0,
+      "text": "An agent can change twenty files in thirty seconds. Bundle them into one commit, and when something breaks, you're untangling a mess. Split them into five clean commits, and you revert the one that broke and keep the rest. With agents, Git stops being just version control. It becomes the backbone: your undo button, your parallel workspace, your review screen, and your documentation."
+    },
+    {
+      "id": "small",
+      "gap": 0.8,
+      "text": "The first habit: commit small, and commit often. Commit after each logical change, after the tests pass, and before anything risky, so there's always a save point to return to."
+    },
+    {
+      "id": "message",
+      "gap": 0.8,
+      "text": "Then let the agent write the commit message. It has the whole diff in context, so it summarizes from facts, not memory. Fix auth bug is noise. A message that explains the race condition, and why it happened, is useful six months later. Add a co-author line, so agent work is searchable. Your name is still on the commit."
+    },
+    {
+      "id": "branch",
+      "gap": 0.8,
+      "text": "Every agent task gets its own branch. That gives you isolation, a clear review scope, and a clean rollback: if it's wrong, delete the branch. Name branches after the task, and your branch list becomes a manifest of what your agents are doing."
+    },
+    {
+      "id": "worktree",
+      "gap": 0.8,
+      "text": "For agents working in parallel, branches aren't enough. Two agents in one folder will fight over the files. A worktree gives each agent its own directory on its own branch, sharing one history. It's the cheapest sandbox there is. Just remember it holds only what Git tracks, so no environment files, and no installed dependencies."
+    },
+    {
+      "id": "cloud",
+      "gap": 0.8,
+      "text": "More and more, tools create worktrees for you, and cloud agents clone the repo into a remote sandbox and hand back a pull request. The shape is the same every time: an isolated copy, a dedicated branch, and a diff you review."
+    },
+    {
+      "id": "review",
+      "gap": 0.8,
+      "text": "Your review interface is the diff. Read the tests first, watch for scope creep, and check the interfaces. When agents run in parallel, reviewing becomes the bottleneck. Keep pull requests small, let C I and linters take the first pass, and don't start what you can't review this week."
+    },
+    {
+      "id": "history",
+      "gap": 0.8,
+      "text": "Finally, agents read your history. Git log and git blame are documentation they consult directly. A history of fix bug leaves them guessing. Every commit message, branch name and pull request is context for the next agent, so make it worth reading. Next up: testing as the feedback loop."
+    }
+  ]
+}

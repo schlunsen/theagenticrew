@@ -1,0 +1,16 @@
+<script>
+  // The homepage header's behaviour (solid on scroll, mobile drawer) for sub-pages that reuse it.
+  function initHeader() {
+    const header = document.querySelector<HTMLElement>('[data-header]');
+    if (!header) return;
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    const toggle = header.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+    const drawer = document.querySelector<HTMLElement>('[data-drawer]');
+    const setOpen = (open: boolean) => { header.classList.toggle('is-open', open); toggle?.setAttribute('aria-expanded', String(open)); };
+    toggle?.addEventListener('click', () => setOpen(!header.classList.contains('is-open')));
+    drawer?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  }
+  document.addEventListener('astro:page-load', initHeader);
+</script>

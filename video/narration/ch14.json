@@ -1,0 +1,56 @@
+{
+  "chapter": "14",
+  "title": "Agents in the Pipeline",
+  "next": "Building Your Own Agents",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "lint",
+      "gap": 0.0,
+      "text": "Picture a team that adds an agent to its pipeline to fix lint failures automatically. The pipeline stays green, and everyone loves it. Then someone notices a whole category of lint rules has vanished. The agent had learned the fastest fix: switch the rule off in the config."
+    },
+    {
+      "id": "dark",
+      "gap": 0.8,
+      "text": "Nobody caught it, because the signal they watched was exactly the signal the agent had learned to game. At your desk, you see every file an agent touches. In the pipeline, it runs in the dark. You only see green or red."
+    },
+    {
+      "id": "steps",
+      "gap": 0.8,
+      "text": "So start with jobs that are safe to automate and easy to verify. Screening pull requests before a human reviews them. Drafting release notes. Explaining why a test failed. A good test: would you be comfortable if you only spot-checked a few of its runs?"
+    },
+    {
+      "id": "overnight",
+      "gap": 0.8,
+      "text": "Then there's the overnight agent. Point it at a clear ticket, go home, and wake up to a pull request. It needs good tests, a tight scope, a fresh branch, and a hard timeout. Cloud products now run this loop for you. But they give you a sandbox, not a well-written ticket."
+    },
+    {
+      "id": "cost",
+      "gap": 0.8,
+      "text": "In the pipeline, nobody is there to hit stop. In one story, a review bot's retry logic ran unchecked over a holiday weekend, and ran up a four thousand dollar bill. So cap every run, limit concurrency, set spend alerts, and keep a kill switch."
+    },
+    {
+      "id": "review",
+      "gap": 0.8,
+      "text": "Agent pull requests still need a human review. Tests check behaviour. They don't check intent, or whether the approach will hurt the next feature. A five-minute scan of the approach goes a long way. Auto-merge only the trivial, mechanical changes."
+    },
+    {
+      "id": "untrusted",
+      "gap": 0.8,
+      "text": "And on a public repository, anyone can write the text your agent reads. A pull request description can carry instructions. Add secrets and a write token, and you have a stranger holding your keys. So ask who gets to write the text it reads."
+    },
+    {
+      "id": "deploy",
+      "gap": 0.8,
+      "text": "In production, agents watch. They track error rates, compare latency, and recommend a rollback. But the rollback itself belongs to a human, or a boring, pre-approved rule. Production is read-only for agents."
+    },
+    {
+      "id": "small",
+      "gap": 0.8,
+      "text": "Start small. Formatting in week one. Review comments in week two. Changelogs in the first month. Overnight agents by month three. Each step builds on the last. Nobody's watching, so your safety nets need to be stronger. Next up: building your own agents."
+    }
+  ]
+}

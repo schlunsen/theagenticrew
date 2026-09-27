@@ -1,0 +1,51 @@
+{
+  "chapter": "A",
+  "title": "Agents as Pentesters",
+  "next": "The State of the Tools",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "hack",
+      "gap": 0.0,
+      "text": "What if your pipeline could hack itself before attackers do? Penetration testing has always been slow and manual. A consultant spends weeks probing and writing a report, once a year if you're typical. Meanwhile the code changes every day, and your security drifts silently."
+    },
+    {
+      "id": "phases",
+      "gap": 0.8,
+      "text": "Autonomous pentesting splits the work into phases. First, agents scan the target and read the source code. Then they map every endpoint and login flow. Then five specialists work in parallel: injection, cross site scripting, authentication, authorization, and server side request forgery."
+    },
+    {
+      "id": "exploit",
+      "gap": 0.8,
+      "text": "Next, five more agents try to prove each finding by actually exploiting it. That's the difference between a scanner and a pentester. A scanner says, this might be vulnerable. A pentester shows you. Finally, a reporting agent writes it up, with severity scores and fixes. And a durable workflow resumes any phase that crashes."
+    },
+    {
+      "id": "sentinel",
+      "gap": 0.8,
+      "text": "Run it continuously, and it becomes transformative. A sentinel watches the repository every few hours and routes by what changed. A query file goes to the injection agent. A template goes to cross site scripting. A Dockerfile triggers a full scan. Nothing changed? It skips. Zero cost, zero noise."
+    },
+    {
+      "id": "hostile",
+      "gap": 0.8,
+      "text": "But this agent is hostile by design, so the guardrails now protect the world from your agent. Never run it against production. Get written authorization from whoever controls each system. Verify every finding by hand. And sandbox the agents, so they reach the target and nothing else. Start restrictive, and stay restrictive."
+    },
+    {
+      "id": "feedback",
+      "gap": 0.8,
+      "text": "When an exploit fails, the agent records what it tried and what came back, say, a firewall blocking the request, and tries a different approach next time. It doesn't learn in the machine learning sense, but each scan gets sharper. Duplicate findings are merged by endpoint, weakness type and root cause, so fifty reports become ten real issues."
+    },
+    {
+      "id": "oversight",
+      "gap": 0.8,
+      "text": "Not every agent needs the same model. The most capable one crafts the exploits, while cheaper ones analyze and write reports. And a dashboard keeps a human in the loop. Agents can hallucinate findings, or miss real ones, so every finding is really a question: is this real?"
+    },
+    {
+      "id": "limit",
+      "gap": 0.8,
+      "text": "It's every principle in this book, pushed to its limit. If you can build a system that safely lets agents attack your own software, everything else is easier. Next up, in the second appendix: the state of the tools."
+    }
+  ]
+}

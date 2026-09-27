@@ -1,0 +1,41 @@
+{
+  "chapter": "01",
+  "title": "Introduction",
+  "next": "What Is an Agent?",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 1.0,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "cold",
+      "gap": 0.0,
+      "text": "Everything in this video was made by AI agents. The script, the voice, the animation, even the music. But none of it was left to them alone. Rasmus, who wrote the book this channel is based on, steered every step. That's what engineering looks like now."
+    },
+    {
+      "id": "loop",
+      "gap": 4.2,
+      "text": "For twenty years, the job was one loop. You, a keyboard, and a problem. That loop is changing. Coding agents read whole codebases, edit dozens of files, run the tests, and fix what fails. More of the work is now describing what you want, reviewing what comes back, and steering."
+    },
+    {
+      "id": "skill",
+      "gap": 0.8,
+      "text": "Here's the catch. Working well with agents is a skill. When an agent wastes your afternoon, it's rarely a weak model. It's missing context, a task scoped too wide, or not knowing when to let it run, and when to take the wheel back. None of that is complicated. It just isn't obvious."
+    },
+    {
+      "id": "honest",
+      "gap": 0.8,
+      "text": "And nobody has this fully figured out. The field moves every month. What this series offers is principles that have held up in real projects, stated plainly, failures included. No hype. No doom. No prompt tricks."
+    },
+    {
+      "id": "series",
+      "gap": 0.8,
+      "text": "The Agentic Crew is a free book by Rasmus Schlünsen. This channel turns each chapter into a short film like this one. Context, guardrails, git, tests, memory, security, fleets of agents, and knowing when not to use them. About two minutes each."
+    },
+    {
+      "id": "next",
+      "gap": 0.8,
+      "text": "Next up: what an agent actually is. Here's a hint. The model never runs a single command. Subscribe so you don't miss it, and read the whole book free, at the agentic crew dot com."
+    }
+  ]
+}

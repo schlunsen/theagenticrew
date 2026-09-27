@@ -1,0 +1,51 @@
+{
+  "chapter": "11",
+  "title": "Articulating Intent",
+  "next": "Local, Commercial, and Hybrid Models",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "guess",
+      "gap": 0.0,
+      "text": "Tell an agent to fix the auth bug, and it won't ask which one. It will guess, confidently, and hand you a fix for something you never asked about. There's no secret syntax that prevents this. Prompting is communication. If you can write a good bug report, you already know how."
+    },
+    {
+      "id": "anatomy",
+      "gap": 0.8,
+      "text": "A good task prompt says what you want, why it matters, and how success looks. The login endpoint rejects valid tokens when the session cache is cold. This test reproduces it. Fix it, and keep every auth test passing. Leave out the file path; the agent can find that itself. Give it what tools can't: the symptom, the domain, the intent."
+    },
+    {
+      "id": "limits",
+      "gap": 0.8,
+      "text": "Then say what not to do. Agents are eager optimisers. Ask for a fix, and you might get a rewritten module, three new dependencies and a changed public interface. Constraints are the guardrails on the bridge. No new dependencies. Don't touch the public interface. Stay inside this folder."
+    },
+    {
+      "id": "split",
+      "gap": 0.8,
+      "text": "Build a dashboard with live metrics, roles and exports isn't a prompt. It's a project. Split it into small, verifiable steps: the data model, then the endpoint, then the filtering, then the view, each one checked before the next begins. And when tasks are independent, say so, and let sub-agents run them in parallel."
+    },
+    {
+      "id": "plan",
+      "gap": 0.8,
+      "text": "For anything bigger than a small fix, ask for a plan first. Don't change any code yet. Read the files, and tell me what you'll touch and how you'll verify it. A wrong assumption caught in a short plan costs one sentence. Caught in a giant diff, it costs the whole diff."
+    },
+    {
+      "id": "iterate",
+      "gap": 0.8,
+      "text": "Your first prompt won't be perfect. When the output is wrong, ask what you failed to say. The agent's output is the error message. Your prompt is the stack trace. You're debugging your own communication."
+    },
+    {
+      "id": "voice",
+      "gap": 0.8,
+      "text": "Try speaking your prompts. Typing is tiring, so typed prompts shrink and lose context. Speaking costs almost nothing, so you tell the whole story of the bug. And when words fail, show it. A screenshot of a broken layout says more than three paragraphs about padding."
+    },
+    {
+      "id": "skills",
+      "gap": 0.8,
+      "text": "Finally, treat prompts as code. Save the ones that work as skills and slash commands, versioned in git and reviewed like anything else. Prompting isn't a parlour trick. It's engineering. Next up: local, commercial and hybrid models."
+    }
+  ]
+}

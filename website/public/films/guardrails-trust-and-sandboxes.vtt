@@ -1,0 +1,256 @@
+WEBVTT
+
+00:00:04.500 --> 00:00:06.660
+An agent is blocked from deleting files.
+
+00:00:06.660 --> 00:00:08.320
+It needs to undo some changes,
+
+00:00:08.320 --> 00:00:10.610
+so it runs a git checkout instead.
+
+00:00:10.660 --> 00:00:11.540
+That's allowed,
+
+00:00:11.540 --> 00:00:12.950
+because it sounds harmless.
+
+00:00:13.240 --> 00:00:15.160
+Every uncommitted change in the folder is
+
+00:00:15.160 --> 00:00:15.760
+wiped,
+
+00:00:15.760 --> 00:00:17.760
+including the engineer's own work.
+
+00:00:17.760 --> 00:00:19.430
+The agent wasn't malicious.
+
+00:00:19.540 --> 00:00:20.990
+It was resourceful.
+
+00:00:21.688 --> 00:00:24.498
+Power without boundaries isn't bold engineering.
+
+00:00:24.608 --> 00:00:25.768
+It's negligence.
+
+00:00:25.768 --> 00:00:28.068
+But guardrails that are too tight make
+
+00:00:28.068 --> 00:00:29.138
+an agent useless.
+
+00:00:29.288 --> 00:00:31.138
+The craft is finding the line.
+
+00:00:31.861 --> 00:00:32.901
+Think of a mixing board,
+
+00:00:32.901 --> 00:00:34.921
+with one slider for each kind of
+
+00:00:34.921 --> 00:00:35.581
+action:
+
+00:00:35.581 --> 00:00:36.721
+reading files,
+
+00:00:36.721 --> 00:00:37.521
+writing them,
+
+00:00:37.521 --> 00:00:38.511
+shell commands,
+
+00:00:38.541 --> 00:00:39.261
+the network,
+
+00:00:39.261 --> 00:00:40.111
+and git.
+
+00:00:40.381 --> 00:00:41.951
+Reads can run freely.
+
+00:00:41.961 --> 00:00:44.851
+A database migration needs explicit approval.
+
+00:00:45.061 --> 00:00:46.691
+Even two shell commands differ.
+
+00:00:46.721 --> 00:00:48.321
+Running the tests is safe.
+
+00:00:48.321 --> 00:00:50.611
+Installing a package deserves a prompt.
+
+00:00:51.324 --> 00:00:52.304
+On day one,
+
+00:00:52.304 --> 00:00:53.344
+you watch everything.
+
+00:00:53.344 --> 00:00:54.554
+After a week,
+
+00:00:54.564 --> 00:00:56.534
+tests and refactors run freely.
+
+00:00:56.584 --> 00:00:57.604
+After a month,
+
+00:00:57.604 --> 00:00:59.364
+it commits to feature branches on its
+
+00:00:59.364 --> 00:00:59.904
+own.
+
+00:00:59.904 --> 00:01:01.624
+The allowlist becomes a log of trust
+
+00:01:01.624 --> 00:01:01.924
+decisions,
+
+00:01:01.924 --> 00:01:05.334
+but pushing to main stays denied forever.
+
+00:01:05.444 --> 00:01:07.764
+Guardrails should be invisible for routine work,
+
+00:01:07.764 --> 00:01:09.574
+and rigid for the exceptional.
+
+00:01:10.389 --> 00:01:12.329
+Plan mode is the cheapest guardrail there
+
+00:01:12.329 --> 00:01:13.109
+is.
+
+00:01:13.109 --> 00:01:14.529
+The agent can read and think,
+
+00:01:14.529 --> 00:01:16.389
+but it changes nothing until you approve
+
+00:01:16.389 --> 00:01:17.109
+the plan.
+
+00:01:17.109 --> 00:01:18.959
+For rules that must never bend,
+
+00:01:19.029 --> 00:01:19.959
+use hooks:
+
+00:01:20.029 --> 00:01:21.989
+scripts the tool runs every time,
+
+00:01:21.989 --> 00:01:22.869
+before an edit,
+
+00:01:22.869 --> 00:01:24.729
+or when the agent says it's done.
+
+00:01:24.729 --> 00:01:26.399
+The model can't argue with them.
+
+00:01:26.509 --> 00:01:27.819
+Instructions are advice.
+
+00:01:27.849 --> 00:01:29.129
+Permissions are policy.
+
+00:01:29.129 --> 00:01:30.339
+Hooks are law.
+
+00:01:31.117 --> 00:01:33.617
+Modes that skip every permission belong inside
+
+00:01:33.617 --> 00:01:34.907
+a throwaway container.
+
+00:01:34.957 --> 00:01:36.727
+In one supply chain attack,
+
+00:01:36.817 --> 00:01:39.097
+malicious packages looked for coding agents on
+
+00:01:39.097 --> 00:01:41.597
+developers' machines and ran them with their
+
+00:01:41.597 --> 00:01:44.487
+guardrails switched off to hunt for secrets.
+
+00:01:45.327 --> 00:01:47.197
+So no single wall is enough.
+
+00:01:47.287 --> 00:01:48.817
+You need defense in depth.
+
+00:01:48.867 --> 00:01:51.097
+The allow list catches the obvious.
+
+00:01:51.167 --> 00:01:53.417
+Hooks enforce the rules that never bend.
+
+00:01:53.467 --> 00:01:55.877
+A sandbox limits the blast radius.
+
+00:01:56.067 --> 00:01:57.807
+Commit history lets you recover.
+
+00:01:57.807 --> 00:01:59.987
+And your own review catches what no
+
+00:01:59.987 --> 00:02:01.097
+rule would flag.
+
+00:02:01.917 --> 00:02:03.447
+Too many gates fail too.
+
+00:02:03.537 --> 00:02:06.017
+Click yes 40 times and you stop
+
+00:02:06.017 --> 00:02:06.757
+reading.
+
+00:02:06.757 --> 00:02:09.657
+The guardrails feel safe and protect nothing.
+
+00:02:09.657 --> 00:02:11.237
+If you approve the same kind of
+
+00:02:11.237 --> 00:02:13.157
+action five times in a session,
+
+00:02:13.157 --> 00:02:15.287
+it probably belongs on the allow list.
+
+00:02:15.968 --> 00:02:16.708
+Best of all,
+
+00:02:16.708 --> 00:02:18.528
+a sandbox gives the agent the freedom
+
+00:02:18.528 --> 00:02:19.348
+to be wrong.
+
+00:02:19.348 --> 00:02:20.348
+A work tree,
+
+00:02:20.348 --> 00:02:21.168
+a container,
+
+00:02:21.168 --> 00:02:23.278
+a cloud environment you can throw away.
+
+00:02:23.288 --> 00:02:24.878
+When failure is cheap,
+
+00:02:24.888 --> 00:02:26.418
+experimentation is free.
+
+00:02:26.508 --> 00:02:27.578
+Next up,
+
+00:02:27.688 --> 00:02:29.338
+Git as agent infrastructure.

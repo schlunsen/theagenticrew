@@ -1,0 +1,46 @@
+{
+  "chapter": "B",
+  "title": "The State of the Tools",
+  "next": "",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "perishable",
+      "gap": 0.0,
+      "text": "This appendix is deliberately perishable. Everything else in the book is written to survive the next model release. This part is a snapshot, and the tools shift every few months. So instead of naming winners, here is a way to judge any tool, including the ones that don't exist yet. When a detail goes stale, trust the principles, and check the vendor's current documentation."
+    },
+    {
+      "id": "shapes",
+      "gap": 0.8,
+      "text": "Coding agents tend to come in three shapes. Agents in your terminal or editor, working in your repository with your permissions. That's where most of the book's interactive work happens. Cloud agents, where you hand over a task, and a pull request comes back from a hosted sandbox. And kits for building agents of your own. Most vendors now offer all three."
+    },
+    {
+      "id": "standards",
+      "gap": 0.8,
+      "text": "Underneath, shared conventions are forming. An instruction file, like agents dot M D, that many tools can read. A common protocol, M C P, for connecting agents to tools and data. Skills, packaged know how that an agent loads only when it needs it. And hooks, small scripts that run the same way every time, around the agent's actions."
+    },
+    {
+      "id": "models",
+      "gap": 0.8,
+      "text": "Models change fastest of all. Frontier commercial models still lead on long, multi file work. Open weight models have improved dramatically, and some run on a well equipped laptop. Many agent tools can point at a local model, so a laptop can drive a real agent loop. Bigger context windows haven't removed the need to curate context. And agentic work burns through tokens, so the cost advice in the book still applies."
+    },
+    {
+      "id": "questions",
+      "gap": 0.8,
+      "text": "So here are the questions to ask any tool. What can it see? What can it touch? How does it get feedback? How do you review its work? And what happens when it reads something hostile?"
+    },
+    {
+      "id": "hostile",
+      "gap": 0.8,
+      "text": "That last question isn't theoretical. Public incidents have shown agents with broad access leaking private data after reading a malicious issue or support ticket. The write ups are short and worth reading. And measure your results, because feeling fast and being fast are not the same thing."
+    },
+    {
+      "id": "outlast",
+      "gap": 0.8,
+      "text": "Answer those five questions, and the product names stop mattering. The names on this page will change. The principles in the chapters will outlast every one of them. That's the whole crew, and the whole ship. Read the whole book, free, at the agentic crew dot com."
+    }
+  ]
+}

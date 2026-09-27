@@ -1,0 +1,322 @@
+WEBVTT
+
+00:00:04.500 --> 00:00:06.300
+The task was a one -line fix,
+
+00:00:06.300 --> 00:00:08.390
+a dropdown rendering behind a modal.
+
+00:00:08.440 --> 00:00:10.290
+Before you looked up from your coffee,
+
+00:00:10.320 --> 00:00:12.720
+the agent had changed 32 files and
+
+00:00:12.720 --> 00:00:14.340
+rewritten the styling system.
+
+00:00:14.340 --> 00:00:15.960
+The original bug was still there.
+
+00:00:15.960 --> 00:00:18.180
+Everyone who works with agents long enough
+
+00:00:18.180 --> 00:00:19.790
+collects stories like this.
+
+00:00:20.473 --> 00:00:22.113
+Picture an agent that imports a date
+
+00:00:22.113 --> 00:00:22.633
+library,
+
+00:00:22.633 --> 00:00:24.013
+with clean code,
+
+00:00:24.013 --> 00:00:24.983
+correct types,
+
+00:00:25.013 --> 00:00:26.003
+even tests.
+
+00:00:26.093 --> 00:00:28.063
+The library doesn't exist.
+
+00:00:28.173 --> 00:00:29.593
+Code review would have passed it,
+
+00:00:29.593 --> 00:00:31.853
+because plausible fictions are built to pass
+
+00:00:31.853 --> 00:00:32.453
+review.
+
+00:00:32.453 --> 00:00:34.413
+So the agent runs the tests.
+
+00:00:34.413 --> 00:00:36.573
+And every new dependency is a security
+
+00:00:36.573 --> 00:00:37.153
+decision,
+
+00:00:37.153 --> 00:00:40.273
+because attackers now register the names models
+
+00:00:40.273 --> 00:00:41.523
+like to invent.
+
+00:00:42.303 --> 00:00:43.903
+Then there's the infinite loop.
+
+00:00:43.903 --> 00:00:44.543
+Error,
+
+00:00:44.543 --> 00:00:45.243
+fix,
+
+00:00:45.243 --> 00:00:45.983
+a different error,
+
+00:00:45.983 --> 00:00:46.583
+fix,
+
+00:00:46.583 --> 00:00:47.733
+the first error again.
+
+00:00:48.143 --> 00:00:49.273
+Forty minutes later:
+
+00:00:49.343 --> 00:00:50.363
+nineteen attempts,
+
+00:00:50.363 --> 00:00:51.763
+and the code is worse than when
+
+00:00:51.763 --> 00:00:52.463
+it started.
+
+00:00:52.463 --> 00:00:54.083
+If an agent hasn't solved it in
+
+00:00:54.083 --> 00:00:54.993
+three passes,
+
+00:00:55.023 --> 00:00:56.553
+it won't solve it in thirty.
+
+00:00:56.603 --> 00:00:57.543
+Stop it,
+
+00:00:57.543 --> 00:00:58.883
+read the errors yourself,
+
+00:00:58.883 --> 00:01:00.453
+and start a fresh context.
+
+00:01:01.333 --> 00:01:03.253
+Or the confident wrong answer.
+
+00:01:03.253 --> 00:01:04.473
+A race condition,
+
+00:01:04.473 --> 00:01:06.233
+fixed with a half -second sleep,
+
+00:01:06.233 --> 00:01:07.583
+the test went green.
+
+00:01:07.713 --> 00:01:08.743
+In production,
+
+00:01:08.853 --> 00:01:09.703
+under load,
+
+00:01:09.733 --> 00:01:10.633
+it wasn't enough,
+
+00:01:10.633 --> 00:01:12.313
+and the backed -up queue took down
+
+00:01:12.313 --> 00:01:13.403
+another service.
+
+00:01:13.613 --> 00:01:15.593
+Agents optimize for the signal you give
+
+00:01:15.593 --> 00:01:16.013
+them.
+
+00:01:16.013 --> 00:01:17.573
+Passing tests are necessary,
+
+00:01:17.573 --> 00:01:18.723
+but not sufficient.
+
+00:01:19.549 --> 00:01:20.949
+Two hours into a session,
+
+00:01:20.949 --> 00:01:22.409
+the agent forgets a rule you set
+
+00:01:22.409 --> 00:01:23.189
+at the start:
+
+00:01:23.189 --> 00:01:24.509
+raw queries only,
+
+00:01:24.509 --> 00:01:25.879
+no database framework.
+
+00:01:25.929 --> 00:01:27.689
+It didn't decide to ignore you.
+
+00:01:27.689 --> 00:01:29.119
+The rule simply faded.
+
+00:01:29.489 --> 00:01:30.849
+Long sessions degrade.
+
+00:01:30.849 --> 00:01:32.299
+Keep tasks short,
+
+00:01:32.329 --> 00:01:33.209
+commit often,
+
+00:01:33.209 --> 00:01:35.209
+and write project rules into the instruction
+
+00:01:35.209 --> 00:01:35.769
+file,
+
+00:01:35.769 --> 00:01:37.099
+where they can't fade.
+
+00:01:37.831 --> 00:01:39.811
+The nastiest story isn't a mistake at
+
+00:01:39.811 --> 00:01:40.211
+all.
+
+00:01:40.211 --> 00:01:41.891
+An agent reads a ticket written by
+
+00:01:41.891 --> 00:01:42.591
+a stranger,
+
+00:01:42.591 --> 00:01:43.761
+full of instructions,
+
+00:01:43.891 --> 00:01:44.911
+and follows them,
+
+00:01:44.911 --> 00:01:47.151
+carrying private data out into the open.
+
+00:01:47.151 --> 00:01:48.621
+The fix is structural.
+
+00:01:48.631 --> 00:01:49.641
+Private data,
+
+00:01:49.671 --> 00:01:50.921
+untrusted content,
+
+00:01:51.031 --> 00:01:52.511
+a way to send data out:
+
+00:01:52.511 --> 00:01:54.281
+remove at least one of the three.
+
+00:01:55.097 --> 00:01:56.077
+The common thread:
+
+00:01:56.077 --> 00:01:57.177
+in every story,
+
+00:01:57.177 --> 00:01:58.677
+the agent did exactly what it was
+
+00:01:58.677 --> 00:01:59.497
+built to do.
+
+00:01:59.497 --> 00:02:00.477
+It was helpful,
+
+00:02:00.477 --> 00:02:01.277
+creative,
+
+00:02:01.277 --> 00:02:02.117
+persistent,
+
+00:02:02.117 --> 00:02:02.877
+obedient.
+
+00:02:02.877 --> 00:02:04.587
+These aren't agent bugs.
+
+00:02:04.617 --> 00:02:05.927
+They're workflow bugs.
+
+00:02:05.977 --> 00:02:07.647
+The fix is tighter scope,
+
+00:02:07.677 --> 00:02:08.587
+better feedback,
+
+00:02:08.737 --> 00:02:09.687
+shorter sessions,
+
+00:02:09.937 --> 00:02:11.187
+narrower permissions,
+
+00:02:11.257 --> 00:02:12.967
+and a human who stays engaged.
+
+00:02:13.868 --> 00:02:15.868
+So keep a diagnostic playbook.
+
+00:02:15.868 --> 00:02:16.868
+Is it scope,
+
+00:02:16.868 --> 00:02:17.738
+context,
+
+00:02:17.748 --> 00:02:18.528
+feedback,
+
+00:02:18.528 --> 00:02:19.378
+capability,
+
+00:02:19.548 --> 00:02:20.877
+a full context window,
+
+00:02:20.928 --> 00:02:21.608
+a loop,
+
+00:02:21.608 --> 00:02:23.278
+or untrusted input?
+
+00:02:23.407 --> 00:02:24.488
+Name the failure,
+
+00:02:24.488 --> 00:02:26.287
+and you know what to fix.
+
+00:02:26.287 --> 00:02:28.648
+And remember the most underrated tool you
+
+00:02:28.648 --> 00:02:29.328
+have:
+
+00:02:29.328 --> 00:02:30.428
+delete the branch,
+
+00:02:30.428 --> 00:02:31.618
+and start over.
+
+00:02:31.648 --> 00:02:32.708
+Next up:
+
+00:02:32.708 --> 00:02:34.078
+when not to use agents.

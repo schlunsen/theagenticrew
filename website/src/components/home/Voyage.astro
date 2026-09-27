@@ -1,5 +1,7 @@
 ---
 import { engineeringChapters, crewChapters, parts, newInSecondEdition } from '../../data/chapters';
+import { filmById, mmss, films } from '../../data/films';
+const play = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.8v8.4L10 6z" fill="currentColor"/></svg>';
 const grouped = parts.map((p) => ({ ...p, chapters: engineeringChapters.slice(p.from - 1, p.to) }));
 ---
 <section class="band band--night" id="chapters" aria-labelledby="voyage-title">
@@ -8,6 +10,7 @@ const grouped = parts.map((p) => ({ ...p, chapters: engineeringChapters.slice(p.
       <span class="eyebrow">What's inside</span>
       <h2 id="voyage-title" class="h2">The voyage, <em>chapter by chapter.</em></h2>
       <p class="lede">Nineteen chapters in five parts, from what an agent really is to how whole teams work with them — plus two appendices.</p>
+      {films.length > 0 && <p class="lede" style="margin-top:0.6rem"><a class="chap__film" style="font-size:0.78rem" href="/watch"><Fragment set:html={play} /> Or watch it: a two-minute film per chapter</a></p>}
     </div>
 
     <div class="tabs" role="tablist" aria-label="Choose a book">
@@ -30,6 +33,7 @@ const grouped = parts.map((p) => ({ ...p, chapters: engineeringChapters.slice(p.
                 <div>
                   <h3>{c.title}{newInSecondEdition.has(c.title) && <span class="pill">New</span>}</h3>
                   <p>{c.description.replace(/^New in the second edition\.\s*/, '')}</p>
+                  {(() => { const f = filmById(c.number); return f && <a class="chap__film" href={`/watch/${f.slug}`}><Fragment set:html={play} /> {mmss(f.duration)} film</a>; })()}
                 </div>
               </li>
             ))}
@@ -37,8 +41,8 @@ const grouped = parts.map((p) => ({ ...p, chapters: engineeringChapters.slice(p.
         </div>
       ))}
       <div class="appendices">
-        <span><b>Appendix A</b>Agents as Pentesters</span>
-        <span><b>Appendix B</b>The State of the Tools <span class="pill">New</span></span>
+        <span><b>Appendix A</b>Agents as Pentesters {filmById('A') && <a class="chap__film" href={`/watch/${filmById('A')!.slug}`}><Fragment set:html={play} /> film</a>}</span>
+        <span><b>Appendix B</b>The State of the Tools <span class="pill">New</span> {filmById('B') && <a class="chap__film" href={`/watch/${filmById('B')!.slug}`}><Fragment set:html={play} /> film</a>}</span>
       </div>
     </div>
 
