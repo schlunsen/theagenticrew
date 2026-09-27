@@ -1,0 +1,69 @@
+---
+// The Hands-On Guide's motif: a ship's wheel drawn as a blueprint — front elevation with
+// centre lines, a pitch circle, dimension lines and callouts (the same drawing as the cover).
+// Lines use currentColor; centre lines and the angle callout use the .bp-accent colour (set in CSS).
+interface Props { size?: number | string; stroke?: number; class?: string; labels?: boolean }
+const { size = 24, stroke = 1, class: cls = '', labels = true } = Astro.props;
+
+const f = (n: number) => n.toFixed(2);
+const P = (a: number, d: number) => [d * Math.cos(a), d * Math.sin(a)];
+const rim = 78, rimIn = 70, hub = 17, tip = 110, pcd = 95;
+const spokes = Array.from({ length: 8 }, (_, k) => (k * Math.PI) / 4 + Math.PI / 8);
+const edge = (a: number, r1: number, r2: number, o1: number, o2: number) => {
+  const nx = -Math.sin(a), ny = Math.cos(a);
+  const [x1, y1] = P(a, r1), [x2, y2] = P(a, r2);
+  return `M${f(x1 + nx * o1)},${f(y1 + ny * o1)} L${f(x2 + nx * o2)},${f(y2 + ny * o2)}`;
+};
+const spokeD = spokes.flatMap((a) => [edge(a, hub, rimIn, -2.6, -2.6), edge(a, hub, rimIn, 2.6, 2.6)]).join(' ');
+const gripD = spokes.flatMap((a) => [edge(a, rim, tip - 7, -3, -4.6), edge(a, rim, tip - 7, 3, 4.6)]).join(' ');
+const knobs = spokes.map((a) => P(a, tip - 3));
+// 45° angle arc between two handles, lower-left
+const a0 = Math.PI + Math.PI / 8, a1 = a0 + Math.PI / 4;
+const [ax0, ay0] = P(a0, 52), [ax1, ay1] = P(a1, 52);
+const [amx, amy] = P(a0 + Math.PI / 8, 64);
+const yd = tip + 16; // pitch-circle dimension line
+const xd = tip + 26; // rim dimension line
+const [hx, hy] = P(-Math.PI / 4, hub);
+const ah = (x: number, y: number, dx: number, dy: number) => {
+  const L = 6, w = 1.8;
+  return `${f(x)},${f(y)} ${f(x - dx * L - dy * w)},${f(y - dy * L + dx * w)} ${f(x - dx * L + dy * w)},${f(y - dy * L - dx * w)}`;
+};
+const hl = Math.hypot(58 - hx, -96 - hy);
+---
+<svg class={cls} width={size} height={size} viewBox="-150 -150 300 300" fill="none" stroke="currentColor" stroke-width={stroke} aria-hidden="true">
+  <g class="bp-accent" stroke-dasharray="10 3 2 3" stroke-width={stroke * 0.6}>
+    <line x1={-tip - 22} y1="0" x2={tip + 22} y2="0" />
+    <line x1="0" y1={-tip - 22} x2="0" y2={tip + 22} />
+    <circle r={pcd} opacity="0.6" />
+  </g>
+  <circle r={rim} />
+  <circle r={rimIn} />
+  <circle r={hub} />
+  <circle r="9" stroke-width={stroke * 0.5} />
+  <circle r="3.2" fill="currentColor" stroke="none" />
+  <path d={spokeD} stroke-width={stroke * 0.55} />
+  <path d={gripD} stroke-width={stroke * 0.55} />
+  {knobs.map(([x, y]) => <circle cx={f(x)} cy={f(y)} r="5" />)}
+  <path class="bp-accent" d={`M${f(ax0)},${f(ay0)} A52,52 0 0 1 ${f(ax1)},${f(ay1)}`} stroke-width={stroke * 0.5} />
+  <g class="bp-dim" stroke-width={stroke * 0.45}>
+    <path d={`M${-pcd},6 V${yd + 4} M${pcd},6 V${yd + 4} M${-pcd},${yd} H${pcd}`} />
+    <path d={`M8,${-rim} H${xd + 4} M8,${rim} H${xd + 4} M${xd},${-rim} V${rim}`} />
+    <path d={`M${f(hx)},${f(hy)} L58,-96 H92`} />
+    <g fill="currentColor" stroke="none">
+      <polygon points={ah(-pcd, yd, -1, 0)} />
+      <polygon points={ah(pcd, yd, 1, 0)} />
+      <polygon points={ah(xd, -rim, 0, -1)} />
+      <polygon points={ah(xd, rim, 0, 1)} />
+      <polygon points={ah(hx, hy, (hx - 58) / hl, (hy + 96) / hl)} />
+    </g>
+  </g>
+  {labels && (
+    <g class="bp-text" fill="currentColor" stroke="none" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="7">
+      <text x="0" y={yd - 3} text-anchor="middle">Ø 570 P.C.D.</text>
+      <text transform={`translate(${xd - 3},0) rotate(-90)`} text-anchor="middle">Ø 468</text>
+      <text x="60" y="-99">HUB Ø 102</text>
+      <text class="bp-accent-fill" x={f(amx)} y={f(amy)} text-anchor="middle" font-size="6">45°</text>
+      <text x="0" y={yd + 16} text-anchor="middle" letter-spacing="1.6" font-size="6">FRONT ELEVATION · HELM</text>
+    </g>
+  )}
+</svg>

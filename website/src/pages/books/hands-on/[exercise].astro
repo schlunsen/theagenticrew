@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import Footer from '../../../components/Footer.astro';
-import Nav from '../../../components/Nav.astro';
+import Header from '../../../components/home/Header.astro';
+import SiteFooter from '../../../components/home/SiteFooter.astro';
+import '../../../styles/home.css';
+import '../../../styles/hands-on.css';
 
 const exercises = [
   {
@@ -489,488 +491,205 @@ export function getStaticPaths() {
   title={`Exercise ${ex.num}: ${ex.title} — The Agentic Crew Hands-On Guide`}
   description={ex.intro}
 >
-  <Nav
-    btnLabel="Download Free"
-    btnHref="/books/hands-on#download"
-    btnFrom="#3c8c50"
-    btnTo="#286e3c"
-    btnFromHover="#4aa064"
-    btnShadow="rgba(60, 140, 80, 0.30)"
-    isSubpage={true}
-  />
-
-  <!-- Hero -->
-  <header class="ex-hero">
-    <div class="ex-hero-inner">
-      <a href="/books/hands-on" class="back-link">&larr; All exercises</a>
-      <div class="ex-hero-content">
-        <div class="ex-hero-text">
-          <span class="ex-num">Exercise {ex.num}</span>
-          <h1>{ex.title}</h1>
-          <p class="ex-tagline">{ex.tagline}</p>
-          <div class="ex-meta">
-            <div class="meta-item">
-              <span class="meta-label">Duration</span>
-              <span class="meta-value">{ex.duration}</span>
+  <div class="home handson-theme">
+    <Header sub cta={{ label: 'Download free', href: '/books/hands-on#download' }} />
+    <main>
+      <!-- Hero -->
+      <section class="ex2-hero" aria-labelledby="ex-title">
+        <div class="wrap">
+          <a href="/books/hands-on" class="ex2-back">&larr; All exercises</a>
+          <div class="ex2-hero__grid">
+            <div>
+              <span class="eyebrow">Exercise {ex.num} / {String(exercises.length).padStart(2, '0')}</span>
+              <h1 id="ex-title">{ex.title}</h1>
+              <p class="ex2-tagline">{ex.tagline}</p>
+              <div class="ex2-block">
+                <div><small>Duration</small><span>{ex.duration}</span></div>
+                <div><small>Difficulty</small><span>{ex.difficulty}</span></div>
+                <div><small>Prerequisites</small><span>{ex.prerequisites}</span></div>
+              </div>
             </div>
-            <div class="meta-item">
-              <span class="meta-label">Difficulty</span>
-              <span class="meta-value">{ex.difficulty}</span>
-            </div>
-            <div class="meta-item">
-              <span class="meta-label">Prerequisites</span>
-              <span class="meta-value">{ex.prerequisites}</span>
-            </div>
+            <figure class="ex2-fig">
+              <div class="ex2-fig__frame">
+                <img src={ex.illustration} alt={ex.title} width="512" height="512" loading="eager" />
+              </div>
+              <figcaption><span>Fig. {ex.num}</span><span>Hands-On Guide</span></figcaption>
+            </figure>
           </div>
         </div>
-        <div class="ex-hero-illus">
-          <img src={ex.illustration} alt={ex.title} />
-        </div>
-      </div>
-    </div>
-  </header>
+      </section>
 
-  <!-- Introduction -->
-  <section class="ex-intro">
-    <div class="section-inner">
-      <div class="intro-grid">
-        <div class="intro-main">
-          <h2>Overview</h2>
-          <p class="intro-text">{ex.intro}</p>
-          <p class="intro-outcome">{ex.outcome}</p>
-
-          <!-- Quote from the book -->
-          <blockquote class="book-quote">
-            <p>{ex.quote}</p>
-            <cite>— from the exercise</cite>
-          </blockquote>
+      <!-- Introduction -->
+      <section class="band band--paper" aria-labelledby="overview-title">
+        <div class="wrap">
+          <div class="ex2-overview">
+            <div class="ex2-overview__main reveal">
+              <span class="eyebrow">Introduction</span>
+              <h2 id="overview-title" class="h2">Overview</h2>
+              <p>{ex.intro}</p>
+              <p class="ex2-outcome">{ex.outcome}</p>
+              <!-- Quote from the book -->
+              <blockquote class="ex2-quote">
+                <p>{ex.quote}</p>
+                <cite>— from the exercise</cite>
+              </blockquote>
+            </div>
+            <aside class="ex2-side reveal">
+              <div class="ex2-panel">
+                <h3>Skills you'll practise</h3>
+                <ul>{ex.skills.map((skill) => <li>{skill}</li>)}</ul>
+              </div>
+              <div class="ex2-panel ex2-panel--tools">
+                <h3>Tools used</h3>
+                <ul>{ex.tools.map((tool) => <li>{tool}</li>)}</ul>
+              </div>
+              <a href="/books/hands-on#download" class="btn btn--brass">Download the guide (free) &rarr;</a>
+            </aside>
+          </div>
         </div>
-        <aside class="intro-sidebar">
-          <div class="sidebar-card">
-            <h3>Skills you'll practise</h3>
-            <ul class="skill-list">
-              {ex.skills.map(skill => (
-                <li>{skill}</li>
+      </section>
+
+      <!-- What you'll build -->
+      <section class="band band--night" aria-labelledby="build-title">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <span class="eyebrow">What you'll build</span>
+            <h2 id="build-title" class="h2">By the end of <em>this exercise.</em></h2>
+          </div>
+          <ul class="ex2-checks reveal">
+            {ex.deliverables.map((item) => (
+              <li><b aria-hidden="true">&#10003;</b><span>{item}</span></li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <!-- Key concepts -->
+      <section class="band band--paper" aria-labelledby="terms-title">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <span class="eyebrow">Key concepts</span>
+            <h2 id="terms-title" class="h2">Terms you'll <em>learn.</em></h2>
+          </div>
+          <dl class="ex2-terms reveal">
+            <div class="ex2-terms__head" aria-hidden="true"><span>Term</span><span>What it means</span></div>
+            {ex.concepts.map(([term, def]) => (
+              <div class="ex2-term"><dt>{term}</dt><dd>{def}</dd></div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      <!-- What's covered -->
+      <section class="band band--night bp-grid" aria-labelledby="sections-title">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <span class="eyebrow">What's covered</span>
+            <h2 id="sections-title" class="h2">Sections in <em>this exercise.</em></h2>
+          </div>
+          <ol class="ex2-steps reveal">
+            {ex.sections.map((section, i) => (
+              <li><span>{String(i + 1).padStart(2, '0')}</span><strong>{section}</strong></li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <!-- The Ship You Built (Chapter 10 only) -->
+      {ex.shipBuilt && (
+        <section class="band band--paper" aria-labelledby="ship-title">
+          <div class="wrap">
+            <div class="section-head reveal">
+              <span class="eyebrow">Your development environment</span>
+              <h2 id="ship-title" class="h2">The ship <em>you built.</em></h2>
+            </div>
+            <div class="ex2-tiles reveal">
+              {ex.shipBuilt.map(([name, desc]) => (
+                <div><h3>{name}</h3><p>{desc}</p></div>
               ))}
-            </ul>
+            </div>
           </div>
-          <div class="sidebar-card">
-            <h3>Tools used</h3>
-            <ul class="tool-list">
-              {ex.tools.map(tool => (
-                <li>{tool}</li>
+        </section>
+      )}
+
+      <!-- Resources (Chapter 10 only) -->
+      {ex.resources && (
+        <section class="band band--night" aria-labelledby="res-title">
+          <div class="wrap">
+            <div class="section-head reveal">
+              <span class="eyebrow">What's next</span>
+              <h2 id="res-title" class="h2">Charts for <em>open water.</em></h2>
+            </div>
+            <div class="ex2-tiles ex2-tiles--dark reveal">
+              {ex.resources.map(([name, desc]) => (
+                <div><h3>{name}</h3><p>{desc}</p></div>
               ))}
-            </ul>
-          </div>
-          <a href="/books/hands-on#download" class="btn-primary">Download the guide (free) &rarr;</a>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <!-- What you'll build -->
-  <section class="ex-deliverables">
-    <div class="section-inner">
-      <p class="section-label">What you'll build</p>
-      <h2>By the end of this exercise</h2>
-      <div class="deliverables-grid">
-        {ex.deliverables.map((item, i) => (
-          <div class="deliverable-item">
-            <span class="deliverable-check">&#10003;</span>
-            <span class="deliverable-text">{item}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Key concepts -->
-  <section class="ex-concepts">
-    <div class="section-inner">
-      <p class="section-label">Key concepts</p>
-      <h2>Terms you'll learn</h2>
-      <div class="concepts-table">
-        <div class="concepts-header">
-          <span>Term</span>
-          <span>What it means</span>
-        </div>
-        {ex.concepts.map(([term, def]) => (
-          <div class="concept-row">
-            <span class="concept-term">{term}</span>
-            <span class="concept-def">{def}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- What's covered -->
-  <section class="ex-sections">
-    <div class="section-inner">
-      <p class="section-label">What's covered</p>
-      <h2>Sections in this exercise</h2>
-      <div class="sections-grid">
-        {ex.sections.map((section, i) => (
-          <div class="section-item">
-            <span class="section-step">{String(i + 1).padStart(2, '0')}</span>
-            <span class="section-name">{section}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- The Ship You Built (Chapter 10 only) -->
-  {ex.shipBuilt && (
-    <section class="ex-ship">
-      <div class="section-inner">
-        <p class="section-label">Your development environment</p>
-        <h2>The ship you built</h2>
-        <div class="ship-grid">
-          {ex.shipBuilt.map(([name, desc]) => (
-            <div class="ship-item">
-              <h3>{name}</h3>
-              <p>{desc}</p>
             </div>
-          ))}
+          </div>
+        </section>
+      )}
+
+      <!-- Takeaway + navigation -->
+      <section class="band band--ink" aria-label="What just happened">
+        <div class="wrap">
+          <div class="ex2-takeaway reveal">
+            <span class="eyebrow">What just happened</span>
+            <p>{ex.takeaway}</p>
+          </div>
+          <nav class="ex2-nav" aria-label="Exercises">
+            {prev ? (
+              <a href={`/books/hands-on/${prev.slug}`}>
+                <small>&larr; Previous exercise</small>
+                <b>{prev.num}</b>
+                <strong>{prev.title}</strong>
+              </a>
+            ) : <div />}
+            {next ? (
+              <a href={`/books/hands-on/${next.slug}`} class="next">
+                <small>Next exercise &rarr;</small>
+                <b>{next.num}</b>
+                <strong>{next.title}</strong>
+              </a>
+            ) : (
+              <a href="/books/hands-on#download" class="next">
+                <small>Ready to start? &rarr;</small>
+                <b>PDF</b>
+                <strong>Download the guide</strong>
+              </a>
+            )}
+          </nav>
         </div>
-      </div>
-    </section>
-  )}
-
-  <!-- Resources (Chapter 10 only) -->
-  {ex.resources && (
-    <section class="ex-resources">
-      <div class="section-inner">
-        <p class="section-label">What's next</p>
-        <h2>Charts for open water</h2>
-        <div class="resources-grid">
-          {ex.resources.map(([name, desc]) => (
-            <div class="resource-item">
-              <h3>{name}</h3>
-              <p>{desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
-
-  <!-- Takeaway -->
-  <section class="ex-takeaway">
-    <div class="section-inner">
-      <div class="takeaway-card">
-        <p class="section-label">What just happened</p>
-        <p class="takeaway-text">{ex.takeaway}</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Navigation -->
-  <section class="ex-nav">
-    <div class="section-inner">
-      <div class="nav-grid">
-        {prev ? (
-          <a href={`/books/hands-on/${prev.slug}`} class="nav-card nav-prev">
-            <span class="nav-dir">&larr; Previous exercise</span>
-            <span class="nav-num">{prev.num}</span>
-            <span class="nav-title">{prev.title}</span>
-          </a>
-        ) : <div />}
-        {next ? (
-          <a href={`/books/hands-on/${next.slug}`} class="nav-card nav-next">
-            <span class="nav-dir">Next exercise &rarr;</span>
-            <span class="nav-num">{next.num}</span>
-            <span class="nav-title">{next.title}</span>
-          </a>
-        ) : (
-          <a href="/books/hands-on#download" class="nav-card nav-next">
-            <span class="nav-dir">Ready to start? &rarr;</span>
-            <span class="nav-num">PDF</span>
-            <span class="nav-title">Download the guide</span>
-          </a>
-        )}
-      </div>
-    </div>
-  </section>
-
-  <Footer />
+      </section>
+    </main>
+    <SiteFooter />
+  </div>
 </BaseLayout>
 
-<style>
-  :root {
-    --ho-accent: rgb(60, 140, 80);
-    --ho-accent-light: rgb(80, 160, 100);
-    --ho-accent-deep: rgb(40, 110, 60);
-    --ho-glow: rgba(80, 160, 100, 0.12);
-  }
+<script>
+  function initExercise() {
+    const header = document.querySelector<HTMLElement>('[data-header]');
+    if (!header) return;
 
-  .section-inner { max-width: var(--max-width); margin: 0 auto; padding: 4rem 2rem; }
-  .section-label {
-    font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--ho-accent); margin-bottom: 0.75rem;
-  }
-  h2 {
-    font-family: var(--font-serif); font-size: 2rem; font-weight: 700;
-    color: var(--color-text); margin-bottom: 1.5rem;
-  }
+    // Header: solid on scroll, mobile drawer
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    const toggle = header.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+    const drawer = document.querySelector<HTMLElement>('[data-drawer]');
+    const setOpen = (open: boolean) => {
+      header.classList.toggle('is-open', open);
+      toggle?.setAttribute('aria-expanded', String(open));
+    };
+    toggle?.addEventListener('click', () => setOpen(!header.classList.contains('is-open')));
+    drawer?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
 
-  /* ── Hero ── */
-  .ex-hero {
-    padding: 7rem 2rem 3rem;
-    background: linear-gradient(180deg, rgba(80,160,100,0.06) 0%, var(--color-bg) 100%);
+    // Reveal on scroll
+    const els = document.querySelectorAll('.home .reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach((el) => el.classList.add('is-in')); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    els.forEach((el) => io.observe(el));
   }
-  .ex-hero-inner { max-width: var(--max-width); margin: 0 auto; }
-  .back-link {
-    display: inline-flex; align-items: center; gap: 0.3rem;
-    font-size: 0.85rem; color: var(--ho-accent); text-decoration: none;
-    margin-bottom: 2rem; transition: color 0.2s;
-  }
-  .back-link:hover { color: var(--ho-accent-light); }
-  .ex-hero-content {
-    display: grid; grid-template-columns: 1fr 380px; gap: 3rem; align-items: center;
-  }
-  .ex-num {
-    display: inline-block; font-family: var(--font-mono); font-size: 0.85rem;
-    font-weight: 700; color: var(--ho-accent); letter-spacing: 0.05em;
-    margin-bottom: 0.75rem;
-  }
-  h1 {
-    font-family: var(--font-serif); font-size: 2.8rem; font-weight: 700;
-    color: var(--color-text); line-height: 1.15; margin-bottom: 0.75rem;
-  }
-  .ex-tagline {
-    font-family: var(--font-serif); font-size: 1.15rem; font-style: italic;
-    color: var(--color-text-muted); margin-bottom: 2rem; line-height: 1.6;
-  }
-  .ex-meta { display: flex; gap: 2.5rem; flex-wrap: wrap; }
-  .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
-  .meta-label {
-    font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.1em; color: var(--ho-accent);
-  }
-  .meta-value { font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.5; }
-  .ex-hero-illus {
-    border-radius: 16px; overflow: hidden;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-  }
-  .ex-hero-illus img { width: 100%; height: 280px; object-fit: cover; display: block; }
-
-  @media (max-width: 900px) {
-    .ex-hero-content { grid-template-columns: 1fr; }
-    .ex-hero-illus { max-width: 400px; }
-    h1 { font-size: 2.2rem; }
-  }
-  @media (max-width: 640px) {
-    .ex-hero { padding: 6rem 1.5rem 2rem; }
-    h1 { font-size: 1.8rem; }
-  }
-
-  /* ── Introduction ── */
-  .ex-intro { background: var(--color-bg); border-top: 1px solid var(--color-border); }
-  .intro-grid { display: grid; grid-template-columns: 1fr 320px; gap: 3rem; align-items: start; }
-  .intro-text {
-    font-size: 1.1rem; color: var(--color-text-muted); line-height: 1.8;
-    margin-bottom: 1.25rem;
-  }
-  .intro-outcome {
-    font-size: 1.05rem; color: var(--color-text); line-height: 1.8;
-    padding: 1.25rem; background: var(--ho-glow); border-left: 3px solid var(--ho-accent);
-    border-radius: 0 10px 10px 0; margin-bottom: 2rem;
-  }
-
-  /* ── Book quote ── */
-  .book-quote {
-    position: relative; padding: 1.5rem 1.5rem 1.5rem 2rem;
-    background: var(--color-bg-elevated); border-radius: 12px;
-    border: 1px solid var(--color-border);
-  }
-  .book-quote::before {
-    content: "\201C"; position: absolute; top: 0.5rem; left: 0.75rem;
-    font-family: var(--font-serif); font-size: 3rem; color: var(--ho-accent);
-    line-height: 1; opacity: 0.4;
-  }
-  .book-quote p {
-    font-family: var(--font-serif); font-size: 1.05rem; font-style: italic;
-    color: var(--color-text); line-height: 1.7; margin-bottom: 0.5rem;
-  }
-  .book-quote cite {
-    font-size: 0.8rem; color: var(--color-text-muted); font-style: normal;
-  }
-
-  /* ── Sidebar ── */
-  .sidebar-card {
-    background: var(--color-bg-card); border: 1px solid var(--color-border);
-    border-radius: 14px; padding: 1.5rem; margin-bottom: 1.25rem;
-  }
-  .sidebar-card h3 {
-    font-size: 0.9rem; font-weight: 700; color: var(--color-text);
-    margin-bottom: 1rem;
-  }
-  .skill-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .skill-list li {
-    font-size: 0.8rem; color: var(--ho-accent-deep); background: rgba(80,160,100,0.1);
-    padding: 0.3rem 0.75rem; border-radius: 100px; font-weight: 500;
-  }
-  .tool-list {
-    list-style: none; padding: 0; margin: 0;
-    display: flex; flex-direction: column; gap: 0.4rem;
-  }
-  .tool-list li {
-    font-size: 0.85rem; color: var(--color-text-muted); padding-left: 1.2rem;
-    position: relative; line-height: 1.5;
-  }
-  .tool-list li::before {
-    content: "\25B8"; position: absolute; left: 0; color: var(--ho-accent);
-    font-size: 0.7rem; top: 0.15rem;
-  }
-  .btn-primary {
-    display: inline-block; padding: 0.85rem 2rem; border-radius: 10px;
-    background: linear-gradient(135deg, var(--ho-accent-light), var(--ho-accent-deep));
-    color: #fff !important; font-weight: 700; font-size: 0.95rem;
-    box-shadow: 0 4px 20px rgba(80,160,100,0.35);
-    transition: transform 0.2s; text-decoration: none; text-align: center;
-    width: 100%;
-  }
-  .btn-primary:hover { transform: translateY(-2px); color: #fff !important; }
-
-  @media (max-width: 900px) {
-    .intro-grid { grid-template-columns: 1fr; }
-    .btn-primary { width: auto; }
-  }
-
-  /* ── Deliverables ── */
-  .ex-deliverables { background: var(--color-bg-elevated); border-top: 1px solid var(--color-border); }
-  .deliverables-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;
-  }
-  .deliverable-item {
-    display: grid; grid-template-columns: 1.5rem 1fr; gap: 0.75rem; align-items: start;
-    padding: 1rem 1.25rem; background: var(--color-bg-card);
-    border: 1px solid var(--color-border); border-radius: 10px;
-    transition: border-color 0.2s;
-  }
-  .deliverable-item:hover { border-color: var(--ho-accent-light); }
-  .deliverable-check {
-    color: var(--ho-accent); font-weight: 700; font-size: 1rem; line-height: 1.5;
-  }
-  .deliverable-text {
-    font-size: 0.95rem; color: var(--color-text); line-height: 1.5;
-  }
-  @media (max-width: 640px) { .deliverables-grid { grid-template-columns: 1fr; } }
-
-  /* ── Key concepts ── */
-  .ex-concepts { background: var(--color-bg); border-top: 1px solid var(--color-border); }
-  .concepts-table { max-width: 800px; }
-  .concepts-header {
-    display: grid; grid-template-columns: 180px 1fr; gap: 1.5rem;
-    padding: 0.75rem 1rem; font-size: 0.75rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted);
-    border-bottom: 2px solid var(--ho-accent);
-  }
-  .concept-row {
-    display: grid; grid-template-columns: 180px 1fr; gap: 1.5rem;
-    padding: 0.85rem 1rem;
-    border-bottom: 1px solid var(--color-border-light);
-    transition: background 0.2s;
-  }
-  .concept-row:hover { background: var(--ho-glow); }
-  .concept-row:last-child { border-bottom: none; }
-  .concept-term {
-    font-family: var(--font-mono); font-size: 0.85rem; font-weight: 600;
-    color: var(--ho-accent-deep);
-  }
-  .concept-def { font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; }
-  @media (max-width: 640px) {
-    .concepts-header { grid-template-columns: 1fr; gap: 0.25rem; }
-    .concepts-header span:last-child { display: none; }
-    .concept-row { grid-template-columns: 1fr; gap: 0.25rem; }
-  }
-
-  /* ── Sections ── */
-  .ex-sections { background: var(--color-bg-elevated); border-top: 1px solid var(--color-border); }
-  .sections-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-  .section-item {
-    display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: center;
-    padding: 1rem 1.25rem;
-    border-bottom: 1px solid var(--color-border-light);
-    transition: background 0.2s;
-  }
-  .section-item:hover { background: var(--ho-glow); }
-  .section-step {
-    font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600;
-    color: var(--ho-accent);
-  }
-  .section-name { font-size: 0.95rem; color: var(--color-text); font-weight: 500; }
-  @media (max-width: 640px) { .sections-grid { grid-template-columns: 1fr; } }
-
-  /* ── Ship Built (Ch10) ── */
-  .ex-ship { background: var(--color-bg); border-top: 1px solid var(--color-border); }
-  .ship-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .ship-item {
-    padding: 1.5rem; background: var(--color-bg-card);
-    border: 1px solid var(--color-border); border-radius: 14px;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .ship-item:hover {
-    border-color: var(--ho-accent-light);
-    box-shadow: 0 4px 20px rgba(80,160,100,0.1);
-  }
-  .ship-item h3 {
-    font-family: var(--font-serif); font-size: 1rem; font-weight: 600;
-    color: var(--color-text); margin-bottom: 0.4rem;
-  }
-  .ship-item p { font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; }
-  @media (max-width: 640px) { .ship-grid { grid-template-columns: 1fr; } }
-
-  /* ── Resources (Ch10) ── */
-  .ex-resources { background: var(--color-bg-elevated); border-top: 1px solid var(--color-border); }
-  .resources-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .resource-item {
-    padding: 1.25rem; background: var(--color-bg-card);
-    border: 1px solid var(--color-border); border-radius: 14px;
-    transition: border-color 0.2s;
-  }
-  .resource-item:hover { border-color: var(--ho-accent-light); }
-  .resource-item h3 {
-    font-size: 0.95rem; font-weight: 600; color: var(--ho-accent-deep);
-    margin-bottom: 0.3rem;
-  }
-  .resource-item p { font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.5; }
-  @media (max-width: 640px) { .resources-grid { grid-template-columns: 1fr; } }
-
-  /* ── Takeaway ── */
-  .ex-takeaway { background: var(--color-bg); border-top: 1px solid var(--color-border); }
-  .takeaway-card {
-    max-width: 720px; margin: 0 auto; text-align: center;
-    padding: 2.5rem; background: linear-gradient(135deg, rgba(80,160,100,0.06), rgba(80,160,100,0.12));
-    border: 1px solid rgba(80,160,100,0.25); border-radius: 18px;
-  }
-  .takeaway-card .section-label { margin-bottom: 1rem; }
-  .takeaway-text {
-    font-family: var(--font-serif); font-size: 1.15rem; font-style: italic;
-    color: var(--color-text); line-height: 1.8;
-  }
-
-  /* ── Nav ── */
-  .ex-nav { background: var(--color-bg-elevated); border-top: 1px solid var(--color-border); }
-  .nav-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .nav-card {
-    display: flex; flex-direction: column; gap: 0.3rem;
-    padding: 1.5rem; background: var(--color-bg-card);
-    border: 1px solid var(--color-border); border-radius: 14px;
-    text-decoration: none; color: inherit;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .nav-card:hover {
-    border-color: var(--ho-accent-light);
-    box-shadow: 0 4px 20px rgba(80,160,100,0.1);
-    color: inherit;
-  }
-  .nav-prev { text-align: left; }
-  .nav-next { text-align: right; }
-  .nav-dir { font-size: 0.75rem; color: var(--ho-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
-  .nav-num { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ho-accent); font-weight: 600; }
-  .nav-title { font-size: 1rem; font-weight: 600; color: var(--color-text); }
-  @media (max-width: 640px) { .nav-grid { grid-template-columns: 1fr; } }
-</style>
+  document.addEventListener('astro:page-load', initExercise);
+</script>
