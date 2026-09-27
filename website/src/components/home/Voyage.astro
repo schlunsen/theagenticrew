@@ -1,5 +1,5 @@
 ---
-import { engineeringChapters, crewChapters, parts, newInSecondEdition } from '../../data/chapters';
+import { engineeringChapters, crewChapters, parts, newInSecondEdition, newInCrewSecondEdition } from '../../data/chapters';
 import { filmById, mmss, films } from '../../data/films';
 const play = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.8v8.4L10 6z" fill="currentColor"/></svg>';
 const grouped = parts.map((p) => ({ ...p, chapters: engineeringChapters.slice(p.from - 1, p.to) }));
@@ -55,7 +55,7 @@ const grouped = parts.map((p) => ({ ...p, chapters: engineeringChapters.slice(p.
         {crewChapters.map((c) => (
           <li class="chap">
             <span class="chap__num">{c.number}</span>
-            <div><h3>{c.title}</h3><p>{c.description}</p></div>
+            <div><h3>{c.title}{newInCrewSecondEdition.has(c.title) && <span class="pill">New</span>}</h3><p>{c.description}</p></div>
           </li>
         ))}
       </ol>
