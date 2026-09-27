@@ -1,5 +1,10 @@
 = Hidden Instructions
 
+#figure(
+  image("../../assets/illustrations/crew/ch08b-hidden-instructions.jpg", width: 80%),
+  caption: [_Some letters are written for the reader. Some are written for the assistant._],
+)
+
 Picture an agent connected to your inbox. You've given it a simple, sensible job: every morning, read the new email and give me a summary of what needs my attention. It's been doing it beautifully for weeks.
 
 One morning, among the newsletters and meeting requests, there's an email from someone you've never heard of. It looks like a boring vendor pitch. But at the bottom, in white text on a white background — invisible to you, perfectly readable to the agent — there's a paragraph addressed not to you, but to _the agent_:
