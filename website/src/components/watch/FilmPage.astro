@@ -1,0 +1,82 @@
+---
+// One film's page, for any series: player, transcript, prev/next. The main book's pages keep their own route
+// (/watch/<slug>); the crew and hands-on films live under /watch/crew/ and /watch/hands-on/ in their series' look.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../home/Header.astro';
+import SiteFooter from '../home/SiteFooter.astro';
+import HeaderScript from './HeaderScript.astro';
+import { mmss, isoDuration, YOUTUBE_URL, type Film, type Series } from '../../data/films';
+import '../../styles/home.css';
+import '../../styles/crew.css';
+import '../../styles/hands-on.css';
+import '../../styles/watch.css';
+
+interface Props { film: Film; prev?: Film; next?: Film; series: Series }
+const { film, prev, next, series } = Astro.props;
+const site = 'https://theagenticcrew.com';
+const summary = film.transcript[0];
+const where = series.key === 'main' ? `${series.label(film)}` : `${series.name}, ${series.label(film)}`;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: `${film.title} — The Agentic Crew, ${where}`,
+  description: summary,
+  thumbnailUrl: [`${site}${film.poster}`],
+  uploadDate: '2026-09-27',
+  duration: isoDuration(film.duration),
+  contentUrl: `${site}${film.video}`,
+  embedUrl: `${site}${series.base}/${film.slug}`,
+  transcript: film.transcript.join(' '),
+  inLanguage: 'en',
+  isFamilyFriendly: true,
+};
+const meta = series.key === 'main'
+  ? `${mmss(film.duration)} · Part ${film.part || '—'}: ${film.partTitle}`
+  : `${mmss(film.duration)} · ${series.name}`;
+const readLabel = series.key === 'handson' ? 'Do the exercise free' : 'Read the chapter free';
+---
+
+<BaseLayout title={`${film.title} · ${where} — The Agentic Crew, in short films`} description={summary}>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <div class={`home ${series.theme}`}>
+    <Header sub />
+    <main>
+      <section class="band band--night watch-hero film-head" aria-labelledby="film-title">
+        <div class="wrap">
+          <a class="eyebrow" href={series.key === 'main' ? '/watch' : `/watch#${series.key}`} style="text-decoration:none">Watch · {where}</a>
+          <h1 id="film-title">{film.title}</h1>
+          <div class="watch-meta">{meta}</div>
+          <div class="player">
+            <video controls preload="metadata" playsinline poster={film.poster}>
+              <source src={film.video} type="video/mp4" />
+              <track kind="captions" src={film.captions} srclang="en" label="English" />
+            </video>
+          </div>
+          <div class="player-actions">
+            <a class="btn btn--brass" href={series.read}>{readLabel}</a>
+            {next && <a class="btn btn--ghost" href={`${series.base}/${next.slug}`}>Next: {next.title} →</a>}
+            <span class="spacer"></span>
+            <a class="btn btn--link" href={YOUTUBE_URL} target="_blank" rel="noopener">YouTube</a>
+          </div>
+          <p class="made-note">Made by AI agents — script drafted from the book, AI narration, animation written as code — and steered by the author, Rasmus Bornhøft Schlünsen.</p>
+        </div>
+      </section>
+
+      <section class="band band--paper" aria-labelledby="transcript-title">
+        <div class="wrap">
+          <span class="eyebrow">Transcript</span>
+          <h2 id="transcript-title" class="h2" style="margin:0.6rem 0 1.6rem">What the film says</h2>
+          <div class="transcript">
+            {film.transcript.map((p) => <p>{p}</p>)}
+          </div>
+          <nav class="film-nav" aria-label="More films">
+            {prev ? <a href={`${series.base}/${prev.slug}`}><small>← {series.label(prev)}</small>{prev.title}</a> : <span></span>}
+            {next ? <a class="next" href={`${series.base}/${next.slug}`}><small>{series.label(next)} →</small>{next.title}</a> : <a class="next" href={series.key === 'main' ? '/watch' : `/watch#${series.key}`}><small>All films →</small>Back to the series</a>}
+          </nav>
+        </div>
+      </section>
+    </main>
+    <SiteFooter />
+  </div>
+  <HeaderScript />
+</BaseLayout>

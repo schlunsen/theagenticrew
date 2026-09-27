@@ -4,8 +4,10 @@ import Header from '../../components/home/Header.astro';
 import SiteFooter from '../../components/home/SiteFooter.astro';
 import HeaderScript from '../../components/watch/HeaderScript.astro';
 import { engineeringChapters, parts } from '../../data/chapters';
-import { films, filmById, mmss, label, TOTAL_FILMS, YOUTUBE_URL } from '../../data/films';
+import { films, filmById, mmss, label, TOTAL_FILMS, YOUTUBE_URL, SERIES } from '../../data/films';
 import '../../styles/home.css';
+import '../../styles/crew.css';
+import '../../styles/hands-on.css';
 import '../../styles/watch.css';
 
 const featured = filmById('01') ?? films[0];
@@ -15,6 +17,8 @@ const slots = [
   { id: 'A', title: 'Agents as Pentesters' },
   { id: 'B', title: 'The State of the Tools' },
 ];
+const others = SERIES.filter((x) => x.key !== 'main' && x.films.length > 0);
+const total = SERIES.reduce((n, x) => n + x.films.length, 0);
 const groups = [
   ...parts.map((p) => ({ numeral: p.numeral, title: p.title, ids: slots.slice(p.from - 1, p.to) })),
   { numeral: '', title: 'Appendices', ids: slots.slice(19) },
@@ -36,6 +40,10 @@ const groups = [
             One film per chapter, about two minutes each: what the chapter argues, its best example, and what to take away.
             Every film was made by AI agents — script, voice, animation, music — and steered by the author.
           </p>
+          <nav class="series-nav" aria-label="Film series">
+            <a href="#main"><b>The Agentic Crew</b><span>{films.length} riso films · engineering</span></a>
+            {others.map((x) => <a href={`#${x.key}`} class={`series-nav--${x.key}`}><b>{x.name}</b><span>{x.films.length} watercolour film{x.films.length === 1 ? '' : 's'} · {x.tagline.toLowerCase()}</span></a>)}
+          </nav>
           {featured && (
             <>
               <div class="player">
@@ -48,14 +56,14 @@ const groups = [
                 <a class="btn btn--brass" href={`/watch/${featured.slug}`}>{label(featured)} · {featured.title}</a>
                 <a class="btn btn--ghost" href={YOUTUBE_URL} target="_blank" rel="noopener">Subscribe on YouTube</a>
                 <span class="spacer"></span>
-                <span class="watch-meta">{films.length} of {TOTAL_FILMS} films</span>
+                <span class="watch-meta">{total} films in three series</span>
               </div>
             </>
           )}
         </div>
       </section>
 
-      <section class="band band--paper" aria-label="All films">
+      <section class="band band--paper" id="main" aria-label="The Agentic Crew films">
         <div class="wrap">
           {groups.map((g) => (
             <div class="film-part">
@@ -88,6 +96,28 @@ const groups = [
           ))}
         </div>
       </section>
+      {others.map((x) => (
+        <div class={`home ${x.theme}`} id={x.key}>
+          <section class="band band--night series-band" aria-labelledby={`${x.key}-title`}>
+            <div class="wrap">
+              <span class="eyebrow">{x.tagline}</span>
+              <h2 id={`${x.key}-title`} class="h2">{x.name}</h2>
+              <p class="watch-lede">{x.blurb} <a href={x.read}>Get the book free →</a></p>
+              <ul class="film-grid film-grid--dark">
+                {x.films.map((f) => (
+                  <li class="film-card">
+                    <a href={`${x.base}/${f.slug}`}>
+                      <div class="film-card__img"><img src={f.poster} alt="" loading="lazy" width="1280" height="720" /><span class="film-card__dur">{mmss(f.duration)}</span></div>
+                      <div class="film-card__label">{x.label(f)}</div>
+                      <div class="film-card__title">{f.title}</div>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        </div>
+      ))}
     </main>
     <SiteFooter />
   </div>
