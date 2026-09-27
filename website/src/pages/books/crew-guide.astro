@@ -8,6 +8,13 @@ import { crewChapters, crewParts, newInCrewSecondEdition } from '../../data/chap
 import '../../styles/home.css';
 import '../../styles/crew.css';
 
+// Watercolour chapter films (video/tools/publish.py --book crew writes films-crew.json); the section hides until one exists.
+type Film = { id: string; slug: string; title: string; duration: number; video: string; poster: string; captions: string; transcript: string[] };
+const filmFiles = import.meta.glob<{ default: Film[] }>('../../data/films-crew.json', { eager: true });
+const films: Film[] = Object.values(filmFiles)[0]?.default ?? [];
+const filmFor = (num: string) => films.find((f) => f.id === num);
+const mmss = (s: number) => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}`;
+
 const grouped = crewParts.map((p) => ({ ...p, chapters: crewChapters.slice(p.from - 1, p.to) }));
 
 const langs = [
@@ -148,6 +155,7 @@ const play = '<svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor
                     <div>
                       <h3>{c.title}{newInCrewSecondEdition.has(c.title) && <span class="pill">New</span>}</h3>
                       <p>{c.description}</p>
+                      {filmFor(c.number) && <a class="chap__film" href={`#film-${c.number}`}><Fragment set:html={play} /> {mmss(filmFor(c.number)!.duration)} film</a>}
                     </div>
                   </li>
                 ))}
@@ -163,8 +171,29 @@ const play = '<svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor
           <div class="section-head reveal">
             <span class="eyebrow">Watch</span>
             <h2 id="watch-title" class="h2">Prefer to <em>watch?</em></h2>
-            <p class="lede">Short narrated slideshows that cover the core ideas — no reading required.</p>
+            <p class="lede">{films.length > 0
+              ? 'Short hand-painted films, one per chapter, about two and a half minutes each. More are on the way.'
+              : 'Short narrated slideshows that cover the core ideas — no reading required.'}</p>
           </div>
+          {films.length > 0 && (
+            <div class="films reveal">
+              {films.map((f) => (
+                <figure class="film" id={`film-${f.id}`}>
+                  <div class="film__frame">
+                    <video controls preload="none" poster={f.poster} playsinline>
+                      <source src={f.video} type="video/mp4" />
+                      <track kind="captions" src={f.captions} srclang="en" label="English" default />
+                    </video>
+                  </div>
+                  <figcaption>
+                    <span class="film__num">Chapter {f.id} · {mmss(f.duration)}</span>
+                    <h3>{f.title}</h3>
+                    <details><summary>Transcript</summary>{f.transcript.map((p) => <p>{p}</p>)}</details>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          )}
           <div class="news news--two reveal">
             <a class="news__item news__link" href="/crew-presentation">
               <span class="news__tag">Non-technical</span>
@@ -261,6 +290,17 @@ const play = '<svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor
   }
   .home :global(.news__link:hover .news__cta) { color: var(--brass-light); }
   @media (max-width: 560px) { .home :global(.news--two) { grid-template-columns: 1fr; } }
+  .home :global(.films) { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 28px; margin-bottom: 3rem; }
+  .home :global(.film) { margin: 0; }
+  .home :global(.film__frame) { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line-dark-strong); background: var(--night-2); aspect-ratio: 16 / 9; box-shadow: 0 24px 50px -28px rgba(0, 0, 0, 0.8); }
+  .home :global(.film__frame video) { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .home :global(.film figcaption) { padding: 1rem 0.2rem 0; }
+  .home :global(.film__num) { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sea); }
+  .home :global(.film h3) { font-family: var(--display); font-weight: 500; font-size: 1.3rem; margin: 0.3rem 0 0.5rem; }
+  .home :global(.film details) { font-size: 0.9rem; color: var(--cream-muted); }
+  .home :global(.film summary) { cursor: pointer; color: var(--brass); font-size: 0.85rem; }
+  .home :global(.film details p) { margin-top: 0.6rem; }
+  @media (max-width: 420px) { .home :global(.films) { grid-template-columns: 1fr; } }
 </style>
 
 <script>
