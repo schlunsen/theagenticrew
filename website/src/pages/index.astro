@@ -9,8 +9,7 @@ import Voyage from '../components/home/Voyage.astro';
 import AuthorBio from '../components/home/AuthorBio.astro';
 import Downloads from '../components/home/Downloads.astro';
 import SiteFooter from '../components/home/SiteFooter.astro';
-import Audiobook from '../components/Audiobook.astro';
-import CrewAudiobook from '../components/CrewAudiobook.astro';
+import Listen from '../components/Listen.astro';
 import ChatWidget from '../components/ChatWidget.astro';
 import '../styles/home.css';
 ---
@@ -34,12 +33,11 @@ import '../styles/home.css';
           <div class="section-head section-head--center reveal">
             <span class="eyebrow">Listen free</span>
             <h2 id="listen-title" class="h2">Hear it <em>on watch.</em></h2>
-            <p class="lede">AI-narrated audiobooks, chapter by chapter. The engineering audiobook currently narrates the first edition.</p>
+            <p class="lede">AI-narrated audiobooks, chapter by chapter: both books, two voices, English and Catalan. It remembers where you stopped.</p>
           </div>
         </div>
-        <div class="listen-host">
-          <Audiobook />
-          <CrewAudiobook />
+        <div class="wrap listen-wrap">
+          <Listen />
         </div>
       </section>
     </main>

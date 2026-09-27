@@ -1,0 +1,346 @@
+---
+// The audiobook player ("Midnight & Brass"). One player for every edition in audiobooks.json
+// (written by website/scripts/build-audiobooks.py, so it only lists chapters that have audio).
+//   <Listen />                      both books, with tabs
+//   <Listen books={['crew']} />     just the Crew Member's Guide
+// It initialises on astro:page-load, so it keeps working after ClientRouter navigations.
+import editions from '../data/audiobooks.json';
+
+interface Props { books?: string[]; id?: string }
+const { books, id = 'audiobook' } = Astro.props;
+const eds = (editions as any[]).filter((e) => (!books || books.includes(e.book)) && e.tracks.length);
+const bookIds = [...new Set(eds.map((e) => e.book))];
+const bookTitle: Record<string, string> = { engineering: 'The Agentic Crew', crew: "Crew Member's Guide" };
+const fmt = (s: number) => {
+  const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = Math.floor(s % 60);
+  return h ? `${h}:${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}` : `${m}:${String(sec).padStart(2, '0')}`;
+};
+const first = eds[0];
+const helmSpokes = Array.from({ length: 8 }, (_, i) => (i * Math.PI) / 4);
+---
+
+<div class="lx" id={id} data-listen>
+  {bookIds.length > 1 && (
+    <div class="lx-tabs" role="tablist" aria-label="Choose a book">
+      {bookIds.map((b, i) => (
+        <button role="tab" class="lx-tab" data-book={b} aria-selected={i === 0 ? 'true' : 'false'}>{bookTitle[b] ?? b}</button>
+      ))}
+    </div>
+  )}
+  {bookIds.map((b, i) => {
+    const bEds = eds.filter((e) => e.book === b);
+    return bEds.length > 1 && (
+      <div class="lx-voices" data-voices={b} hidden={i !== 0} role="radiogroup" aria-label="Voice and language">
+        {bEds.map((e, j) => (
+          <button class="lx-chip" role="radio" data-edition={e.id} aria-checked={j === 0 ? 'true' : 'false'}>{e.label}</button>
+        ))}
+      </div>
+    );
+  })}
+
+  <div class="lx-deck" data-deck>
+    <svg class="lx-helm" viewBox="-104 -104 208 208" aria-hidden="true">
+      <circle r="50" /><circle r="27.5" />
+      {helmSpokes.map((a) => <line x1={(-100 * Math.cos(a)).toFixed(1)} y1={(-100 * Math.sin(a)).toFixed(1)} x2={(100 * Math.cos(a)).toFixed(1)} y2={(100 * Math.sin(a)).toFixed(1)} />)}
+    </svg>
+    <div class="lx-now">
+      <span class="lx-num" data-num>{first.tracks[0].number || '·'}</span>
+      <div class="lx-meta">
+        <span class="lx-label" data-label>Ready to play</span>
+        <h3 class="lx-title" data-title>{first.tracks[0].title}</h3>
+        <span class="lx-book" data-book-line>{first.bookTitle} · {first.label}</span>
+      </div>
+    </div>
+
+    <div class="lx-progress">
+      <span class="lx-time" data-cur>0:00</span>
+      <input class="lx-seek" data-seek type="range" min="0" max="1000" value="0" step="1" aria-label="Seek" />
+      <span class="lx-time" data-dur>{fmt(first.tracks[0].duration)}</span>
+    </div>
+
+    <div class="lx-controls">
+      <div class="lx-transport">
+        <button class="lx-btn" data-prev aria-label="Previous chapter"><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14L9 12z" /></svg></button>
+        <button class="lx-btn lx-skip" data-back aria-label="Back 15 seconds"><svg viewBox="0 0 24 24"><path d="M12 5V2L7 6l5 4V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z" /></svg><span>15</span></button>
+        <button class="lx-play" data-play aria-label="Play">
+          <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+          <svg class="i-pause" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z" /></svg>
+        </button>
+        <button class="lx-btn lx-skip" data-fwd aria-label="Forward 30 seconds"><svg viewBox="0 0 24 24"><path d="M12 5V2l5 4-5 4V7a6 6 0 1 0 6 6h2a8 8 0 1 1-8-8z" /></svg><span>30</span></button>
+        <button class="lx-btn" data-next aria-label="Next chapter"><svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM4 5l11 7L4 19z" /></svg></button>
+      </div>
+      <div class="lx-extras">
+        <button class="lx-pill" data-speed aria-label="Playback speed">1×</button>
+        <button class="lx-pill" data-ambient aria-pressed="false" title="Quiet ambient music under the narration">
+          <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" /></svg>
+          Ambient
+        </button>
+      </div>
+    </div>
+    <audio data-audio preload="none"></audio>
+  </div>
+
+  {eds.map((e, i) => (
+    <div class="lx-edition" data-list={e.id} data-book-of={e.book} data-line={`${e.bookTitle} · ${e.label}`} hidden={i !== 0}>
+      <ol class="lx-list">
+        {e.tracks.map((t: any, k: number) => (
+          <li>
+            <button class="lx-row" data-track={k} data-src={t.src} data-title={t.title} data-num={t.number} data-duration={t.duration}>
+              <span class="lx-row-num">{t.number || '·'}</span>
+              <span class="lx-row-title">{t.title}</span>
+              <span class="lx-eq" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="lx-row-dur">{fmt(t.duration)}</span>
+            </button>
+          </li>
+        ))}
+      </ol>
+      <div class="lx-foot">
+        <span>{e.tracks.length} chapters · about {Math.floor(e.totalMinutes / 60)} h {e.totalMinutes % 60} min{e.note && <> · {e.note}</>}</span>
+        {e.full && <a class="lx-download" href={e.full} download>Download the whole book (MP3, {e.fullMB} MB)</a>}
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  type Track = { src: string; title: string; num: string; duration: number };
+  const KEY = 'listen:v1';
+  const SPEEDS = [1, 1.25, 1.5, 1.75, 2, 0.8];
+  const load = () => { try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch { return {}; } };
+  const save = (s: object) => { try { localStorage.setItem(KEY, JSON.stringify({ ...load(), ...s })); } catch {} };
+  const fmt = (s: number) => {
+    if (!isFinite(s)) s = 0;
+    const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = Math.floor(s % 60);
+    return h ? `${h}:${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}` : `${m}:${String(sec).padStart(2, '0')}`;
+  };
+  let ambient: HTMLAudioElement | null = null;   // lives outside the DOM, so stop it on navigation
+
+  function setup(root: HTMLElement) {
+    if (root.dataset.ready) return;
+    root.dataset.ready = '1';
+    const $ = <T extends Element>(s: string) => root.querySelector<T>(s)!;
+    const audio = $<HTMLAudioElement>('[data-audio]');
+    const deck = $<HTMLElement>('[data-deck]');
+    const seek = $<HTMLInputElement>('[data-seek]');
+    const els = { num: $('[data-num]'), label: $('[data-label]'), title: $('[data-title]'), book: $('[data-book-line]'), cur: $('[data-cur]'), dur: $('[data-dur]') };
+    const playBtn = $<HTMLButtonElement>('[data-play]'), speedBtn = $<HTMLButtonElement>('[data-speed]'), ambBtn = $<HTMLButtonElement>('[data-ambient]');
+    const chipsFor = (book: string) => root.querySelectorAll<HTMLButtonElement>(`[data-voices="${book}"] .lx-chip`);
+
+    let edition = root.querySelector<HTMLElement>('[data-list]')!.dataset.list!;
+    let index = 0, pendingSeek = 0, seeking = false;
+    const state = load();
+
+    const list = () => root.querySelector<HTMLElement>(`[data-list="${edition}"]`)!;
+    const rows = () => Array.from(list().querySelectorAll<HTMLButtonElement>('.lx-row'));
+    const track = (i = index): Track => { const r = rows()[i]; return { src: r.dataset.src!, title: r.dataset.title!, num: r.dataset.num!, duration: +r.dataset.duration! }; };
+    const bookLine = () => list().dataset.line || '';
+
+    function showTrack(label = 'Ready to play') {
+      const t = track();
+      els.num.textContent = t.num || '·';
+      els.title.textContent = t.title;
+      els.label.textContent = label;
+      els.book.textContent = bookLine();
+      els.dur.textContent = fmt(t.duration);
+      rows().forEach((r, i) => r.classList.toggle('is-current', i === index));
+    }
+    function selectEdition(id: string, keepIndex = false) {
+      edition = id;
+      root.querySelectorAll<HTMLElement>('[data-list]').forEach((el) => (el.hidden = el.dataset.list !== id));
+      root.querySelectorAll<HTMLElement>('.lx-chip').forEach((c) => c.setAttribute('aria-checked', String(c.dataset.edition === id)));
+      if (!keepIndex) index = 0;
+      index = Math.min(index, rows().length - 1);
+      audio.pause(); audio.removeAttribute('src'); audio.load();
+      showTrack();
+    }
+    function play(i = index, from = 0) {
+      const changed = i !== index || !audio.getAttribute('src');
+      index = i;
+      if (changed) { audio.src = track().src; pendingSeek = from; }
+      audio.playbackRate = SPEEDS[+(speedBtn.dataset.i || 0)];
+      showTrack('Now playing');
+      audio.play().catch(() => {});
+    }
+    const toggle = () => (audio.paused ? play() : audio.pause());
+
+    // ---- controls ----
+    playBtn.addEventListener('click', toggle);
+    $('[data-prev]').addEventListener('click', () => (audio.currentTime > 5 ? (audio.currentTime = 0) : index > 0 && play(index - 1)));
+    $('[data-next]').addEventListener('click', () => index < rows().length - 1 && play(index + 1));
+    $('[data-back]').addEventListener('click', () => (audio.currentTime = Math.max(0, audio.currentTime - 15)));
+    $('[data-fwd]').addEventListener('click', () => (audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 30)));
+    speedBtn.addEventListener('click', () => {
+      const i = (+(speedBtn.dataset.i || 0) + 1) % SPEEDS.length;
+      speedBtn.dataset.i = String(i); speedBtn.textContent = `${SPEEDS[i]}×`;
+      audio.playbackRate = SPEEDS[i]; save({ speed: i });
+    });
+    ambBtn.addEventListener('click', () => {
+      const on = ambBtn.getAttribute('aria-pressed') !== 'true';
+      ambBtn.setAttribute('aria-pressed', String(on));
+      if (on) { ambient ??= Object.assign(new Audio('/presentation-audio/bg-music.mp3'), { loop: true, volume: 0.09 }); if (!audio.paused) ambient.play().catch(() => {}); }
+      else ambient?.pause();
+      save({ ambient: on });
+    });
+    root.addEventListener('click', (e) => {
+      const row = (e.target as HTMLElement).closest<HTMLButtonElement>('.lx-row');
+      if (row) { const i = +row.dataset.track!; i === index && audio.getAttribute('src') ? toggle() : play(i); }
+      const tab = (e.target as HTMLElement).closest<HTMLButtonElement>('.lx-tab');
+      if (tab) {
+        root.querySelectorAll('.lx-tab').forEach((t) => t.setAttribute('aria-selected', String(t === tab)));
+        root.querySelectorAll<HTMLElement>('[data-voices]').forEach((v) => (v.hidden = v.dataset.voices !== tab.dataset.book));
+        // the book's first edition (its first voice chip, or its only list)
+        const chip = chipsFor(tab.dataset.book!)[0];
+        const ed = chip?.dataset.edition || root.querySelector<HTMLElement>(`[data-list][data-book-of="${tab.dataset.book}"]`)?.dataset.list;
+        if (ed && ed !== edition) selectEdition(ed);
+      }
+      const chip = (e.target as HTMLElement).closest<HTMLButtonElement>('.lx-chip');
+      if (chip && chip.dataset.edition !== edition) selectEdition(chip.dataset.edition!, true);
+    });
+
+    // ---- audio events ----
+    audio.addEventListener('loadedmetadata', () => { if (pendingSeek) { audio.currentTime = pendingSeek; pendingSeek = 0; } els.dur.textContent = fmt(audio.duration); });
+    audio.addEventListener('timeupdate', () => {
+      if (!seeking && audio.duration) seek.value = String(Math.round((audio.currentTime / audio.duration) * 1000));
+      els.cur.textContent = fmt(audio.currentTime);
+      seek.style.setProperty('--p', `${(+seek.value) / 10}%`);
+      if (Math.floor(audio.currentTime) % 5 === 0) save({ edition, index, time: audio.currentTime });
+    });
+    audio.addEventListener('play', () => { deck.classList.add('is-playing'); root.classList.add('is-playing'); playBtn.setAttribute('aria-label', 'Pause'); if (ambBtn.getAttribute('aria-pressed') === 'true') ambient?.play().catch(() => {}); media(); });
+    audio.addEventListener('pause', () => { deck.classList.remove('is-playing'); root.classList.remove('is-playing'); playBtn.setAttribute('aria-label', 'Play'); ambient?.pause(); els.label.textContent = audio.ended ? 'Finished' : 'Paused'; save({ edition, index, time: audio.currentTime }); });
+    audio.addEventListener('ended', () => { save({ time: 0 }); if (index < rows().length - 1) play(index + 1); });
+    audio.addEventListener('error', () => { if (audio.getAttribute('src')) els.label.textContent = 'Could not load this chapter'; });
+    seek.addEventListener('input', () => { seeking = true; seek.style.setProperty('--p', `${(+seek.value) / 10}%`); els.cur.textContent = fmt(((+seek.value) / 1000) * (audio.duration || track().duration)); });
+    seek.addEventListener('change', () => {
+      seeking = false;
+      const t = ((+seek.value) / 1000) * (audio.duration || track().duration);
+      if (audio.getAttribute('src')) audio.currentTime = t; else play(index, t);
+    });
+
+    // lock-screen and media-key controls
+    function media() {
+      if (!('mediaSession' in navigator)) return;
+      const t = track();
+      navigator.mediaSession.metadata = new MediaMetadata({ title: t.title, artist: 'The Agentic Crew', album: bookLine(), artwork: [{ src: '/icon-512.png', sizes: '512x512', type: 'image/png' }] });
+      const h: [MediaSessionAction, MediaSessionActionHandler][] = [
+        ['play', () => play()], ['pause', () => audio.pause()],
+        ['previoustrack', () => index > 0 && play(index - 1)], ['nexttrack', () => index < rows().length - 1 && play(index + 1)],
+        ['seekbackward', () => (audio.currentTime -= 15)], ['seekforward', () => (audio.currentTime += 30)],
+        ['seekto', (d) => d.seekTime != null && (audio.currentTime = d.seekTime)],
+      ];
+      h.forEach(([a, f]) => { try { navigator.mediaSession.setActionHandler(a, f); } catch {} });
+    }
+
+    // restore: book, voice, chapter, position, speed, ambient
+    if (typeof state.speed === 'number' && SPEEDS[state.speed]) { speedBtn.dataset.i = String(state.speed); speedBtn.textContent = `${SPEEDS[state.speed]}×`; }
+    if (state.ambient) ambBtn.setAttribute('aria-pressed', 'true');
+    const savedList = state.edition && root.querySelector<HTMLElement>(`[data-list="${state.edition}"]`);
+    if (savedList) {
+      const book = savedList.dataset.bookOf;
+      root.querySelectorAll('.lx-tab').forEach((t) => t.setAttribute('aria-selected', String((t as HTMLElement).dataset.book === book)));
+      root.querySelectorAll<HTMLElement>('[data-voices]').forEach((v) => (v.hidden = v.dataset.voices !== book));
+      selectEdition(state.edition);
+      index = Math.min(state.index || 0, rows().length - 1);
+      pendingSeek = state.time || 0;
+      if (pendingSeek > 3) { audio.src = track().src; showTrack(`Resume at ${fmt(pendingSeek)}`); seek.value = String(Math.round((pendingSeek / track().duration) * 1000)); seek.style.setProperty('--p', `${(+seek.value) / 10}%`); els.cur.textContent = fmt(pendingSeek); }
+      else showTrack();
+    } else showTrack();
+  }
+
+  document.addEventListener('astro:page-load', () => document.querySelectorAll<HTMLElement>('[data-listen]').forEach(setup));
+  document.addEventListener('astro:before-swap', () => ambient?.pause());
+</script>
+
+<style>
+  .lx {
+    --navy: #0d1324; --navy-2: #131b33; --navy-3: #1a2345;
+    --brass: #c9a84c; --brass-light: #e0c878; --brass-dim: #8a7338;
+    --cream: #f0ead6; --cream-muted: rgba(240, 234, 214, .66); --cream-faint: rgba(240, 234, 214, .38);
+    --paper: #fbf7ec; --paper-2: #efe6d0; --ink: #1b1f2e; --ink-muted: #5c5647; --line: rgba(27, 31, 46, .12);
+    --display: 'Fraunces', Georgia, serif; --sans: 'Inter', system-ui, sans-serif; --mono: 'JetBrains Mono', ui-monospace, monospace;
+    max-width: 860px; margin: 0 auto; font-family: var(--sans); color: var(--ink);
+  }
+  .lx [hidden] { display: none !important; }
+
+  /* book tabs and voice chips */
+  .lx-tabs { display: flex; gap: .4rem; justify-content: center; margin-bottom: 1rem; flex-wrap: wrap; }
+  .lx-tab { font: 500 .88rem var(--sans); padding: .6rem 1.1rem; border-radius: 999px; border: 1px solid var(--line); background: rgba(255, 255, 255, .45); color: var(--ink-muted); cursor: pointer; transition: all .2s; }
+  .lx-tab[aria-selected="true"] { background: var(--navy); color: var(--cream); border-color: var(--navy); }
+  .lx-voices { display: flex; gap: .35rem; justify-content: center; margin-bottom: 1.1rem; flex-wrap: wrap; }
+  .lx-chip { font: 500 .72rem var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: .4rem .8rem; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--ink-muted); cursor: pointer; }
+  .lx-chip[aria-checked="true"] { border-color: var(--brass-dim); color: var(--ink); background: rgba(201, 168, 76, .16); }
+
+  /* the deck: a night panel with a brass helm */
+  .lx-deck {
+    position: relative; overflow: hidden; border-radius: 18px; padding: clamp(22px, 4vw, 34px);
+    background: radial-gradient(700px 300px at 85% -10%, rgba(201, 168, 76, .16), transparent 60%), linear-gradient(160deg, var(--navy-2), var(--navy));
+    color: var(--cream); box-shadow: 0 30px 70px -30px rgba(10, 14, 26, .65), inset 0 0 0 1px rgba(201, 168, 76, .22);
+  }
+  .lx-helm { position: absolute; right: -60px; top: -60px; width: 260px; height: 260px; fill: none; stroke: var(--brass); stroke-width: 3; opacity: .13; transition: opacity .6s; }
+  .lx-deck.is-playing .lx-helm { opacity: .22; animation: lx-spin 40s linear infinite; }
+  @keyframes lx-spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .lx-deck.is-playing .lx-helm { animation: none; } }
+  .lx-now { position: relative; display: flex; align-items: center; gap: clamp(14px, 3vw, 24px); }
+  .lx-num { font: 400 clamp(2.6rem, 7vw, 3.8rem)/1 var(--display); color: var(--brass-light); min-width: 2ch; letter-spacing: -.02em; }
+  .lx-meta { min-width: 0; }
+  .lx-label { font: 500 .68rem var(--mono); letter-spacing: .22em; text-transform: uppercase; color: var(--brass); }
+  .lx-title { font: 400 clamp(1.35rem, 3.4vw, 1.9rem)/1.2 var(--display); margin: .25rem 0 .2rem; color: var(--cream); }
+  .lx-book { font-size: .82rem; color: var(--cream-faint); }
+
+  .lx-progress { position: relative; display: grid; grid-template-columns: auto 1fr auto; gap: .9rem; align-items: center; margin: clamp(18px, 3vw, 26px) 0 clamp(14px, 2.4vw, 20px); }
+  .lx-time { font: .75rem var(--mono); color: var(--cream-muted); font-variant-numeric: tabular-nums; min-width: 4ch; }
+  .lx-seek { --p: 0%; -webkit-appearance: none; appearance: none; width: 100%; height: 22px; background: transparent; cursor: pointer; }
+  .lx-seek::-webkit-slider-runnable-track { height: 5px; border-radius: 3px; background: linear-gradient(90deg, var(--brass) var(--p), rgba(240, 234, 214, .16) var(--p)); }
+  .lx-seek::-moz-range-track { height: 5px; border-radius: 3px; background: rgba(240, 234, 214, .16); }
+  .lx-seek::-moz-range-progress { height: 5px; border-radius: 3px; background: var(--brass); }
+  .lx-seek::-webkit-slider-thumb { -webkit-appearance: none; width: 15px; height: 15px; margin-top: -5px; border-radius: 50%; background: var(--brass-light); box-shadow: 0 0 0 4px rgba(201, 168, 76, .22); }
+  .lx-seek::-moz-range-thumb { width: 15px; height: 15px; border: 0; border-radius: 50%; background: var(--brass-light); box-shadow: 0 0 0 4px rgba(201, 168, 76, .22); }
+  .lx-seek:focus-visible { outline: none; }
+  .lx-seek:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 5px rgba(224, 200, 120, .5); }
+
+  .lx-controls { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .lx-transport { display: flex; align-items: center; gap: clamp(4px, 1.4vw, 12px); }
+  .lx-btn { position: relative; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; border: 0; background: transparent; color: var(--cream-muted); cursor: pointer; transition: color .2s, background .2s; }
+  .lx-btn:hover { color: var(--cream); background: rgba(240, 234, 214, .07); }
+  .lx-btn svg { width: 22px; height: 22px; fill: currentColor; }
+  .lx-skip svg { width: 26px; height: 26px; }
+  .lx-skip span { position: absolute; font: 600 .5rem var(--mono); top: 55%; left: 50%; transform: translate(-50%, -50%); }
+  .lx-play { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; border: 0; cursor: pointer; color: var(--navy);
+    background: linear-gradient(180deg, var(--brass-light), var(--brass)); box-shadow: 0 12px 30px -10px rgba(201, 168, 76, .75), inset 0 1px 0 rgba(255, 255, 255, .4); transition: transform .15s; }
+  .lx-play:hover { transform: scale(1.05); }
+  .lx-play:active { transform: scale(.97); }
+  .lx-play svg { width: 28px; height: 28px; fill: currentColor; }
+  .lx-play .i-pause, .lx-deck.is-playing .lx-play .i-play { display: none; }
+  .lx-deck.is-playing .lx-play .i-pause { display: block; }
+  .lx-extras { display: flex; gap: .5rem; }
+  .lx-pill { display: inline-flex; align-items: center; gap: .4rem; font: 500 .74rem var(--mono); letter-spacing: .04em; padding: .5rem .8rem; border-radius: 999px; border: 1px solid rgba(201, 168, 76, .3); background: rgba(240, 234, 214, .04); color: var(--cream-muted); cursor: pointer; min-width: 3.4rem; justify-content: center; }
+  .lx-pill:hover { color: var(--cream); border-color: var(--brass); }
+  .lx-pill svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2; }
+  .lx-pill[aria-pressed="true"] { color: var(--navy); background: var(--brass); border-color: var(--brass); }
+  :where(.lx button):focus-visible { outline: 2px solid var(--brass-light); outline-offset: 3px; }
+
+  /* chapter list on paper */
+  .lx-edition { margin-top: 18px; background: var(--paper); border-radius: 16px; box-shadow: 0 0 0 1px var(--line), 0 18px 40px -28px rgba(27, 31, 46, .4); overflow: hidden; }
+  .lx-list { list-style: none; margin: 0; padding: 6px; max-height: 440px; overflow-y: auto; scrollbar-width: thin; }
+  .lx-row { width: 100%; display: grid; grid-template-columns: 2.4rem 1fr auto auto; align-items: center; gap: .8rem; padding: .78rem .9rem; border: 0; border-radius: 10px; background: transparent; text-align: left; cursor: pointer; color: var(--ink); transition: background .15s; }
+  .lx-row:hover { background: rgba(201, 168, 76, .1); }
+  .lx-row-num { font: .78rem var(--mono); color: var(--brass-dim); }
+  .lx-row-title { font: 500 1rem/1.3 var(--display); }
+  .lx-row-dur { font: .74rem var(--mono); color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+  .lx-row.is-current { background: rgba(201, 168, 76, .16); }
+  .lx-row.is-current .lx-row-num { color: var(--ink); font-weight: 600; }
+  .lx-eq { display: inline-flex; gap: 2px; align-items: flex-end; height: 14px; width: 14px; opacity: 0; }
+  .lx-eq i { width: 3px; background: var(--brass-dim); border-radius: 1px; height: 30%; }
+  .lx.is-playing .lx-row.is-current .lx-eq { opacity: 1; }
+  .lx.is-playing .lx-row.is-current .lx-eq i { animation: lx-eq 1s ease-in-out infinite; }
+  .lx-eq i:nth-child(2) { animation-delay: -.4s !important; }
+  .lx-eq i:nth-child(3) { animation-delay: -.7s !important; }
+  @keyframes lx-eq { 0%, 100% { height: 25%; } 50% { height: 100%; } }
+  .lx-foot { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; justify-content: space-between; align-items: center; padding: .9rem 1.2rem 1rem; border-top: 1px solid var(--line); font-size: .8rem; color: var(--ink-muted); }
+  .lx-download { font: 500 .78rem var(--sans); color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--brass); padding-bottom: 1px; }
+  .lx-download:hover { color: #8a6a1c; }
+  @media (max-width: 560px) {
+    .lx-controls { justify-content: center; }
+    .lx-row { grid-template-columns: 2rem 1fr auto; }
+    .lx-eq { display: none; }
+  }
+</style>
