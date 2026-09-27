@@ -1,0 +1,19 @@
+title:
+  - type: main
+    text: "The Agentic Crew: Crew Member's Guide"
+  - type: subtitle
+    text: For people who are great with computers — but don't write code
+creator:
+  - role: author
+    text: Rasmus Bornhøft Schlünsen
+edition: Second Edition
+date: 2026-09-01
+lang: en-GB
+rights: © 2026 Rasmus Bornhøft Schlünsen. Free to read and share.
+publisher: theagenticcrew.com
+subject: [AI agents, Technology for non-programmers, Agentic engineering]
+description: >-
+  A companion to The Agentic Crew for tech-savvy people who don't write code —
+  what agents are, how modern software works, how to give good instructions,
+  context, trust, connectors, prompt injection, and building real things with
+  an agent. Second edition, September 2026.
