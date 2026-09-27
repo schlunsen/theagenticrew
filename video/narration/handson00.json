@@ -1,0 +1,47 @@
+{
+  "chapter": "00",
+  "title": "The Hands-On Guide",
+  "next": "",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "timing_js": "crew/handson00/timing.js",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "hook",
+      "gap": 0.8,
+      "text": "This is a book you don't just read. You do it. Each chapter is an exercise, not an explanation. Ten of them. You open a terminal, you type, you watch what happens, and by the end you've built real things, on real servers, with an A I agent working beside you. You don't need to be a programmer. You just need to be willing to try."
+    },
+    {
+      "id": "bench",
+      "gap": 0.8,
+      "text": "Exercise one sets up your workshop: a terminal, a package manager, Git, the GitHub command line, and an A I assistant. Exercise two sends your first pull request. You fork a real book, write a review of one chapter, and propose it on GitHub, where real people will read it. This isn't a simulation."
+    },
+    {
+      "id": "build",
+      "gap": 0.8,
+      "text": "Then you start building. Take an open source presentation, describe your topic in plain English, and let the agent generate the pictures, the narration and the animated background. Next, pair program a travel bucket list app from scratch. You describe it, the agent writes every line, and you review, click around, and ask for better. You bring the vision. The agent brings the code."
+    },
+    {
+      "id": "live",
+      "gap": 0.8,
+      "text": "Your app works on your own laptop. Now send the link to a friend. You can't. So you rent a small server, and the agent runs it for you: it logs in, locks the doors, turns on H T T P S, and points your domain at it. Then you attack your own app before anyone else does. A team of security agents probes it, tries real exploits, and writes you a report."
+    },
+    {
+      "id": "net",
+      "gap": 0.8,
+      "text": "Change one thing, and how do you know nothing broke? Without tests, your agent is coding blindfolded. So you give it eyes: tests that go green when everything works, and red when it doesn't, on every push. Then you step out of the loop, and wire up a pipeline of agents that reads messy feedback, sorts it, and files the issues while you sleep."
+    },
+    {
+      "id": "saas",
+      "gap": 0.8,
+      "text": "Exercise nine is the real thing. Your own product, from idea to launch in a day. Sign up, log in, payments, a smart A I feature, tests, and a live address you can text to a friend. The agent is your co-founder. Every skill from every chapter comes together here."
+    },
+    {
+      "id": "log",
+      "gap": 0.8,
+      "text": "And the last exercise turns the book around. For nine chapters, you followed instructions. Now you write them: a Claude dot M D file that tells an agent how to work on your project, what matters, and what not to touch. You walked in as a passenger. You leave as the captain. Open a terminal, and start."
+    }
+  ]
+}

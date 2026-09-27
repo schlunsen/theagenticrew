@@ -1,0 +1,286 @@
+WEBVTT
+
+00:00:05.300 --> 00:00:06.840
+This is a book you don't just
+
+00:00:06.840 --> 00:00:07.440
+read,
+
+00:00:07.440 --> 00:00:08.350
+you do it.
+
+00:00:08.440 --> 00:00:10.430
+Each chapter is an exercise,
+
+00:00:10.520 --> 00:00:11.810
+not an explanation.
+
+00:00:11.840 --> 00:00:12.620
+10 of them.
+
+00:00:12.620 --> 00:00:13.850
+You open a terminal,
+
+00:00:13.940 --> 00:00:14.620
+you type,
+
+00:00:14.620 --> 00:00:15.600
+you watch what happens,
+
+00:00:15.600 --> 00:00:17.320
+and by the end you've built real
+
+00:00:17.320 --> 00:00:18.000
+things,
+
+00:00:18.000 --> 00:00:19.200
+on real servers,
+
+00:00:19.200 --> 00:00:21.560
+with an AI agent working beside you.
+
+00:00:21.560 --> 00:00:23.310
+You don't need to be a programmer,
+
+00:00:23.480 --> 00:00:24.680
+you just need to be willing to
+
+00:00:24.680 --> 00:00:25.530
+try.
+
+00:00:25.944 --> 00:00:28.064
+Exercise 1 sets up your workshop,
+
+00:00:28.064 --> 00:00:28.924
+a terminal,
+
+00:00:28.924 --> 00:00:30.084
+a package manager,
+
+00:00:30.084 --> 00:00:30.684
+git,
+
+00:00:30.684 --> 00:00:32.174
+the GitHub command line,
+
+00:00:32.184 --> 00:00:33.514
+and an AI assistant.
+
+00:00:33.664 --> 00:00:36.324
+Exercise 2 sends your first pull request.
+
+00:00:36.324 --> 00:00:37.824
+You fork a real book,
+
+00:00:37.824 --> 00:00:39.404
+write a review of one chapter,
+
+00:00:39.404 --> 00:00:40.784
+and propose it on GitHub,
+
+00:00:40.784 --> 00:00:42.724
+where real people will read it.
+
+00:00:42.724 --> 00:00:44.414
+This isn't a simulation.
+
+00:00:45.300 --> 00:00:46.500
+Then you start building.
+
+00:00:46.500 --> 00:00:48.480
+Take an open source presentation,
+
+00:00:48.480 --> 00:00:50.560
+describe your topic in plain English,
+
+00:00:50.560 --> 00:00:53.010
+and let the agent generate the pictures,
+
+00:00:53.040 --> 00:00:55.470
+the narration and the animated background.
+
+00:00:55.580 --> 00:00:56.380
+Next,
+
+00:00:56.380 --> 00:00:58.280
+pair program a travel bucket list app
+
+00:00:58.280 --> 00:00:59.200
+from scratch.
+
+00:00:59.200 --> 00:01:00.280
+You describe it,
+
+00:01:00.280 --> 00:01:01.920
+the agent writes every line,
+
+00:01:01.920 --> 00:01:02.870
+and you review,
+
+00:01:02.900 --> 00:01:03.740
+click around,
+
+00:01:03.740 --> 00:01:04.770
+and ask for better.
+
+00:01:04.800 --> 00:01:06.190
+You bring the vision.
+
+00:01:06.320 --> 00:01:07.710
+The agent brings the code.
+
+00:01:08.430 --> 00:01:10.300
+Your app works on your own laptop.
+
+00:01:10.370 --> 00:01:12.070
+Now send the link to a friend.
+
+00:01:12.070 --> 00:01:12.950
+You can't.
+
+00:01:12.950 --> 00:01:14.530
+So you rent a small server,
+
+00:01:14.530 --> 00:01:16.070
+and the agent runs it for you.
+
+00:01:16.070 --> 00:01:17.150
+It logs in,
+
+00:01:17.150 --> 00:01:18.200
+locks the doors,
+
+00:01:18.270 --> 00:01:20.050
+turns on HTTPS,
+
+00:01:20.050 --> 00:01:21.490
+and points your domain at it.
+
+00:01:21.490 --> 00:01:23.170
+Then you attack your own app before
+
+00:01:23.170 --> 00:01:24.310
+anyone else does.
+
+00:01:24.310 --> 00:01:26.650
+A team of security agents probes it,
+
+00:01:26.650 --> 00:01:27.910
+tries real exploits,
+
+00:01:27.910 --> 00:01:29.260
+and writes you a report.
+
+00:01:30.056 --> 00:01:31.156
+Change one thing,
+
+00:01:31.156 --> 00:01:32.906
+and how do you know nothing broke?
+
+00:01:32.936 --> 00:01:34.106
+Without tests,
+
+00:01:34.176 --> 00:01:36.216
+your agent is coding blindfolded.
+
+00:01:36.216 --> 00:01:37.896
+So you give it eyes:
+
+00:01:37.896 --> 00:01:39.936
+tests that go green when everything works,
+
+00:01:39.936 --> 00:01:41.476
+and red when it doesn't,
+
+00:01:41.476 --> 00:01:42.756
+on every push.
+
+00:01:42.756 --> 00:01:44.296
+Then you step out of the loop,
+
+00:01:44.296 --> 00:01:46.176
+and wire up a pipeline of agents
+
+00:01:46.176 --> 00:01:47.826
+that reads messy feedback,
+
+00:01:47.996 --> 00:01:48.556
+sorts it,
+
+00:01:48.556 --> 00:01:50.486
+and files the issues while you sleep.
+
+00:01:51.270 --> 00:01:53.360
+Exercise nine is the real thing.
+
+00:01:53.470 --> 00:01:54.430
+Your own product,
+
+00:01:54.430 --> 00:01:56.260
+from idea to launch in a day.
+
+00:01:56.430 --> 00:01:57.250
+Sign up,
+
+00:01:57.250 --> 00:01:57.990
+log in,
+
+00:01:57.990 --> 00:01:58.670
+payments,
+
+00:01:58.670 --> 00:02:00.680
+a smart A I feature,
+
+00:02:00.690 --> 00:02:00.810
+tests,
+
+00:02:00.810 --> 00:02:02.370
+and a live address you can text
+
+00:02:02.370 --> 00:02:03.390
+to a friend.
+
+00:02:03.390 --> 00:02:04.780
+The agent is your co-founder.
+
+00:02:04.850 --> 00:02:07.330
+Every skill from every chapter comes together
+
+00:02:07.330 --> 00:02:08.180
+here.
+
+00:02:08.582 --> 00:02:10.942
+And the last exercise turns the book
+
+00:02:10.942 --> 00:02:11.562
+around.
+
+00:02:11.562 --> 00:02:12.992
+For nine chapters,
+
+00:02:13.022 --> 00:02:14.532
+you followed instructions.
+
+00:02:14.642 --> 00:02:15.912
+Now you write them.
+
+00:02:15.942 --> 00:02:18.482
+A claw .md file that tells an
+
+00:02:18.482 --> 00:02:19.882
+agent how to work on your project,
+
+00:02:19.882 --> 00:02:20.922
+what matters,
+
+00:02:20.922 --> 00:02:22.242
+and what not to touch.
+
+00:02:22.242 --> 00:02:23.982
+You walked in as a passenger.
+
+00:02:23.982 --> 00:02:25.532
+You leave as the captain.
+
+00:02:25.562 --> 00:02:27.612
+Open a terminal and start.
