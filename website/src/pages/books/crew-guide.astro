@@ -2,10 +2,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/home/Header.astro';
 import SiteFooter from '../../components/home/SiteFooter.astro';
-import Helm from '../../components/home/Helm.astro';
+import Compass from '../../components/home/Compass.astro';
 import CrewAudiobook from '../../components/CrewAudiobook.astro';
 import { crewChapters, crewParts, newInCrewSecondEdition } from '../../data/chapters';
 import '../../styles/home.css';
+import '../../styles/crew.css';
 
 const grouped = crewParts.map((p) => ({ ...p, chapters: crewChapters.slice(p.from - 1, p.to) }));
 
@@ -36,12 +37,12 @@ const play = '<svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor
   title="The Agentic Crew: Crew Member's Guide — for people who don't write code (Second Edition)"
   description="A free guide for people who are great with computers but don't write code. Understand AI agents, direct them, stay safe from prompt injection, and build real things without programming. Second edition, September 2026."
 >
-  <div class="home">
+  <div class="home crew-theme">
     <Header sub cta={{ label: 'Download free', href: '#download' }} />
     <main>
       <!-- Hero -->
       <section class="hero2" aria-labelledby="hero-title">
-        <div class="hero2__helm" aria-hidden="true"><Helm size="100%" stroke={0.6} /></div>
+        <div class="hero2__helm" aria-hidden="true"><Compass size="100%" stroke={0.5} /></div>
         <div class="wrap">
           <div class="hero2__grid">
             <div>

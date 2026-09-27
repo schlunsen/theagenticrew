@@ -1,0 +1,94 @@
+/* ─────────────────────────────────────────────────────────────
+   Crew Member's Guide — "Sea Chart" variant of the homepage system.
+   Same structure as home.css, retuned to the crew illustrations:
+   deep sea-teal instead of midnight navy, ochre instead of brass,
+   a sea-green signal colour, and the compass rose as the motif.
+   Apply with <div class="home crew-theme">.
+   ───────────────────────────────────────────────────────────── */
+
+.home.crew-theme {
+  --ink: #06181a;
+  --night: #0a2225;
+  --night-2: #0f2d31;
+  --night-3: #16393e;
+  --brass: #d5954a;
+  --brass-light: #efbf7c;
+  --brass-dim: #8e6333;
+  --sea: #74c3b5;
+  --cream: #f1eadb;
+  --cream-muted: rgba(241, 234, 219, 0.7);
+  --cream-faint: rgba(241, 234, 219, 0.44);
+  --line-dark: rgba(116, 195, 181, 0.16);
+  --line-dark-strong: rgba(116, 195, 181, 0.32);
+  --paper: #f4ede0;
+  --paper-2: #ece2cd;
+  --paper-ink: #13262a;
+  --paper-muted: #55605a;
+  --line-paper: rgba(19, 38, 42, 0.13);
+  --brass-on-paper: #9a5a1e;
+  --sea-on-paper: #2c7468;
+}
+
+/* Signals: eyebrows and small labels in sea-green, headings' italics in ochre. */
+.crew-theme .eyebrow, .crew-theme .news__tag, .crew-theme .series__label { color: var(--sea); }
+.crew-theme .band--paper .eyebrow { color: var(--sea-on-paper); }
+.crew-theme .chap__num { color: var(--sea); opacity: 0.75; }
+.crew-theme .part__numeral { color: var(--sea); }
+
+/* Header */
+.crew-theme .home-header.is-scrolled,
+.crew-theme .home-header.is-open { background: rgba(6, 24, 26, 0.94); }
+.crew-theme .home-header__drawer { background: rgba(6, 24, 26, 0.97); }
+.crew-theme .home-header__brand svg, .crew-theme .home-footer__brand svg { color: var(--sea); }
+
+/* Hero: a sea at dusk rather than a night sky, the compass instead of the helm */
+.crew-theme .hero2 {
+  background:
+    radial-gradient(900px 620px at 22% 45%, rgba(38, 110, 104, 0.45), transparent 65%),
+    radial-gradient(700px 500px at 100% 100%, rgba(213, 149, 74, 0.12), transparent 60%),
+    linear-gradient(180deg, #0d2c2f 0%, var(--ink) 72%);
+}
+.crew-theme .hero2::before { opacity: 0.45; }
+.crew-theme .hero2__helm { right: auto; left: -18vw; color: var(--sea); opacity: 0.1; }
+.crew-theme .hero2__helm svg { animation-duration: 240s; animation-direction: reverse; }
+/* cover on the left, words on the right — the mirror of the main book */
+.crew-theme .hero2__grid { grid-template-columns: 0.85fr 1.15fr; }
+.crew-theme .hero2__book { order: -1; }
+.crew-theme .cover3d { transform: rotateY(18deg) rotateX(4deg); }
+.crew-theme .cover3d:hover { transform: rotateY(6deg) rotateX(2deg); }
+.crew-theme .cover3d::after { right: auto; left: -14px; transform: rotateY(-90deg); transform-origin: right; }
+.crew-theme .hero2__book::before { background: radial-gradient(circle, rgba(116, 195, 181, 0.22), transparent 65%); }
+.crew-theme .hero2__badge b { background: var(--sea); }
+.crew-theme .hero2__sub { color: var(--sea); }
+.crew-theme .pill { background: var(--sea); }
+
+/* Chart-paper sections get a nautical-chart feel: dotted depth lines instead of a grid */
+.crew-theme .band--paper::before {
+  background-image:
+    radial-gradient(circle, var(--line-paper) 1px, transparent 1.4px);
+  background-size: 22px 22px;
+  opacity: 0.6;
+}
+
+/* Tabs, toggles and cards pick up the sea-green */
+.crew-theme .dl__langs button[aria-pressed="true"] { background: var(--sea); border-color: var(--sea); color: var(--ink); }
+.crew-theme .dl__format b { color: var(--sea); }
+.crew-theme .news__num { color: var(--sea); opacity: 0.55; }
+
+/* Audiobook player on paper: re-token to ochre & sea */
+.crew-theme .listen-host {
+  --color-accent: #9a5a1e;
+  --color-accent-light: #b8763a;
+  --color-accent-deep: #7a4512;
+  --color-accent-glow: rgba(154, 90, 30, 0.12);
+  --color-pirate-teal: #2c7468;
+  --color-pirate-teal-glow: rgba(44, 116, 104, 0.1);
+  --color-text: #13262a;
+  --color-text-muted: #55605a;
+}
+
+@media (max-width: 900px) {
+  .crew-theme .hero2__grid { grid-template-columns: 1fr; }
+  .crew-theme .cover3d { transform: rotateY(12deg); }
+  .crew-theme .hero2__helm { left: -40vw; }
+}
