@@ -5,14 +5,15 @@ You're making a 2–3 minute narrated explainer film for one chapter of a free b
 Paths are relative to the repo root `/Users/schlunsen/projects/the-agentic-crew`.
 
 ## Read first, in this order
-1. `video/crew/engine/ANIMATION_GUIDE.md` — **in full**. It's the medium: its rules (handmade, alive, one piece, transitions always, something happens in every scene), the workflow (storyboard → build → review loop → render), the painting API and Clawd. Obey it, with the two exceptions below.
+1. `video/crew/engine/ANIMATION_GUIDE.md` — **in full**. It's the medium: its rules (handmade, alive, one piece, transitions always, something happens in every scene), the workflow (storyboard → build → review loop → render), the painting API and Clawd (whose API our agent keeps). Obey it, with the two exceptions below.
 2. `video/crew/common.js` — the series' shared pieces: the palette, narration timing (`wt`, `shotAt`, `B`), the painted **ident** and **end card**, the **Navigator** character, and the seam helper. Its header documents the API.
-3. `video/crew/<your film>/` — your film folder (see "Setup"). `video/crew/crew04/` is the reference once it exists; if it does, study its scene before you start.
-4. The chapter source, **in full** (the path is given in your task).
+3. `video/crew/agent.js` — the header: the agent (Folio), its options and how Clawd's hooks, hats and chomp map onto it. Where the guide says Clawd, read Folio.
+4. `video/crew/<your film>/` — your film folder (see "Setup"). `video/crew/crew04/` is the reference once it exists; if it does, study its scene before you start.
+5. The chapter source, **in full** (the path is given in your task).
 
 ## What the series is
 - **Audience:** people who are good with computers but don't write code (the Crew guide), or engineers doing exercises (the Hands-On guide). Explain plainly. No jargon without a picture.
-- **Cast:** **Clawd** (the agent: eager, literal, tireless, confidently wrong sometimes) and **the Navigator** (the human: a non-programmer who knows the waters — she directs, checks, decides). She is the protagonist; Clawd is her crew. Use both in most shots.
+- **Cast:** **Folio** (the agent: a paper boat folded from the instructions it was given, still written on its sail; face on the hull, red pennant at the peak. Eager, literal, tireless, confidently wrong sometimes: it does exactly what's written on it) and **the Navigator** (the human: a non-programmer who knows the waters — she directs, checks, decides). She is the protagonist; Folio is her crew. Use both in most shots. Folio replaces the engine's Clawd: draw it with `agent(x, y, u, o)` (`clawd()` is the same function, and everything in the guide's Clawd section — `feel`, `emotions`, `move`, `turn`, hats, hooks, `lid` — works on it). Model sheet: `video/crew/docs/agent.jpg`.
 - **Motif:** the compass rose (the crew guide's cover). It assembles in the ident and turns in the end card.
 - **Palette (crew guide):** sea-teal, ochre, cream paper, with rose and sap as accents — `CREW` in common.js. Soft, warm, saturated-but-gentle watercolour; clear contrast between characters and ground.
 
@@ -55,7 +56,7 @@ PY=$S/tts-env/bin/python               # has mlx-audio, mlx-whisper, requests, n
 8. **Poster:** pick the single most striking frame: `node ../engine/render.mjs --stills=<t> --out=out/poster` then `ffmpeg -v error -y -i out/poster/<file>.png -vf scale=1280:720:flags=lanczos -q:v 3 ../../build/youtube/thumb-<id>-1280x720.jpg` (create the folder if needed). Look at it.
 
 ## Hard rules
-- Only create or edit files for **your own film**: `video/crew/<id>/`, `video/narration/<id>.json`, `video/storyboards/<id>.md`, `video/build/<id>/`, the poster. Do NOT edit `video/crew/engine/`, `video/crew/common.js`, `video/tools/`, `video/riso/`, the website, or book chapters. If you need a helper, write it inside your scene's IIFE. If you find a real bug in a shared file, report it.
+- Only create or edit files for **your own film**: `video/crew/<id>/`, `video/narration/<id>.json`, `video/storyboards/<id>.md`, `video/build/<id>/`, the poster. Do NOT edit `video/crew/engine/`, `video/crew/common.js`, `video/crew/agent.js`, `video/tools/`, `video/riso/`, the website, or book chapters. If you need a helper, write it inside your scene's IIFE. If you find a real bug in a shared file, report it.
 - Up to three films render at once on this laptop: always render from your own folder (it has its own `out/`).
 - Keep the key private. Never print `ATLASCLOUD_API_KEY`.
 

@@ -1,5 +1,7 @@
 // common.js: the shared pieces of the watercolour crew films (The Crew Member's Guide, reusable by the Hands-On Guide).
-// Loaded after the engine (core.js, clawd.js, timeline.js, sheets.js) and the film's timing.js, before its scene.js.
+// Loaded after the engine (core.js, clawd.js, timeline.js, sheets.js) and the film's timing.js, before ../agent.js and the
+// film's scene.js. The series' agent is Folio (a paper boat), in agent.js: agent(x, y, u, o), which also replaces the
+// engine's clawd(), so every mention of Clawd below means the agent (model sheet: docs/agent.jpg).
 // Read video/crew/BRIEF.md and video/crew/engine/ANIMATION_GUIDE.md first. Model sheets: video/crew/docs/navigator.jpg
 // and docs/cards.jpg (scrub them live at studio.html?loop=navigator and ?loop=crewcards).
 //
