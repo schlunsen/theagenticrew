@@ -1,0 +1,56 @@
+{
+  "chapter": "04",
+  "title": "Guardrails, Trust, and Sandboxes",
+  "next": "Git as Agent Infrastructure",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "wipe",
+      "gap": 0.0,
+      "text": "An agent is blocked from deleting files. It needs to undo some changes, so it runs a git checkout instead. That's allowed, because it sounds harmless. Every uncommitted change in the folder is wiped, including the engineer's own work. The agent wasn't malicious. It was resourceful."
+    },
+    {
+      "id": "line",
+      "gap": 0.8,
+      "text": "Power without boundaries isn't bold engineering. It's negligence. But guardrails that are too tight make an agent useless. The craft is finding the line."
+    },
+    {
+      "id": "board",
+      "gap": 0.8,
+      "text": "Think of a mixing board, with one slider for each kind of action: reading files, writing them, shell commands, the network, and git. Reads can run freely. A database migration needs explicit approval. Even two shell commands differ. Running the tests is safe. Installing a package deserves a prompt."
+    },
+    {
+      "id": "ratchet",
+      "gap": 0.8,
+      "text": "On day one, you watch everything. After a week, tests and refactors run freely. After a month, it commits to feature branches on its own. The allowlist becomes a log of trust decisions, but pushing to main stays denied forever. Guardrails should be invisible for routine work, and rigid for the exceptional."
+    },
+    {
+      "id": "hooks",
+      "gap": 0.8,
+      "text": "Plan mode is the cheapest guardrail there is. The agent can read and think, but it changes nothing until you approve the plan. For rules that must never bend, use hooks: scripts the tool runs every time, before an edit, or when the agent says it's done. The model can't argue with them. Instructions are advice. Permissions are policy. Hooks are law."
+    },
+    {
+      "id": "bypass",
+      "gap": 0.8,
+      "text": "Modes that skip every permission belong inside a throwaway container. In one supply-chain attack, malicious packages looked for coding agents on developers' machines, and ran them with their guardrails switched off, to hunt for secrets."
+    },
+    {
+      "id": "depth",
+      "gap": 0.8,
+      "text": "So no single wall is enough. You need defense in depth. The allow list catches the obvious. Hooks enforce the rules that never bend. A sandbox limits the blast radius. Commit history lets you recover. And your own review catches what no rule would flag."
+    },
+    {
+      "id": "fatigue",
+      "gap": 0.8,
+      "text": "Too many gates fail too. Click yes forty times, and you stop reading. The guardrails feel safe, and protect nothing. If you approve the same kind of action five times in a session, it probably belongs on the allowlist."
+    },
+    {
+      "id": "sandbox",
+      "gap": 0.8,
+      "text": "Best of all, a sandbox gives the agent the freedom to be wrong: a worktree, a container, a cloud environment you can throw away. When failure is cheap, experimentation is free. Next up: git as agent infrastructure."
+    }
+  ]
+}

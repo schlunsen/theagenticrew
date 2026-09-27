@@ -1,0 +1,313 @@
+WEBVTT
+
+00:00:04.500 --> 00:00:06.010
+In one controlled trial,
+
+00:00:06.080 --> 00:00:08.440
+experienced developers used AI tools on their
+
+00:00:08.440 --> 00:00:09.640
+own mature projects,
+
+00:00:09.640 --> 00:00:12.210
+and came out almost a fifth slower.
+
+00:00:12.220 --> 00:00:13.300
+The striking part:
+
+00:00:13.300 --> 00:00:14.920
+they believed they had been a fifth
+
+00:00:14.920 --> 00:00:15.640
+faster.
+
+00:00:15.640 --> 00:00:17.780
+Your gut is not a measuring instrument.
+
+00:00:17.780 --> 00:00:19.200
+And on a team,
+
+00:00:19.200 --> 00:00:20.690
+that matters more than anywhere.
+
+00:00:21.456 --> 00:00:23.776
+The ten x claim isn't wrong,
+
+00:00:23.776 --> 00:00:24.876
+just misleading.
+
+00:00:24.876 --> 00:00:26.016
+It's a spike graph,
+
+00:00:26.016 --> 00:00:28.056
+not a flat multiplier.
+
+00:00:28.056 --> 00:00:30.336
+Boilerplate and big refactors go from hours
+
+00:00:30.336 --> 00:00:31.276
+to minutes.
+
+00:00:31.276 --> 00:00:33.656
+System design and a subtle race condition
+
+00:00:33.656 --> 00:00:34.736
+barely move.
+
+00:00:34.736 --> 00:00:36.366
+And agents amplify.
+
+00:00:36.616 --> 00:00:38.476
+Teams with good tests and small batches
+
+00:00:38.476 --> 00:00:39.326
+get better.
+
+00:00:39.476 --> 00:00:41.196
+Weak foundations get worse.
+
+00:00:41.196 --> 00:00:42.356
+So measure outcomes,
+
+00:00:42.356 --> 00:00:44.196
+like lead time and how often you
+
+00:00:44.196 --> 00:00:44.956
+ship.
+
+00:00:44.956 --> 00:00:46.506
+Not lines generated.
+
+00:00:47.296 --> 00:00:49.116
+Then the pull requests pile up.
+
+00:00:49.116 --> 00:00:51.016
+An engineer who opened two a day
+
+00:00:51.016 --> 00:00:52.316
+now opens five,
+
+00:00:52.316 --> 00:00:53.256
+all clean,
+
+00:00:53.256 --> 00:00:54.556
+all passing tests,
+
+00:00:54.556 --> 00:00:56.686
+and reviewing them is exhausting.
+
+00:00:56.696 --> 00:00:58.496
+So the question shifts from,
+
+00:00:58.496 --> 00:00:59.756
+is this correct,
+
+00:00:59.756 --> 00:01:00.376
+to,
+
+00:01:00.376 --> 00:01:01.966
+is this the right approach?
+
+00:01:02.236 --> 00:01:03.926
+Reviewers become architects.
+
+00:01:04.156 --> 00:01:06.036
+A review bot can take the first
+
+00:01:06.036 --> 00:01:06.656
+pass,
+
+00:01:06.656 --> 00:01:07.696
+but it's a filter,
+
+00:01:07.696 --> 00:01:08.716
+not a reviewer.
+
+00:01:08.716 --> 00:01:10.116
+It can find a bug.
+
+00:01:10.116 --> 00:01:11.716
+It can't tell you the feature shouldn't
+
+00:01:11.716 --> 00:01:12.566
+exist.
+
+00:01:13.137 --> 00:01:14.957
+The hardest question is juniors.
+
+00:01:14.957 --> 00:01:16.837
+They learned by doing exactly the work
+
+00:01:16.837 --> 00:01:17.937
+agents now do.
+
+00:01:17.937 --> 00:01:19.787
+The struggle was the education.
+
+00:01:19.877 --> 00:01:22.007
+So use the agent as a tutor,
+
+00:01:22.017 --> 00:01:23.047
+not a replacement.
+
+00:01:23.377 --> 00:01:24.647
+First it explains.
+
+00:01:24.697 --> 00:01:25.767
+Then it pairs,
+
+00:01:25.797 --> 00:01:27.937
+and every line must be understood before
+
+00:01:27.937 --> 00:01:28.777
+it's kept.
+
+00:01:28.777 --> 00:01:30.027
+Then it drafts.
+
+00:01:30.137 --> 00:01:32.007
+Only then does it multiply.
+
+00:01:32.901 --> 00:01:35.251
+Uneven adoption creates a new risk.
+
+00:01:35.381 --> 00:01:36.701
+One engineer gets fluent,
+
+00:01:36.701 --> 00:01:38.381
+ships it three times the rate,
+
+00:01:38.381 --> 00:01:40.121
+and soon has touched every part of
+
+00:01:40.121 --> 00:01:41.001
+the codebase.
+
+00:01:41.001 --> 00:01:42.961
+The bus factor drops to one.
+
+00:01:42.961 --> 00:01:44.471
+The fix is structural,
+
+00:01:44.521 --> 00:01:45.561
+a shared agents,
+
+00:01:45.561 --> 00:01:46.361
+.md,
+
+00:01:46.361 --> 00:01:47.821
+shared skills in the repo,
+
+00:01:47.821 --> 00:01:48.731
+and rotation,
+
+00:01:48.741 --> 00:01:50.621
+so the team's knowledge keeps up with
+
+00:01:50.621 --> 00:01:51.471
+its output.
+
+00:01:52.140 --> 00:01:53.650
+Even the stand -up changes.
+
+00:01:53.660 --> 00:01:55.720
+A task can now start and finish
+
+00:01:55.720 --> 00:01:57.140
+between two stand -ups.
+
+00:01:57.140 --> 00:01:59.040
+So the daily sync is less about
+
+00:01:59.040 --> 00:02:01.110
+progress and more about intent.
+
+00:02:01.280 --> 00:02:03.740
+Making sure three engineers aren't sending agents
+
+00:02:03.740 --> 00:02:05.210
+after the same problem.
+
+00:02:05.420 --> 00:02:07.960
+And conventions matter more because they shape
+
+00:02:07.960 --> 00:02:09.750
+every agent session on the team.
+
+00:02:10.499 --> 00:02:12.759
+When agent written code causes an incident,
+
+00:02:12.759 --> 00:02:13.789
+who is responsible?
+
+00:02:13.879 --> 00:02:16.009
+The answer is simpler than it sounds.
+
+00:02:16.139 --> 00:02:17.489
+Git is the audit trail:
+
+00:02:17.779 --> 00:02:19.679
+mark every agent assisted commit,
+
+00:02:19.679 --> 00:02:20.529
+consistently.
+
+00:02:20.559 --> 00:02:22.739
+The reviewer who approves the pull request
+
+00:02:22.739 --> 00:02:23.299
+owns it,
+
+00:02:23.299 --> 00:02:24.689
+like any other code.
+
+00:02:24.759 --> 00:02:26.119
+And keep the session logs,
+
+00:02:26.119 --> 00:02:27.779
+so months later you can see what
+
+00:02:27.779 --> 00:02:28.709
+the agent saw.
+
+00:02:29.500 --> 00:02:30.760
+So what do you hire for?
+
+00:02:30.760 --> 00:02:32.180
+Not whiteboard speed.
+
+00:02:32.180 --> 00:02:33.390
+System design,
+
+00:02:33.440 --> 00:02:34.140
+judgment,
+
+00:02:34.140 --> 00:02:35.130
+clear communication,
+
+00:02:35.300 --> 00:02:37.120
+and breaking big work into agent sized
+
+00:02:37.120 --> 00:02:37.970
+pieces.
+
+00:02:38.040 --> 00:02:39.370
+Hire for judgment.
+
+00:02:39.400 --> 00:02:40.860
+You can always give them an agent
+
+00:02:40.860 --> 00:02:41.790
+for the rest.
+
+00:02:41.860 --> 00:02:42.820
+Next up:
+
+00:02:42.820 --> 00:02:43.720
+final words,
+
+00:02:43.720 --> 00:02:45.510
+and why the craft is changing,
+
+00:02:45.520 --> 00:02:46.430
+not dying.

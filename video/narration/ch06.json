@@ -1,0 +1,51 @@
+{
+  "chapter": "06",
+  "title": "Testing as the Feedback Loop",
+  "next": "Convention Over Configuration",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "blind",
+      "gap": 0.0,
+      "text": "Two code bases. Same agent. Same task: add a rate limiter that blocks a user after a hundred requests a minute. The first code base has no tests. The agent writes the code, and stops. It has no way to know if it worked. Three days later, production shows the middleware was mounted in the wrong order and never ran. The rate limiter was decoration."
+    },
+    {
+      "id": "suite",
+      "gap": 0.8,
+      "text": "The second code base has a test suite. The agent writes the same code, and runs the tests. Two old tests fail. It reads the failures, adjusts, and runs again. Green. Then it adds three new tests of its own. Same agent, same task, night and day. The difference was the tests."
+    },
+    {
+      "id": "eyes",
+      "gap": 0.8,
+      "text": "An agent can't look at a screen and feel whether it's right. What it can do is run your tests and read the results. Green means keep going. Red means try again. No tests means flying blind. And the quality of the signal matters. Expected four twenty-nine, got two hundred, is something it can act on. A bare assertion error is barely better than silence."
+    },
+    {
+      "id": "tdd",
+      "gap": 0.8,
+      "text": "So write the test first, then say: make this pass. Picture a duration parser with seven assertions. The first attempt forgets seconds. Fail. It adds them. Fail again: bad input doesn't raise an error. It adds validation. Green. Each cycle took seconds, and nobody had to explain what correct means. Writing tests becomes programming the agent."
+    },
+    {
+      "id": "good",
+      "gap": 0.8,
+      "text": "Good agentic tests are fast. If each run takes minutes, an agent gets a handful of tries an hour. If it takes seconds, it gets hundreds. They're deterministic, because a flaky failure sends the agent chasing a ghost. They're isolated, with clear error messages, and they test behavior, not implementation."
+    },
+    {
+      "id": "coverage",
+      "gap": 0.8,
+      "text": "You don't need full coverage. You need tests where the agent works: the hot paths, the API contracts, the seams between components. And negative tests, so an agent can't simplify your validation into accepting garbage."
+    },
+    {
+      "id": "mislead",
+      "gap": 0.8,
+      "text": "Be careful, though. A bad test suite is worse than none. Tests that only check the mock. Assertions that are too loose. Tests that copy the implementation. Each one gives a green light that means nothing. If a subtle bug would slip past a test, that test is furniture."
+    },
+    {
+      "id": "cycle",
+      "gap": 0.8,
+      "text": "Get it right, and the cycle compounds. Better tests make agents more autonomous, which means faster iteration, which leaves more time for better tests. Your review shifts from does this work, to is this the right approach. Before you tune prompts or chase new models, go write tests. Next up: convention over configuration."
+    }
+  ]
+}

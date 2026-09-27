@@ -1,0 +1,51 @@
+{
+  "chapter": "08",
+  "title": "The Ship's Log",
+  "next": "Extending the Agent's Reach",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "amnesia",
+      "gap": 0.0,
+      "text": "Every captain keeps a log, because a ship without one forgets. It forgets which channels were shallow, and every mistake gets made again. That's how most agent sessions begin: with amnesia. The agent doesn't know what was built yesterday, or which three approaches to a problem were tried last week."
+    },
+    {
+      "id": "lost",
+      "gap": 0.8,
+      "text": "Picture an hour-long session. The agent tries two approaches that fail, discovers a quirk in the database driver, and lands a clean solution. The code is committed. But the knowledge lived in the context window, and now it's gone. Tomorrow's session will cheerfully try the same two dead ends."
+    },
+    {
+      "id": "limits",
+      "gap": 0.8,
+      "text": "The usual tools only go so far. Instruction files hold stable knowledge, but nobody updates them for every small discovery. Git history records what changed, not what was learned. And session summaries only work if someone remembers to write them, at the end of a long day."
+    },
+    {
+      "id": "active",
+      "gap": 0.8,
+      "text": "The fix is active memory: a system that captures knowledge as it's created, organizes it, and serves it back when it's needed. Knowledge now flows from every past session into the current one, including sessions run by teammates, weeks ago. A note in the log reads: shoal at low tide, stay east. That lesson cost someone a damaged ship. The log makes sure it only costs one."
+    },
+    {
+      "id": "palace",
+      "gap": 0.8,
+      "text": "Structure makes it searchable. Wings for projects, rooms for topics, and drawers that hold verbatim records, not summaries. At the start of a session, the agent loads what's known. During it, the agent stores its discoveries. At the end, a hook saves the work automatically."
+    },
+    {
+      "id": "shared",
+      "gap": 0.8,
+      "text": "Share the store, and agents working in parallel stop working blind. One agent finds a missing database index and writes it down. Another agent, building the frontend, reads that note before it starts. Each agent keeps its own diary, and everyone can read them all."
+    },
+    {
+      "id": "curate",
+      "gap": 0.8,
+      "text": "Be choosy. Store what's expensive to rediscover: undocumented behavior, decisions and their reasons, approaches that failed. Skip what the code already says. And treat memory as an attack surface. A poisoned note doesn't vanish when the session ends. It comes back next week."
+    },
+    {
+      "id": "log",
+      "gap": 0.8,
+      "text": "When a note keeps coming up, promote it into a convention, or a test. Your agents are the crew, and every crew is temporary. The log is what lets the next voyage start from understanding. Next up: extending the agent's reach."
+    }
+  ]
+}

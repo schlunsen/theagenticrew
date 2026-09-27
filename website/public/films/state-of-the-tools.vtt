@@ -1,0 +1,247 @@
+WEBVTT
+
+00:00:04.500 --> 00:00:06.760
+This appendix is deliberately perishable.
+
+00:00:06.760 --> 00:00:08.240
+Everything else in the book is written
+
+00:00:08.240 --> 00:00:10.230
+to survive the next model release.
+
+00:00:10.380 --> 00:00:11.780
+This part is a snapshot,
+
+00:00:11.780 --> 00:00:13.960
+and the tools shift every few months.
+
+00:00:13.960 --> 00:00:15.730
+So instead of naming winners,
+
+00:00:15.740 --> 00:00:17.100
+here is a way to judge any
+
+00:00:17.100 --> 00:00:17.640
+tool,
+
+00:00:17.640 --> 00:00:19.790
+including the ones that don't exist yet.
+
+00:00:19.860 --> 00:00:21.580
+When a detail goes stale,
+
+00:00:21.580 --> 00:00:22.600
+trust the principles,
+
+00:00:22.600 --> 00:00:24.490
+and check the vendor's current documentation.
+
+00:00:25.742 --> 00:00:27.302
+Coding agents tend to come in three
+
+00:00:27.302 --> 00:00:28.002
+shapes.
+
+00:00:28.002 --> 00:00:30.082
+Agents in your terminal or editor,
+
+00:00:30.082 --> 00:00:32.652
+working in your repository with your permissions.
+
+00:00:32.762 --> 00:00:34.722
+That's where most of the book's interactive
+
+00:00:34.722 --> 00:00:35.702
+work happens.
+
+00:00:35.702 --> 00:00:36.762
+Cloud agents,
+
+00:00:36.762 --> 00:00:38.142
+where you hand over a task,
+
+00:00:38.142 --> 00:00:39.902
+and a pull request comes back from
+
+00:00:39.902 --> 00:00:41.172
+a hosted sandbox.
+
+00:00:41.362 --> 00:00:43.262
+And kits for building agents of your
+
+00:00:43.262 --> 00:00:43.702
+own.
+
+00:00:43.702 --> 00:00:45.832
+Most vendors now offer all three.
+
+00:00:46.643 --> 00:00:47.283
+Underneath,
+
+00:00:47.283 --> 00:00:48.723
+shared conventions are forming.
+
+00:00:48.723 --> 00:00:51.943
+An instruction file like agents .md that
+
+00:00:51.943 --> 00:00:53.213
+many tools can read.
+
+00:00:53.223 --> 00:00:54.663
+A common protocol,
+
+00:00:54.663 --> 00:00:55.683
+MCP,
+
+00:00:55.683 --> 00:00:57.863
+for connecting agents to tools and data.
+
+00:00:57.863 --> 00:00:58.643
+Skills,
+
+00:00:58.643 --> 00:00:59.503
+packaged,
+
+00:00:59.503 --> 00:01:01.203
+know -how that an agent loads only
+
+00:01:01.203 --> 00:01:02.193
+when it needs it.
+
+00:01:02.323 --> 00:01:03.103
+And hooks,
+
+00:01:03.103 --> 00:01:05.043
+small scripts that run the same way
+
+00:01:05.043 --> 00:01:06.153
+every time,
+
+00:01:06.163 --> 00:01:07.913
+around the agent's actions.
+
+00:01:08.718 --> 00:01:10.638
+Models change fastest of all.
+
+00:01:10.638 --> 00:01:13.258
+Frontier commercial models still lead on long,
+
+00:01:13.258 --> 00:01:14.508
+multi file work.
+
+00:01:14.678 --> 00:01:17.248
+Open weight models have improved dramatically,
+
+00:01:17.258 --> 00:01:19.118
+and some run on a well equipped
+
+00:01:19.118 --> 00:01:19.918
+laptop.
+
+00:01:19.918 --> 00:01:21.438
+Many agent tools can point at a
+
+00:01:21.438 --> 00:01:22.178
+local model,
+
+00:01:22.178 --> 00:01:23.798
+so a laptop can drive a real
+
+00:01:23.798 --> 00:01:24.648
+agent loop.
+
+00:01:24.778 --> 00:01:27.298
+Bigger context windows haven't removed the need
+
+00:01:27.298 --> 00:01:28.708
+to curate context.
+
+00:01:29.018 --> 00:01:31.378
+And agentic work burns through tokens,
+
+00:01:31.378 --> 00:01:32.958
+so the cost advice in the book
+
+00:01:32.958 --> 00:01:33.888
+still applies.
+
+00:01:34.818 --> 00:01:36.578
+So here are the questions to ask
+
+00:01:36.578 --> 00:01:37.448
+any tool.
+
+00:01:37.478 --> 00:01:38.698
+What can it see?
+
+00:01:38.698 --> 00:01:39.938
+What can it touch?
+
+00:01:39.938 --> 00:01:41.328
+How does it get feedback?
+
+00:01:41.438 --> 00:01:43.078
+How do you review its work?
+
+00:01:43.078 --> 00:01:44.718
+And what happens when it reads something
+
+00:01:44.718 --> 00:01:45.568
+hostile?
+
+00:01:46.126 --> 00:01:48.336
+That last question isn't theoretical.
+
+00:01:48.366 --> 00:01:50.706
+Public incidents have shown agents with broad
+
+00:01:50.706 --> 00:01:53.366
+access leaking private data after reading a
+
+00:01:53.366 --> 00:01:55.466
+malicious issue or support ticket.
+
+00:01:55.466 --> 00:01:57.386
+The write ups are short and worth
+
+00:01:57.386 --> 00:01:57.946
+reading.
+
+00:01:57.946 --> 00:01:59.446
+And measure your results,
+
+00:01:59.446 --> 00:02:02.166
+because feeling fast and being fast are
+
+00:02:02.166 --> 00:02:03.316
+not the same thing.
+
+00:02:04.095 --> 00:02:06.435
+Answer those five questions and the product
+
+00:02:06.435 --> 00:02:07.675
+names stop mattering.
+
+00:02:07.675 --> 00:02:09.695
+The names on this page will change.
+
+00:02:09.695 --> 00:02:11.895
+The principles in the chapters will outlast
+
+00:02:11.895 --> 00:02:12.995
+every one of them.
+
+00:02:12.995 --> 00:02:14.795
+That's the whole crew and the whole
+
+00:02:14.795 --> 00:02:15.415
+ship.
+
+00:02:15.415 --> 00:02:16.475
+Read the whole book,
+
+00:02:16.475 --> 00:02:17.215
+free,
+
+00:02:17.215 --> 00:02:19.545
+at theagenticcrew .com.

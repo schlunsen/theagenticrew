@@ -1,0 +1,289 @@
+WEBVTT
+
+00:00:04.500 --> 00:00:06.050
+A payments bug comes in.
+
+00:00:06.080 --> 00:00:08.320
+Customers with accented letters in their address
+
+00:00:08.320 --> 00:00:09.140
+can't pay.
+
+00:00:09.140 --> 00:00:10.880
+One engineer tells an agent,
+
+00:00:10.880 --> 00:00:13.040
+there's a bug for international users,
+
+00:00:13.040 --> 00:00:13.900
+take a look.
+
+00:00:13.900 --> 00:00:16.100
+It returns a patch that strips every
+
+00:00:16.100 --> 00:00:17.850
+accent from every address.
+
+00:00:17.920 --> 00:00:19.460
+Worse than the bug.
+
+00:00:19.460 --> 00:00:21.360
+A second engineer pastes in the error
+
+00:00:21.360 --> 00:00:22.000
+log,
+
+00:00:22.000 --> 00:00:22.800
+the trace,
+
+00:00:22.800 --> 00:00:23.720
+the gateway docs,
+
+00:00:23.720 --> 00:00:25.320
+and the three files involved.
+
+00:00:25.320 --> 00:00:27.530
+The fix is four lines.
+
+00:00:28.307 --> 00:00:29.167
+Same model.
+
+00:00:29.167 --> 00:00:30.057
+Same agent.
+
+00:00:30.107 --> 00:00:32.227
+What changed was what the agent could
+
+00:00:32.227 --> 00:00:32.687
+see.
+
+00:00:32.687 --> 00:00:34.587
+That's why the most important skill here
+
+00:00:34.587 --> 00:00:35.587
+isn't prompting.
+
+00:00:35.587 --> 00:00:37.297
+It's context engineering:
+
+00:00:37.607 --> 00:00:39.907
+curating everything that lands in the model's
+
+00:00:39.907 --> 00:00:40.757
+window.
+
+00:00:41.259 --> 00:00:43.049
+Think of the window as a workbench.
+
+00:00:43.279 --> 00:00:44.379
+Space is limited,
+
+00:00:44.379 --> 00:00:46.199
+so you lay out only what this
+
+00:00:46.199 --> 00:00:47.099
+task needs.
+
+00:00:47.099 --> 00:00:49.079
+But the real skill is designing the
+
+00:00:49.079 --> 00:00:49.499
+workshop,
+
+00:00:49.499 --> 00:00:52.039
+with clear structure and labelled drawers,
+
+00:00:52.039 --> 00:00:53.759
+so the agent can pull the right
+
+00:00:53.759 --> 00:00:55.389
+tool off the wall itself.
+
+00:00:56.310 --> 00:00:58.500
+Context reaches an agent on a ladder.
+
+00:00:58.530 --> 00:00:59.720
+At level zero,
+
+00:00:59.770 --> 00:01:01.210
+you describe the problem in your own
+
+00:01:01.210 --> 00:01:01.810
+words,
+
+00:01:01.810 --> 00:01:03.450
+and the detail gets lost.
+
+00:01:03.450 --> 00:01:04.630
+At level one,
+
+00:01:04.630 --> 00:01:06.410
+you paste the raw stack trace.
+
+00:01:06.410 --> 00:01:07.090
+Better,
+
+00:01:07.090 --> 00:01:08.840
+but tomorrow you paste it again.
+
+00:01:08.890 --> 00:01:10.060
+At level two,
+
+00:01:10.130 --> 00:01:11.590
+the agent can run the test and
+
+00:01:11.590 --> 00:01:12.930
+read the trace itself,
+
+00:01:12.930 --> 00:01:14.730
+and you add only what no tool
+
+00:01:14.730 --> 00:01:15.530
+can find:
+
+00:01:15.530 --> 00:01:16.270
+your intent,
+
+00:01:16.270 --> 00:01:17.640
+and your constraints.
+
+00:01:18.604 --> 00:01:20.694
+That's infrastructure versus injection.
+
+00:01:21.324 --> 00:01:23.224
+Infrastructure is set up once and pays
+
+00:01:23.224 --> 00:01:24.544
+off in every session:
+
+00:01:24.544 --> 00:01:25.674
+tool access,
+
+00:01:25.724 --> 00:01:27.594
+integrations with your error tracker,
+
+00:01:27.724 --> 00:01:29.064
+a navigable repo,
+
+00:01:29.064 --> 00:01:30.694
+an instruction file.
+
+00:01:30.824 --> 00:01:32.904
+Injection is what you paste by hand.
+
+00:01:32.904 --> 00:01:34.364
+When you paste the same thing a
+
+00:01:34.364 --> 00:01:35.084
+third time,
+
+00:01:35.084 --> 00:01:35.934
+promote it.
+
+00:01:36.542 --> 00:01:37.832
+And more is not better.
+
+00:01:37.962 --> 00:01:39.562
+Every token costs twice,
+
+00:01:39.562 --> 00:01:41.292
+in money and in attention.
+
+00:01:41.322 --> 00:01:43.102
+Details buried in the middle get less
+
+00:01:43.102 --> 00:01:43.542
+weight,
+
+00:01:43.542 --> 00:01:45.912
+and quality degrades as the input grows.
+
+00:01:46.082 --> 00:01:47.642
+It's called context rot,
+
+00:01:47.642 --> 00:01:49.602
+and a bigger window doesn't cure it.
+
+00:01:49.602 --> 00:01:50.912
+Before adding anything,
+
+00:01:50.922 --> 00:01:51.482
+ask:
+
+00:01:51.482 --> 00:01:53.802
+will the agent decide differently because it
+
+00:01:53.802 --> 00:01:54.652
+saw this?
+
+00:01:55.293 --> 00:01:57.373
+Long sessions fill up with noise,
+
+00:01:57.373 --> 00:01:59.383
+compact them into a short brief,
+
+00:01:59.513 --> 00:02:01.053
+have the agent keep notes in a
+
+00:02:01.053 --> 00:02:01.833
+file,
+
+00:02:01.833 --> 00:02:04.073
+send big explorations to a sub -agent
+
+00:02:04.073 --> 00:02:05.903
+that returns only the conclusion,
+
+00:02:06.033 --> 00:02:07.493
+then work in phases,
+
+00:02:07.493 --> 00:02:08.343
+research,
+
+00:02:08.473 --> 00:02:09.273
+plan,
+
+00:02:09.273 --> 00:02:10.123
+implement,
+
+00:02:10.153 --> 00:02:11.623
+each in a fresh window.
+
+00:02:12.408 --> 00:02:13.588
+When a session ends,
+
+00:02:13.588 --> 00:02:14.918
+its window is gone.
+
+00:02:14.988 --> 00:02:16.458
+So commit often,
+
+00:02:16.468 --> 00:02:17.458
+keep the notes,
+
+00:02:17.548 --> 00:02:19.128
+and put what's permanent in the instruction
+
+00:02:19.128 --> 00:02:19.908
+file.
+
+00:02:19.908 --> 00:02:21.108
+Your code,
+
+00:02:21.108 --> 00:02:22.788
+your repo and your docs are all
+
+00:02:22.788 --> 00:02:23.808
+context now.
+
+00:02:23.808 --> 00:02:24.698
+Next up:
+
+00:02:24.748 --> 00:02:25.568
+guardrails,
+
+00:02:25.568 --> 00:02:26.348
+trust,
+
+00:02:26.348 --> 00:02:27.618
+and sandboxes.

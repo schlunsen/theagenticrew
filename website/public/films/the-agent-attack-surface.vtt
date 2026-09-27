@@ -1,0 +1,277 @@
+WEBVTT
+
+00:00:04.500 --> 00:00:05.980
+Picture an agent asked to look through
+
+00:00:05.980 --> 00:00:07.930
+the open issues on a public repo.
+
+00:00:08.120 --> 00:00:09.900
+One issue was written by a stranger,
+
+00:00:09.900 --> 00:00:11.600
+and buried in it is a paragraph
+
+00:00:11.600 --> 00:00:13.180
+addressed not to the maintainer,
+
+00:00:13.180 --> 00:00:14.300
+but to the agent.
+
+00:00:14.300 --> 00:00:15.320
+The agent reads it,
+
+00:00:15.320 --> 00:00:17.150
+and helpfully does what it says.
+
+00:00:17.160 --> 00:00:19.270
+Private data ends up in public.
+
+00:00:19.440 --> 00:00:20.540
+Nothing was broken.
+
+00:00:20.540 --> 00:00:22.730
+Every part worked as designed.
+
+00:00:23.616 --> 00:00:26.186
+Application security rests on one idea:
+
+00:00:26.216 --> 00:00:28.426
+data should never run as instructions.
+
+00:00:28.736 --> 00:00:31.206
+Language models don't have that separation.
+
+00:00:31.456 --> 00:00:32.436
+Your request,
+
+00:00:32.436 --> 00:00:33.196
+a file,
+
+00:00:33.196 --> 00:00:34.176
+a web page,
+
+00:00:34.176 --> 00:00:35.116
+a tool result.
+
+00:00:35.116 --> 00:00:36.076
+To the model,
+
+00:00:36.076 --> 00:00:37.466
+it's all just tokens.
+
+00:00:37.776 --> 00:00:39.106
+That's prompt injection.
+
+00:00:39.156 --> 00:00:41.096
+Someone puts text where your agent will
+
+00:00:41.096 --> 00:00:41.496
+read it,
+
+00:00:41.496 --> 00:00:42.656
+and the text says:
+
+00:00:42.656 --> 00:00:43.746
+do this instead.
+
+00:00:44.685 --> 00:00:46.765
+The model is not a security boundary.
+
+00:00:46.765 --> 00:00:49.025
+A defence that works nearly every time
+
+00:00:49.025 --> 00:00:50.245
+is a good spam filter,
+
+00:00:50.245 --> 00:00:52.085
+and a terrible lock.
+
+00:00:52.085 --> 00:00:54.425
+Prompt injection is unsolved.
+
+00:00:54.425 --> 00:00:56.125
+So plan as if it will happen,
+
+00:00:56.125 --> 00:00:57.815
+and ask a better question:
+
+00:00:57.865 --> 00:00:59.475
+when the agent is tricked,
+
+00:00:59.525 --> 00:01:01.135
+what's the worst it can do?
+
+00:01:01.888 --> 00:01:03.548
+The most useful model here is the
+
+00:01:03.548 --> 00:01:04.918
+lethal trifecta.
+
+00:01:05.068 --> 00:01:06.658
+Access to private data.
+
+00:01:06.708 --> 00:01:08.668
+Exposure to untrusted content.
+
+00:01:08.668 --> 00:01:10.358
+And a way to send data out.
+
+00:01:10.388 --> 00:01:11.898
+Any two are manageable.
+
+00:01:12.088 --> 00:01:13.588
+All three in one session,
+
+00:01:13.588 --> 00:01:15.108
+and anyone who can get text in
+
+00:01:15.108 --> 00:01:16.548
+front of your agent can get your
+
+00:01:16.548 --> 00:01:17.268
+data out.
+
+00:01:17.268 --> 00:01:19.028
+So remove at least one leg,
+
+00:01:19.028 --> 00:01:20.238
+for every session.
+
+00:01:21.012 --> 00:01:23.092
+Untrusted text gets in through more doors
+
+00:01:23.092 --> 00:01:23.912
+than you'd think.
+
+00:01:23.912 --> 00:01:25.352
+Issues and comments.
+
+00:01:25.352 --> 00:01:26.282
+Web pages.
+
+00:01:26.392 --> 00:01:27.352
+Log lines,
+
+00:01:27.352 --> 00:01:29.522
+where a username can carry a payload.
+
+00:01:29.652 --> 00:01:32.202
+Tool descriptions from other people's servers.
+
+00:01:32.452 --> 00:01:34.332
+Even the instruction files in a repo
+
+00:01:34.332 --> 00:01:35.352
+you just cloned.
+
+00:01:35.352 --> 00:01:37.252
+Pointing an agent at someone else's repo
+
+00:01:37.252 --> 00:01:39.362
+means running someone else's prompt.
+
+00:01:40.094 --> 00:01:42.014
+And data leaves through more than email.
+
+00:01:42.014 --> 00:01:43.754
+An image link with a secret in
+
+00:01:43.754 --> 00:01:44.594
+its address.
+
+00:01:44.594 --> 00:01:45.784
+A public comment.
+
+00:01:45.814 --> 00:01:47.124
+A web request.
+
+00:01:47.174 --> 00:01:48.394
+Even a name lookup.
+
+00:01:48.394 --> 00:01:50.314
+If the agent can write anywhere an
+
+00:01:50.314 --> 00:01:51.494
+outsider can read,
+
+00:01:51.494 --> 00:01:52.524
+that's an exit.
+
+00:01:53.249 --> 00:01:53.909
+Skills,
+
+00:01:53.909 --> 00:01:55.909
+plugins and servers are dependencies,
+
+00:01:55.909 --> 00:01:56.589
+too.
+
+00:01:56.589 --> 00:01:57.389
+Read them,
+
+00:01:57.389 --> 00:01:57.849
+pin them,
+
+00:01:57.849 --> 00:01:59.049
+and review changes,
+
+00:01:59.049 --> 00:02:01.569
+because a tool's description can quietly change
+
+00:02:01.569 --> 00:02:02.999
+after you approved it.
+
+00:02:03.631 --> 00:02:05.181
+The defenses come in layers.
+
+00:02:05.271 --> 00:02:06.051
+Scoped,
+
+00:02:06.051 --> 00:02:07.301
+short -lived tokens.
+
+00:02:07.331 --> 00:02:09.991
+A reader agent that sees untrusted text
+
+00:02:09.991 --> 00:02:11.481
+but holds no privileges.
+
+00:02:11.751 --> 00:02:13.271
+Passing only checked,
+
+00:02:13.271 --> 00:02:15.591
+structured data to an actor that does.
+
+00:02:15.591 --> 00:02:16.901
+A closed network.
+
+00:02:16.911 --> 00:02:19.041
+A human approving anything outbound.
+
+00:02:19.171 --> 00:02:21.161
+And a log the agent can't edit.
+
+00:02:21.899 --> 00:02:23.099
+Think of a harbour pilot.
+
+00:02:23.099 --> 00:02:25.139
+They take the helm through unfamiliar waters,
+
+00:02:25.139 --> 00:02:27.079
+but they don't get the keys to
+
+00:02:27.079 --> 00:02:27.759
+the hold.
+
+00:02:27.759 --> 00:02:29.049
+Let your agents steer.
+
+00:02:29.059 --> 00:02:30.189
+Keep the keys.
+
+00:02:30.339 --> 00:02:31.369
+Next up:
+
+00:02:31.379 --> 00:02:32.689
+articulating intent.

@@ -1,0 +1,51 @@
+{
+  "chapter": "17",
+  "title": "When Not to Use Agents",
+  "next": "Agentic Teams",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "best",
+      "gap": 0.0,
+      "text": "The best agentic engineers aren't the ones who use agents the most. They're the ones who know exactly when to put the agent away. Reach for an agent when the job calls for a human, and you lose both time and credibility."
+    },
+    {
+      "id": "overhead",
+      "gap": 0.8,
+      "text": "Every agent interaction has a cost. You write the prompt, wait, review, fix, and run it again. For an hour-long task, that's a bargain. For renaming a variable, it's slower than just doing it. In one randomised trial, experienced developers in code they knew well were slower with AI tools, while believing they'd been faster. How fast you felt is not a measurement."
+    },
+    {
+      "id": "architecture",
+      "gap": 0.8,
+      "text": "When you're designing a system from scratch, the thinking is the work. An agent can list the trade-offs. But if it makes the calls, you won't understand your own system. That judgment only comes from doing the work. Use it as a sparring partner, not as the architect."
+    },
+    {
+      "id": "security",
+      "gap": 0.8,
+      "text": "Security-critical code is different. A broken auth check shows no symptoms until an attacker finds it, and agents write code that looks right. So write it yourself, and get human eyes on it. Then flip the roles, and ask the agent to attack your token check. Let the agent hunt. Keep the pen."
+    },
+    {
+      "id": "learn",
+      "gap": 0.8,
+      "text": "When you're learning, resist it. If the agent writes all the Rust, you haven't learned Rust. Asking why a borrow checker error happens builds understanding. Asking the agent to fix it doesn't. Use agents as tutors, not ghostwriters. And hard news, like sunsetting a product, should come from a person."
+    },
+    {
+      "id": "mess",
+      "gap": 0.8,
+      "text": "Agents amplify what's already there. In a clean codebase, they write clean code. In a mess, they write more mess. In legacy code you can't clean up, start with characterisation tests, scope ruthlessly, and hand the agent the tedious, mechanical parts."
+    },
+    {
+      "id": "craft",
+      "gap": 0.8,
+      "text": "Then there's craft. Writing code by hand builds pattern recognition that lives in your fingers. When you hit a problem the agent can't solve, you need those skills sharp. So write code by hand regularly. Not because it's faster, but because it keeps you dangerous."
+    },
+    {
+      "id": "judgment",
+      "gap": 0.8,
+      "text": "The central skill isn't prompting. It's judgment. Reach for agents when the leverage is real: big refactors, boilerplate, exploring code, writing tests. Put them away when the work needs human thinking, human accountability, or human craft. Anyone can type a prompt. Knowing when not to is the harder skill. Next up: agentic teams."
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+WEBVTT
+
+00:00:04.500 --> 00:00:06.440
+An agent can change twenty files in
+
+00:00:06.440 --> 00:00:07.480
+thirty seconds.
+
+00:00:07.480 --> 00:00:09.180
+Bundle them into one commit,
+
+00:00:09.180 --> 00:00:10.550
+and when something breaks,
+
+00:00:10.660 --> 00:00:12.080
+you're untangling a mess.
+
+00:00:12.080 --> 00:00:14.300
+Split them into five clean commits,
+
+00:00:14.300 --> 00:00:16.060
+and you revert the one that broke
+
+00:00:16.060 --> 00:00:17.540
+and keep the rest.
+
+00:00:17.540 --> 00:00:18.580
+With agents,
+
+00:00:18.580 --> 00:00:20.720
+Git stops being just version control.
+
+00:00:20.720 --> 00:00:22.340
+It becomes the backbone:
+
+00:00:22.340 --> 00:00:23.570
+your undo button,
+
+00:00:23.620 --> 00:00:24.830
+your parallel workspace,
+
+00:00:25.080 --> 00:00:26.160
+your review screen,
+
+00:00:26.160 --> 00:00:27.510
+and your documentation.
+
+00:00:28.542 --> 00:00:29.482
+The first habit:
+
+00:00:29.482 --> 00:00:30.102
+commit small,
+
+00:00:30.102 --> 00:00:31.302
+and commit often.
+
+00:00:31.302 --> 00:00:33.362
+Commit after each logical change,
+
+00:00:33.362 --> 00:00:34.742
+after the tests pass,
+
+00:00:34.742 --> 00:00:36.042
+and before anything risky,
+
+00:00:36.042 --> 00:00:37.802
+so there's always a save point to
+
+00:00:37.802 --> 00:00:38.652
+return to.
+
+00:00:39.323 --> 00:00:40.783
+Then let the agent write the commit
+
+00:00:40.783 --> 00:00:41.443
+message.
+
+00:00:41.443 --> 00:00:43.303
+It has the whole diff in context,
+
+00:00:43.303 --> 00:00:45.623
+so it summarizes from facts,
+
+00:00:45.623 --> 00:00:46.573
+not memory.
+
+00:00:46.903 --> 00:00:48.913
+Fix auth bug is noise.
+
+00:00:48.943 --> 00:00:51.223
+A message that explains the race condition
+
+00:00:51.223 --> 00:00:53.683
+and why it happened is useful six
+
+00:00:53.683 --> 00:00:54.523
+months later.
+
+00:00:54.523 --> 00:00:56.023
+Add a co -author line,
+
+00:00:56.023 --> 00:00:57.863
+so agent work is searchable.
+
+00:00:57.863 --> 00:00:59.573
+Your name is still on the commit.
+
+00:01:00.292 --> 00:01:02.572
+Every agent task gets its own branch.
+
+00:01:02.572 --> 00:01:04.102
+That gives you isolation,
+
+00:01:04.152 --> 00:01:05.492
+a clear review scope,
+
+00:01:05.492 --> 00:01:06.882
+and a clean rollback:
+
+00:01:06.892 --> 00:01:08.132
+if it's wrong,
+
+00:01:08.132 --> 00:01:09.232
+delete the branch.
+
+00:01:09.232 --> 00:01:11.212
+Name branches after the task,
+
+00:01:11.212 --> 00:01:13.252
+and your branch list becomes a manifest
+
+00:01:13.252 --> 00:01:14.822
+of what your agents are doing.
+
+00:01:15.630 --> 00:01:17.240
+For agents working in parallel,
+
+00:01:17.390 --> 00:01:18.510
+branches aren't enough.
+
+00:01:18.510 --> 00:01:20.470
+Two agents in one folder will fight
+
+00:01:20.470 --> 00:01:21.500
+over the files.
+
+00:01:21.510 --> 00:01:23.430
+A work tree gives each agent its
+
+00:01:23.430 --> 00:01:25.410
+own directory on its own branch,
+
+00:01:25.410 --> 00:01:26.680
+sharing one history.
+
+00:01:26.690 --> 00:01:28.830
+It's the cheapest sandbox there is.
+
+00:01:28.830 --> 00:01:30.590
+Just remember it holds only what Git
+
+00:01:30.590 --> 00:01:31.250
+tracks,
+
+00:01:31.250 --> 00:01:33.830
+so no environment files and no install
+
+00:01:33.830 --> 00:01:34.680
+dependencies.
+
+00:01:35.551 --> 00:01:37.331
+More and more tools create work trees
+
+00:01:37.331 --> 00:01:38.171
+for you,
+
+00:01:38.171 --> 00:01:39.991
+and cloud agents clone the repo into
+
+00:01:39.991 --> 00:01:42.031
+a remote sandbox and hand back a
+
+00:01:42.031 --> 00:01:42.811
+pull request.
+
+00:01:42.811 --> 00:01:45.051
+The shape is the same every time.
+
+00:01:45.051 --> 00:01:46.511
+An isolated copy,
+
+00:01:46.511 --> 00:01:47.871
+a dedicated branch,
+
+00:01:47.871 --> 00:01:49.281
+and a diff you review.
+
+00:01:50.089 --> 00:01:52.349
+Your review interface is the diff.
+
+00:01:52.349 --> 00:01:53.839
+Read the test first,
+
+00:01:53.849 --> 00:01:55.299
+watch for scope creep,
+
+00:01:55.349 --> 00:01:56.699
+and check the interfaces.
+
+00:01:56.829 --> 00:01:58.639
+When agents run in parallel,
+
+00:01:58.709 --> 00:02:00.669
+reviewing becomes the bottleneck.
+
+00:02:00.669 --> 00:02:02.229
+Keep pull requests small,
+
+00:02:02.229 --> 00:02:04.109
+let CI and Lenners take the first
+
+00:02:04.109 --> 00:02:04.669
+pass,
+
+00:02:04.669 --> 00:02:06.349
+and don't start what you can't review
+
+00:02:06.349 --> 00:02:07.199
+this week.
+
+00:02:07.856 --> 00:02:08.456
+Finally,
+
+00:02:08.456 --> 00:02:09.746
+agents read your history.
+
+00:02:09.996 --> 00:02:11.976
+Git log and git blame are documentation
+
+00:02:11.976 --> 00:02:13.476
+they consult directly.
+
+00:02:13.476 --> 00:02:15.396
+A history of fix bug leaves them
+
+00:02:15.396 --> 00:02:16.136
+guessing.
+
+00:02:16.136 --> 00:02:17.336
+Every commit message,
+
+00:02:17.336 --> 00:02:19.916
+branch name and pull request is context
+
+00:02:19.916 --> 00:02:21.036
+for the next agent,
+
+00:02:21.036 --> 00:02:22.636
+so make it worth reading.
+
+00:02:22.636 --> 00:02:23.496
+Next up:
+
+00:02:23.496 --> 00:02:25.186
+testing as the feedback loop.

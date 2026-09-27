@@ -1,0 +1,51 @@
+{
+  "chapter": "15",
+  "title": "Building Your Own Agents",
+  "next": "When Agents Get It Wrong",
+  "engine": "atlas",
+  "voice": "English_magnetic_voiced_man",
+  "lead_in": 4.5,
+  "tail": 5.0,
+  "beats": [
+    {
+      "id": "decisions",
+      "gap": 0.0,
+      "text": "Every time you open a coding agent, you're standing on hundreds of decisions someone else made. Someone wrote the system prompt, chose the tools, and decided what survives when the conversation gets compacted. When you use an agent, those decisions are invisible. When you build one, every one of them is yours."
+    },
+    {
+      "id": "loop",
+      "gap": 0.8,
+      "text": "Here's the uncomfortable truth. The core of an agent fits on a single page. Call the model, run the tools it asks for, feed the results back, and repeat. That's why so many first attempts disappoint. The loop is the easy part. The work is everything around it."
+    },
+    {
+      "id": "workflow",
+      "gap": 0.8,
+      "text": "The first instinct is to make everything an agent. Resist it. Most of the value comes from ordinary code with model calls at fixed points: fetch the ticket, classify it, draft a reply, queue it for a human. Save the open loop for work like debugging, where each step depends on the last. Deterministic skeleton, agentic muscles."
+    },
+    {
+      "id": "context",
+      "gap": 0.8,
+      "text": "The model has no memory. Each turn, it sees exactly what you send it, and nothing else. So you build the prompt every turn: stable instructions, the relevant state, history compacted, tool results trimmed. When a home-built agent gets confused, it's usually the context, not the model."
+    },
+    {
+      "id": "tools",
+      "gap": 0.8,
+      "text": "Tools are the product. Sort every one by its side effects. Read tools run freely. Write tools stay inside the run. Irreversible ones, like sending an email or charging a card, go through an approval, or aren't handed over at all. And make writes idempotent, because agents retry, and one refund should stay one refund."
+    },
+    {
+      "id": "human",
+      "gap": 0.8,
+      "text": "Asking a human is just another tool call. Picture a refund that needs a manager's sign-off, and the manager is in a meeting. The harness saves the run, sends the question to Slack, and stops. Eighteen hours later, the answer arrives, and the loop picks up exactly where it left off."
+    },
+    {
+      "id": "evals",
+      "gap": 0.8,
+      "text": "So how do you know it works? You write evals: realistic tasks, each with a check. Start with twenty, drawn from real traffic, and turn every production failure into a new case. Run them on every prompt tweak and every model upgrade. The builders who ship reliable agents aren't the ones with the cleverest prompts. They're the ones with the best evals."
+    },
+    {
+      "id": "sides",
+      "gap": 0.8,
+      "text": "Treat every input as untrusted, and make less possible. Then comes the reward. Once you've built an agent, you get better at using one. The harness stops being a black box. Build one, even a small one. Next up: when agents get it wrong."
+    }
+  ]
+}

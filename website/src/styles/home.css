@@ -470,3 +470,8 @@
   .home .reveal { opacity: 1; transform: none; transition: none; }
   .cover3d { transition: none; }
 }
+
+/* chapter films: the ▶ link on a chapter row (see /watch) */
+.chap__film { display: inline-flex; align-items: center; gap: 0.35rem; margin-top: 0.45rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brass); text-decoration: none; }
+.chap__film:hover { color: var(--brass-light); }
+.chap__film svg { width: 0.8rem; height: 0.8rem; }
