@@ -35,6 +35,8 @@ Before you write a single prompt, you need to think like a product person. Ask y
 
 You just designed an app. No code. No technical degree. Just clear thinking about who needs what.
 
+Now write it down. Put those four answers — who, the core action, the data, the wow moment — into a short document, along with a few house rules: prices in Danish kroner, measurements in centimetres, everything must work on a tablet. This becomes the project's instruction file (the `AGENTS.md` or `CLAUDE.md` from the chapter on what the agent can see). Ask the agent to save it in the project on day one. From then on, every session starts with the agent already knowing what it's building and for whom — and you'll never have to explain "it's for window installers" again.
+
 == Breaking It Into Jobs
 
 Now we break the project into pieces. Each piece is a self-contained job you'll give to the agent. The key principle: each job should make sense on its own, produce a testable result, and build on the previous one.
@@ -46,6 +48,8 @@ This is the foundation. You're telling the agent to build the empty building bef
 "Create a new project with a Django backend and a React frontend. Set up a Postgres database with three models: Customer (name, email, phone, address), WindowModel (name, width range, height range, glass type, price per square metre), and Quote (linked to a customer and window model, wall width, wall height, window width, window height, window position x, window position y, total price, date created). Create a Django admin panel so I can add window models manually. Make sure the React app can talk to the Django backend through an API."
 
 That's one prompt. It sets up the entire stack from Chapter 3 — the dining room, the kitchen, and the pantry. The agent will create dozens of files, configure the database, set up the API, and wire everything together.
+
+Before you send that, add one line: "Don't build anything yet — show me your plan first." For a setup job this big, the plan is where you catch surprises cheaply. You're looking for the three models you asked for, with the fields you listed. If the plan mentions a different database, extra features you didn't ask for, or leaves out the admin panel, say so now. When the plan matches, tell it to go ahead.
 
 When it's done, you should be able to open the Django admin panel in your browser, add a window model, and see it returned from the API. That's your verification. If that works, the foundation is solid.
 
@@ -113,6 +117,8 @@ Let's be honest about the bumps, because they're part of the process:
 
 *The agent will make assumptions.* In Job 1, it might set up the database differently than you expected. Maybe it puts the price on the Quote instead of calculating it. Review the output. If something's off, say so.
 
+*Long sessions will get muddled.* By Saturday afternoon, one conversation might hold the whole project's history — every false start, every fix. That's when the agent starts forgetting the house rules. Start a fresh session for each job. The instruction file carries the important stuff across.
+
 *Things will break between jobs.* Job 2 might not connect properly to what Job 1 created. The API endpoint might have a different name than the frontend expects. This is normal in software development — it's called _integration_. Tell the agent: "The form is trying to send data to `/api/quotes/` but the API endpoint is at `/api/quote/create/`. Fix the frontend to use the correct endpoint."
 
 *The 3D preview will look weird at first.* 3D graphics are fiddly. Lighting, camera angles, material properties — they all need tuning. This is the most iterative part of the project. Budget extra time here.
@@ -131,7 +137,7 @@ Here's a realistic schedule:
 
 *Sunday afternoon:* Jobs 5 and 6. Quote history and polish. By evening, the app looks and works like a real product.
 
-Seven jobs. Two days. An app that makes Morten's one-man operation look like a company ten times its size.
+Six jobs. Two days. An app that makes Morten's one-man operation look like a company ten times its size.
 
 == The Bigger Lesson
 

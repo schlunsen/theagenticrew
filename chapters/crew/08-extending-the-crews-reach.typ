@@ -33,7 +33,9 @@ These aren't agents — they're pipelines. But they can work _with_ agents. An a
 
 *Apple Shortcuts, Power Automate* — Lighter versions for personal workflows. "Every morning, have an agent summarise my unread emails and put the summary in my Notes app." These are small, but they compound.
 
-*MCP (Model Context Protocol)* — This is a newer standard that lets agents connect directly to external tools in a standardised way. It's technical under the hood, but the result is simple: instead of you copying data _into_ the agent, the agent can go _get_ data from your tools. Your developer will set it up. You'll enjoy the results.
+*Connectors and MCP* — The Model Context Protocol (MCP) is the standard that lets agents connect directly to external tools. When the first edition of this book came out, setting it up was a job for your developer. Since then it has become the plumbing behind the "connectors" in everyday chat apps: many services now offer an official connection you switch on by clicking _Connect_ and signing in, the same way you'd log in to any website. The result is simple: instead of you copying data _into_ the agent, the agent can go _get_ data from your tools.
+
+That ease is wonderful, and it's also the catch. A connection that takes one click to add takes no thought to add. Every connector is a new door — and the next section, and the chapter after this one, are about who else might walk through it.
 
 == The Multiplier Effect
 
@@ -53,5 +55,8 @@ Every tool you connect to an agent is a door you're opening. Before you connect 
 - *What can the agent do with it?* Read-only access is very different from read-write access. Can the agent just view your calendar, or can it create and delete events?
 - *Where does the data go?* When the agent reads your spreadsheet, that data is sent to the AI provider's servers. Is that acceptable for this data? Would it be acceptable for your client's data?
 - *What would happen if this went wrong?* An agent with delete access to your file system can accidentally delete files. An agent with send access to your email can accidentally send an email. Think about the worst case.
+- *Who else can put words in front of it?* Connecting your inbox doesn't just let the agent read your email. It lets _anyone who can email you_ put text in front of your agent. That turns out to matter a great deal.
 
 This isn't a reason to avoid tool integration. It's a reason to be intentional about it. Connect what you need. Grant the minimum access required. And apply the trust gradient: start read-only, upgrade to read-write after you've built confidence.
+
+In the first edition, that was where this chapter ended. It shouldn't have been. The last question on that list — who else can put words in front of your agent — deserves a chapter of its own. It's the next one.
